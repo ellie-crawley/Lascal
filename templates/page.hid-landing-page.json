@@ -1,1 +1,430 @@
-{"sections":{"main":{"type":"hid-hero","blocks":{"slide_KY3cez":{"type":"slide","settings":{"image":"shopify:\/\/shop_images\/Screenshot_2026-01-23_114445.png","mobile_image":"shopify:\/\/shop_images\/Cheeky_Rascals_Blog_Images_2_8.jpg","title":"","text":"","btn_url":"","btn_text":"button"}}},"block_order":["slide_KY3cez"],"name":"HID Hero","settings":{"heading_color":"#ffffff","text_color":"#ffffff","button_color":"#ffffff","button_bg_color":"#ff8300"}},"hid_rich_text_jGigpL":{"type":"hid-rich-text","blocks":{"text_KUXzAY":{"type":"text","settings":{"text":"<h1>Every outing,<br\/><strong>SO MUCH EASIER<\/strong><\/h1>","text_colour":"","after_text":"❤","after_text_colour":"#ff8300"}},"text_JN9LnE":{"type":"text","settings":{"text":"<p>The BuggyBoard® gives your child a lift - so you can enjoy every adventure together.<\/p>","text_colour":"#6b6259","after_text":"","after_text_colour":""}}},"block_order":["text_KUXzAY","text_JN9LnE"],"name":"HID rich text","settings":{"text_alignment":"flex-start","padding_top":20,"padding_bottom":0,"gap":20}},"hid_logo_list_6Chcj9":{"type":"hid-logo-list","blocks":{"logo_VNx8Lf":{"type":"logo","settings":{"image":"shopify:\/\/shop_images\/The-Original-BB-Icon.png","image_width":40,"link":"","text":"<p>Universal Fit<br\/>Fits 95% of pushchairs<\/p>","justify-content":"center"}},"logo_JWYPjG":{"type":"logo","settings":{"image":"shopify:\/\/shop_images\/The-Original-BB-Icon.png","image_width":40,"link":"","text":"<p>Easy to Attach<br\/>On in minutes<\/p>","justify-content":"center"}},"logo_qpb9HY":{"type":"logo","settings":{"image":"shopify:\/\/shop_images\/The-Original-BB-Icon.png","image_width":40,"link":"","text":"<p>Supports 20kg<br\/>\/ 44lbs<\/p>","justify-content":"center"}}},"block_order":["logo_VNx8Lf","logo_JWYPjG","logo_qpb9HY"],"name":"HID Logo list","settings":{"title":"USP list with icons","show_title":false,"layout":"row","text_icon_alignment":"column","image_opacity":100,"font_size":10,"logo_bg_color":"","font_colour":"#4a443d","padding_top":10,"padding_bottom":0}},"hid_rich_text_fWJNdg":{"type":"hid-rich-text","blocks":{"button_9MUec3":{"type":"button","settings":{"button_label":"GET YOURS NOW ›","button_link":"","button_text_colour":"#ffffff","button_bg_colour":"#ff8300"}}},"block_order":["button_9MUec3"],"name":"HID rich text","settings":{"text_alignment":"center","padding_top":10,"padding_bottom":20,"gap":20}},"hid_logo_list_6UWrEf":{"type":"hid-logo-list","blocks":{"logo_iFCCUM":{"type":"logo","settings":{"image_width":20,"link":"","text":"<p>🚚 <strong>Free UK Delivery<\/strong><\/p>","justify-content":"flex-end"}},"logo_feyUQi":{"type":"logo","settings":{"image_width":20,"link":"","text":"<p>↺ <strong>30-Day Money Back<\/strong><\/p>","justify-content":"flex-start"}}},"block_order":["logo_iFCCUM","logo_feyUQi"],"name":"HID Logo list","settings":{"title":"Free delivery and 30 day money back guarantee","show_title":false,"layout":"row","text_icon_alignment":"row","image_opacity":100,"font_size":11,"logo_bg_color":"#f6f2ec","font_colour":"#4a443d","padding_top":10,"padding_bottom":10}},"hid_rich_text_aeq7Bp":{"type":"hid-rich-text","blocks":{"text_tcRnpJ":{"type":"text","settings":{"text":"<h2><strong>Make every outing easier<\/strong><\/h2>","text_colour":"","after_text":"","after_text_colour":""}},"text_3qyKQX":{"type":"text","settings":{"text":"<p>More outings. More fun for them.<\/p>","text_colour":"","after_text":"","after_text_colour":""}}},"block_order":["text_tcRnpJ","text_3qyKQX"],"name":"HID rich text","settings":{"text_alignment":"center","padding_top":25,"padding_bottom":10,"gap":5}},"hid_cards_q3wL4E":{"type":"hid-cards","blocks":{"card_T7x99X":{"type":"card","settings":{"img_type":"emoji","image_width":20,"emoji":"😊","emoji_size":21,"link":"","title":"Happy Child, Happy You","text":"<p>No more \"I'm tired\" meltdowns. They ride, you stroll.<\/p>"}},"card_wWnq8K":{"type":"card","settings":{"img_type":"emoji","image_width":180,"emoji":"⏱","emoji_size":21,"link":"","title":"Saves Time & Energy","text":"<p>Get where you're going faster—without carrying extra weight.<\/p>"}},"card_LBQLhA":{"type":"card","settings":{"img_type":"emoji","image_width":180,"emoji":"🤝","emoji_size":21,"link":"","title":"Together, Not Apart","text":"<p>Your child stays close and included in the adventure.<\/p>"}},"card_38qJd7":{"type":"card","settings":{"img_type":"emoji","image_width":180,"emoji":"🛡","emoji_size":21,"link":"","title":"Safe & Secure Every Step","text":"<p>Designed for stability and tested for your peace of mind.<\/p>"}},"card_PUGVcr":{"type":"card","settings":{"img_type":"emoji","image_width":180,"emoji":"🧰","emoji_size":21,"link":"","title":"Compact & Convenient","text":"<p>Folds up or stays on—you choose what works for you.<\/p>"}}},"block_order":["card_T7x99X","card_wWnq8K","card_LBQLhA","card_38qJd7","card_PUGVcr"],"name":"HID image with text cards","settings":{"title":"","show_title":true,"font_size":12,"card_bg_color":"","font_colour":"","padding_top":0,"padding_bottom":20}},"hid_rich_text_FRzqp8":{"type":"hid-rich-text","blocks":{"text_Pph44R":{"type":"text","settings":{"text":"<h2><strong>Loved by parents.<\/strong><\/h2>","text_colour":"","after_text":"","after_text_colour":""}},"text_PTm3Mj":{"type":"text","settings":{"text":"<p>Trusted by millions.<\/p>","text_colour":"","after_text":"","after_text_colour":""}}},"block_order":["text_Pph44R","text_PTm3Mj"],"name":"HID rich text","settings":{"text_alignment":"center","padding_top":25,"padding_bottom":10,"gap":5}},"hid_countdown_timer_kXCYya":{"type":"hid-countdown-timer","blocks":{"subheading_4fdmCy":{"type":"subheading","settings":{"subheading":"⏰ LIMITED-TIME OFFER — 10% OFF TODAY","subheading_color":"#ff8300"}},"countdown_dyLWTq":{"type":"countdown","settings":{"text_color":"","countdown_bg_color":"#2c2620","countdown_number_color":"#ffffff","countdown_unit_color":"#a89e93","end_date":"2026-06-28","end_time":"17:00","end_text":"","hide_on_end":false,"number_size":60,"number_font":"base","divider_type":"colon","show_timer_labels":true}},"promotion_Wr93fU":{"type":"promotion","settings":{"promo_text":"Use code","promo_text_color":"#f6f2ec","promo_code":"ADVENTURE10","promo_code_color":"","promo_code_bg_color":"#ff8300"}}},"block_order":["subheading_4fdmCy","countdown_dyLWTq","promotion_Wr93fU"],"name":"HID Countdown timer","settings":{"text_alignment":"center","bg_color":"#1c1814"}},"hid_featured_collection_RzhnYR":{"type":"hid-featured-collection","name":"HID Featured Collection","settings":{"collection":"bestsellers","padding_top":20,"padding_bottom":20,"enable_carousel":true,"product_limit":3,"grid":4,"rows":1,"mobile_grid":1,"show_view_all":false}}},"order":["main","hid_rich_text_jGigpL","hid_logo_list_6Chcj9","hid_rich_text_fWJNdg","hid_logo_list_6UWrEf","hid_rich_text_aeq7Bp","hid_cards_q3wL4E","hid_rich_text_FRzqp8","hid_countdown_timer_kXCYya","hid_featured_collection_RzhnYR"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "hid-hero",
+      "blocks": {
+        "slide_KY3cez": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2026-01-23_114445.png",
+            "mobile_image": "shopify://shop_images/Cheeky_Rascals_Blog_Images_2_8.jpg",
+            "title": "",
+            "text": "",
+            "btn_url": "",
+            "btn_text": "button"
+          }
+        }
+      },
+      "block_order": [
+        "slide_KY3cez"
+      ],
+      "name": "HID Hero",
+      "settings": {
+        "heading_color": "#ffffff",
+        "text_color": "#ffffff",
+        "button_color": "#ffffff",
+        "button_bg_color": "#ff8300"
+      }
+    },
+    "hid_rich_text_jGigpL": {
+      "type": "hid-rich-text",
+      "blocks": {
+        "text_KUXzAY": {
+          "type": "text",
+          "settings": {
+            "text": "<h1>Every outing,<br/><strong>SO MUCH EASIER</strong></h1>",
+            "text_colour": "",
+            "after_text": "❤",
+            "after_text_colour": "#ff8300"
+          }
+        },
+        "text_JN9LnE": {
+          "type": "text",
+          "settings": {
+            "text": "<p>The BuggyBoard® gives your child a lift - so you can enjoy every adventure together.</p>",
+            "text_colour": "#6b6259",
+            "after_text": "",
+            "after_text_colour": ""
+          }
+        }
+      },
+      "block_order": [
+        "text_KUXzAY",
+        "text_JN9LnE"
+      ],
+      "name": "HID rich text",
+      "settings": {
+        "text_alignment": "flex-start",
+        "padding_top": 20,
+        "padding_bottom": 0,
+        "gap": 20
+      }
+    },
+    "hid_logo_list_6Chcj9": {
+      "type": "hid-logo-list",
+      "blocks": {
+        "logo_VNx8Lf": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/The-Original-BB-Icon.png",
+            "image_width": 40,
+            "link": "",
+            "text": "<p>Universal Fit<br/>Fits 95% of pushchairs</p>",
+            "justify-content": "center"
+          }
+        },
+        "logo_JWYPjG": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/The-Original-BB-Icon.png",
+            "image_width": 40,
+            "link": "",
+            "text": "<p>Easy to Attach<br/>On in minutes</p>",
+            "justify-content": "center"
+          }
+        },
+        "logo_qpb9HY": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/The-Original-BB-Icon.png",
+            "image_width": 40,
+            "link": "",
+            "text": "<p>Supports 20kg<br/>/ 44lbs</p>",
+            "justify-content": "center"
+          }
+        }
+      },
+      "block_order": [
+        "logo_VNx8Lf",
+        "logo_JWYPjG",
+        "logo_qpb9HY"
+      ],
+      "name": "HID Logo list",
+      "settings": {
+        "title": "USP list with icons",
+        "show_title": false,
+        "layout": "row",
+        "text_icon_alignment": "column",
+        "image_opacity": 100,
+        "font_size": 10,
+        "logo_bg_color": "",
+        "font_colour": "#4a443d",
+        "padding_top": 10,
+        "padding_bottom": 0
+      }
+    },
+    "hid_rich_text_fWJNdg": {
+      "type": "hid-rich-text",
+      "blocks": {
+        "button_9MUec3": {
+          "type": "button",
+          "settings": {
+            "button_label": "GET YOURS NOW ›",
+            "button_link": "",
+            "button_text_colour": "#ffffff",
+            "button_bg_colour": "#ff8300"
+          }
+        }
+      },
+      "block_order": [
+        "button_9MUec3"
+      ],
+      "name": "HID rich text",
+      "settings": {
+        "text_alignment": "center",
+        "padding_top": 10,
+        "padding_bottom": 20,
+        "gap": 20
+      }
+    },
+    "hid_logo_list_6UWrEf": {
+      "type": "hid-logo-list",
+      "blocks": {
+        "logo_iFCCUM": {
+          "type": "logo",
+          "settings": {
+            "image_width": 20,
+            "link": "",
+            "text": "<p>🚚 <strong>Free UK Delivery</strong></p>",
+            "justify-content": "flex-end"
+          }
+        },
+        "logo_feyUQi": {
+          "type": "logo",
+          "settings": {
+            "image_width": 20,
+            "link": "",
+            "text": "<p>↺ <strong>30-Day Money Back</strong></p>",
+            "justify-content": "flex-start"
+          }
+        }
+      },
+      "block_order": [
+        "logo_iFCCUM",
+        "logo_feyUQi"
+      ],
+      "name": "HID Logo list",
+      "settings": {
+        "title": "Free delivery and 30 day money back guarantee",
+        "show_title": false,
+        "layout": "row",
+        "text_icon_alignment": "row",
+        "image_opacity": 100,
+        "font_size": 11,
+        "logo_bg_color": "#f6f2ec",
+        "font_colour": "#4a443d",
+        "padding_top": 10,
+        "padding_bottom": 10
+      }
+    },
+    "hid_rich_text_aeq7Bp": {
+      "type": "hid-rich-text",
+      "blocks": {
+        "text_tcRnpJ": {
+          "type": "text",
+          "settings": {
+            "text": "<h2><strong>Make every outing easier</strong></h2>",
+            "text_colour": "",
+            "after_text": "",
+            "after_text_colour": ""
+          }
+        },
+        "text_3qyKQX": {
+          "type": "text",
+          "settings": {
+            "text": "<p>More outings. More fun for them.</p>",
+            "text_colour": "",
+            "after_text": "",
+            "after_text_colour": ""
+          }
+        }
+      },
+      "block_order": [
+        "text_tcRnpJ",
+        "text_3qyKQX"
+      ],
+      "name": "HID rich text",
+      "settings": {
+        "text_alignment": "center",
+        "padding_top": 25,
+        "padding_bottom": 10,
+        "gap": 5
+      }
+    },
+    "hid_cards_q3wL4E": {
+      "type": "hid-cards",
+      "blocks": {
+        "card_T7x99X": {
+          "type": "card",
+          "settings": {
+            "img_type": "emoji",
+            "image_width": 20,
+            "emoji": "😊",
+            "emoji_size": 21,
+            "link": "",
+            "title": "Happy Child, Happy You",
+            "text": "<p>No more \"I'm tired\" meltdowns. They ride, you stroll.</p>"
+          }
+        },
+        "card_wWnq8K": {
+          "type": "card",
+          "settings": {
+            "img_type": "emoji",
+            "image_width": 180,
+            "emoji": "⏱",
+            "emoji_size": 21,
+            "link": "",
+            "title": "Saves Time & Energy",
+            "text": "<p>Get where you're going faster—without carrying extra weight.</p>"
+          }
+        },
+        "card_LBQLhA": {
+          "type": "card",
+          "settings": {
+            "img_type": "emoji",
+            "image_width": 180,
+            "emoji": "🤝",
+            "emoji_size": 21,
+            "link": "",
+            "title": "Together, Not Apart",
+            "text": "<p>Your child stays close and included in the adventure.</p>"
+          }
+        },
+        "card_38qJd7": {
+          "type": "card",
+          "settings": {
+            "img_type": "emoji",
+            "image_width": 180,
+            "emoji": "🛡",
+            "emoji_size": 21,
+            "link": "",
+            "title": "Safe & Secure Every Step",
+            "text": "<p>Designed for stability and tested for your peace of mind.</p>"
+          }
+        },
+        "card_PUGVcr": {
+          "type": "card",
+          "settings": {
+            "img_type": "emoji",
+            "image_width": 180,
+            "emoji": "🧰",
+            "emoji_size": 21,
+            "link": "",
+            "title": "Compact & Convenient",
+            "text": "<p>Folds up or stays on—you choose what works for you.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "card_T7x99X",
+        "card_wWnq8K",
+        "card_LBQLhA",
+        "card_38qJd7",
+        "card_PUGVcr"
+      ],
+      "name": "HID image with text cards",
+      "settings": {
+        "title": "",
+        "show_title": true,
+        "font_size": 12,
+        "card_bg_color": "",
+        "font_colour": "",
+        "padding_top": 0,
+        "padding_bottom": 20
+      }
+    },
+    "hid_rich_text_FRzqp8": {
+      "type": "hid-rich-text",
+      "blocks": {
+        "text_Pph44R": {
+          "type": "text",
+          "settings": {
+            "text": "<h2><strong>Loved by parents.</strong></h2>",
+            "text_colour": "",
+            "after_text": "",
+            "after_text_colour": ""
+          }
+        },
+        "text_PTm3Mj": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Trusted by millions.</p>",
+            "text_colour": "",
+            "after_text": "",
+            "after_text_colour": ""
+          }
+        }
+      },
+      "block_order": [
+        "text_Pph44R",
+        "text_PTm3Mj"
+      ],
+      "name": "HID rich text",
+      "settings": {
+        "text_alignment": "center",
+        "padding_top": 25,
+        "padding_bottom": 10,
+        "gap": 5
+      }
+    },
+    "hid_countdown_timer_kXCYya": {
+      "type": "hid-countdown-timer",
+      "blocks": {
+        "subheading_4fdmCy": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "⏰ LIMITED-TIME OFFER — 10% OFF TODAY",
+            "subheading_color": "#ff8300"
+          }
+        },
+        "countdown_dyLWTq": {
+          "type": "countdown",
+          "settings": {
+            "text_color": "",
+            "countdown_bg_color": "#2c2620",
+            "countdown_number_color": "#ffffff",
+            "countdown_unit_color": "#a89e93",
+            "end_date": "2026-06-28",
+            "end_time": "17:00",
+            "end_text": "",
+            "hide_on_end": false,
+            "number_size": 60,
+            "number_font": "base",
+            "divider_type": "colon",
+            "show_timer_labels": true
+          }
+        },
+        "promotion_Wr93fU": {
+          "type": "promotion",
+          "settings": {
+            "promo_text": "Use code",
+            "promo_text_color": "#f6f2ec",
+            "promo_code": "ADVENTURE10",
+            "promo_code_color": "",
+            "promo_code_bg_color": "#ff8300"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_4fdmCy",
+        "countdown_dyLWTq",
+        "promotion_Wr93fU"
+      ],
+      "name": "HID Countdown timer",
+      "settings": {
+        "text_alignment": "center",
+        "bg_color": "#1c1814"
+      }
+    },
+    "hid_featured_collection_RzhnYR": {
+      "type": "hid-featured-collection",
+      "blocks": {
+        "product_B7yMH9": {
+          "type": "product",
+          "settings": {
+            "product": "lascal-buggyboard®-maxi-plus-red-with-red-saddle",
+            "configured_image_primary": "shopify://shop_images/Untitled_design_4.png",
+            "configured_image_secondary": "shopify://shop_images/2000x1400px-Prime-Day-Lascal.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "product_B7yMH9"
+      ],
+      "name": "HID Featured Collection",
+      "settings": {
+        "collection_type": "manual",
+        "collection": "bestsellers",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "enable_carousel": true,
+        "product_limit": 3,
+        "grid": 4,
+        "rows": 1,
+        "mobile_grid": 1,
+        "show_view_all": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "hid_rich_text_jGigpL",
+    "hid_logo_list_6Chcj9",
+    "hid_rich_text_fWJNdg",
+    "hid_logo_list_6UWrEf",
+    "hid_rich_text_aeq7Bp",
+    "hid_cards_q3wL4E",
+    "hid_rich_text_FRzqp8",
+    "hid_countdown_timer_kXCYya",
+    "hid_featured_collection_RzhnYR"
+  ]
+}
