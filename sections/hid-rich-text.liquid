@@ -1,11 +1,19 @@
 {{ 'hid.css' | asset_url | stylesheet_tag }}
 
+{% assign text_alignment = section.settings.text_alignment %}
+{% if section.settings.text_alignment == 'flex-start'%}
+  {% assign text_alignment = 'left' %}
+{% elsif section.settings.text_alignment == 'flex-end'%}
+  {% assign text_alignment = 'right' %}
+{% endif %}
+
 {% style %}
   #section-id-{{ section.id }}.rich-text{
     display: flex;
     gap: {{section.settings.gap}}px;
     flex-direction: column;
-    align-items: {{ section.settings.text_alignment}} ;
+    align-items: {{ section.settings.text_alignment}};
+    text-align: {{ text_alignment }};
     margin: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px 0;
   }
 
