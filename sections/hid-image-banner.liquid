@@ -1,4 +1,14 @@
-<section class="main-hid-image-banner container">
+{{ 'hid.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+  .hid-image-banner{
+    max-width: 100%;
+    object-fit: contain;
+    height: auto;
+  }
+{% endstyle %}
+
+<section class="hid-image-banner container">
   <div class="">
     {% if section.settings.image != blank  %}
       <img
