@@ -80,7 +80,7 @@
                 {%- render 'hid-product-card',
                   product: product.product,
                   configured_image_primary: {{ product.configured_image_primary }},
-                  configured_image_secondary {{ product.configured_image_secondary }} -%}
+                  configured_image_secondary: {{ product.configured_image_secondary }} -%}
               </div>
             {%- endfor -%}
           {%- endif -%}
@@ -302,6 +302,16 @@
           "type": "product",
           "id": "product",
           "label": "Product"
+        },
+        {
+          "type": "image_picker",
+          "id": "configured_image_primary",
+          "label": "Primary Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "configured_image_secondary",
+          "label": "Secondary Image"
         }
       ]
     }
