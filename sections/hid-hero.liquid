@@ -154,7 +154,7 @@
             {% if block.settings.mobile_image != blank  %}
               <img src="{{ block.settings.mobile_image | image_url}}" width="1000" height="1000" alt="{{ block.settings.mobile_image.alt }}" class="hidden-desktop">
             {% endif %}
-            {% if block.settings.tile != blank or block.settings.text != blank or block.settings.btn_url != blank %}
+            {% if block.settings.title != blank or block.settings.text != blank or block.settings.btn_url != blank %}
               <div class="main-hid-banner__content">
                 {% if block.settings.title != blank %}
                   <div class="main-hid-banner__title {{ block.id }}">
