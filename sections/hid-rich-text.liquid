@@ -98,6 +98,16 @@
           <a href="{{ block.settings.button_link }}">{{ block.settings.button_label | escape }}</a>
         </div>
 
+      {% when 'image' %}
+        {% if block.settings.image != blank %}
+        <div class="rich-text-image--{{ block.id }}" {{ block.shopify_attributes }}>
+          <img
+            src="{{ block.settings.image | image_url }}"
+            width="1000"
+            height="1000"
+            alt="{{ block.settings.image.alt }}"/>
+          </div>
+        {% endif %}
     {% endcase %}
   {% endfor %}
 </div>
