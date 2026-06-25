@@ -182,7 +182,7 @@
         "text_icon_alignment": "row",
         "image_opacity": 100,
         "font_size": 11,
-        "logo_bg_color": "#F4EADD",
+        "logo_bg_color": "#f4eadd",
         "font_colour": "#4a443d",
         "padding_top": 10,
         "padding_bottom": 10
@@ -531,6 +531,14 @@
         "padding_bottom": 20,
         "gap": 5
       }
+    },
+    "hid_image_banner_iQjfwX": {
+      "type": "hid-image-banner",
+      "name": "HID Image Banner",
+      "settings": {
+        "image": "shopify://shop_images/1200x628px-Prime-Day-Lascal.jpg",
+        "mobile_image": "shopify://shop_images/1080x1080px-Prime-Day-Lascal.jpg"
+      }
     }
   },
   "order": [
@@ -545,6 +553,7 @@
     "hid_countdown_timer_kXCYya",
     "hid_featured_collection_RzhnYR",
     "hid_logo_list_wbJHRm",
-    "hid_rich_text_aAGeP4"
+    "hid_rich_text_aAGeP4",
+    "hid_image_banner_iQjfwX"
   ]
 }
