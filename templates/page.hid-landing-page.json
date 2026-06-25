@@ -431,6 +431,70 @@
         "mobile_grid": 1,
         "show_view_all": false
       }
+    },
+    "hid_logo_list_wbJHRm": {
+      "type": "hid-logo-list",
+      "blocks": {
+        "logo_pCkmnF": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/The-Original-BB-Icon.png",
+            "image_width": 40,
+            "link": "",
+            "text": "<p>30-Day Money Back Guarantee</p>",
+            "justify-content": "center"
+          }
+        },
+        "logo_wfEedr": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/The-Original-BB-Icon.png",
+            "image_width": 40,
+            "link": "",
+            "text": "<p>30-Day Money Back Guarantee</p>",
+            "justify-content": "center"
+          }
+        },
+        "logo_kH9Hmr": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/The-Original-BB-Icon.png",
+            "image_width": 40,
+            "link": "",
+            "text": "<p>Free Delivery Over £60</p>",
+            "justify-content": "center"
+          }
+        },
+        "logo_8HGmBn": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/The-Original-BB-Icon.png",
+            "image_width": 40,
+            "link": "",
+            "text": "<p>Free Delivery Over £60</p>",
+            "justify-content": "center"
+          }
+        }
+      },
+      "block_order": [
+        "logo_pCkmnF",
+        "logo_wfEedr",
+        "logo_kH9Hmr",
+        "logo_8HGmBn"
+      ],
+      "name": "HID Logo list",
+      "settings": {
+        "title": "Logo list",
+        "show_title": false,
+        "layout": "grid",
+        "text_icon_alignment": "column",
+        "image_opacity": 100,
+        "font_size": 12,
+        "logo_bg_color": "#EFEBE3",
+        "font_colour": "",
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
     }
   },
   "order": [
@@ -443,6 +507,7 @@
     "hid_cards_q3wL4E",
     "hid_rich_text_FRzqp8",
     "hid_countdown_timer_kXCYya",
-    "hid_featured_collection_RzhnYR"
+    "hid_featured_collection_RzhnYR",
+    "hid_logo_list_wbJHRm"
   ]
 }
