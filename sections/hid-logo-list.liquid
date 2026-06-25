@@ -45,9 +45,11 @@
       align-items: center;
       gap: 5px;
       flex: 1;
-      border-radius: 9px;
-      padding: 11px;
-      background: {{section.settings.logo_bg_color}};
+      {% if section.settings.logo_bg_color != blank %}
+        border-radius: 9px;
+        padding: 11px;
+        background: {{section.settings.logo_bg_color}};
+      {% endif %}
     }
     .layout--row{
       flex-wrap: nowrap;
