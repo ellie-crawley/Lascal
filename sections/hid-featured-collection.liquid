@@ -183,6 +183,23 @@
   "class": "section-featured-collection",
   "settings": [
     {
+      "type": "radio",
+      "id": "collection_type",
+      "label": "Collection Type",
+      "info": "Choose 'auto' if you would like to pull in products from an existing collection, or manual to choose the products yourself.",
+      "default": "auto",
+      "options": [
+        {
+          "value": "auto",
+          "label": "Auto"
+        },
+        {
+          "value": "manual",
+          "label": "Manual"
+        }
+      ]
+    },
+    {
       "type": "collection",
       "id": "collection",
       "label": "Collection"
@@ -262,6 +279,19 @@
       "id": "show_view_all",
       "label": "Show 'View all' link",
       "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        }
+      ]
     }
   ],
   "presets": [
