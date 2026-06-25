@@ -487,10 +487,10 @@
         "title": "Logo list",
         "show_title": false,
         "layout": "grid",
-        "text_icon_alignment": "column",
+        "text_icon_alignment": "row",
         "image_opacity": 100,
         "font_size": 12,
-        "logo_bg_color": "#EFEBE3",
+        "logo_bg_color": "#efebe3",
         "font_colour": "",
         "padding_top": 20,
         "padding_bottom": 20
