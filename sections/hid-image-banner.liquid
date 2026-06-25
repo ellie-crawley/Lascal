@@ -1,7 +1,7 @@
 {{ 'hid.css' | asset_url | stylesheet_tag }}
 
 {% style %}
-  .hid-image-banner{
+  .hid-image-banner img{
     max-width: 100%;
     object-fit: contain;
     height: auto;
@@ -9,26 +9,22 @@
 {% endstyle %}
 
 <section class="hid-image-banner container">
-  <div class="">
-    {% if section.settings.image != blank  %}
-      <img
-        src="{{ section.settings.image | image_url }}"
-        width="1000"
-        height="1000"
-        alt="{{ section.settings.image.alt }}"
-        class="hidden-mobile">
-    {% endif %}
-  </div>
-  <div class="">
-    {% if section.settings.mobile_image != blank  %}
-      <img
-        src="{{ section.settings.mobile_image | image_url}}"
-        width="1000"
-        height="1000"
-        alt="{{ section.settings.mobile_image.alt }}"
-        class="hidden-desktop">
-    {% endif %}
-  </div>
+  {% if section.settings.image != blank  %}
+    <img
+      src="{{ section.settings.image | image_url }}"
+      width="1000"
+      height="1000"
+      alt="{{ section.settings.image.alt }}"
+      class="hidden-mobile">
+  {% endif %}
+  {% if section.settings.mobile_image != blank  %}
+    <img
+      src="{{ section.settings.mobile_image | image_url}}"
+      width="1000"
+      height="1000"
+      alt="{{ section.settings.mobile_image.alt }}"
+      class="hidden-desktop">
+  {% endif %}
 </section>
 
 {% schema %}
