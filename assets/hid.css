@@ -1,0 +1,56 @@
+.hidden-mobile{
+  display: none;
+}
+.hidden-desktop{
+  display: flex;
+}
+.hid-container{
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.visually-hidden{
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+@media (max-width: 768px) {
+.visually-hidden-mobile{
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+}
+
+.align-left {
+  text-align: left;
+}
+
+.align-center{
+  text-align: center;
+}
+
+.align-right {
+  text-align: right;
+}
+
+@media screen and (min-width: 991px) {
+  .hidden-desktop{
+    display: none;
+  }
+  .hidden-mobile{
+    display: flex;
+  }
+}

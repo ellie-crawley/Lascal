@@ -1,0 +1,277 @@
+{{ 'hid.css' | asset_url | stylesheet_tag }}
+
+{%  style %}
+  .main-hid-banner {
+    padding: 0!important;
+    padding-top: 25px;
+    margin-top: 0;
+    max-height: 40vh;
+  }
+  .main-hid-banner *{
+    max-height: inherit;
+  }
+  .main-hid-banner__image image{
+    max-height: 40vh;
+  }
+  .main-hid-banner__container {
+    overflow: hidden;
+    height: 100%;
+    position: relative;
+  }
+  .main-hid-banner__item {
+    max-width: 100%;
+    width: 100%;
+  }
+  .main-hid-banner__image {
+    height: 590px;
+  }
+  .main-hid-banner__image::before {
+    content: none;
+  }
+  .main-hid-banner__content {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    height: 100%;
+    transform: translateY(-50%);
+    display: flex;
+    padding: 46px 16px 63px;
+    flex-direction: column;
+    justify-content: end;
+    max-width: 250px;
+  }
+  .main-hid-banner__title img {
+    position: relative;
+    object-fit: contain;
+  }
+  .main-hid-banner__title p {
+    color: {{ section.settings.heading_color }};
+    font-family: "Museo Sans Rounded";
+    font-size: 34px;
+    font-weight: 400;
+    line-height: 110%;
+  }
+  .main-hid-banner__text {
+    color: {{ section.settings.text_color }};
+    line-height: 160%;
+    font-weight: 400;
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+  .main-hid-banner__button {
+    display: block;
+    width: fit-content;
+    bottom: 46px;
+    position: static;
+    padding: 9px 14px;
+    color: {{ section.settings.button_color }};
+    background-color: {{ section.settings.button_bg_color }};
+  }
+  .main-hid-banner__next,
+  .main-hid-banner__prev {
+    position: absolute;
+    bottom: 17px;
+    width: 32px;
+    height: 32px;
+    left: inherit !important;
+    top: inherit !important;
+    margin: 0 !important; 
+  }
+  .main-hid-banner__next {
+    right: 13px;
+  }
+  .main-hid-banner__prev {
+    right: 63px;
+  }
+  .main-hid-banner__next::after,
+  .main-hid-banner__prev::after {
+    content: none;
+  }
+
+  @media screen and (min-width: 991px) {
+    .main-hid-banner__prev
+    .main-hid-banner__next {
+      bottom: 43px;
+      width: 60px;
+      height: 60px;
+    }
+    .main-hid-banner__prev{
+      right: 118px;
+    }
+    .main-hid-banner__next {
+      right: 46px;
+    }
+    .main-hid-banner__button {
+      position: absolute;
+      padding: 16px 24px;
+    }
+    .main-hid-banner {
+      max-height: 660px;
+      height: 100%;
+      margin-top: 42px;
+    }
+    .main-hid-banner__image {
+      height: 660px;
+    }
+    .main-hid-banner__content {
+      padding: 46px 44px;
+      justify-content: center;
+      max-width: 427px;
+    }
+    .main-hid-banner__title {
+      font-size: 72px;
+      font-weight: 400;
+      margin-bottom: 40px;
+    }
+    .main-hid-banner__title p {
+      font-size: 72px;
+    }
+    .main-hid-banner__text {
+      font-size: 18px;
+      margin-bottom: 80px;
+    }
+  }
+{% endstyle %}
+
+<section class="main-hid-banner container">
+  <div class="main-hid-banner__container">
+    <div class="main-hid-banner__wrapper swiper-wrapper">
+      {% for block in section.blocks %}
+        <style>
+          .main-hid-banner__title.{{ block.id }} img{
+            max-width: {{ block.settings.width_logo }}px;
+            max-height: {{ block.settings.height_logo }}px;
+            width: 100%;
+            height: 100%;
+            object-position: left;
+          }
+        </style>
+        <div class="main-hid-banner__item swiper-slide">
+          <div class="main-hid-banner__image image">
+            {% if block.settings.image != blank  %}
+              <img src="{{ block.settings.image | image_url }}" width="1000" height="1000" alt="{{ block.settings.image.alt }}" class="hidden-mobile">
+            {% endif %}
+            {% if block.settings.mobile_image != blank  %}
+              <img src="{{ block.settings.mobile_image | image_url}}" width="1000" height="1000" alt="{{ block.settings.mobile_image.alt }}" class="hidden-desktop">
+            {% endif %}
+            {% if block.settings.tile != blank or block.settings.text != blank or block.settings.btn_url != blank %}
+              <div class="main-hid-banner__content">
+                {% if block.settings.title != blank %}
+                  <div class="main-hid-banner__title {{ block.id }}">
+                    {{ block.settings.title | replace: '®', '<span class="large_trademark">®</span>' }}
+                  </div>
+                {% endif %}
+                {% if block.settings.text != blank %}
+                  <div class="main-hid-banner__text">{{ block.settings.text }}</div>
+                {% endif %}
+                {% if block.settings.btn_url != blank %}
+                  <a href="{{ block.settings.btn_url }}" class="main-hid-banner__button button">{{ block.settings.btn_text }}</a>
+                {% endif %}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    {% if section.blocks.size > 0 %}
+      <div class="swiper-button-next main-hid-banner__next">
+        {% render 'icons', icon: 'main-hid-banner__next' %}
+      </div>
+      <div class="swiper-button-prev main-hid-banner__prev">
+        {% render 'icons', icon: 'main-hid-banner__prev' %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<script>
+  const mainBanner = new Swiper(".main-hid-banner__container", {
+    slidesPerView: 1,
+    speed: 600,
+    effect: "fade",
+    autoplay: {
+      delay: 3000,
+    },
+    fadeEffect: {
+      crossFade: true,
+    },
+    spaceBetween: 10,
+    loop: true,
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+  });
+</script>
+
+{% schema %}
+{
+  "name": "HID Hero",
+  "settings": [
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading colour"
+    },   
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color"
+    },   
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Button text colour"
+    },   
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Button background colour"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Slide",
+      "type": "slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "Image on mobile"
+        },
+        {
+          "type": "richtext",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text"
+        },
+        {
+          "type": "url",
+          "id": "btn_url",
+          "label": "Button url"
+        },
+        {
+          "type": "text",
+          "id": "btn_text",
+          "label": "Button text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "category": "HID Landing Page",
+      "name": "HID Hero"
+    }
+  ],
+}
+{% endschema %}

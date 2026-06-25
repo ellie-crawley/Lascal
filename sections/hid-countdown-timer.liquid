@@ -1,0 +1,468 @@
+{% style %}
+  .countdown-container{
+    background: {{section.settings.bg_color}};
+    margin: 6px 14px;
+    border-radius: 14px;
+    padding: 17px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  h3{
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .5px;
+  }
+{% endstyle %}
+
+<div class="hid-container countdown-container align-ltr-{{ section.settings.text_alignment }}">
+  {% assign skip_block_count = 0 %}
+  {% for block in section.blocks %}
+    {%- liquid
+      if skip_block_count > 0
+        assign skip_block_count = skip_block_count | minus: 1
+        continue
+      endif
+    -%}
+    {% case block.type %}
+        <h2 style="color: {{  block.settings.heading_color }}" {{ block.shopify_attributes }}>{{ block.settings.title | escape }}</h2>
+      {% when 'subheading' %}
+        <h3 style="color: {{  block.settings.subheading_color }}" {{ block.shopify_attributes }}>{{ block.settings.subheading | escape }}</h3>
+
+      {% when 'text' %}
+        <p style="color: {{  block.settings.text_color }}" {{ block.shopify_attributes }}>{{ block.settings.text }}</p>
+
+      {% when 'promotion' %}
+        {% style %}
+          #promotion-{{ block.id }}{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            .button-container{
+              display: flex;
+              align-items: center;
+              gap: 5px;
+            }
+            p, span{
+              font-size: 11px;
+              color: {{  block.settings.promo_text_color }};
+            }
+            button{
+              padding: 3px 8px;
+              border-radius: 6px;
+              letter-spacing: 1px;
+              font-weight: bold;
+              color: {{  block.settings.promo_text_color }};
+              background: {{  block.settings.promo_code_bg_color }};
+            }
+            span{
+              visibility: hidden;
+            }
+            button:hover,
+            button:focus-visible{
+              box-shadow: 0 8px 18px {{ block.settings.promo_code_bg_color | color_modify: 'alpha', 0.32}};
+            }
+            button:hover + span,
+            button:focus-visible + span{
+              visibility: visible;
+            }
+          }
+        {% endstyle %}
+        {% if block.settings.promo_text != blank or block.settings.promo_code != blank %}
+          <div id="promotion-{{ block.id }}" {{ block.shopify_attributes }}>
+            {% if block.settings.promo_text != blank %}
+              <p>
+                {{ block.settings.promo_text }}
+              </p>
+            {% endif %}
+            {% if block.settings.promo_code != blank %}
+              <div class="button-container">
+                <button
+                  aria-label="Copy code"
+                  onclick="
+                  navigator.clipboard.writeText('{{ block.settings.promo_code }}');
+                  const icon = this.parentElement.querySelector('.copy-icon');
+                  icon.textContent = '✓';
+                  icon.style.visibility = 'visible';
+
+                  setTimeout(() => {
+                    icon.textContent = '⧉';
+                    icon.style.removeProperty('visibility');
+                  }, 1500);
+                ">
+                  {{ block.settings.promo_code }}
+                </button>
+                <span class="copy-icon">⧉</span>
+               </div>
+            {% endif %}
+          </div>
+        {% endif %}
+
+      {% when 'button' %}
+        {% style %}
+          .countdown-button{
+            border: none;
+            text-align: center;
+            padding: 15px;
+            border-radius: 11px;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: .3px;
+            margin: auto;
+          }
+        {% endstyle %}
+          <a class="countdown-button" style="background: {{  block.settings.button_bg_color }}; color: {{  block.settings.button_color }}" href="{{ block.settings.button_link }}" {{ block.shopify_attributes }}>{{ block.settings.button_label | escape }}</a>
+
+      {%- when 'countdown' -%}
+        <script src="{{ 'hid-countdown-timer.js' | asset_url }}" defer></script>
+        {% style %}
+          .block-id-{{ block.id }} .countdown {
+            --countdown-desktop-size: {{ block.settings.number_size }}px;
+          }
+          .countdown__grid{
+            display: grid;
+            grid-auto-flow: column;
+            justify-content: center;
+            gap: 8px;
+            margin: 12px 0;
+          }
+          .countdown__item{
+            background: {{ block.settings.countdown_bg_color }};
+            border-radius: 8px;
+            padding: 10px 0;
+            width: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+          }
+          .countdown__number{
+            color: {{ block.settings.countdown_number_color }};
+            font-size: 18px;
+            font-weight: 800;
+          }
+          .countdown__unit{
+            font-size: 8px;
+            color: {{ block.settings.countdown_unit_color }};
+            text-transform: uppercase;
+          }
+        {% endstyle %}
+
+        <div class="block-id-{{ block.id }} lightly-spaced-row lightish-spaced-row-above countdown-font-{{ block.settings.number_font }} countdown-divider-{{ block.settings.divider_type }}" {{ block.shopify_attributes }}>
+
+          {%- liquid
+            assign hide_on_end = block.settings.hide_on_end | default: false
+            if block.settings.end_date != blank
+              if block.settings.end_time != blank
+                assign end_date = block.settings.end_date | append: 'T' | append: block.settings.end_time
+              endif
+
+              assign end_date = block.settings.end_date | date: '%Y-%m-%dT%H:%M%z'
+              assign now = "now" | date: '%Y-%m-%dT%H:%M%z'
+            elsif block.settings.end_midnight
+              assign now = "now" | date: '%Y-%m-%dT%H:%M%z'
+              assign now_split = now | split: "T"
+              assign end_date = now_split.first | append: "T23:59" | date: '%Y-%m-%dT%H:%M%z'
+            endif
+
+            assign a11y_end_date = end_date | date: format: 'date_at_time'
+          -%}
+
+          <countdown-timer class="countdown" role="timer" data-end-date="{% if end_date != blank %}{{ end_date }}{% endif %}"{% if pad %} data-pad="true"{% endif %} aria-label="Ends {{ a11y_end_date }}">
+            {%- if end_date > now or hide_on_end == false -%}
+              <div class="countdown__grid text-center">
+                <div class="countdown__item">
+                  <span class="countdown__number js-days">
+                    <span class="countdown__number-part countdown__number-part-1">0</span><span class="countdown__number-part countdown__number-part-2">0</span>
+                  </span>
+                  <div class="countdown__unit subheading{% unless block.settings.show_timer_labels %} visually-hidden{% endunless %}">Day</div>
+                </div>
+                <div class="countdown__item">
+                  <span class="countdown__number js-hours">
+                    <span class="countdown__number-part countdown__number-part-1">0</span><span class="countdown__number-part countdown__number-part-2">0</span>
+                  </span>
+                  <div class="countdown__unit subheading{% unless block.settings.show_timer_labels %} visually-hidden{% endunless %}">Hour</div>
+                </div>
+                <div class="countdown__item">
+                  <span class="countdown__number js-mins">
+                    <span class="countdown__number-part countdown__number-part-1">0</span><span class="countdown__number-part countdown__number-part-2">0</span>
+                  </span>
+                  <div class="countdown__unit subheading{% unless block.settings.show_timer_labels %} visually-hidden{% endunless %}">Min</div>
+                </div>
+                <div class="countdown__item">
+                  <span class="countdown__number js-secs">
+                    <span class="countdown__number-part countdown__number-part-1">0</span><span class="countdown__number-part countdown__number-part-2">0</span>
+                  </span>
+                  <div class="countdown__unit subheading{% unless block.settings.show_timer_labels %} visually-hidden{% endunless %}">Sec</div>
+                </div>
+              </div>
+            {%- endif -%}
+
+            {%- if now > end_date and block.settings.end_text -%}
+              <div class="countdown__text large-text rte">
+                {{- block.settings.end_text -}}
+              </div>
+            {%- endif -%}
+          </countdown-timer>
+        </div>
+    {% endcase %}
+  {% endfor %}
+</div>
+
+
+{% schema %}
+{
+  "name": "HID Countdown timer",
+  "class": "section-countdown-timer",
+  "settings": [
+    {
+      "type": "text_alignment",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "default": "center"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "Heading",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Countdown timer"
+        },
+        {
+          "type": "color",
+          "id": "heading_color",
+          "label": "Heading color"
+        }
+      ]
+    },
+    {
+      "type": "promotion",
+      "name": "Promotion",
+      "settings": [
+        {
+          "type": "text",
+          "id": "promo_text",
+          "label": "Promotional text"
+        },
+        {
+          "type": "color",
+          "id": "promo_text_color",
+          "label": "Promotional text color"
+        },
+        {
+          "type": "text",
+          "id": "promo_code",
+          "label": "Promotional code"
+        },
+        {
+          "type": "color",
+          "id": "promo_code_color",
+          "label": "Promo code color"
+        },
+        {
+          "type": "color",
+          "id": "promo_code_bg_color",
+          "label": "Promo code background color"
+        }
+      ]
+    },
+    {
+      "type": "subheading",
+      "name": "Subheading",
+      "settings": [
+        {
+          "type": "text",
+          "id": "subheading",
+          "label": "Subheading",
+          "default": "Subheading"
+        },
+        {
+          "type": "color",
+          "id": "subheading_color",
+          "label": "Subheading color"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Text",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Create urgency around an offer or event using a countdown timer.</p>"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "text color"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "Button",
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Consecutive buttons will show on the same row"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button",
+          "default": "Button text"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        },
+        {
+          "type": "color",
+          "id": "button_color",
+          "label": "Button text color"
+        },
+        {
+          "type": "color",
+          "id": "button_bg_color",
+          "label": "Button background color"
+        }
+      ]
+    },
+    {
+      "type": "countdown",
+      "name": "Countdown timer",
+      "settings": [
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text color"
+        },
+        {
+          "type": "color",
+          "id": "countdown_bg_color",
+          "label": "Background color"
+        },
+        {
+          "type": "color",
+          "id": "countdown_number_color",
+          "label": "Number color"
+        },
+        {
+          "type": "color",
+          "id": "countdown_unit_color",
+          "label": "Unit color"
+        },
+        {
+          "type": "text",
+          "id": "end_date",
+          "label": "End date",
+          "info": "Required. Format: YYYY-MM-DD."
+        },
+        {
+          "type": "text",
+          "id": "end_time",
+          "label": "End time (optional)",
+          "info": "Format: 17:00 (24 hour clock). Uses the store's timezone."
+        },
+        {
+          "type": "richtext",
+          "id": "end_text",
+          "label": "End text",
+          "info": "This shows when the date and time elapses."
+        },
+        {
+          "type": "checkbox",
+          "id": "hide_on_end",
+          "label": "Hide the timer when the date and time elapses",
+          "default": false
+        },
+        {
+          "type": "range",
+          "id": "number_size",
+          "min": 20,
+          "max": 60,
+          "step": 2,
+          "unit": "px",
+          "label": "Number size",
+          "default": 60
+        },
+        {
+          "type": "select",
+          "id": "number_font",
+          "label": "Number font",
+          "options": [
+            {
+              "label": "Text font",
+              "value": "base"
+            },
+            {
+              "label": "Heading font",
+              "value": "heading"
+            }
+          ],
+          "default": "base"
+        },
+        {
+          "type": "select",
+          "id": "divider_type",
+          "label": "Divider type",
+          "default": "colon",
+          "options": [
+            {
+              "value": "colon",
+              "label": "Colon"
+            },
+            {
+              "value": "dot",
+              "label": "Dot"
+            },
+            {
+              "value": "line",
+              "label": "Line"
+            },
+            {
+              "value": "none",
+              "label": "None"
+            }
+          ]
+        },
+        {
+          "type": "checkbox",
+          "id": "show_timer_labels",
+          "label": "Show labels",
+          "default": true
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "HID Countdown timer",
+      "category": "HID Landing Page",
+      "settings": {
+      },
+      "blocks": [
+        {
+          "type": "countdown"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

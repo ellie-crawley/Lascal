@@ -1,0 +1,289 @@
+{{ 'hid.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+  #section-id-{{ section.id }}.rich-text{
+    display: flex;
+    gap: {{section.settings.gap}}px;
+    flex-direction: column;
+    align-items: {{ section.settings.text_alignment}} ;
+    margin: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px 0;
+  }
+
+  #section-id-{{ section.id }}{
+    .heading,
+    .subheading,
+    .text-block{
+      padding: 0!important;
+      margin: 0!important;
+    }
+    h1{
+      font-size: 27px;
+      line-height: 1.07;
+      font-weight: 800;
+      letter-spacing: -.4px;
+    }
+    p{
+      font-size: 14px;
+      line-height: 1.45;
+    }
+    .button-row{
+      width: calc(100% - 36px);
+      border: none;
+      text-align: center;
+      padding: 15px;
+      border-radius: 11px;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: .3px;
+      margin: auto;
+    }
+  
+    {% for block in section.blocks %}
+      .heading--{{ block.id }}{
+        color: {{block.settings.heading_colour}};
+      }
+      .heading--{{ block.id }}::after{
+        content: "{{ block.settings.after_text }}";
+        color: {{ block.settings.after_text_colour }};
+        margin-left: 10px;
+      }
+      .subheading--{{ block.id }}{
+        color: {{block.settings.subheading_colour}};
+      }
+      .subheading--{{ block.id }}::after {
+        content: "{{ block.settings.after_text }}";
+        color: {{ block.settings.after_text_colour }};
+        margin-left: 10px;
+      }
+      .text-block--{{ block.id }} * {
+        color: {{block.settings.text_colour}};
+      }
+      .text-block--{{ block.id }} > *:last-child::after{
+        content: "{{ block.settings.after_text }}";
+        color: {{ block.settings.after_text_colour }};
+        margin-left: 10px;
+      }
+      .button--{{ block.id }}{
+        background: {{block.settings.button_bg_colour}};
+        box-shadow: 0 8px 18px {{block.settings.button_bg_colour | color_modify: 'alpha', 0.32}};
+      }
+      .button--{{ block.id }} a{
+        color: {{block.settings.button_text_colour}};
+      }
+    {% endfor %}
+  }
+
+{% endstyle %}
+
+<div id="section-id-{{ section.id }}" class="rich-text hid-container">
+  {% for block in section.blocks %}
+    {% case block.type %}
+      {% when 'heading' %}
+        <h1 class="heading heading--{{ block.id }}" {{ block.shopify_attributes }}>
+          {{ block.settings.heading | escape }}
+        </h1>
+
+      {% when 'subheading' %}
+        <div class="subheading subheading--{{ block.id }}" {{ block.shopify_attributes }}>
+          {{ block.settings.subheading | escape }}
+        </div>
+
+      {% when 'text' %}
+        <div class="text-block text-block--{{ block.id }}" {{ block.shopify_attributes }}>
+          {{ block.settings.text }}
+        </div>
+
+      {% when 'button' %}
+        <div class="button-row button--{{ block.id }}" {{ block.shopify_attributes }}>
+          <a href="{{ block.settings.button_link }}">{{ block.settings.button_label | escape }}</a>
+        </div>
+
+    {% endcase %}
+  {% endfor %}
+</div>
+
+
+{% schema %}
+{
+  "name": "HID rich text",
+  "class": "section-hid-rich-text",
+  "settings": [
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "default": "center",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "flex-end",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "Gap between text items",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 20
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "Heading",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Heading"
+        },
+        {
+          "type": "color",
+          "id": "heading_colour",
+          "label": "Heading Colour"
+        },
+        {
+          "type": "text",
+          "id": "after_text",
+          "label": "Icon after text"
+        },
+        {
+          "type": "color",
+          "id": "after_text_colour",
+          "label": "Icon after text colour"
+        }
+      ]
+    },
+    {
+      "type": "subheading",
+      "name": "Subheading",
+      "settings": [
+        {
+          "type": "text",
+          "id": "subheading",
+          "label": "Subheading",
+          "default": "Subheading"
+        },
+        {
+          "type": "color",
+          "id": "subheading_colour",
+          "label": "Subheading Colour"
+        },
+        {
+          "type": "text",
+          "id": "after_text",
+          "label": "Icon after text",
+        },
+        {
+          "type": "color",
+          "id": "after_text_colour",
+          "label": "Icon after text colour"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Text",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Use this text to share information about your store with your customers. Describe products, share announcements, or welcome customers to your store.</p>"
+        },
+        {
+          "type": "color",
+          "id": "text_colour",
+          "label": "Text Colour"
+        },
+        {
+          "type": "text",
+          "id": "after_text",
+          "label": "Icon after text",
+        },
+        {
+          "type": "color",
+          "id": "after_text_colour",
+          "label": "Icon after text colour"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "Button",
+      "settings": [
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button",
+          "default": "Button text"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        },
+        {
+          "type": "color",
+          "id": "button_text_colour",
+          "label": "Button Text Colour"
+        },
+        {
+          "type": "color",
+          "id": "button_bg_colour",
+          "label": "Button Background Colour"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "HID rich text",
+      "category": "HID Landing Page",
+      "settings": {
+      },
+      "blocks": [
+        {
+          "type": "heading"
+        },
+        {
+          "type": "text"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
