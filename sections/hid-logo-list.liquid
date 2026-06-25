@@ -2,7 +2,6 @@
 
 {%- style -%}
   #section-id-{{ section.id }}.logo-container {
-    background: {{section.settings.logo_bg_color}};
     padding-top: 10px;
     padding-bottom: 10px;
     margin: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px 0;
@@ -48,6 +47,9 @@
       align-items: center;
       gap: 5px;
       flex: 1;
+      border-radius: 9px;
+      padding: 11px;
+      background: {{section.settings.logo_bg_color}};
     }
     .layout--row{
       flex-wrap: nowrap;
