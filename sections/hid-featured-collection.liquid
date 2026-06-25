@@ -1,4 +1,25 @@
 
+{%- liquid
+  if section.settings.enable_carousel
+    assign product_limit = section.settings.product_limit
+  else
+    assign product_limit = section.settings.grid | times: section.settings.rows
+  endif
+  assign collection = collections[section.settings.collection]
+  assign per_row_desk = section.settings.grid
+  assign per_row_mob = section.settings.mobile_grid
+  assign product_count = collection.products.size | at_most: product_limit
+  assign cols = per_row_desk
+  assign last_slide = product_count | minus: cols | plus: 1
+  assign show_carousel = section.settings.enable_carousel
+  if product_count <= cols
+    assign show_carousel = false
+  endif
+  if last_slide < 1
+    assign last_slide = 1
+  endif
+-%}
+
 {% style %}
 .hid-product__card{
   border: 1px solid #ece6df;
@@ -67,30 +88,7 @@
   opacity: 0.2;
   cursor: default;
 }
-{% endstyle %}
 
-{%- liquid
-  if section.settings.enable_carousel
-    assign product_limit = section.settings.product_limit
-  else
-    assign product_limit = section.settings.grid | times: section.settings.rows
-  endif
-  assign collection = collections[section.settings.collection]
-  assign per_row_desk = section.settings.grid
-  assign per_row_mob = section.settings.mobile_grid
-  assign product_count = collection.products.size | at_most: product_limit
-  assign cols = per_row_desk
-  assign last_slide = product_count | minus: cols | plus: 1
-  assign show_carousel = section.settings.enable_carousel
-  if product_count <= cols
-    assign show_carousel = false
-  endif
-  if last_slide < 1
-    assign last_slide = 1
-  endif
--%}
-
-{% style %}
 .section-id-{{ section.id }} {
   --per-row-desk: {{ per_row_desk }};
   --per-row-mob: {{ per_row_mob }};
