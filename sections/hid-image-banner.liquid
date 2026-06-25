@@ -1,27 +1,23 @@
 <section class="main-hid-image-banner container">
-  <div class="main-hid-image-banner__container">
-    <div class="main-hid-image-banner__wrapper swiper-wrapper">
-        <div class="main-hid-image-banner__item">
-          <div class="main-hid-image-banner__image image">
-            {% if section.settings.image != blank  %}
-              <img
-                src="{{ section.settings.image | image_url }}"
-                width="1000"
-                height="1000"
-                alt="{{ section.settings.image.alt }}"
-                class="hidden-mobile">
-            {% endif %}
-            {% if section.settings.mobile_image != blank  %}
-              <img
-                src="{{ section.settings.mobile_image | image_url}}"
-                width="1000"
-                height="1000"
-                alt="{{ section.settings.mobile_image.alt }}"
-                class="hidden-desktop">
-            {% endif %}
-          </div>
-        </div>
-    </div>
+  <div class="">
+    {% if section.settings.image != blank  %}
+      <img
+        src="{{ section.settings.image | image_url }}"
+        width="1000"
+        height="1000"
+        alt="{{ section.settings.image.alt }}"
+        class="hidden-mobile">
+    {% endif %}
+  </div>
+  <div class="">
+    {% if section.settings.mobile_image != blank  %}
+      <img
+        src="{{ section.settings.mobile_image | image_url}}"
+        width="1000"
+        height="1000"
+        alt="{{ section.settings.mobile_image.alt }}"
+        class="hidden-desktop">
+    {% endif %}
   </div>
 </section>
 
