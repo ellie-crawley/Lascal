@@ -103,8 +103,8 @@
         <div class="rich-text-image--{{ block.id }}" {{ block.shopify_attributes }}>
           <img
             src="{{ block.settings.image | image_url }}"
-            width="1000"
-            height="1000"
+            width="{{ block.settings.image_width }}"
+            height="{{ block.settings.image_width }}"
             alt="{{ block.settings.image.alt }}"/>
           </div>
         {% endif %}
@@ -295,7 +295,7 @@
           "max": 500,
           "step": 10,
           "unit": "px",
-          "default": 180
+          "default": 200
         }
       ]
     }
