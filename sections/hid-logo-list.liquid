@@ -8,7 +8,7 @@
   }
   #section-id-{{ section.id }}{
     .logo-list {
-      --gap: {{section.settings.gap_mobile}};
+      --gap: {{section.settings.gap_mobile}}px;
       display: flex;
       flex-wrap: wrap;
       gap: var(--gap);
@@ -83,7 +83,7 @@
 
     @media (min-width: 1000px) {
       .logo-list {
-        --gap: {{section.settings.gap_desktop}};
+        --gap: {{section.settings.gap_desktop}}px;
       }
       .layout--grid .logo-list-wrapper {
         flex: 0 1 calc(25% - (3 * var(--column-grid-gutter)) / 4);
