@@ -613,6 +613,58 @@
         "gap_mobile": 5,
         "gap_desktop": 20
       }
+    },
+    "hid_rich_text_pj9xNK": {
+      "type": "hid-rich-text",
+      "blocks": {
+        "image_6B9jJh": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/The-Original-BB-Icon.png",
+            "image_width": 200
+          }
+        },
+        "text_KC3Jqh": {
+          "type": "text",
+          "settings": {
+            "text": "<h3><strong>Try it. Love it. Or your money back.</strong></h3>",
+            "text_colour": "",
+            "after_text": "",
+            "after_text_colour": ""
+          }
+        },
+        "text_PCLp3j": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Not satisfied? Return within 30 days for a full refund</p>",
+            "text_colour": "",
+            "after_text": "",
+            "after_text_colour": ""
+          }
+        },
+        "button_DL7e7F": {
+          "type": "button",
+          "settings": {
+            "button_label": "Button text",
+            "button_link": "",
+            "button_text_colour": "#FFFFFF",
+            "button_bg_colour": "#E98739"
+          }
+        }
+      },
+      "block_order": [
+        "image_6B9jJh",
+        "text_KC3Jqh",
+        "text_PCLp3j",
+        "button_DL7e7F"
+      ],
+      "name": "HID rich text",
+      "settings": {
+        "text_alignment": "center",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "gap": 5
+      }
     }
   },
   "order": [
@@ -629,6 +681,7 @@
     "hid_logo_list_wbJHRm",
     "hid_rich_text_aAGeP4",
     "hid_image_banner_iQjfwX",
-    "hid_logo_list_PQ78BY"
+    "hid_logo_list_PQ78BY",
+    "hid_rich_text_pj9xNK"
   ]
 }
