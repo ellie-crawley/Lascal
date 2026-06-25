@@ -623,8 +623,23 @@
             "image": "shopify://shop_images/The-Original-BB-Icon.png",
             "image_width": 200
           }
-        },
-        "text_KC3Jqh": {
+        }
+      },
+      "block_order": [
+        "image_6B9jJh"
+      ],
+      "name": "HID rich text",
+      "settings": {
+        "text_alignment": "center",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "gap": 20
+      }
+    },
+    "hid_rich_text_tEYqhk": {
+      "type": "hid-rich-text",
+      "blocks": {
+        "text_TkwDbE": {
           "type": "text",
           "settings": {
             "text": "<h2><strong>Try it. Love it. Or your money back.</strong></h2>",
@@ -633,7 +648,7 @@
             "after_text_colour": ""
           }
         },
-        "text_PCLp3j": {
+        "text_CJmYap": {
           "type": "text",
           "settings": {
             "text": "<p>Not satisfied? Return within 30 days for a full refund</p>",
@@ -641,8 +656,24 @@
             "after_text": "",
             "after_text_colour": ""
           }
-        },
-        "button_DL7e7F": {
+        }
+      },
+      "block_order": [
+        "text_TkwDbE",
+        "text_CJmYap"
+      ],
+      "name": "HID rich text",
+      "settings": {
+        "text_alignment": "center",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "gap": 5
+      }
+    },
+    "hid_rich_text_G7CCiC": {
+      "type": "hid-rich-text",
+      "blocks": {
+        "button_r8z6c7": {
           "type": "button",
           "settings": {
             "button_label": "SHOP NOW RISK-FREE >",
@@ -653,10 +684,7 @@
         }
       },
       "block_order": [
-        "image_6B9jJh",
-        "text_KC3Jqh",
-        "text_PCLp3j",
-        "button_DL7e7F"
+        "button_r8z6c7"
       ],
       "name": "HID rich text",
       "settings": {
@@ -682,6 +710,8 @@
     "hid_rich_text_aAGeP4",
     "hid_image_banner_iQjfwX",
     "hid_logo_list_PQ78BY",
-    "hid_rich_text_pj9xNK"
+    "hid_rich_text_pj9xNK",
+    "hid_rich_text_tEYqhk",
+    "hid_rich_text_G7CCiC"
   ]
 }
