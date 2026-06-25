@@ -77,7 +77,10 @@
           {%- if section.blocks.size > 0 -%}
             {%- for product in section.blocks.product limit: product_limit -%}
               <div class="product-grid__item{% if show_carousel %} slider__item slider__item--{{ forloop.index }}{% endif %}">
-                {%- render 'hid-product-card', product: product -%}
+                {%- render 'hid-product-card',
+                  product: product.product,
+                  configured_image_primary: {{ product.configured_image_primary }},
+                  configured_image_secondary {{ product.configured_image_secondary }} -%}
               </div>
             {%- endfor -%}
           {%- endif -%}
