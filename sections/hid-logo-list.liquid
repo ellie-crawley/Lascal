@@ -8,12 +8,10 @@
   }
   #section-id-{{ section.id }}{
     .logo-list {
-      --row-grid-gutter: 10px;
-      --column-grid-gutter: 10px;
+      --gap: {{section.settings.gap_mobile}};
       display: flex;
       flex-wrap: wrap;
-      row-gap: var(--row-grid-gutter);
-      column-gap: var(--column-grid-gutter);
+      gap: var(--gap);
       justify-content: center;
       text-align: center;
     }
@@ -85,8 +83,7 @@
 
     @media (min-width: 1000px) {
       .logo-list {
-        --row-grid-gutter: 30px;
-        --column-grid-gutter: 30px;
+        --gap: {{section.settings.gap_desktop}};
       }
       .layout--grid .logo-list-wrapper {
         flex: 0 1 calc(25% - (3 * var(--column-grid-gutter)) / 4);
@@ -241,6 +238,26 @@
       "type": "range",
       "id": "padding_bottom",
       "label": "Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "gap_mobile",
+      "label": "Gap (Mobile)",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "gap_desktop",
+      "label": "Gap (Desktop)",
       "min": 0,
       "max": 100,
       "step": 1,
