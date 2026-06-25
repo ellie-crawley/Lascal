@@ -537,7 +537,73 @@
       "name": "HID Image Banner",
       "settings": {
         "image": "shopify://shop_images/1200x628px-Prime-Day-Lascal.jpg",
-        "mobile_image": "shopify://shop_images/1080x1080px-Prime-Day-Lascal.jpg"
+        "mobile_image": "shopify://shop_images/1080x1080px-Prime-Day-Lascal.jpg",
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    },
+    "hid_logo_list_PQ78BY": {
+      "type": "hid-logo-list",
+      "blocks": {
+        "logo_QwGXp7": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/The-Original-BB-Icon.png",
+            "image_width": 40,
+            "link": "",
+            "text": "<p>Award-Winning Design</p>",
+            "justify-content": "center"
+          }
+        },
+        "logo_whYYKD": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/The-Original-BB-Icon.png",
+            "image_width": 40,
+            "link": "",
+            "text": "<p>Universal Worldwide</p>",
+            "justify-content": "center"
+          }
+        },
+        "logo_BiXWXU": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/The-Original-BB-Icon.png",
+            "image_width": 40,
+            "link": "",
+            "text": "<p>Built to Last</p>",
+            "justify-content": "center"
+          }
+        },
+        "logo_PqmcyY": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/The-Original-BB-Icon.png",
+            "image_width": 40,
+            "link": "",
+            "text": "<p>Safety Tested & Approved</p>",
+            "justify-content": "center"
+          }
+        }
+      },
+      "block_order": [
+        "logo_QwGXp7",
+        "logo_whYYKD",
+        "logo_BiXWXU",
+        "logo_PqmcyY"
+      ],
+      "name": "HID Logo list",
+      "settings": {
+        "title": "Logo list",
+        "show_title": false,
+        "layout": "row",
+        "text_icon_alignment": "column",
+        "image_opacity": 100,
+        "font_size": 12,
+        "logo_bg_color": "",
+        "font_colour": "",
+        "padding_top": 20,
+        "padding_bottom": 20
       }
     }
   },
@@ -554,6 +620,7 @@
     "hid_featured_collection_RzhnYR",
     "hid_logo_list_wbJHRm",
     "hid_rich_text_aAGeP4",
-    "hid_image_banner_iQjfwX"
+    "hid_image_banner_iQjfwX",
+    "hid_logo_list_PQ78BY"
   ]
 }
