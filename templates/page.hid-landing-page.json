@@ -610,7 +610,7 @@
         "font_colour": "",
         "padding_top": 20,
         "padding_bottom": 20,
-        "gap_mobile": 0,
+        "gap_mobile": 5,
         "gap_desktop": 20
       }
     }
