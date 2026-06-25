@@ -663,7 +663,7 @@
         "text_alignment": "center",
         "padding_top": 20,
         "padding_bottom": 20,
-        "gap": 5
+        "gap": 20
       }
     }
   },
