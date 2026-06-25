@@ -65,17 +65,26 @@
 
     <div class="collection-listing{% if show_carousel %} collection-listing--carousel{% endif %}">
       <div class="product-grid product-grid--desk-{{ per_row_desk }} product-grid--mob-{{ per_row_mob }}{% if show_carousel %} product-grid--carousel{% endif %}">
-        {%- if section.settings.collection != blank -%}
-          {%- for product in collection.products limit: product_limit -%}
-            <div class="product-grid__item{% if show_carousel %} slider__item slider__item--{{ forloop.index }}{% endif %}">
-              {%- render 'hid-product-card', product: product -%}
-            </div>
-          {%- endfor -%}
-        {%- endif -%}
+        {% if section.settings.collection_type == 'auto' %}
+          {%- if section.settings.collection != blank -%}
+            {%- for product in collection.products limit: product_limit -%}
+              <div class="product-grid__item{% if show_carousel %} slider__item slider__item--{{ forloop.index }}{% endif %}">
+                {%- render 'hid-product-card', product: product -%}
+              </div>
+            {%- endfor -%}
+          {%- endif -%}
+        {% else %}
+          {%- if section.blocks.size > 0 -%}
+            {%- for product in section.blocks.product limit: product_limit -%}
+              <div class="product-grid__item{% if show_carousel %} slider__item slider__item--{{ forloop.index }}{% endif %}">
+                {%- render 'hid-product-card', product: product -%}
+              </div>
+            {%- endfor -%}
+          {%- endif -%}
+        {% endif %}
       </div>
     </div>
-
-    {%- if section.settings.show_view_all -%}
+    {% if section.settings.collection_type == 'auto' and section.settings.collection != blank and section.settings.show_view_all -%}
       <div class="view-all align-center">
         <a class="small-feature-link" href="{{ collection.url }}">View all</a>
       </div>
