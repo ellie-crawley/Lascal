@@ -1,0 +1,421 @@
+{{ 'section-prefooter.css' | asset_url | stylesheet_tag }}
+<section class="prefooter" id="{{ section.id }}">
+  <div class="container">
+    <div class="prefooter__bar is-background">
+      <div class="prefooter__wrapper">
+        {% if section.settings.logo != blank %}
+          <div class="prefooter__logo">{{ section.settings.logo }}</div>
+        {% endif %}
+        <div class="prefooter__languages">
+          {% comment %} Language Selector {% endcomment %}
+          {% if localization.available_languages.size > 1 %}
+            <localization-form class="header__language-selector">
+              {% form 'localization' %}
+                <div class="disclosure">
+                  <button type="button" class="disclosure__button" aria-expanded="false" aria-controls="LanguageList">
+                    {{ localization.language.iso_code | upcase }}
+
+                    <svg
+                      aria-hidden="true"
+                      focusable="false"
+                      role="presentation"
+                      class="icon icon-caret"
+                      viewBox="0 0 10 6"
+                    >
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor">
+                    </svg>
+                  </button>
+
+                  <div class="disclosure__overlay"></div>
+
+                  <ul id="LanguageList" role="list" class="disclosure__list" hidden>
+                    <button class="language-selector__close image-wrapper">
+                      {% render 'icons', icon: 'burger-close' %}
+                    </button>
+                    <h4 class="disclosure__land-title">{{ section.settings.language_title }}</h4>
+                    {% for language in localization.available_languages %}
+                      <li class="disclosure__item" tabindex="-1">
+                        <a
+                          href="#"
+                          {% if language.iso_code == localization.language.iso_code %}
+                            aria-current="true"
+                          {% endif %}
+                          hreflang="{{ language.iso_code }}"
+                          lang="{{ language.iso_code }}"
+                          data-value="{{ language.iso_code }}"
+                          class="disclosure__item-link"
+                        >
+                          <div class="disclosure__item-flag image-wrapper">
+                            {% if language.iso_code == 'en' %}
+                              <img
+                                src="//cdn.shopify.com/static/images/flags/gb.svg?width=32"
+                                alt="{{- language.name -}}"
+                                srcset="//cdn.shopify.com/static/images/flags/gb.svg?width=32 32w"
+                                width="32"
+                                height="24"
+                              >
+                            {% else %}
+                              <img
+                                src="//cdn.shopify.com/static/images/flags/{{- language.iso_code -}}.svg?width=32"
+                                alt="{{- language.name -}}"
+                                srcset="//cdn.shopify.com/static/images/flags/{{- language.iso_code -}}.svg?width=32 32w"
+                                width="32"
+                                height="24"
+                              >
+                            {% endif %}
+                          </div>
+                          {{ language.endonym_name | capitalize }}
+                        </a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+
+                  <input type="hidden" name="language_code" value="{{ localization.language.iso_code }}">
+                </div>
+              {% endform %}
+            </localization-form>
+          {% endif %}
+          
+          {% comment %} Country selector {% endcomment %}
+            <localization-form class="header__country-selector">
+              {% form 'localization' %}
+                <div class="disclosure">
+                  <button
+                    type="button"
+                    class="disclosure__button"
+                    aria-expanded="false"
+                    aria-controls="CountryList"
+                  >
+                    {% include 'icons', icon: 'location' %}
+                    {{localization.country}}
+                  </button>
+                  {%- comment -%}
+                  <button
+                    type="button"
+                    class="disclosure__button header__icon header__icon--flag image-wrapper"
+                    aria-expanded="false"
+                    aria-controls="CountryList"
+                  >
+                    {% render 'icons', icon: 'country-selector' %}
+                  </button>
+                  {%- endcomment -%}
+                  <div class="disclosure__overlay"></div>
+                  <ul
+                    id="CountryList"
+                    role="list"
+                    class="disclosure__list"
+                    hidden
+                  >
+                    <div class="country-selector__close image-wrapper">
+                      {% render 'icons', icon: 'burger-close' %}
+                    </div>
+
+                    {% for block in section.blocks %}
+                      {% if block.type == 'land' %}
+                        <div class="disclosure__land">
+                          <h4 class="disclosure__land-title">{{ block.settings.title }}</h4>
+                          {% assign countries = block.settings.countries_list | split: ',' %}
+                          {% for country in countries %}
+  
+                            {% assign image = country | split: '&' | last %}
+                            {% assign title = country | split: '&' | first %}
+  
+                            {% assign title_new = title | remove: ' '  %}
+                            {% assign country_new = localization.country.name | remove: ' '  %}
+  
+                            {% unless title_new == country_new %}
+                              <li class="disclosure__item" tabindex="-1">
+                                {% if title_new == 'Germany' %}
+                                  <a
+                                    href="https://lascalshop.de/"
+                                    class="disclosure__item-link redirect"
+                                  >
+                                {% elsif title_new == 'France' %}
+                                  <a
+                                    href="https://lascal.fr/"
+                                    class="disclosure__item-link redirect"
+                                  >
+                                  {% elsif title_new == 'UnitedStates' %}
+                                    <a
+                                      href="https://shoplascal.com/"
+                                      class="disclosure__item-link redirect"
+                                    >
+                                {% else %}
+                                  <a
+                                    href="https://lascal.net?country={{title | remove: ' '}}"
+                                    class="disclosure__item-link"
+                                  >
+                                {% endif %}
+                               
+                                  {% if image contains 'cdn' %}
+                                    <div class="disclosure__item-flag image-wrapper">
+                                      <img src="{{ image }}" alt="">
+                                    </div>
+                                  {% endif %}
+                                
+                                  {{ title }}
+                                </a>
+                              </li>
+                            {% endunless %}
+                          {% endfor %}
+                        </div>
+                      {% endif %}
+                    {% endfor %}
+                  </ul>
+
+                  <input
+                    type="hidden"
+                    name="country_code"
+                    value="{{ localization.country.iso_code }}"
+                  >
+                </div>
+              {% endform %}
+            </localization-form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container padding-0 mobile-pading">
+    <div class="prefooter__grid is-form">
+      <div class="prefooter__form prefooter__block">
+        {% if section.settings.title != blank %}
+          <div class="prefooter__title">{{ section.settings.title }}</div>
+        {% endif %}
+
+        {% if section.settings.subtitle != blank %}
+          <div class="prefooter__subtitle">{{ section.settings.subtitle }}</div>
+        {% endif %}
+
+        {% form 'customer' %}
+          {{ form.errors | default_errors }}
+          {% if form.posted_successfully? %}
+            <p style="text-align: center; width: 100%; font-size: 20px; font-weight: 600;">{{ section.settings.success_message }}</p>
+          {% else %}
+            <input type="hidden" name="contact[tags]" value="newsletter">
+            <input
+              type="email"
+              class="input"
+              name="contact[email]"
+              id="Email"
+              value="{% if customer.email != blank %}{{ customer.email }}{% endif %}"
+              placeholder="Your email address"
+              autocorrect="off"
+              autocapitalize="off"
+              required
+            >
+            <button type="submit" name="commit" id="Subscribe" class="prefooter__button-submit">
+              <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38" fill="none">
+                <g clip-path="url(#clip0_1396_9476)">
+                  <path d="M29.4043 18.8188H7.73763" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M29.4043 18.8188L20.1186 28.1046" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M29.4043 18.8189L20.1186 9.5332" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+                </g>
+                <defs>
+                  <clipPath id="clip0_1396_9476">
+                    <rect width="37.1429" height="37.1429" fill="white" transform="matrix(-1 0 0 1 37.1426 0.247559)"/>
+                  </clipPath>
+                </defs>
+              </svg>
+            </button>
+          {% endif %}
+        {% endform %}
+      </div>
+      <div class="prefooter__contact prefooter__block">
+        {% if section.settings.title2 != blank %}
+          <div class="prefooter__title">{{ section.settings.title2 }}</div>
+        {% endif %}
+
+        {% if section.settings.subtitle2 != blank %}
+          <div class="prefooter__subtitle">{{ section.settings.subtitle2 }}</div>
+        {% endif %}
+
+        {% if section.settings.b_text != blank and section.settings.b_link != blank %}
+        {% endif %}
+        <a href="{{ section.settings.b_link }}" class="button prefooter__button">
+          {% if section.settings.icon != blank %}
+            {{ section.settings.icon }}
+          {% endif %}
+          {{ section.settings.b_text }}
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="prefooter__bar social is-background">
+      <div class="prefooter__wrapper">
+        {% if section.settings.bottom_title != blank %}
+          <div class="prefooter__bar-title">{{ section.settings.bottom_title }}</div>
+        {% endif %}
+        {% if section.blocks.size > 0 %}
+          <div class="prefooter__social">
+            {% for block in section.blocks %}
+              {% if block.settings.icon != blank and block.settings.link != blank %}
+                <a class="prefooter__social-item" href="{{ block.settings.link }}" target="_blank">
+                  {{ block.settings.icon }}
+                </a>
+              {% endif %}
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% style %}
+  #shopify-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  @media screeen and (max-width: 760px) {
+    #shopify-section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top | divided_by: 2 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | divided_by: 2 }}px;
+    }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Prefooter",
+  "settings": [
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Padding top",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Padding bottom",
+      "default": 80
+    },
+    {
+      "type": "textarea",
+      "id": "logo",
+      "label": "Logo",
+      "info": "SVG icon"
+    },
+    {
+      "type": "text",
+      "id": "bottom_title",
+      "label": "Bottom title",
+      "default": "Our social media"
+    },
+    {
+      "type": "header",
+      "content": "First block"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Sign up for our newsletter"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Sign up for our newsletter to be inspired, get tips and tricks, and be the first to know about new products."
+    },
+    {
+      "type": "text",
+      "id": "success_message",
+      "label": "Sign up success message",
+      "default": "Thank you for subscribing."
+    },
+    {
+      "type": "header",
+      "content": "Second block"
+    },
+    {
+      "type": "text",
+      "id": "title2",
+      "label": "Title",
+      "default": "Contact us"
+    },
+    {
+      "type": "text",
+      "id": "subtitle2",
+      "label": "Subtitle",
+      "default": "Feel free to contact us if you have any questions about our products. We will be happy to assist you."
+    },
+    {
+      "type": "text",
+      "id": "b_text",
+      "label": "Button text",
+      "default": "Contact help center"
+    },
+    {
+      "type": "url",
+      "id": "b_link",
+      "label": "Button link"
+    },
+    {
+      "type": "textarea",
+      "id": "icon",
+      "label": "Icon"
+    },
+    {
+      "type": "text",
+      "id": "b_text_submit",
+      "label": "Form button text",
+      "default": "Submit"
+    },
+    {
+      "type": "text",
+      "id": "language_title",
+      "label": "Language popup title",
+      "default": "Languages"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "social",
+      "name": "Social item",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "icon",
+          "label": "Icon",
+          "info": "SVG icon"
+        },
+        {
+          "type": "text",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    },
+    {
+      "type": "land",
+      "name": "Land",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Land",
+          "default": "Europe"
+        },
+        {
+          "type": "textarea",
+          "id": "countries_list",
+          "label": "List of countries",
+          "default": "Albania, Austria, Belgium, Czechia, France, Germany, Hungary, Iceland Ireland, Italy, Latvia, Lithuania, Netherlands, Poland, Romania, Serbia, Slovakia, Slovenia, Spain, Sweden, Switzerland, Ukraine, United Kingdom",
+          "info": "Input list of countries with comma separator"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

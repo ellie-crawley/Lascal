@@ -1,0 +1,125 @@
+{% assign countryID = section.settings.title | handleize %}
+
+
+
+<div data-country="{{ countryID }}" style="padding-top: 24px; padding-bottom: 24px;" class="container">
+  <ul class="retailer-country">
+    {% comment %}
+      <li class="retailer-country__shop">
+        <h4 class="retailer-country__shop-name">{{ section.settings.company_title | default: 'Company' | upcase }}</h4>
+        <p class="retailer-country__shop-url">
+          {{- section.settings.website_title | default: 'website' -}}
+        </p>
+      </li>
+    {% endcomment %}
+    {% for block in section.blocks %}
+      <li class="retailer-country__shop">
+        {% comment %} <h4 class="retailer-country__shop-name">{{ block.settings.shop_name | default: 'Shop name' | upcase }}</h4> {% endcomment %}
+        <a href="{{ block.settings.shop_url }}" class="retailer-country__shop-url" target="_blank">
+          {{ block.settings.shop_name | default: 'Shop name' | upcase }}
+          {%- comment -%}
+            <div class="image-wrapper">
+              <img src="{{ 'blank_url.png' | asset_img_url: 'master' }}" alt="">
+            </div>
+          {%- endcomment -%}
+          <div class="retailer-country__shop-text">{{ block.settings.shop_url | remove: 'https://' }}</div>
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+
+{% style %}
+  #shopify-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  @media screeen and (max-width: 760px) {
+    #shopify-section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top | divided_by: 2 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | divided_by: 2 }}px;
+    }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Retailer country",
+  "settings": [
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Padding top",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Padding bottom",
+      "default": 80
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Country ID",
+      "default": "Netherlands",
+      "info": "Should be the same as a country name in shopify markets"
+    },
+    {
+      "type": "text",
+      "id": "company_title",
+      "label": "Company title",
+      "default": "Company"
+    },
+    {
+      "type": "text",
+      "id": "website_title",
+      "label": "Website title",
+      "default": "website"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "shop",
+      "name": "Shop",
+      "settings": [
+        {
+          "type": "text",
+          "id": "shop_name",
+          "label": "Shop name",
+          "default": "Shop name"
+        },
+        {
+          "type": "url",
+          "id": "shop_url",
+          "label": "Shop url"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Retailer country",
+      "category": "Retailer country",
+      "blocks": [
+        {
+          "type": "shop"
+        },
+        {
+          "type": "shop"
+        },
+        {
+          "type": "shop"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

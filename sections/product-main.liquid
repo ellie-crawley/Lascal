@@ -1,0 +1,547 @@
+{{ 'section-product-slider.css' | asset_url | stylesheet_tag }}
+{{ 'section-product-info.css' | asset_url | stylesheet_tag }}
+
+{% assign find_btn = false %}
+
+<section class="product">
+  <div class="product__wrapper container"  data-add="{{ 'products.product.add_to_cart' | t }}" data-sold="{{ 'products.product.sold_out' | t }}">
+    <div class="product__slider">
+      <div class="product__title mobile">
+        {{ product.title -}}
+        <br>
+        <a href="#reviews"
+          class="stamped-product-reviews-badge product__reviews-badge mobile"
+          data-id="{{ product.id }}"
+          data-product-sku="{{ product.handle }}"
+          data-product-type="{{product.type}}"
+          data-product-title="{{product.title}}"
+          style="display:block;"
+        >
+          {{ product.metafields.stamped.badge }}
+        </a>
+      </div>
+
+      <div class="product__varints-price mobile">
+        <div class="product__variants">
+          <div class="product-variant__title">
+            {% assign countColors = 0 %}
+            {% for color in product.options_by_name.color.values %}
+              {% assign countColors = countColors | plus: 1 %}
+            {% endfor %}
+            {% if countColors == "0" %}
+              {{ countColors }} colors
+            {% endif %}
+            {% assign countColors = 0 %}
+          </div>
+          <div class="product-variant__colors">
+            {% if product.options_by_name.Color %}
+              {% assign colorsSwatchs = settings.color_swatches | remove: ' ' | split: ',' %}
+              {% for color in product.options_by_name.color.values %}
+                {% for colorSwatch in colorsSwatchs %}
+                  {% assign settingsColor = colorSwatch | split: '/' | first | downcase %}
+                  {% assign myColor = color | remove: ' ' | downcase %}
+                  {% if settingsColor == myColor %}
+                    {% assign bgColor = colorSwatch | split: '/' | last %}
+                  {% endif %}
+                {% endfor %}
+                <span
+                  class="product-variant__color{% if forloop.index == 1 %} active{% endif %}"
+                  style="background-color: {{ bgColor }}"
+                  data-option="{{ color }}"
+                ></span>
+                {% assign bgColor = '' %}
+              {% endfor %}
+            {% endif %}
+          </div>
+        </div>
+        <div
+          class="product__price product-price normal{% if find_btn == true %} hidden{% endif %}"
+          data-price="{{product.price}}"
+        >
+          <div class="price">
+            {% if product.variants.size == 1 or product.available == false %}
+              {{ product.price | money }}
+            {% endif %}
+          </div>
+          <span class="product__price-compare">
+            {% if product.variants.size == 1 and product.compare_at_price > product.price or product.available == false %}
+              {{ product.compare_at_price | money }}
+            {% endif %}
+          </span>
+        </div>
+      </div>
+      <div class="product__slider-container gallery-container">
+        <div class="swiper-container product__slider-gallery gallery-main">
+          <div class="product__slider-wrapper swiper-wrapper">
+            {% for media in product.media %}
+              <div
+                class="product__slider-slide swiper-slide"
+                data-color="{{ media.alt }}"
+                data-index="{{ forloop.index }}"
+                {% if media.media_type == 'image' %}
+                  data-fancybox="gallery" {% if forloop.index == 1 %} data-fancybox-index="0" {% endif %} data-src="{{ media | img_url: 'master' }}"
+                {% endif %}
+                {% if media.media_type == 'video' %}
+                  data-fancybox="gallery" {% if forloop.index == 1 %} data-fancybox-index="0" {% endif %} data-src="#product-video"
+                {% endif %}
+              >
+                <div class="image">
+                  {% if media.media_type == 'image' %}
+                    {%- assign img_url = media | img_url: '1080x' -%}
+                    {%- assign data_src_url = media | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                    <img
+                      {% if image_id %}
+                        id="{{ img_id }}"
+                      {% endif %}
+                      class="lazyload {% if img_classes %} {{ img_classes }}{% endif %}"
+                      src="{{ img_url }}"
+                      data-src="{{ data_src_url }}"
+                      data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                      data-aspectratio="1"
+                      data-sizes="auto"
+                      {% if attr %}
+                        {{ attr }}
+                      {% endif %}
+                      {% if alt %}
+                        alt="{{alt}}"
+                      {% else %}
+                        alt="{{ media.alt }}"
+                      {% endif %}
+                    >
+
+                  {% elsif media.media_type == 'video' %}
+                    {{ media | video_tag: autoplay: true, loop: true, muted: true, controls: true, id: 'product-video', class: 'product-video' }}
+                  {% elsif media.media_type == 'external_video' %}
+                    {% if media.host == 'youtube' %}
+                      {{ media | external_video_url: autoplay: '0', controls: '1' | external_video_tag }}
+                    {% elsif media.host == 'vimeo' %}
+                      {{
+                        media
+                        | external_video_url: loop: '0', muted: '1', autoplay: '0', controls: '1'
+                        | external_video_tag
+                      }}
+                    {% endif %}
+                  {% endif %}
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+          <div class="swiper-button-next product__slider-next">
+            {% render 'icons', icon: 'main-banner__next' %}
+          </div>
+          <div class="swiper-button-prev product__slider-prev">
+              {% render 'icons', icon: 'main-banner__prev' %}
+          </div>
+        </div>
+        <div class="product__slider-thumbs swiper-container gallery-thumbs">
+          <div class="product__slider-wrapper swiper-wrapper">
+            {% comment %}
+              {% if media.media_type == 'image' %}
+                data-fancybox="gallery" {% if forloop.index == 1 %} data-fancybox-index="0" {% endif %} data-src="{{ media | img_url: 'master' }}"
+              {% endif %}
+            {% endcomment %}
+
+            {% for media in product.media %}
+              <div class="product__slider-slide swiper-slide" data-index="{{ forloop.index }}">
+
+                <div class="image">
+                  {% if media.media_type == 'image' %}
+                    {%- assign img_url = media | img_url: '10x' -%}
+                    {%- assign data_src_url = media | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                    <img
+                      {% if image_id %}
+                        id="{{ img_id }}"
+                      {% endif %}
+                      class="lazyload {% if img_classes %} {{ img_classes }}{% endif %}"
+                      src="{{ img_url }}"
+                      data-src="{{ data_src_url }}"
+                      data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                      data-aspectratio="1"
+                      data-sizes="auto"
+                      {% if attr %}
+                        {{ attr }}
+                      {% endif %}
+                      {% if alt %}
+                        alt="{{alt}}"
+                      {% else %}
+                        alt="{{ media.alt }}"
+                      {% endif %}
+                    >
+
+                  {% elsif media.media_type == 'video' %}
+                    {{ media | video_tag: autoplay: false, loop: false, muted: true, controls: false }}
+                  {% elsif media.media_type == 'external_video' %}
+                    {% render 'image', image: media.preview_image %}
+                    {% comment %}
+                      {% if media.host == 'youtube' %}
+                        {{
+                          media
+                          | external_video_url: autoplay: '0', controls: '0', loop: '0', muted: '1'
+                          | external_video_tag
+                        }}
+                      {% elsif media.host == 'vimeo' %}
+                        {{
+                          media
+                          | external_video_url: loop: '0', muted: '1', autoplay: '0', controls: '0'
+                          | external_video_tag
+                        }}
+                      {% endif %}
+                    {% endcomment %}
+                  {% endif %}
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="product__info">
+      <h1 class="product__title" >{{ product.title }}</h1>
+        <a href="#reviews"
+          class="stamped-product-reviews-badge product__reviews-badge"
+          data-id="{{ product.id }}"
+          data-product-sku="{{ product.handle }}"
+          data-product-type="{{product.type}}"
+          data-product-title="{{product.title}}"
+          style="display:block;"
+        >
+          {{ product.metafields.stamped.badge }}
+        </a>
+
+      {% comment %} {% assign find_btn = true %}
+      {% for item in product.metafields.custom._ountries.value %}
+        {% if item == localization.country %}
+          {% assign find_btn = falce %}
+          {% break %}
+        {% else %}
+          {% assign find_btn = true %}
+        {% endif %}
+      {% endfor %} {% endcomment %}
+
+      <div class="product__varints-price">
+        {% if product.metafields.custom.product_variants != blank %}
+          <div class="product__variants">
+            <div class="product-variant__title">
+              {% assign countColors = 0 %}
+              {% for color in product.metafields.custom.product_variants.value %}
+                {% assign countColors = countColors | plus: 1 %}
+              {% endfor %}
+              {% if countColors == "0" %}
+                {{ countColors }} colors
+              {% endif %}
+              {% assign countColors = 0 %}
+            </div>
+            <div class="product__variants-metafields">
+              {% for item in product.metafields.custom.product_variants.value %}
+                <a href="{{ item.url }}" class="product__variants-metafields-item {% if item.title == product.title %}active{% endif %}">
+                  {% render 'image', image: item.images[0] %}
+                </a>
+              {% endfor %}
+            </div>
+          </div>
+        {% else %}
+          <div class="product__variants">
+            <div class="product-variant__title">
+              {% assign countColors = 0 %}
+              {% for color in product.options_by_name.color.values %}
+                {% assign countColors = countColors | plus: 1 %}
+              {% endfor %}
+
+              {% if countColors == "0" %}
+                {{ countColors }} colors
+              {% endif %}
+
+              {% assign countColors = 0 %}
+            </div>
+            <div class="product-variant__colors">
+              {% if product.options_by_name.Color %}
+                {% assign colorsSwatchs = settings.color_swatches | remove: ' ' | split: ',' %}
+                {% for color in product.options_by_name.color.values %}
+                  {% for colorSwatch in colorsSwatchs %}
+                    {% assign settingsColor = colorSwatch | split: '/' | first | downcase %}
+                    {% assign myColor = color | remove: ' ' | downcase %}
+                    {% if settingsColor == myColor %}
+                      {% assign bgColor = colorSwatch | split: '/' | last %}
+                    {% endif %}
+                  {% endfor %}
+                  <span
+                    class="product-variant__color{% if forloop.index == 1 %} active{% endif %}"
+                    style="background-color: {{ bgColor }}"
+                    data-option="{{ color }}"
+                  ></span>
+                  {% assign bgColor = '' %}
+                {% endfor %}
+              {% endif %}
+            </div>
+          </div>
+        {% endif %}
+        <div
+          class="product__price product-price normal{% if find_btn == true %} hidden{% endif %}"
+          data-price="{{product.price}}"
+        >
+          <div class="price">
+            {% if product.variants.size == 1 or product.available == false %}
+              {{ product.price | money }}
+            {% endif %}
+          </div>
+          <span class="product__price-compare">
+            {% if product.variants.size == 1 and product.compare_at_price > product.price or product.available == false %}
+              {{ product.compare_at_price | money }}
+            {% endif %}
+          </span>
+        </div>
+      </div>
+      
+      <div class="product__description">{{ product.description }}</div>
+
+      {% if find_btn != true %}
+        <tolstoy-stories data-tags="{% for tag in product.tags -%}{{ tag }},{%- endfor %}" class="tolstoy-stories" data-publish-id="35t1kf96yu6a3" data-product-id="{{ product.id }}"> </tolstoy-stories>
+      {% endif %}
+
+      {% form 'product', product, class: 'main-form', data-cart-submit: 'data-cart-submit' %}
+        <input type="hidden" name="form_type" value="product">
+        <input type="hidden" name="utf8" value="✓">
+        <select name="id" class="product__select" style="display: none;">
+          {% for variant in product.variants %}
+            <option
+              class="select-option"
+              data-price="{{ variant.price | money }}"
+              {% if variant.compare_at_price > variant.price %}
+                data-compare-price="{{ variant.compare_at_price | money }}"
+              {% endif %}
+              {% unless variant.available %}
+                disabled
+              {% endunless %}
+              data-title="{{variant.title}}"
+              value="{{variant.id}}"
+            >
+              {{ variant.title }}
+            </option>
+          {% endfor %}
+        </select>
+        <div class="form__buttons">
+        
+          <div class="form__buttons-wrapper">
+            <button type="submit" name="add" class="product__form-button button" {% if
+              product.selected_or_first_available_variant.available==false %} disabled {% endif %}>
+              {% if product.variants.size > 1 %}
+              {% if product.variants[0].available %}
+              {% render 'icons', icon: 'cart-white' %}
+              <span>
+                {{ 'products.product.add_to_cart' | t }}
+              </span>
+              {% else %}
+              <span>
+                {{ 'products.product.sold_out' | t }}
+              </span>
+              {% endif %}
+              {% else %}
+              {%- if product.selected_or_first_available_variant.available -%}
+              {% render 'icons', icon: 'cart-white' %}
+              <span>
+                {{ 'products.product.add_to_cart' | t }}
+              </span>
+              {%- else -%}
+              <span>
+                {{ 'products.product.sold_out' | t }}
+              </span>
+              {%- endif -%}
+              {% endif %}
+            </button>
+        
+            {% if product.price >= 5000 %}
+            {% if section.settings.svg_klarna != blank %}
+            <div class="product__klarna">
+              <img src="{{ section.settings.svg_klarna | img_url: 'master' }}" alt="{{ section.settings.svg_klarna.alt }}">
+            </div>
+            {% endif %}
+            {% if section.settings.svg_paypal != blank %}
+            <div class="product__paypal">
+              <img src="{{ section.settings.svg_paypal | img_url: 'master' }}" alt="{{ section.settings.svg_paypal.alt }}">
+            </div>
+            {% endif %}
+            {% endif %}
+          </div>
+        
+          <div class="product__sticky-buttons {% if product.selected_or_first_available_variant.available == false %}sold-out-button{% endif %}">
+            <button type="submit" name="add" class="product__sticky-button product__form-button button">
+              {%- if product.selected_or_first_available_variant.available -%}
+              {{ 'products.product.add_to_cart' | t }}
+              {%- else -%}
+              {{ 'products.product.sold_out' | t }}
+              {%- endif -%}
+            </button>
+            {% if product.price >= 5000 %}
+            <div class="product__sticky-icons">
+              {% if section.settings.svg_klarna_mobile != blank %}
+              <img src="{{ section.settings.svg_klarna_mobile | img_url: 'master' }}"
+                alt="{{ section.settings.svg_klarna_mobile.alt }}">
+              {% endif %}
+              {% if section.settings.svg_paypal_mobile != blank %}
+              <img src="{{ section.settings.svg_paypal_mobile | img_url: 'master' }}"
+                alt="{{ section.settings.svg_paypal_mobile.alt }}">
+              {% endif %}
+            </div>
+            {% endif %}
+        
+            <div class="product__price product-price normal" data-price="{{product.price}}">
+              <div class="price price-sticky">
+                {% if product.variants.size == 1 or product.available == false %}
+                {{ product.price | money }}
+                {% endif %}
+              </div>
+              <span class="product__price-compare sticky">
+                {% if product.variants.size == 1 and product.compare_at_price > product.price or product.available == false %}
+                {{ product.compare_at_price | money }}
+                {% endif %}
+              </span>
+            </div>
+          </div>
+        
+        </div>
+      {% endform %}
+      {% for block in section.blocks %}
+        {% if find_btn == false or find_btn == blank %}
+          {% render block %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<script>
+  var productSwiper = new Swiper(".gallery-thumbs", {
+    spaceBetween: 10,
+    slidesPerView: 4,
+    direction: "vertical",
+
+    breakpoints: {
+      320: {
+        direction: "horizontal",
+        spaceBetween: 20,
+      },
+      990: {
+        direction: "vertical",
+        spaceBetween: 10,
+      },
+    }
+  });
+  var productSwiper2 = new Swiper(".gallery-main", {
+    spaceBetween: 10,
+    navigation: {
+      nextEl: ".product__slider-next",
+      prevEl: ".product__slider-prev",
+    },
+    thumbs: {
+      swiper: productSwiper,
+    },
+  });
+
+  productSwiper2.params.control = productSwiper;
+  productSwiper.params.control = productSwiper2;
+
+  const allMainSlides = Array.from(
+    document.querySelectorAll(".product__slider-slide")
+  );
+
+  window.addEventListener("changeMainImage", (e) => {
+    for (const slide of allMainSlides) {
+      let slideColor = slide.dataset.color.split(" /")[0].toLowerCase().trim();
+      let optionColor = e.detail.optionName.toLowerCase().trim();
+
+      if (slideColor === optionColor) {
+        console.log(slide.dataset.index);
+        const correctIndex = +slide.dataset.index;
+        productSwiper2.slideTo(correctIndex - 1);
+        break;
+      }
+    }
+  });
+</script>
+
+{% if find_btn %}
+  <style>
+    .icon-with-text.container {
+      display: none;
+    }
+  </style>
+{% endif %}
+
+{{ 'product.js' | asset_url | script_tag }}
+
+{% style %}
+  #shopify-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  @media screeen and (max-width: 760px) {
+    #shopify-section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top | divided_by: 2 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | divided_by: 2 }}px;
+    }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Product information",
+  "settings": [
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Padding top",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Padding bottom",
+      "default": 80
+    },
+    {
+      "type": "text",
+      "id": "find_title",
+      "label": "Find a retailer btn title",
+      "default": "Find a retailer"
+    },
+    {
+      "type": "image_picker",
+      "id": "svg_klarna",
+      "label": "Klarna icon"
+    },
+    {
+      "type": "image_picker",
+      "id": "svg_paypal",
+      "label": "Pay Pal icon"
+    },
+    {
+      "type": "image_picker",
+      "id": "svg_klarna_mobile",
+      "label": "Klarna icon"
+    },
+    {
+      "type": "image_picker",
+      "id": "svg_paypal_mobile",
+      "label": "Pay Pal icon"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    }
+  ],
+  "presets": [
+    {
+      "category": "Product information",
+      "name": "Product information"
+    }
+  ]
+}
+{% endschema %}

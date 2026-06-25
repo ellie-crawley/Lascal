@@ -1,0 +1,48 @@
+{{ 'section-manual-downloading.css' | asset_url | stylesheet_tag }}
+
+{% if product.metafields.custom.manual_downloading != blank or product.metafields.custom.manual_url != blank %}
+  <div class="manual-downloading__container container">
+    <div class="manual-downloading__inner">
+      <h2 class="manual-downloading__title h2">{{ product.metafields.custom.manual_downloading.value.title }}</h2>
+      <p class="manual-downloading__text paragraph">
+        {{ product.metafields.custom.manual_downloading.value.text | metafield_tag }}
+      </p>
+
+      {% if product.metafields.custom.manual_downloading.value.file != blank %}
+        <a
+          href="{{- product.metafields.custom.manual_downloading.value.file | file_url -}}"
+          class="manual-downloading__button button"
+          target="_blank"
+        >
+          {%- render 'icons', icon: 'download' %}
+          {{ 'products.manual_downloading.button_label' | t }}
+        </a>
+      {% endif %}
+
+      {% if product.metafields.custom.manual_url != blank %}
+        <a
+          href="{{- product.metafields.custom.manual_url -}}"
+          class="manual-downloading__button button"
+          target="_blank"
+        >
+          {{ 'products.manual_downloading.button_url_label' | t }}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "File Downloading",
+  "tag": "section",
+  "class": "manual-downloading",
+  "settings": [],
+  "presets": [
+    {
+      "name": "File Downloading",
+      "category": "Product"
+    }
+  ]
+}
+{% endschema %}

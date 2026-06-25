@@ -1,0 +1,192 @@
+.models-comparison-tab {
+  margin-bottom: 81px;
+}
+@media screen and (max-width: 990px) {
+  .models-comparison-tab {
+    margin-bottom: 69px;
+  }
+}
+
+.models-comparison-tab__item {
+  background: #f6f1eb;
+  padding: 28px 32px;
+}
+.models-comparison-tab__item.open .accordion__item-icon svg {
+  transform: rotate(90deg);
+}
+@media screen and (max-width: 990px) {
+  .models-comparison-tab__item {
+    padding: 16px 24px;
+  }
+}
+
+.models-comparison-tab__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 990px) {
+  .accordion__item-icon svg {
+    width: 8px;
+    height: 15px;
+  }
+}
+
+.models-comparison-tab__question {
+  color: #000;
+  font-family: "Museo Sans Rounded";
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 120%;
+}
+@media screen and (max-width: 990px) {
+  .models-comparison-tab__question {
+    font-size: 16px;
+  }
+}
+
+.models-comparison-tab__content--text {
+  max-width: 717px;
+}
+.models-comparison-tab__content--text strong {
+  font-family: "Museo Sans Rounded";
+  font-weight: 600;
+}
+
+.models-comparison-tab__content {
+  padding-top: 24px;
+}
+.models-comparison-tab__content::-webkit-scrollbar {
+  display: none;
+}
+@media screen and (max-width: 990px) {
+  .models-comparison-tab__content {
+    overflow-x: scroll;
+  }
+}
+
+.models-comparison-tab__products {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 25px;
+  padding: 0 35px;
+}
+@media screen and (max-width: 1200px) {
+  .models-comparison-tab__products {
+    padding: 0px;
+  }
+}
+@media screen and (max-width: 990px) {
+  .models-comparison-tab__products {
+    margin-left: 120px;
+    width: 100%;
+    justify-content: flex-start;
+    gap: 8px;
+  }
+}
+
+.models-comparison-tab__product {
+  max-width: 25%;
+  width: 100%;
+}
+@media screen and (max-width: 990px) {
+  .models-comparison-tab__product {
+    min-width: 120px;
+  }
+}
+
+.models-comparison-tab__product--image {
+  max-width: 169px;
+  width: 100%;
+  position: relative;
+  margin: 0 auto 21px;
+}
+.models-comparison-tab__product--image::before {
+  content: "";
+  display: block;
+  padding-top: 100%;
+}
+.models-comparison-tab__product--image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.models-comparison-tab__product--title {
+  color: #000;
+  text-align: center;
+  font-family: "Museo Sans Rounded";
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 120%;
+}
+@media screen and (max-width: 990px) {
+  .models-comparison-tab__product--title {
+    font-size: 14px;
+  }
+}
+
+.models-comparison-tab__table {
+  padding: 0 35px;
+}
+@media screen and (max-width: 1200px) {
+  .models-comparison-tab__table {
+    padding: 0px;
+  }
+}
+
+.models-comparison-tab__row {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px solid #c3c3c3;
+  padding: 16px 0;
+}
+@media screen and (max-width: 990px) {
+  .models-comparison-tab__row {
+    padding: 8px 0;
+  }
+}
+.models-comparison-tab__row:last-child {
+  border: none;
+}
+
+.models-comparison-tab__item--title {
+  width: 25%;
+  color: #000;
+  text-align: center;
+  font-family: "Open Sans";
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 130%;
+}
+@media screen and (max-width: 990px) {
+  .models-comparison-tab__item--title {
+    min-width: 120px;
+    font-size: 11px;
+  }
+}
+.models-comparison-tab__item--title strong {
+  font-weight: 700;
+  display: block;
+}
+
+.models-comparison-tab__item--text {
+  width: 25%;
+  text-align: center;
+  color: #000;
+  font-family: "Open Sans";
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 130%;
+}
+@media screen and (max-width: 990px) {
+  .models-comparison-tab__item--text {
+    min-width: 120px;
+    font-size: 11px;
+  }
+}

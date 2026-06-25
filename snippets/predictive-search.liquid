@@ -1,0 +1,30 @@
+{{ 'component-predictive-search.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
+
+<predictive-search class="predictive-search">
+  <form action="{{ routes.search_url }}" method="get" role="search" class="form">
+    <input
+      id="Search"
+      type="search"
+      name="q"
+      value="{{ search.terms | escape }}"
+      role="combobox"
+      aria-expanded="false"
+      aria-owns="predictive-search-results"
+      aria-haspopup="listbox"
+      aria-autocomplete="list"
+      class="input"
+    >
+    <input name="options[prefix]" type="hidden" value="last">
+
+    <button type="submit" class="search-btn image-wrapper" value="Search">
+      {% render 'icons', icon: 'search' %}
+    </button>
+  </form>
+
+  <button type="button" class="predictive-search__close header__icon image-wrapper">
+    {% render 'icons', icon: 'burger-close' %}
+  </button>
+</predictive-search>
+
+<div id="predictive-search" tabindex="-1"></div>

@@ -1,0 +1,97 @@
+{{ 'section-best-seller.css' | asset_url | stylesheet_tag }}
+{{ 'component-product-card.css' | asset_url | stylesheet_tag }}
+
+<section class="best-seller container">
+  <div class="best-seller__header">
+    <div class="best-seller__title">{{ section.settings.title }}</div>
+    {% if section.settings.btn_text != blank %}
+      {% assign btn_url = section.settings.collection.url %}
+      {% if section.settings.all_collections_url %}
+        {% if routes.root_url == '/' %}
+          {% assign btn_url = routes.root_url | append: 'collections/all' %}
+        {% else %}
+          {% assign btn_url = routes.root_url | append: '/collections/all' %}
+        {% endif %}
+      {% endif %}
+      <a href="{{ btn_url }}" class="best-seller__button button">
+        {{- section.settings.btn_text -}}
+      </a>
+    {% endif %}
+  </div>
+  <div class="best-seller__wrapper">
+    {% for product in section.settings.collection.products limit: 4 %}
+      {% include 'product-card' %}
+    {% endfor %}
+  </div>
+</section>
+
+{% style %}
+  #shopify-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  @media screeen and (max-width: 760px) {
+    #shopify-section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top | divided_by: 2 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | divided_by: 2 }}px;
+    }
+  }
+{% endstyle %}
+
+{{ 'product-card.js' | asset_url | script_tag }}
+
+{% schema %}
+{
+  "name": "Best seller",
+  "class": "best-seller__container",
+  "settings": [
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Padding top",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Padding bottom",
+      "default": 80
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Button text",
+      "default": "All Products"
+    },
+    {
+      "type": "checkbox",
+      "id": "all_collections_url",
+      "label": "Use the collections/all url for the button",
+      "default": false
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    }
+  ],
+  "presets": [
+    {
+      "category": "Best seller",
+      "name": "Best seller"
+    }
+  ]
+}
+{% endschema %}

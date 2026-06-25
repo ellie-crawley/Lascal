@@ -1,0 +1,37 @@
+.announcement {
+  padding: 11px;
+  background-color: rgba(255, 131, 0, 0.3019607843);
+}
+@media screen and (max-width: 990px) {
+  .announcement {
+    padding: 8px;
+  }
+}
+
+.announcement__wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.announcement__text,
+.announcement__text p,
+.announcement__text strong {
+  font-family: "Museo Sans Rounded";
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 16.8px;
+  text-align: center;
+  color: #000000;
+}
+@media screen and (max-width: 990px) {
+  .announcement__text,
+  .announcement__text p,
+  .announcement__text strong {
+    font-size: 10px;
+    line-height: 120%;
+  }
+}
+
+.announcement__text strong {
+  color: #ff8300;
+}

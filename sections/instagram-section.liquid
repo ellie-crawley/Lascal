@@ -1,0 +1,64 @@
+{{ 'section-instagram.css' | asset_url | stylesheet_tag }}
+
+<section class="instagram container">
+    <div class="instagram__wrapper">
+        <a href="{{ section.settings.url }}" class="instagram__item">
+            <div class="instagram__title h2">{{ section.settings.title }}</div>
+            <div class="instagram__text">{{ section.settings.text }}</div>
+        </a>
+        <div class="instagram__images">
+            {% for block in section.blocks %}
+                <a href="{{ block.settings.url }}" class="instagram__link image">
+                    <img src="{{ block.settings.image | img_url: 'master' }}" alt="{{ block.settings.image.alt }}">
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "Instagram section",
+    "settings": [
+        {
+            "type": "url",
+            "id": "url",
+            "label": "Url"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+        },
+        {
+            "type": "text",
+            "id": "text",
+            "label": "Text"
+        }
+    ],
+    "blocks": [
+        {
+            "name": "Image",
+            "type": "image",
+            "settings": [
+                {
+                    "type": "url",
+                    "id": "url",
+                    "label": "Url"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Image"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "category": "Instagram section",
+            "name": "Instagram section"
+        }
+    ]
+}
+{% endschema %}

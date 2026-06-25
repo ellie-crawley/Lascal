@@ -1,0 +1,142 @@
+{{ 'section-main-banner.css' | asset_url | stylesheet_tag }}
+
+<section class="main-banner container">
+    <div class="main-banner__container">
+        <div class="main-banner__wrapper swiper-wrapper">
+            {% for block in section.blocks %}
+                <style>
+                    .main-banner__title.{{ block.id }} img{
+                        max-width: {{ block.settings.width_logo }}px;
+                        max-height: {{ block.settings.height_logo }}px;
+                        width: 100%;
+                        height: 100%;
+                        object-position: left;
+                    }
+                </style>
+                <div class="main-banner__item swiper-slide">
+                    <div class="main-banner__image image">
+                        <img src="{{ block.settings.image | img_url: 'master' }}" alt="{{ block.settings.image.alt }}">
+                        {% if block.settings.mobile_image != blank  %}
+                          <img src="{{ block.settings.mobile_image | img_url: 'master' }}" alt="{{ block.settings.mobile_image.alt }}" class="desktop-hide">
+                        {% endif %}
+                        <div class="main-banner__content">
+                            <div class="main-banner__title {{ block.id }}">
+                                {% if block.settings.logo != blank %}
+                                    {% render 'image', image: block.settings.logo %}
+                                {% else %}
+                                    {{ block.settings.title | replace: '®', '<span class="large_trademark">®</span>' }}
+                                {% endif %}
+                            </div>
+                            <div class="main-banner__text">{{ block.settings.text }}</div>
+                            <a href="{{ block.settings.btn_url }}" class="main-banner__button button">{{ block.settings.btn_text }}</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="swiper-button-next main-banner__next">
+            {% render 'icons', icon: 'main-banner__next' %}
+        </div>
+        <div class="swiper-button-prev main-banner__prev">
+            {% render 'icons', icon: 'main-banner__prev' %}
+        </div>
+    </div>
+</section>
+
+<script>
+    const mainBanner = new Swiper(".main-banner__container", {
+    slidesPerView: 1,
+    speed: 600,
+    effect: "fade",
+    autoplay: {
+      delay: 3000,
+    },
+    fadeEffect: {
+        crossFade: true,
+    },
+    spaceBetween: 10,
+    loop: true,
+    navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+    },
+    });
+</script>
+
+{% schema %}
+{
+    "name": "Main banner",
+    "settings": [
+        
+    ],
+    "blocks": [
+        {
+            "name": "Slide",
+            "type": "slide",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Image"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "mobile_image",
+                    "label": "Image on mobile"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "logo",
+                    "label": "Logo"
+                },
+                {
+                    "type": "range",
+                    "id": "width_logo",
+                    "label": "Logo max-width",
+                    "min": 50,
+                    "max": 500,
+                    "step": 10,
+                    "unit": "px",
+                    "default": 200
+                },
+                {
+                    "type": "range",
+                    "id": "height_logo",
+                    "label": "Logo max-height",
+                    "min": 20,
+                    "max": 200,
+                    "step": 10,
+                    "unit": "px",
+                    "default": 100
+                },
+                {
+                    "type": "richtext",
+                    "id": "title",
+                    "label": "Title"
+                },
+                {
+                    "type": "text",
+                    "id": "text",
+                    "label": "Text"
+                },
+                {
+                    "type": "url",
+                    "id": "btn_url",
+                    "label": "Button url"
+                },
+                {
+                    "type": "text",
+                    "id": "btn_text",
+                    "label": "Button text"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "category": "Main banner",
+            "name": "Main banner"
+        }
+    ],
+}
+{% endschema %}

@@ -1,0 +1,45 @@
+.badges-slider__container {
+  padding: 0 65px;
+  margin-bottom: 87px;
+}
+@media screen and (max-width: 767px) {
+  .badges-slider__container {
+    padding: 0;
+    margin-bottom: 50px;
+    width: calc(100% + 20px);
+  }
+}
+.badges-slider__container .swiper-button-prev,
+.badges-slider__container .swiper-button-next {
+  max-width: 37px;
+  width: 100%;
+}
+@media screen and (max-width: 767px) {
+  .badges-slider__container .swiper-button-prev,
+  .badges-slider__container .swiper-button-next {
+    display: none;
+  }
+}
+.badges-slider__container .swiper-button-prev::after,
+.badges-slider__container .swiper-button-next::after {
+  content: none;
+}
+
+.badges-slider__image {
+  position: relative;
+  max-width: 100%;
+  width: 100%;
+}
+.badges-slider__image::before {
+  content: "";
+  display: block;
+  padding-top: 100%;
+}
+.badges-slider__image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}

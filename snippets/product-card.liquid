@@ -1,0 +1,144 @@
+{% comment %} {% assign find_btn = true %}
+{% for item in product.metafields.custom._ountries.value %}
+  {% if item == localization.country %}
+    {% assign find_btn = false %}
+  {% endif %}
+{% endfor %} {% endcomment %}
+
+{% assign find_btn = false %}
+
+<div class="product__card" data-product-url="{{ product.url |  split: "?" | first }}">
+  <div class="product__card-wrapper">
+    <div class="product__card-image-container">
+      <a href="{{ product.url }}" class="product__card-image image">
+        {% for image in product.images %}
+          {% unless image.alt contains '<iframe' %}
+            {% render 'image', image: image, img_classes: img_classes %}
+          {% endunless %}
+        {% endfor %}
+      </a>
+      <a href="{{ product.url }}#reviews" class="product__card-rating">
+        <span
+          class="stamped-product-reviews-badge product__reviews-badge {% if product.metafields.reviews.rating.value == blank -%}disabled{%- endif %}"
+          data-id="{{ product.id }}"
+          data-product-sku="{{ product.handle }}"
+          data-product-type="{{product.type}}"
+          data-product-title="{{product.title}}"
+          style="display:flex;"
+
+        >
+          {{ product.metafields.stamped.badge }}
+          {% if product.metafields.reviews.rating.value != blank -%}
+            ({{ product.metafields.reviews.rating.value }})
+          {%- endif %}
+        </span>
+      </a>
+      
+    </div>
+
+    <div class="product-prices">
+      {% for item in product.variants %}
+        <div class="price" data-compare="{{ item.compare_at_price | money }}" data-price="{{ item.price | money }}" data-add="{{ 'products.product.add_to_cart' | t }}" data-sold="{{ 'products.product.sold_out' | t }}" data-available="{% if item.available == true %}true{% else %}disabled{% endif %}" data-name="{{ item.title }}"></div>
+      {% endfor %}
+    </div>
+
+    <div class="product__card-content">
+      <div class="product__card-swatches-rating">
+        {% if product.metafields.custom.product_variants != blank %}
+          <div class="product__card-variants">
+            {% for item in product.metafields.custom.product_variants.value %}
+              <a style="display: none;" href="{{ item.url }}" class="product__card-variants-item {% if item.title == product.title %}active{% endif %}">
+                {% render 'image', image: item.images[0] %}
+              </a>
+            {% endfor %}
+          </div>
+        {% else %}
+          <div class="product__card-swatches">
+            {% if product.options_by_name.Color %}
+              {% assign colorsSwatchs = settings.color_swatches | remove: ' ' | split: ',' %}
+              {% for color in product.options_by_name.color.values %}
+                {% for colorSwatch in colorsSwatchs %}
+                  {% assign settingsColor = colorSwatch | split: '/' | first | downcase %}
+                  {% assign myColor = color | remove: ' ' | downcase %}
+                  {% if settingsColor == myColor %}
+                    {% assign bgColor = colorSwatch | split: '/' | last %}
+                  {% endif %}
+  
+                {% endfor %}
+  
+                <span
+                  class="product__card-color color-{{ color }} {% if forloop.index == 1 %} active{% endif %}"
+                  style="background-color: {{ bgColor }}"
+                  data-option="{{ color }}"
+                ></span>
+                {% style %}
+                  {% if color == 'White' %}
+                    .color-{{ color }} {
+                      outline: 1px solid #d5d5d5;
+                    }
+                  {% endif %}
+                {% endstyle %}
+                {% assign bgColor = '' %}
+              {% endfor %}
+            {% endif %}
+          </div>
+        {% endif %}
+       
+      </div>
+      <a href="{{ product.url }}" class="product__card-price-title">
+        <div class="product__card-title">{{ product.title }}</div>
+        
+        {% if find_btn == false %}
+          <div class="product__card-prices">
+            <div class="product__card-price">{{ product.price | money }}</div>
+            {% if product.price < product.compare_at_price %}
+             <div class="product__card-compare">{{ product.compare_at_price | money }}</div>
+            {% endif %}
+          </div>
+        {% endif %}
+      </a>
+
+      <div class="product__card-add-cart__container">
+        {% if find_btn == false %}
+          <button
+            class="product__card-add-cart icon{% if product.selected_or_first_available_variant.available == false %} disabled{% endif %}"
+            {% if product.selected_or_first_available_variant.available == false %}
+              disabled
+            {% endif %}
+          >
+
+            {% render 'icons', icon: 'add-to-cart-new' %}
+            {% comment %} <span>
+            {% if product.variants.size > 1 %}
+              {% if product.variants[0].available %}
+                  {{ 'products.product.add_to_cart' | t }}
+                {% else %}
+                  {{ 'products.product.sold_out' | t }}
+              {% endif %}
+            {% else %}
+              {%- if product.selected_or_first_available_variant.available -%}
+                {{ 'products.product.add_to_cart' | t }}
+              {%- else -%}
+                {{ 'products.product.sold_out' | t }}
+              {%- endif -%}
+            {% endif %}
+            </span> {% endcomment %}
+            <div class="loading-state">
+              <div class="lds-dual-ring"></div>
+            </div>
+          </button>
+          {% assign find_btn = false %}
+        {% endif %}
+        {% if find_btn == true %}
+          {%- assign root_url = routes.root_url -%}
+          {% unless root_url == '/' %}
+            {%- assign root_url = routes.root_url | append: '/' -%}
+          {% endunless %}
+          <a class="find-retailer button_white" href="{{ root_url }}pages/store-locator">
+            {{ 'products.product.find_retailer' | t }}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>

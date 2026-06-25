@@ -1,0 +1,165 @@
+{{ 'section-footer.css' | asset_url | stylesheet_tag }}
+<footer class="footer" id="{{ section.id }}">
+   <div class="container">
+      <div class="footer__wrapper">
+         {% if section.blocks.size > 0  %}
+         {% for block in section.blocks %}
+         <style>
+            @media screen and (max-width: 850px) {
+               #block-{{ block.id }} {
+                  order: {{ block.settings.order_mobile }};
+               }
+            }
+         </style>
+            <div class="footer__block" id="block-{{ block.id }}">
+               {% if block.settings.title != blank %}
+                  <div class="footer__block-title">{{ block.settings.title }}</div>
+               {% endif %}
+               {% if block.settings.nav != blank %}
+                  <nav class="footer__nav">
+                     {%- for link in linklists[block.settings.nav].links -%}
+                        <a href="{{ link.url }}" {% if link.title contains 'new-window' %} target="_blank" {% endif %} >{{ link.title | remove: 'new-window' }}</a>
+                     {%- endfor %}
+                  </nav>
+               {% endif %}
+            </div>
+         {% endfor %}
+         {% endif %}
+      </div>
+   </div>
+   <div class="container mob-container">
+      <div class="footer__wrapper-bottom">
+         {% if section.settings.copyright_text %}
+            <div class="copyright__text">{{ section.settings.copyright_text }}</div>
+         {% endif %}
+         <div class="footer__bottom-links">
+            {% if section.settings.link_text1 != blank %}
+               <a href="{{ section.settings.link1 }}">{{ section.settings.link_text1 }}</a>
+            {% endif %}
+            {% if section.settings.link_text2 != blank %}
+               <a href="{{ section.settings.link2 }}">{{ section.settings.link_text2 }}</a>
+            {% endif %}
+            {% if section.settings.link_text3 != blank %}
+               <a href="{{ section.settings.link3 }}">{{ section.settings.link_text3 }}</a>
+            {% endif %}
+         </div>
+      </div>
+   </div>
+   
+   <!-- {% liquid
+      assign show = false
+
+      for country in shop.metaobjects.countries['countries-pjkwvxbq'].country.value
+         if country == localization.country
+            assign show = true
+         endif
+      endfor
+   %}
+   {% if show %}
+      <div class="container">
+         <ul class="list-payment" role="list">
+            {%- for type in shop.enabled_payment_types -%}
+               <li class="list-payment__item">
+               <img src="{{ type | payment_type_img_url }}" width="50" height="50" />
+               </li>
+            {%- endfor -%}
+         </ul>
+      </div>
+   {% endif %} -->
+</footer>
+
+{% schema %}
+{
+   "name": "Footer",
+  "max_blocks": 3,
+  "settings": [
+    {
+       "type": "text",
+       "id": "copyright_text",
+       "label": "Copyright text"
+    },
+   {
+      "type": "header",
+      "content": "Right content"
+   },
+  {
+     "type": "text",
+     "id": "r_title",
+     "label": "Title",
+     "default": "How to find us"
+  },
+ {
+    "type": "richtext",
+    "id": "r_content",
+    "label": "Content"
+ },
+{
+   "type": "text",
+   "id": "order_mobile",
+   "label": "Order for mobile",
+   "info": "Example: 1, 2, 3..."
+},
+   {
+      "type": "header",
+      "content": "Link content"
+   },
+  {
+     "type": "text",
+     "id": "link_text1",
+     "label": "Link text 1st",
+     "default": "Terms & conditions"
+  },
+ {
+    "type": "url",
+    "id": "link1",
+    "label": "Link 1st"
+ },
+  {
+   "type": "text",
+   "id": "link_text2",
+   "label": "Link text 2nd",
+   "default": "Privacy policies"
+},
+{
+   "type": "url",
+   "id": "link2",
+   "label": "Link 2nd"
+},
+{
+   "type": "text",
+   "id": "link_text3",
+   "label": "Link text 3th",
+   "default": "Cookie policy"
+},
+{
+   "type": "url",
+   "id": "link3",
+   "label": "Link 3rd"
+}
+  ],
+  "blocks": [
+    {
+      "type": "nav",
+      "name": "Navigation",
+     "settings": [
+       {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+       },
+      {
+         "type": "link_list",
+         "id": "nav",
+         "label": "Navigation"
+      },
+     {
+        "type": "text",
+        "id": "order_mobile",
+        "label": "Order for mobile",
+        "info": "Example: 1, 2, 3..."
+     }
+     ]
+    }
+  ]
+}
+{% endschema %}

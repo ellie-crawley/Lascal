@@ -1,0 +1,155 @@
+.page-content,
+.shopify-policy__container {
+  max-width: 889px !important;
+  margin: 60px auto 120px !important;
+}
+@media screen and (max-width: 767px) {
+  .page-content,
+  .shopify-policy__container {
+    margin-top: 24px;
+    margin-bottom: 60px;
+  }
+}
+.page-content .page-updated,
+.page-content li,
+.shopify-policy__container .page-updated,
+.shopify-policy__container li {
+  font-size: 14px;
+  line-height: 22.4px;
+}
+.page-content .page-updated,
+.shopify-policy__container .page-updated {
+  color: #000;
+  font-family: "Open Sans";
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 160%;
+  margin-bottom: 8px;
+  opacity: 0.6;
+}
+.page-content h1,
+.shopify-policy__container h1 {
+  color: #000;
+  font-family: "Museo Sans Rounded";
+  font-size: 72px;
+  font-weight: 300;
+  line-height: 110%;
+  margin-bottom: 40px;
+}
+@media screen and (max-width: 1100px) {
+  .page-content h1,
+  .shopify-policy__container h1 {
+    font-size: 50px;
+    line-height: 130%;
+    margin-bottom: 20px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .page-content h1,
+  .shopify-policy__container h1 {
+    font-size: 34px;
+    line-height: 37.4px;
+    margin-bottom: 24px;
+  }
+}
+.page-content ul,
+.page-content ol,
+.shopify-policy__container ul,
+.shopify-policy__container ol {
+  padding-left: 22px;
+  margin-top: 0;
+  margin-bottom: 36px;
+}
+.page-content h3,
+.shopify-policy__container h3 {
+  margin-bottom: 24px;
+  color: #000;
+  font-family: "Museo Sans Rounded";
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 120%;
+}
+@media screen and (max-width: 990px) {
+  .page-content h3,
+  .shopify-policy__container h3 {
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 120%;
+  }
+}
+.page-content h4,
+.shopify-policy__container h4 {
+  font-family: "Museo Sans Rounded", sans-serif;
+  font-size: 24px;
+  line-height: 28.8px;
+  font-weight: 300;
+  margin-bottom: 24px;
+}
+@media screen and (max-width: 767px) {
+  .page-content h4,
+  .shopify-policy__container h4 {
+    font-size: 18px;
+    line-height: 21.6px;
+  }
+}
+.page-content p,
+.shopify-policy__container p {
+  font-family: "Open Sans";
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 160%;
+  margin-bottom: 20px;
+}
+.page-content p:empty,
+.shopify-policy__container p:empty {
+  margin: 0;
+}
+.page-content p:last-of-type, .page-content p.no-margin,
+.shopify-policy__container p:last-of-type,
+.shopify-policy__container p.no-margin {
+  margin-bottom: 0;
+  line-height: 17px;
+}
+@media screen and (max-width: 767px) {
+  .page-content p:last-of-type, .page-content p.no-margin,
+  .shopify-policy__container p:last-of-type,
+  .shopify-policy__container p.no-margin {
+    line-height: 10px;
+  }
+}
+.page-content a,
+.shopify-policy__container a {
+  font-size: 14px;
+  color: #ff8300;
+  line-height: 22.4px;
+}
+.page-content h5,
+.shopify-policy__container h5 {
+  color: var(--Main-Colors-Orange, #ff8300);
+  font-family: "Open Sans";
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 160%;
+  margin-bottom: 60px;
+}
+@media screen and (max-width: 990px) {
+  .page-content h5,
+  .shopify-policy__container h5 {
+    font-size: 14px;
+    line-height: 140%;
+    margin-bottom: 40px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .page-content .page-updated,
+  .page-content li,
+  .page-content a,
+  .page-content p,
+  .shopify-policy__container .page-updated,
+  .shopify-policy__container li,
+  .shopify-policy__container a,
+  .shopify-policy__container p {
+    font-size: 12px;
+    line-height: 16.8px;
+  }
+}

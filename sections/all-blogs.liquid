@@ -1,0 +1,75 @@
+{{ 'section-all-blogs.css' | asset_url | stylesheet_tag }}
+
+<section class="all-blogs">
+    <div class="container">
+        <div class="all-blogs__title">{{ section.settings.title }}</div>
+        <div class="all-blogs__wrapper">
+            {% for block in section.blocks %}
+                {% if block.type == 'blog' %}
+                    {% assign blog_handles = blog_handles | append: block.settings.blog.handle | append: ','  %}
+                {% endif %}
+            {% endfor %}
+    
+            {% assign blogHandlesMass = blog_handles | split: ','  %}
+    
+            {% for handle in blogHandlesMass %}
+                {% for article in blogs[handle].articles %}
+                    {%liquid
+                        assign split_1 = article.url | split: '/blogs/'
+                        assign split_2 = split_1[1] | split: '/'
+                        assign blog_handle = split_2[0] | strip
+                        assign article_blog = blogs[blog_handle]
+                    %}
+                    <a href="{{ article.url }}" class="all-blogs__item">
+                        <div class="all-blogs__image">
+                            <img src="{{ article.image | img_url: 'master' }}" alt="{{ article.image.alt }}">
+                        </div>
+                        <div class="all-blogs__header">
+                            <div class="all-blogs__date">{{ article.created_at | date: '%d %B %Y' }}</div>
+                            <div class="all-blogs__blog">{{ article_blog.title }}</div>
+                        </div>
+                        <div class="all-blogs__item-title">{{ article.title }}</div>
+                        {% if article.excerpt != blank %}
+                            <div class="all-blogs__item-excerpt">{{ article.excerpt }}</div>
+                        {% else %}
+                            <div class="all-blogs__item-excerpt">{{ article.content | strip_html | truncate: 150 }}</div>
+                        {% endif %}
+                    </a>
+                {% endfor %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "All blogs",
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Latest from our blog"
+        }
+    ],
+    "blocks": [
+        {
+            "name": "blog",
+            "type": "blog",
+            "settings": [
+                {
+                    "type": "blog",
+                    "id": "blog",
+                    "label": "Blogs"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "category": "All blogs",
+            "name": "All blogs"
+        }
+    ]
+}
+{% endschema %}

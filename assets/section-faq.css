@@ -1,0 +1,117 @@
+.faq {
+  margin-bottom: 120px;
+}
+@media screen and (max-width: 990px) {
+  .faq {
+    margin-bottom: 58px;
+  }
+}
+
+.faq__section-title {
+  max-width: 537px;
+  margin-bottom: 50px;
+}
+
+.faq__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 37px;
+  grid-auto-flow: dense;
+}
+@media screen and (max-width: 990px) {
+  .faq__container {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.faq__accordion-item {
+  padding-bottom: 20px;
+  margin-bottom: 34px;
+  border-bottom: 1px solid #000000;
+}
+@media screen and (max-width: 990px) {
+  .faq__accordion-item {
+    margin-bottom: 20px;
+  }
+}
+.faq__accordion-item.open .accordion__item-icon svg {
+  transform: rotate(90deg);
+}
+
+.accordion__item-icon {
+  display: block;
+  width: fit-content;
+}
+.accordion__item-icon svg {
+  transition: 0.3s all;
+}
+
+.faq__accordion-trigger {
+  display: flex;
+  align-items: flex-start;
+  gap: 22px;
+  cursor: pointer;
+}
+@media screen and (max-width: 990px) {
+  .faq__accordion-trigger {
+    gap: 10px;
+  }
+}
+
+.faq__accordion-question {
+  display: flex;
+  align-items: flex-start;
+  gap: 5px;
+}
+.faq__accordion-question .faq__number {
+  white-space: nowrap;
+}
+.faq__accordion-question .faq__number,
+.faq__accordion-question .faq__title {
+  color: #000;
+  font-family: "Museo Sans Rounded";
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 120%;
+}
+@media screen and (max-width: 990px) {
+  .faq__accordion-question .faq__number,
+  .faq__accordion-question .faq__title {
+    font-size: 16px;
+  }
+}
+
+.faq__accordion-content {
+  padding: 20px 0 20px 30px;
+}
+@media screen and (max-width: 990px) {
+  .faq__accordion-content {
+    padding: 20px;
+  }
+}
+.faq__accordion-content p {
+  color: #000;
+  font-family: "Museo Sans Rounded";
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 120%;
+}
+@media screen and (max-width: 990px) {
+  .faq__accordion-content p {
+    font-size: 14px;
+  }
+}
+.faq__accordion-content a {
+  color: var(--Main-Colors-Orange, #ff8300);
+  font-family: "Museo Sans Rounded";
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 120%;
+  text-decoration-line: underline;
+}
+@media screen and (max-width: 990px) {
+  .faq__accordion-content a {
+    font-size: 14px;
+  }
+}

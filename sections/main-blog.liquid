@@ -1,0 +1,107 @@
+{{ 'component-article-card.css' | asset_url | stylesheet_tag }}
+{{ 'section-main-blog.css' | asset_url | stylesheet_tag }}
+
+<div class="blog__container container">
+  <h1 class="blog__title h1">{{ section.settings.title | default: blog.title }}</h1>
+  {% paginate blog.articles by 9 %}
+    <div class="blog__grid">
+      {% for article in blog.articles %}
+        {% render 'article-card', article: article, classes: 'blog__article' %}
+      {% endfor %}
+    </div>
+
+    {%- if paginate.pages > 1 -%}
+      <nav class="blog__pagination-container" role="navigation">
+        <ol class="pagination blog__pagination">
+          {%- if paginate.previous %}
+            <li>
+              <a href="{{ paginate.previous.url }}" class="blog__pagination-prev swiper-button">
+                {% render 'icons', icon: 'arrow-prev-slider' %}
+              </a>
+            </li>
+          {%- else -%}
+            <li class="blog__pagination-prev swiper-button disabled">
+              {% render 'icons', icon: 'arrow-prev-slider' %}
+            </li>
+          {%- endif -%}
+
+          {%- for part in paginate.parts -%}
+            {%- if part.is_link -%}
+              <li class="blog__pagination-page swiper-button">
+                <a href="{{ part.url }}" class="paragraph">{{ part.title }}</a>
+              </li>
+            {%- else -%}
+              {%- if part.title == paginate.current_page -%}
+                <li class="blog__pagination-page swiper-button active paragraph" aria-current="page">
+                  {{ part.title }}
+                </li>
+              {%- else -%}
+                <li class="paragraph">{{ part.title }}</li>
+              {%- endif -%}
+            {%- endif -%}
+          {%- endfor -%}
+
+          {%- if paginate.next -%}
+            <li>
+              <a href="{{ paginate.next.url }}" class="blog__pagination-next swiper-button">
+                {% render 'icons', icon: 'arrow-next-slider' %}
+              </a>
+            </li>
+          {%- else -%}
+            <li class="blog__pagination-prev swiper-button disabled">
+              {% render 'icons', icon: 'arrow-next-slider' %}
+            </li>
+          {%- endif -%}
+        </ol>
+      </nav>
+    {%- endif -%}
+  {% endpaginate %}
+</div>
+
+{% style %}
+  #shopify-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  @media screeen and (max-width: 760px) {
+    #shopify-section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top | divided_by: 2 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | divided_by: 2 }}px;
+    }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Main Blog",
+  "tag": "section",
+  "class": "blog",
+  "settings": [
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Padding top",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Padding bottom",
+      "default": 80
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Latest from our blog"
+    }
+  ]
+}
+{% endschema %}

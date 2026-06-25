@@ -1,0 +1,27 @@
+{
+  "products": {
+    "product": {
+      "sold_out": "売り切れ",
+      "unavailable": "利用不可",
+      "add_to_cart": "カートに追加",
+      "find_retailer": "取扱店検索"
+    },
+    "notify_form": {
+      "email": "メールアドレスを入力してください..."
+    }
+  },
+  "general": {
+    "models": {
+      "title_1": "ベビーカー対応",
+      "title_1_2": "(幅)",
+      "title_2": "プラットフォームサイズ ",
+      "title_2_2": "(幅 x 奥行き x 高さ)",
+      "title_3": "反射",
+      "title_3_2": "ホイール",
+      "title_4": "サドル",
+      "title_4_2": "対応",
+      "title_5": "サドル",
+      "title_5_2": "付属"
+    }
+  }
+}

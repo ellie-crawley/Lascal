@@ -1,0 +1,15 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-blog",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "title": "Latest from our blog"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

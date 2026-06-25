@@ -1,0 +1,63 @@
+[
+  {
+    "name": "Favicon",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon"
+      }
+    ]
+  },
+  {
+    "name": "Logo",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo image"
+      },
+      {
+        "type": "range",
+        "id": "logo_width",
+        "min": 50,
+        "max": 300,
+        "step": 5,
+        "default": 100,
+        "unit": "px",
+        "label": "Logo width"
+      }
+    ]
+  },
+  {
+    "name": "Color Swatches",
+    "settings": [
+      {
+        "type": "textarea",
+        "id": "color_swatches",
+        "label": "Colors for swatchs"
+      }
+    ]
+  },
+  {
+    "name": "Back to top button",
+    "settings": [
+      {
+        "type": "text",
+        "id": "back",
+        "label": "Text",
+        "default": "Back to top"
+      }
+    ]
+  },
+  {
+    "name": "Hreflang tags",
+    "settings": [
+      {
+        "type": "html",
+        "id": "hreflang_tags",
+        "label": "Hreflang tags"
+      }
+    ]
+  }
+]

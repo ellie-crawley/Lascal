@@ -1,0 +1,132 @@
+.featured__collections {
+  margin-bottom: 135px;
+}
+@media screen and (max-width: 806px) {
+  .featured__collections {
+    margin-bottom: 104px;
+  }
+}
+.featured__collections-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 60px;
+}
+@media screen and (max-width: 806px) {
+  .featured__collections-wrapper {
+    margin-bottom: 32px;
+  }
+}
+.featured__collections-title {
+  font-family: "Museo Sans Rounded";
+  font-weight: 300;
+  font-size: 48px;
+  line-height: 57.6px;
+}
+@media screen and (max-width: 806px) {
+  .featured__collections-title {
+    font-size: 24px;
+    line-height: 28.8px;
+    max-width: 50%;
+  }
+}
+.featured__collections .collections {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+@media screen and (max-width: 990px) {
+  .featured__collections .collections {
+    row-gap: 11px;
+    column-gap: 11px;
+  }
+}
+.featured__collections .collection__item {
+  display: block;
+  text-decoration: none;
+  overflow: hidden;
+}
+@media screen and (max-width: 990px) {
+  .featured__collections .collection__item {
+    max-width: calc(50% - 6px);
+    width: 100% !important;
+  }
+}
+.featured__collections .collection__item:hover img {
+  transform: scale(1.1);
+}
+.featured__collections .collection__item:hover .collection__link svg {
+  transform: translateX(10px);
+}
+.featured__collections .collection__item:not(.small-element) {
+  width: calc(58.5% - 12px);
+}
+.featured__collections .collection__item.small-element {
+  width: calc(41.5% - 12px);
+}
+.featured__collections .collection__item img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  transition: 0.3s ease;
+}
+@media screen and (max-width: 990px) {
+  .featured__collections .collection__item img {
+    height: 182px;
+  }
+}
+.featured__collections .collection__item .collection__link {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px;
+  background: #f3e9dd;
+  font-size: 32px;
+  font-weight: 300;
+  line-height: 38.4px;
+  color: #000000;
+  font-family: "Museo Sans Rounded";
+  position: relative;
+  z-index: 3;
+}
+.featured__collections .collection__item .collection__link svg {
+  transition: 0.3s ease;
+}
+@media screen and (max-width: 990px) {
+  .featured__collections .collection__item .collection__link svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .featured__collections .collection__item .collection__link {
+    padding: 9px 16px;
+    font-size: 18px;
+    line-height: 1;
+  }
+}
+.featured__collections .collection-swiper {
+  display: none;
+  padding-left: 20px;
+}
+.featured__collections .collection-swiper .collection__item {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.featured__collections .collection-swiper .collection__item img {
+  height: 237px;
+  display: block;
+  object-fit: cover;
+}
+.featured__collections .collection-swiper .collection__link {
+  font-size: 18px;
+  line-height: 21.6px;
+  padding: 14px 15px;
+}
+.featured__collections .collection-swiper .collection__link svg {
+  width: 24px;
+  height: 24px;
+}

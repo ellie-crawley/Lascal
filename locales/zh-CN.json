@@ -1,0 +1,27 @@
+{
+  "products": {
+    "product": {
+      "sold_out": "售罄",
+      "unavailable": " 不可用",
+      "add_to_cart": " 加入购物车",
+      "find_retailer": "尋找零售商"
+    },
+    "notify_form": {
+      "email": "输入您的电子邮件地址..."
+    }
+  },
+  "general": {
+    "models": {
+      "title_1": "婴儿车适配",
+      "title_1_2": "(宽度)",
+      "title_2": "平台尺寸",
+      "title_2_2": "(宽度 x 深度 x 高度)",
+      "title_3": "反光",
+      "title_3_2": "轮",
+      "title_4": "兼容",
+      "title_4_2": "鞍座",
+      "title_5": "包含",
+      "title_5_2": "鞍座"
+    }
+  }
+}

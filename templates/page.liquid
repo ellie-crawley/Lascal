@@ -1,0 +1,16 @@
+<div class="container ">
+    <div class="page-content">
+        {% if page.metafields.custom.last_updated_text != blank %}
+            <div class="page-updated">{{ page.metafields.custom.last_updated_text }}</div>
+        {% endif %}
+        <h1 class="page-title">{{ page.title }}</h1>
+        {{ page.content }}
+    </div>
+</div>
+
+<script>
+    const pElements = document.querySelectorAll('p');
+    pElements.forEach(item => {
+        if(item.innerHTML == '&nbsp;') item.classList.add('no-margin');
+    });
+</script>

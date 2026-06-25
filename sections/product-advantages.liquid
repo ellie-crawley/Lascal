@@ -1,0 +1,59 @@
+{{ 'section-product-advantages.css' | asset_url | stylesheet_tag }}
+
+<div class="product-advantages__container container">
+  {% for block in product.metafields.custom.product_advantages.value %}
+    <div class="product-advantages__block">
+      <h4 class="product-advantages__title h4">{{ block.title }}</h4>
+      <p class="product-advantages__text paragraph">{{ block.text | metafield_tag }}</p>
+    </div>
+  {% endfor %}
+</div>
+
+{% style %}
+  #shopify-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  @media screeen and (max-width: 760px) {
+    #shopify-section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top | divided_by: 2 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | divided_by: 2 }}px;
+    }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Product Advantages",
+  "tag": "section",
+  "class": "product-advantages",
+  "settings": [
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Padding top",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Padding bottom",
+      "default": 80
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Advantages",
+      "category": "Product"
+    }
+  ],
+  "templates": ["product"]
+}
+{% endschema %}

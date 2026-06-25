@@ -1,0 +1,28 @@
+{
+  "products": {
+    "product": {
+      "sold_out": "Épuisé",
+      "savings": "Économisez ",
+      "find_retailer": "Trouver un vendeur",
+      "unavailable": "Indisponible",
+      "add_to_cart": "Ajouter au panier"
+    },
+    "notify_form": {
+      "email": "Saisissez votre adresse e-mail..."
+    }
+  },
+  "general": {
+    "models": {
+      "title_1": "Adaptation à la poussette",
+      "title_1_2": "(largeur)",
+      "title_2": "Taille de la plateforme",
+      "title_2_2": "(largeur x profondeur x hauteur)",
+      "title_3": "Roues",
+      "title_3_2": "Réfléchissantes",
+      "title_4": "Compatible ",
+      "title_4_2": "avec la selle",
+      "title_5": "Selle ",
+      "title_5_2": "incluse"
+    }
+  }
+}

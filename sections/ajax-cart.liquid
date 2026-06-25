@@ -1,0 +1,73 @@
+{{ 'section-mini-cart.css' | asset_url | stylesheet_tag }}
+
+<div class="ajax-cart__overlay"></div>
+
+<section class="ajax-cart" data-cart-view="data-cart-view">
+    <div class="ajax-cart__wrapper">
+        <div class="ajax-cart__header">
+            <button class="ajax-cart__close">
+                {% include 'icons', icon: 'cart-back' %}
+            </button>
+            <div class="ajax-cart__header-title">Your products</div>
+        </div>
+        <div id='fsb_placeholder'></div>
+        <h5 class="empty-cart" rv-show="cart.item_count | eq 0">
+            No items in your shopping cart.
+        </h5>
+        <form action="/cart" class="ajax-cart-form" method="post">
+            <div class="ajax-cart__content">
+                <div class="ajax-cart__item" rv-each-item="cart.items">
+                    <div class="ajax-cart__image">
+                        <img class="lazy" rv-src="item.image | product_image_size 'master'"/>
+                    </div>
+                    <div class="ajax-cart__info">
+                        <div class="ajax-cart__info-block">
+                            <a rv-href="item.url">
+                                <h6 class="ajax-cart__title" rv-text="item.product_title"></h6>
+                            </a>
+                            <a class="ajax-cart__remove" href="#" rv-data-cart-remove="index | plus 1">{% include 'icons', icon: 'remove-cart' %}</a>
+                        </div>
+                        <div class="ajax-cart__quantity" rv-data-id="item.variant_id">
+                            <div class="ajax-cart__quantity-block">
+                                <a href="#" rv-data-cart-quantity="item.quantity | minus 1" rv-data-cart-update="index | plus 1">
+                                    {% render 'icons', icon: 'cart-minus' %}
+                                </a>
+                                <span class="ajax-cart__quantity-quantity" rv-text="item.quantity"></span>
+                                <a href="#" rv-data-cart-quantity="item.quantity | plus 1" rv-data-cart-update="index | plus 1">
+                                    {% render 'icons', icon: 'cart-plus' %}
+                                </a>
+                            </div>
+                            <div class="ajax-cart__line-price" rv-html="item.price | money Currency.currentCurrency"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ajax-cart__footer" rv-hide="cart.item_count | eq 0">
+                <div class="ajax-cart__footer-total" rv-hide="cart.item_count | eq 0">
+                    <div class="ajax-cart__footer-total-text">Sub-Total</div>
+                    <span class="total-all"  rv-html="cart.total_price | money Currency.currentCurrency"></span>
+                </div>
+
+                <div><input name="checkout" style="display: none;" tac-override="true"><input name="checkout" style="display: none;" tac-override="true"></div>  
+                <button  onclick="if (!document.getElementById('effectiveAppsAgreeCB').checked) { alert(window.EFFECTIVE_APPS_TAC_ALERT); return false;} return true;"  class="ajax-cart__footer-button button" type="submit" name="checkout" style="margin-top: 5px;">Checkout</button>
+               
+                <!-- 
+                    <div class="cart-checkout__responsive-btn " rv-hide="cart.item_count | eq 0">
+                        <button>See your shopping cart</button>
+                    </div>
+                    <span rv-hide="cart.item_count | eq 0" class="note-text">
+                        Continue Shopping
+                    </span> -->
+            </div>
+        </form>
+    </div>
+</section>
+
+{% schema %}
+{   
+    "name": "Mini cart",
+    "settings": [
+       
+    ]
+}
+{% endschema %}

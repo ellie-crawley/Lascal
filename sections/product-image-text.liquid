@@ -1,0 +1,46 @@
+{{ 'section-product-image-text.css' | asset_url | stylesheet_tag }}
+
+<section class="product-image-text container">
+    <div class="product-image-text__wrapper">
+        <div class="product-image-text__title">{{ section.settings.title }}</div>
+
+        {% assign meta = product.metafields.custom.image_with_text_sections.value %}
+
+        {% for section in meta %}
+            <div class="product-image-text__section{% if section.image_on_the_left == true %} reverse{% endif %}">
+                {% if section.image_on_the_left == true %}
+                    <div class="product-image-text__image">
+                        <img src="{{ section.image | img_url: 'master' }}" alt="{{ section.image.alt }}">
+                    </div>
+                {% endif %}
+                <div class="product-image-text__content">{{ section.text | metafield_tag }}</div>
+                {% if section.image_on_the_left == false or section.image_on_the_left == blank %}
+                    <div class="product-image-text__image">
+                        {% if section.image != blank %}
+                            <img src="{{ section.image | img_url: 'master' }}" alt="{{ section.image.alt }}">
+                        {% endif %}
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "Product image text",
+    "settings": [
+        {
+            "type": "richtext",
+            "id": "title",
+            "label": "Title",
+            "default": "<p>Why choose the<br>BuggyBoard® Maxi</p>"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Product image text"
+        }
+    ]
+}
+{% endschema %}

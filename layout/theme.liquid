@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="{{ shop.locale }}">
+  <head>
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "qxag7l3y0z");
+</script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="">
+    <link rel="canonical" href="{{ canonical_url }}">
+
+    <style>
+      :root {
+        --header-height: 40px;
+      }
+    </style>
+
+    <title>{%- if template.name == "index" -%}{{ page_title }}{%- else -%}{{ page_title }}{% if current_tags %} {{ 'general.meta.tagged_html' | t: tags: meta_tags }}{%- endif -%}{% if current_page != 1 %} {{ 'general.meta.page' | t: page_number: current_page }}{% endif %}{% unless page_title contains shop.name %} - {{ shop.name }}{% endunless %}{% endif %}</title>
+
+    {%- if settings.favicon != blank -%}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+    {%- endif -%}
+
+    <meta name="description" content="">
+
+    {% if template == 'product' or template == 'product.no-reviews' %}
+      {{ product.metafields.custom.hreflang_tags }}
+    {% elsif template == 'collection' %}
+      {{ collection.metafields.custom.hreflang_tags }}
+    {% elsif template == 'index' %}
+      {{ settings.hreflang_tags }}
+    {% endif %}
+
+    <!-- ----------------- Styles ------------------ -->
+    {% comment %} <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"> {% endcomment %}
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    >
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"
+    >
+    {{ 'section-page.css' | asset_url | stylesheet_tag }}
+
+    {{ 'section-coockies-popup.css' | asset_url | stylesheet_tag }}
+    {{ 'component-global.css' | asset_url | stylesheet_tag }}
+    {% if template == 'product' %}
+      {{ 'section-reviews-product-page.css' | asset_url | stylesheet_tag }}
+    {% endif %}
+
+    {% if template.suffix == 'retailer-countries-1' or template.suffix == 'retailer-countries-2' %}
+      {{ 'section-online-shops.css' | asset_url | stylesheet_tag }}
+    {% endif %}
+
+    {{ content_for_header }}
+
+    <script>
+      window.shopUrl = '{{ request.origin }}';
+      window.Shopify.routes.root = '{{ routes.root_url }}';
+    </script>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2422412338142239');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=2422412338142239&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+    
+  </head>
+  <body class="template-{{ template | replace: '.', '' }}">
+
+    <div class="button-to-top">
+      {% render "icons", icon: 'back-to-top' %}
+      {{ settings.back }}
+    </div>
+
+    {% section 'ajax-cart' %}
+    {% section 'header' %}
+
+    {{ content_for_layout }}
+
+    <!-- ----------------- Cart ------------------ -->
+    <script type="text/javascript">
+      const cartJson = {{ cart | json }};
+      const cartCurrency = {
+        "currency": "{{ shop.currency }}",
+        "moneyFormat": "{{ shop.money_format }}",
+        "moneyWithCurrencyFormat": "{{ shop.money_with_currency_format }}"
+      };
+    </script>
+
+    <!-- {% section 'country-popup' %} -->
+    {% section 'ajax-cart' %}
+    {% section 'prefooter' %}
+    {% section 'footer' %}
+
+    <!-- ----------------- JS ------------------ -->
+    {{ 'option_selection.js' | asset_url | script_tag }}
+    {{ 'global.js' | asset_url | script_tag }}
+    {{ 'accordion.js' | asset_url | script_tag }}
+    {{ 'cart.js' | asset_url | script_tag }}
+    {{ 'slider.js' | asset_url | script_tag }}
+    {{ 'localization.js' | asset_url | script_tag }}
+
+    {% if template.name == 'product' %}
+      {{ 'product-recomendations.js' | asset_url | script_tag }}
+    {% endif %}
+    <!-- PickyStory snippet "main_widget_script", do not modify. Safe to remove after the app is uninstalled -->
+  {% if content_for_header contains 'pickystory' %}
+    <script defer src="https://cdn.pickystory.com/widget/dist/latest/pickystory-widget.min.js"></script>
+  {% endif %}
+  <!-- PickyStory end snippet "main_widget_script" -->
+
+<style>
+   .stamped-badge-caption:before {content:attr(data-rating) !important;}
+
+</style>
+    
+<script 
+async 
+type="text/javascript" 
+data-api-key="018b5363-30b2-4ab5-a987-5c2e94cb6b09" 
+id="stamped-script-widget" 
+src="https://cdn1.stamped.io/files/widget.min.js">
+</script>
+    
+{% if product %}
+  <script>
+  window.addEventListener('load', function() {
+  var _learnq = window._learnq || [];
+  function addedToCart() {
+   fetch(`${window.location.origin}/cart.js`)
+   .then(res => res.clone().json().then(data => {
+    var cart = {
+      total_price: data.total_price/100,
+      $value: data.total_price/100,
+      total_discount: data.total_discount,
+      original_total_price: data.original_total_price/100,
+      items: data.items
+    }
+    if (item !== 'undefined') {
+      cart = Object.assign(cart, item)
+    }
+    if (klAjax) {
+       _learnq.push(['track', 'Added to Cart', cart]);
+       klAjax = false;
+      }
+   }))
+  };
+  (function (ns, fetch) {
+    ns.fetch = function() {
+      const response = fetch.apply(this, arguments);
+      response.then(res => {
+        if (`${window.location.origin}/cart/add.js`
+          .includes(res.url) && res.url !== '') {
+              addedToCart()
+        }
+      });
+      return response
+     }
+  }(window, window.fetch));
+  var klAjax = true;
+  var atcButtons = document.querySelectorAll("form[action*='/cart/add'] button[type='submit']");
+  for (var i = 0; i < atcButtons.length; i++) { 
+    atcButtons[i].addEventListener("click", function() {
+      if (klAjax) {
+        _learnq.push(['track', 'Added to Cart', item]);
+        klAjax = false;
+      }
+    })
+  }
+  });
+</script>
+{% endif %}
+    
+</body>
+</html>

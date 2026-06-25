@@ -1,0 +1,85 @@
+{{ 'section-recomended-products.css' | asset_url | stylesheet_tag }}
+{{ 'component-product-card.css' | asset_url | stylesheet_tag }}
+
+<div
+  class="recomended-products__container container"
+  data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit=10&intent=related"
+>
+  {%- if recommendations.performed? and recommendations.products_count > 0 -%}
+    <div class="recomended-products__header">
+      <h2 class="recomended-products__title h2">{{ section.settings.title }}</h2>
+      <div class="navigation-container">
+        <div class="swiper-button-prev recomended-products__btn-prev swiper-button">
+          {% render 'icons', icon: 'arrow-prev-slider' %}
+        </div>
+        <div class="swiper-button-next recomended-products__btn-next swiper-button">
+          {% render 'icons', icon: 'arrow-next-slider' %}
+        </div>
+      </div>
+    </div>
+    <div class="recomended-products__slider">
+      <div class="swiper-wrapper">
+        {%- for product in recommendations.products -%}
+          <div class="swiper-slide recomended-products__slide">
+            {% render 'product-card', product: product %}
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  {%- endif -%}
+</div>
+
+{% style %}
+  #shopify-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  @media screeen and (max-width: 760px) {
+    #shopify-section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top | divided_by: 2 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | divided_by: 2 }}px;
+    }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Product recommendations",
+  "tag": "section",
+  "class": "recomended-products",
+  "settings": [
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Padding top",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Padding bottom",
+      "default": 80
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "You may also like"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product recommendations",
+      "category": "Product"
+    }
+  ],
+  "templates": ["product"]
+}
+{% endschema %}

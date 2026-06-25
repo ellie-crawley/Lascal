@@ -1,0 +1,170 @@
+{{ 'section-banner.css' | asset_url | stylesheet_tag }}
+
+<section class="banner" id="{{ section.id }}">
+  <div class="container">
+    <div class="banner__wrapper">
+      {% if section.blocks.size > 0 %}
+        <div class="main-banner-swiper swiper">
+          <div class="swiper-wrapper">
+            {% for block in section.blocks %}
+              <div class="swiper-slide">
+                <div class="swiper-slide--wrapper">
+                  <div class="swiper-slide--content">
+                    {% if block.settings.title != blank %}
+                      <div class="banner__title">{{ block.settings.title }}</div>
+                    {% endif %}
+
+                    {% if block.settings.video != blank or block.settings.img != blank %}
+                      <div class="swiper-slide--video-image show-mob {% if block.settings.img_mobile != blank and block.settings.video == blank %}has-mobile{% endif %}">
+                        {% if block.settings.video != blank %}
+                          <video src="{{ block.settings.video }}" autoplay muted loop></video>
+                        {% else %}
+                          {% render 'image', image: block.settings.img %}
+                          {% if block.settings.img_mobile != blank %}
+                            {% render 'image', image: block.settings.img_mobile %}
+                          {% endif %}
+                        {% endif %}
+                      </div>
+                    {% endif %}
+
+                    {% if block.settings.content != blank %}
+                      <div class="banner__content">{{ block.settings.content }}</div>
+                    {% endif %}
+                    {% if block.settings.cta_text %}
+                      <a
+                        href="{{ block.settings.cta_url }}"
+                        class="button banner__button"
+                        style="background-color: {{ block.settings.cta_bg_color }}; color: {{ block.settings.cta_text_color }};"
+                      >
+                        {{- block.settings.cta_text -}}
+                      </a>
+                    {% endif %}
+                  </div>
+                  {% if block.settings.video != blank or block.settings.img != blank %}
+                    <div class="swiper-slide--video-image {% if block.settings.img_mobile != blank and block.settings.video == blank %}has-mobile{% endif %}">
+                      {% if block.settings.video != blank %}
+                        <video src="{{ block.settings.video }}" autoplay muted loop></video>
+                      {% else %}
+                        {% render 'image', image: block.settings.img %}
+                        {% if block.settings.img_mobile != blank %}
+                          {% render 'image', image: block.settings.img_mobile %}
+                        {% endif %}
+                      {% endif %}
+                    </div>
+                  {% endif %}
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% style %}
+  #shopify-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  @media screeen and (max-width: 760px) {
+    #shopify-section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top | divided_by: 2 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | divided_by: 2 }}px;
+    }
+  }
+{% endstyle %}
+{% schema %}
+{
+  "name": "Banner",
+  "settings": [
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Padding top",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Padding bottom",
+      "default": 90
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Slide",
+      "type": "slide",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content"
+        },
+        {
+          "type": "image_picker",
+          "id": "img",
+          "label": "Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "img_mobile",
+          "label": "Image (mobile)"
+        },
+        {
+          "type": "text",
+          "id": "video",
+          "label": "Video link (mp4)",
+          "info": "If this field is not empty, then the image will not be shown. Desired video size 660x660"
+        },
+        {
+          "type": "header",
+          "content": "CTA settings"
+        },
+        {
+          "type": "text",
+          "id": "cta_text",
+          "label": "CTA text",
+          "default": "Default text"
+        },
+        {
+          "type": "url",
+          "id": "cta_url",
+          "label": "CTA url"
+        },
+        {
+          "type": "color",
+          "id": "cta_bg_color",
+          "label": "CTA background color",
+          "default": "#ff8300"
+        },
+        {
+          "type": "color",
+          "id": "cta_text_color",
+          "label": "CTA text color",
+          "default": "#fff"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "category": "Banner",
+      "name": "Banner"
+    }
+  ]
+}
+{% endschema %}

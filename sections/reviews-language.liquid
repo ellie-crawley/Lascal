@@ -1,0 +1,34 @@
+<style>
+    .stamped-reviews-main{
+        margin-bottom: 80px;
+    }
+</style>
+
+<section class="stamped-reviews-main">
+    <div id="stamped-main-widget" 
+        data-widget-style="standard"
+        data-product-id="{{ product.id }}" 
+        data-name="{{ product.title | escape }}" 
+        data-url="{{ shop.url }}{{ product.url }}" 
+        data-image-url="{{ product.featured_image | product_img_url: "large" |replace: '?', '%3F' | replace: '&','%26'}}" 
+        data-description="{{ product.description | escape }}" 
+        data-product-sku="{{product.handle}}"
+        data-product-type="{{product.type}}"
+        data-widget-language ="{{ request.locale.iso_code }}"> 
+        </div>
+</section>
+
+{% schema %}
+{
+    "name": "Stamped main widget",
+    "settings": [
+        
+    ],
+    "presets": [
+        {
+            "category": "Stamped main widget",
+            "name":"Stamped main widget"
+        }
+    ]
+}
+{% endschema %}

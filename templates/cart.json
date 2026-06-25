@@ -1,0 +1,36 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-cart",
+      "settings": {
+        "title_page": "Warenkorb",
+        "button_url": "",
+        "button_text": ""
+      }
+    },
+    "77ae154f-8409-495e-b65b-f84ff2312f3a": {
+      "type": "best-sellers",
+      "settings": {
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "title": "Vous pourriez aussi aimer",
+        "btn_text": "Tous les produits",
+        "all_collections_url": false,
+        "collection": "buggyboard"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "77ae154f-8409-495e-b65b-f84ff2312f3a"
+  ]
+}

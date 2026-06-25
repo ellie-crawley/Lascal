@@ -1,0 +1,44 @@
+.manual-downloading {
+  margin: 0 0 60px;
+}
+.manual-downloading__inner {
+  background-color: #ffe7da;
+  padding: 32px 24px;
+}
+@media screen and (min-width: 750px) {
+  .manual-downloading__inner {
+    text-align: center;
+  }
+}
+.manual-downloading__title {
+  margin: 0 0 16px;
+  max-width: 900px;
+}
+@media screen and (min-width: 750px) {
+  .manual-downloading__title {
+    margin: 0 auto 20px;
+  }
+}
+.manual-downloading__text {
+  margin: 0 0 32px;
+  max-width: 900px;
+}
+@media screen and (min-width: 750px) {
+  .manual-downloading__text {
+    margin: 0 auto 40px;
+  }
+}
+.manual-downloading__button {
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: fit-content;
+}
+@media screen and (min-width: 750px) {
+  .manual-downloading__button {
+    margin: 0 auto;
+    padding: 16px 24px;
+  }
+}

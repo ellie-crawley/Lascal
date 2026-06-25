@@ -1,0 +1,27 @@
+{
+  "products": {
+    "product": {
+      "sold_out": "Wyprzedane",
+      "unavailable": "Niedostępny",
+      "add_to_cart": "Dodaj do koszyka",
+      "find_retailer": "Znajdź sprzedawcę"
+    },
+    "notify_form": {
+      "email": "Wprowadź swój adres e-mail..."
+    }
+  },
+  "general": {
+    "models": {
+      "title_1": "Mocowanie do wózka",
+      "title_1_2": "(szerokość)",
+      "title_2": "Rozmiar platformy",
+      "title_2_2": "(szerokość x głębokość x wysokość)",
+      "title_3": "Odblaskowe ",
+      "title_3_2": "koła",
+      "title_4": "Kompatybilność z ",
+      "title_4_2": "siodełkiem",
+      "title_5": "Siodełko w ",
+      "title_5_2": "zestawie"
+    }
+  }
+}

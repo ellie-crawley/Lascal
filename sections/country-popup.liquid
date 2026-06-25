@@ -1,0 +1,66 @@
+{{ 'section-country-popup.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'country-popup.js' | asset_url }}" defer="defer"></script>
+
+{% if localization.available_countries.size > 1 %}
+  <div class="country-popup" id="country-popup">
+    <div class="country-popup__container">
+      <header class="country-popup__header">
+        <h3 class="country-popup__title">{{ section.settings.title }}</h3>
+        <button class="country-popup__close">
+          <div class="close-icon image-wrapper">
+            {% render 'icons', icon: 'burger-close' %}
+          </div>
+        </button>
+      </header>
+      {% form 'localization' %}
+        <ul
+          id="CountryList"
+          role="list"
+          class="country-popup__list"
+        >
+          {% for country in localization.available_countries %}
+            <li class="country-popup__item" tabindex="-1">
+              <a
+                href="#"
+                {% if country.iso_code == localization.country.iso_code %}
+                  aria-current="true"
+                {% endif %}
+                data-value="{{ country.iso_code }}"
+                class="country-popup__item-link"
+              >
+                {{ country.name }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+
+        <input
+          type="hidden"
+          name="country_code"
+          value="{{ localization.country.iso_code }}"
+        >
+      {% endform %}
+    </div>
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Country Popup",
+  "settings": [
+    {
+      "type": "liquid",
+      "id": "title",
+      "label": "Title",
+      "default": "Your country is <b>{{ localization.country.name }}</b>. If you want to change, select the country below:",
+      "info": "Use '{{ localization.country.name }}' for display current country name"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Country Popup",
+      "category": "Popup"
+    }
+  ]
+}
+{% endschema %}

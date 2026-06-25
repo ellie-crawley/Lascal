@@ -1,0 +1,27 @@
+{
+  "products": {
+    "product": {
+      "sold_out": "Uitverkocht",
+      "unavailable": "Niet beschikbaar",
+      "quantity": "Toevoegen aan winkelwagen",
+      "find_retailer": "Vind een verdeler"
+    },
+    "notify_form": {
+      "email": "Voer je e-mailadres in..."
+    }
+  },
+  "general": {
+    "models": {
+      "title_1": "Kinderwagenbevestiging",
+      "title_1_2": "(breedte)",
+      "title_2": "Platformgrootte",
+      "title_2_2": "(breedte x diepte x hoogte)",
+      "title_3": "Reflecterende ",
+      "title_3_2": "wielen",
+      "title_4": "Zadel ",
+      "title_4_2": "compatibel",
+      "title_5": "Zadel ",
+      "title_5_2": "inbegrepen"
+    }
+  }
+}

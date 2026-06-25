@@ -1,0 +1,105 @@
+.product-support {
+  margin-bottom: 160px;
+}
+@media screen and (max-width: 990px) {
+  .product-support {
+    margin-bottom: 107px;
+  }
+}
+
+.product-support__title {
+  margin-bottom: 24px;
+}
+
+.product-support__text {
+  margin-bottom: 80px;
+}
+@media screen and (max-width: 990px) {
+  .product-support__text {
+    margin-bottom: 32px;
+  }
+}
+
+.product-support__wrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 25px;
+}
+@media screen and (max-width: 990px) {
+  .product-support__wrapper {
+    gap: 16px;
+  }
+}
+
+.product-support__item {
+  width: calc(25% - 25px);
+}
+@media screen and (max-width: 990px) {
+  .product-support__item {
+    width: calc(50% - 16px);
+  }
+}
+
+.product-support__item-svg {
+  margin: 0 auto 24px;
+  display: block;
+  max-width: 160px;
+  max-height: 160px;
+  transition: all 0.3s;
+  border-radius: 50%;
+  background: var(--Main-Beige, #f6f1eb);
+}
+.product-support__item-svg:hover {
+  transform: scale(1.1);
+}
+@media screen and (max-width: 990px) {
+  .product-support__item-svg {
+    max-width: 99px;
+    max-height: 99px;
+  }
+}
+.product-support__item-svg svg {
+  width: 100px;
+  height: 100px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+@media screen and (max-width: 990px) {
+  .product-support__item-svg svg {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+.product-support__item-text {
+  font-family: "Museo Sans Rounded";
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 29px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #000000;
+}
+@media screen and (max-width: 990px) {
+  .product-support__item-text {
+    font-size: 16px;
+    line-height: 19px;
+  }
+}
+.product-support__item-text p {
+  font-family: "Museo Sans Rounded";
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 29px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #000000;
+}
+@media screen and (max-width: 990px) {
+  .product-support__item-text p {
+    font-size: 16px;
+    line-height: 19px;
+  }
+}

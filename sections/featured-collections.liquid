@@ -1,0 +1,139 @@
+{{ 'section-featured-collections.css' | asset_url | stylesheet_tag }}
+
+<section class="featured__collections" id="{{ section.id }}">
+  <div class="container">
+    <div class="featured__collections-wrapper">
+      {% if section.settings.title != blank %}
+        <div class="featured__collections-title">{{ section.settings.title }}</div>
+      {% endif %}
+      {% if section.settings.b_text != blank %}
+        <a href="{{ section.settings.b_link }}" class="button fc-button">{{ section.settings.b_text }}</a>
+      {% endif %}
+    </div>
+
+    {% if section.blocks.size > 0 %}
+      <div class="collections">
+        {% for block in section.blocks %}
+          {% assign handle = block.settings.handle %}
+          <a href="{{ collections[handle].url }}" class="collection__item">
+            {% render 'image', image: collections[handle].image %}
+            <span class="collection__link">
+              {{ collections[handle].title }}
+              {% render 'icons', icon: 'arrow-right-c' %}
+            </span>
+          </a>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+  {% if section.blocks.size > 0 %}
+    <div class="collection-swiper swiper">
+      <div class="swiper-wrapper">
+        {% for block in section.blocks %}
+          <div class="swiper-slide">
+            <div class="collection__item">
+              <a href="{{ collections[handle].url }}" class="collection__link-full">
+                
+              </a>
+              {% assign handle = block.settings.handle %}
+              {% if collections[handle].metafields.custom.mobile_image != blank %}
+                {% render 'image', image: collections[handle].metafields.custom.mobile_image %}
+              {% else %}
+                {% render 'image', image: collections[handle].image %}
+              {% endif %}
+
+              <a href="{{ collections[handle].url }}" class="collection__link">
+                {{ collections[handle].title }}
+                {% render 'icons', icon: 'arrow-right-c' %}
+              </a>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+  <script>
+    const collectionItems = document.querySelectorAll('.featured__collections .collection__item');
+    for (var i = 0; i < collectionItems.length; i++) {
+      if ((i + 1) % 3 !== 1) {
+        collectionItems[i].classList.add('small-element');
+      }
+    }
+  </script>
+</section>
+
+{% style %}
+  #shopify-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  @media screeen and (max-width: 760px) {
+    #shopify-section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top | divided_by: 2 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | divided_by: 2 }}px;
+    }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Featured collections",
+  "settings": [
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Padding top",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Padding bottom",
+      "default": 80
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Featured Collections"
+    },
+    {
+      "type": "text",
+      "id": "b_text",
+      "label": "Button text",
+      "default": "All collections"
+    },
+    {
+      "type": "url",
+      "id": "b_link",
+      "label": "Button link"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Collection",
+      "type": "colection-block",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "handle",
+          "label": "Select a collection"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "category": "Featured collections",
+      "name": "Featured collections"
+    }
+  ]
+}
+{% endschema %}

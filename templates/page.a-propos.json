@@ -1,0 +1,81 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-article",
+      "disabled": true,
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "12114493-6b89-4d3f-a143-803401fe736d": {
+      "type": "recomended-articles",
+      "disabled": true,
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "title": "You may also like"
+      }
+    },
+    "all_blogs_WNT7me": {
+      "type": "all-blogs",
+      "blocks": {
+        "blog_yepQiG": {
+          "type": "blog",
+          "settings": {
+            "blog": "brand-story"
+          }
+        },
+        "blog_GQGx6y": {
+          "type": "blog",
+          "settings": {
+            "blog": "lifestyle"
+          }
+        },
+        "blog_iMxRRP": {
+          "type": "blog",
+          "settings": {
+            "blog": "news"
+          }
+        },
+        "blog_9Az9NE": {
+          "type": "blog",
+          "settings": {
+            "blog": "practical-parenting-tips"
+          }
+        },
+        "blog_FFFWU6": {
+          "type": "blog",
+          "settings": {
+            "blog": "products-highlights"
+          }
+        }
+      },
+      "block_order": [
+        "blog_yepQiG",
+        "blog_GQGx6y",
+        "blog_iMxRRP",
+        "blog_9Az9NE",
+        "blog_FFFWU6"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "Latest from our blog"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "12114493-6b89-4d3f-a143-803401fe736d",
+    "all_blogs_WNT7me"
+  ]
+}

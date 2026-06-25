@@ -1,0 +1,115 @@
+{{ 'section-online-shops.css' | asset_url | stylesheet_tag }}
+
+<div
+  class="online-shops__container container online-shops"
+  data-current-country="{{ localization.country | handleize }}"
+>
+  <div class="online-shops__content">
+    <div class="online-shops__country-selector-container">
+      <div class="online-shops__country--item">
+        {% if section.settings.title != blank %}
+          <h2 class="online-shops__title h2">{{ section.settings.online_shops_text }} {{ section.settings.title }}</h2>
+        {% endif %}
+        <localization-form class="online-shops__country-selector">
+          {% form 'localization' %}
+            <div class="disclosure">
+              <button
+                class="disclosure__button button  country-selector__button country-selector__button-{{ section.id }}"
+                type="button"
+                aria-expanded="false"
+                aria-controls="CountryList"
+              >
+                {{ section.settings.select_trigger_text }}
+                {% render 'icons', icon: 'arrow-down' %}
+              </button>
+              <div class="disclosure__overlay"></div>
+              <ul
+                id="CountryList"
+                role="list"
+                hidden
+                class="country-selector__country-list country-selector__country-list-{{ section.id }}"
+              >
+                {% for country in localization.available_countries %}
+                  <li tabindex="-1" class="country-selector__country-item">
+                    <a
+                      href="#"
+                      {% if country.iso_code == localization.country.iso_code %}
+                        aria-current="true"
+                      {% endif %}
+                      data-value="{{ country.iso_code }}"
+                      class="country-selector__country-link"
+                    >
+                      <div class="disclosure__item-flag image-wrapper">
+                        {{ country | image_url: width: 36 | image_tag }}
+                      </div>
+                      {{ country.name }}
+                    </a>
+                  </li>
+                {% endfor %}
+              </ul>
+    
+              <input
+                type="hidden"
+                name="country_code"
+                value="{{ localization.country.iso_code }}"
+              >
+            </div>
+          {% endform %}
+        </localization-form>
+      </div>
+      <div class="online-shops__shops-list">
+        <div class="online-shops__preloader-container image-wrapper">
+          <div class="lds-dual-ring"></div>
+        </div>
+        <p class="online-shops__shops-list--empty paragraph">{{ section.settings.empty_text | default: 'No Stores' }}</p>
+      </div>
+    </div>
+   
+  </div>
+</div>
+
+<div class="offline-shops container online-shops__title h2">
+  {{ section.settings.offline_shops }}
+  {{ localization.country.name }}
+</div>
+
+{{ 'online-shops.js' | asset_url | script_tag }}
+
+{% schema %}
+{
+  "name": "Online Shops",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "online_shops_text",
+      "label": "Change online shops text",
+      "default": "Online shops in"
+    },
+    {
+      "type": "liquid",
+      "id": "title",
+      "label": "Title online shops",
+      "default": "{{ localization.country.name }}"
+    },
+    {
+      "type": "text",
+      "id": "select_trigger_text",
+      "label": "Change country button text",
+      "default": "Change your country"
+    },
+    {
+      "type": "text",
+      "id": "offline_shops",
+      "label": "Title offline shops",
+      "default": "Offline retailers in"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Online Shops",
+      "category": "Online Shops"
+    }
+  ]
+}
+{% endschema %}

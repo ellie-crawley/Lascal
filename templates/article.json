@@ -1,0 +1,23 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-article",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "12114493-6b89-4d3f-a143-803401fe736d": {
+      "type": "recomended-articles",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "title": "You may also like"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "12114493-6b89-4d3f-a143-803401fe736d"
+  ]
+}

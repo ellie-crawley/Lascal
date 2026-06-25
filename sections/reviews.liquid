@@ -1,0 +1,139 @@
+{% if section.blocks.size > 0  %}
+{{ 'section-reviews-hp.css' | asset_url | stylesheet_tag }}
+<section class="reviews-section" id="{{ section.id }}">
+  <div class="reviews-hp-swiper swiper">
+    {% if section.settings.title != blank %}
+      <div class="reviews-title">{{ section.settings.title | replace: '®', '<span class="large_trademark">®</span>' }}</div>
+    {% endif %}
+    <div class="navigation-wrap">
+      <div class="swiper-button-prev swiper-button">
+        {% render 'icons', icon: 'arrow-prev-slider' %}
+      </div>
+      <div class="swiper-button-next swiper-button">
+        {% render 'icons', icon: 'arrow-next-slider' %}
+      </div>
+    </div>
+    <div class="swiper-wrapper">
+      {% for block in section.blocks %}
+        <div class="swiper-slide">
+          <div class="reviews-image">
+            {% render "image", image: block.settings.img %}
+          </div>
+          <div class="reviews-wrapper">
+            {% if block.settings.content != blank %}
+              <div class="reviews-content">{{ block.settings.content }}</div>
+            {% endif %}
+            <div class="reviews-name--stars">
+              {% if block.settings.name != blank %}
+                <div class="review-name">{{ block.settings.name }}</div>
+              {% endif %}
+              <div class="review-stars">
+                {% assign countStar = block.settings.stars | plus: 0 %}
+                {% assign lastStar = 5 | minus: countStar %}
+          
+                {% for i in (1..countStar) %}
+                <svg width="23" height="22" viewBox="0 0 23 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M11.8301 0.5L14.412 8.4463H22.7672L16.0077 13.3574L18.5896 21.3037L11.8301 16.3926L5.07055 21.3037L7.65246 13.3574L0.892928 8.4463H9.24817L11.8301 0.5Z" fill="#FF8300"/>
+                </svg>
+                {% endfor %}
+          
+                {% if lastStar > 0 %}
+                {% for i in (1..lastStar) %}
+                <svg class="gray" width="23" height="22" viewBox="0 0 23 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M11.8301 0.5L14.412 8.4463H22.7672L16.0077 13.3574L18.5896 21.3037L11.8301 16.3926L5.07055 21.3037L7.65246 13.3574L0.892928 8.4463H9.24817L11.8301 0.5Z" fill="#FF8300"/>
+                </svg>
+                {% endfor %}
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% style %}
+  #shopify-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  @media screeen and (max-width: 760px) {
+    #shopify-section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top | divided_by: 2 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | divided_by: 2 }}px;
+    }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+ "name": "Reviews section",
+"settings": [
+  {
+    "type": "range",
+    "id": "padding_top",
+    "min": 0,
+    "max": 100,
+    "step": 1,
+    "label": "Padding top",
+    "default": 80
+  },
+  {
+    "type": "range",
+    "id": "padding_bottom",
+    "min": 0,
+    "max": 100,
+    "step": 1,
+    "label": "Padding bottom",
+    "default": 80
+  },
+ {
+   "type": "text",
+   "id": "title",
+   "label": "Title",
+  "default": "What our customers saying about us"
+ }
+],
+"blocks": [
+ {
+  "name": "Review",
+ "type": "review",
+"settings": [
+  {
+    "type": "image_picker",
+    "id": "img",
+    "label": "Image"
+  },
+ {
+   "type": "textarea",
+   "id": "content",
+   "label": "Content"
+ },
+{
+  "type": "text",
+  "id": "name",
+  "label": "Name"
+},
+{
+  "type": "range",
+  "id": "stars",
+  "label": "Stars",
+  "min": 1,
+  "max": 5,
+  "step": 1,
+  "default": 5
+}
+]
+ }
+],
+"presets": [
+  {
+    "category": "Reviews section",
+    "name":"Reviews section"
+  }
+]
+}
+{% endschema %}

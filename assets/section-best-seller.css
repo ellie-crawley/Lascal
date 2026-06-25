@@ -1,0 +1,64 @@
+.best-seller__container {
+  padding: 40px 0;
+  margin-bottom: 150px;
+}
+@media screen and (max-width: 990px) {
+  .best-seller__container {
+    margin-bottom: 50px;
+  }
+}
+
+.best-seller__header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+@media screen and (max-width: 990px) {
+  .best-seller__header {
+    margin-bottom: 35px;
+  }
+}
+
+.best-seller__title {
+  font-family: "Museo Sans Rounded";
+  font-size: 48px;
+  font-weight: 300;
+  line-height: 58px;
+  letter-spacing: 0em;
+}
+@media screen and (max-width: 990px) {
+  .best-seller__title {
+    font-size: 24px;
+    line-height: 29px;
+  }
+}
+
+.best-seller__wrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+}
+.best-seller__wrapper::-webkit-scrollbar {
+  width: 0;
+  display: none;
+}
+@media screen and (max-width: 990px) {
+  .best-seller__wrapper {
+    overflow-x: auto;
+    gap: 30px;
+    width: calc(100% + 20px);
+  }
+}
+.best-seller__wrapper .product__card {
+  width: 25%;
+}
+@media screen and (max-width: 990px) {
+  .best-seller__wrapper .product__card {
+    min-width: 300px;
+  }
+}
+@media screen and (max-width: 450px) {
+  .best-seller__wrapper .product__card {
+    min-width: 217px;
+  }
+}

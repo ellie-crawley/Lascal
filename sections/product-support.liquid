@@ -1,0 +1,173 @@
+{{ 'section-product-support.css' | asset_url | stylesheet_tag }}
+
+<section class="product-support container">
+  <div class="product-support__container">
+    <div class="product-support__title h2">{{ section.settings.title }}</div>
+    <div class="product-support__text paragraph">{{ section.settings.text }}</div>
+    <div class="product-support__wrapper">
+      {% for block in section.blocks %}
+        {% liquid
+          case localization.language.iso_code
+            when 'en'
+              assign url = block.settings.url_en
+            when 'cn'
+              assign url = block.settings.url_cn
+            when 'nl'
+              assign url = block.settings.url_nl
+            when 'fr'
+              assign url = block.settings.url_fr
+            when 'de'
+              assign url = block.settings.url_de
+            when 'it'
+              assign url = block.settings.url_it
+            when 'jp'
+              assign url = block.settings.url_jp
+            when 'pl'
+              assign url = block.settings.url_pl
+            when 'es'
+              assign url = block.settings.url_es
+            when 'se'
+              assign url = block.settings.url_se
+            else
+              assign url = block.settings.url_en
+          endcase
+
+          if url == blank
+            assign url = block.settings.url_en
+          endif
+        %}
+        <a href="{{ url }}" class="product-support__item" target="_blank">
+          <div class="product-support__item-svg image-wrapper">
+            {{ block.settings.svg }}
+          </div>
+          <div class="product-support__item-text">{{ block.settings.text }}</div>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% style %}
+  #shopify-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  @media screeen and (max-width: 760px) {
+    #shopify-section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top | divided_by: 2 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | divided_by: 2 }}px;
+    }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Product support",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Padding top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Padding bottom",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Block",
+      "type": "block",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "svg",
+          "label": "Svg"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text"
+        },
+        {
+          "type": "url",
+          "id": "url_en",
+          "label": "Url EN",
+          "info": "Using by default"
+        },
+        {
+          "type": "url",
+          "id": "url_cn",
+          "label": "Url CN"
+        },
+        {
+          "type": "url",
+          "id": "url_nl",
+          "label": "Url NL"
+        },
+        {
+          "type": "url",
+          "id": "url_fr",
+          "label": "Url FR"
+        },
+        {
+          "type": "url",
+          "id": "url_de",
+          "label": "Url DE"
+        },
+        {
+          "type": "url",
+          "id": "url_it",
+          "label": "Url IT"
+        },
+        {
+          "type": "url",
+          "id": "url_jp",
+          "label": "Url JP"
+        },
+        {
+          "type": "url",
+          "id": "url_pl",
+          "label": "Url PL"
+        },
+        {
+          "type": "url",
+          "id": "url_es",
+          "label": "Url ES"
+        },
+        {
+          "type": "url",
+          "id": "url_se",
+          "label": "Url SE"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "category": "Product support",
+      "name": "Product support"
+    }
+  ]
+}
+{% endschema %}

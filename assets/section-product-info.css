@@ -1,0 +1,331 @@
+.product {
+  padding: 40px 0 80px;
+}
+@media screen and (max-width: 990px) {
+  .product {
+    padding: 40px 0;
+  }
+}
+
+.product__wrapper {
+  display: flex;
+}
+@media screen and (max-width: 990px) {
+  .product__wrapper {
+    flex-direction: column;
+  }
+}
+.product__wrapper .stamped-badge[data-rating="0.0"] {
+  display: block !important;
+}
+.product__wrapper .stamped-product-reviews-badge .stamped-badge-caption {
+  display: none;
+}
+
+.product__info {
+  padding-left: 60px;
+}
+@media screen and (max-width: 990px) {
+  .product__info {
+    padding-left: 0px;
+  }
+}
+
+.product__reviews-badge {
+  min-height: 23.47px;
+}
+.product__reviews-badge .stamped-fa::before {
+  font-size: 25px;
+}
+@media screen and (max-width: 990px) {
+  .product__reviews-badge {
+    display: none !important;
+  }
+}
+.product__reviews-badge.mobile {
+  display: none !important;
+}
+@media screen and (max-width: 990px) {
+  .product__reviews-badge.mobile {
+    display: block !important;
+  }
+}
+
+.product__title {
+  font-family: "Museo Sans Rounded";
+  font-weight: 300;
+  font-size: 48px;
+  line-height: 120%;
+  color: #000000;
+  margin-bottom: 8px;
+}
+@media screen and (max-width: 990px) {
+  .product__title {
+    margin-bottom: 24px;
+    display: none;
+    font-size: 24px;
+    line-height: 29px;
+    letter-spacing: 0em;
+  }
+}
+.product__title.mobile {
+  display: none;
+}
+@media screen and (max-width: 990px) {
+  .product__title.mobile {
+    display: block;
+  }
+}
+
+.product__description {
+  margin-bottom: 40px;
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 160%;
+  color: #000000;
+}
+@media screen and (max-width: 990px) {
+  .product__description {
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0em;
+    margin-bottom: 24px;
+  }
+}
+
+.product__price-compare {
+  color: rgba(0, 0, 0, 0.5);
+  font-family: "Museo Sans Rounded", "Open Sans", sans-serif;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 120%;
+  text-decoration: line-through;
+}
+@media screen and (max-width: 990px) {
+  .product__price-compare {
+    font-size: 16px;
+  }
+}
+
+.product__varints-price {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+@media screen and (max-width: 990px) {
+  .product__varints-price {
+    display: none;
+  }
+}
+.product__varints-price.mobile {
+  display: none;
+}
+@media screen and (max-width: 990px) {
+  .product__varints-price.mobile {
+    display: flex;
+  }
+}
+
+.product__price {
+  color: #ff8300;
+  text-align: right;
+  font-family: "Museo Sans Rounded", "Open Sans", sans-serif;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 120%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.product__price .price-sticky {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 120%;
+}
+@media screen and (max-width: 990px) {
+  .product__price {
+    font-size: 16px;
+  }
+}
+.product__price.hidden {
+  display: none;
+}
+
+.product__variants {
+  max-width: 80%;
+}
+
+.product-variant__colors {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+}
+@media screen and (max-width: 990px) {
+  .product-variant__colors {
+    margin-bottom: 32px;
+  }
+}
+
+.product__variants-metafields {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 9px;
+  flex-wrap: wrap;
+}
+
+.product__variants-metafields-item {
+  border-radius: 50%;
+  border: 1px solid #C7C7CC;
+  width: 67px;
+  height: 67px;
+}
+.product__variants-metafields-item.active {
+  border: 1px solid #FF8300;
+}
+.product__variants-metafields-item img {
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-variant__title {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 160%;
+  color: #000000;
+  margin-bottom: 20px;
+}
+@media screen and (max-width: 990px) {
+  .product-variant__title {
+    margin-bottom: 8px;
+    font-family: "Inter";
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: left;
+  }
+}
+
+.product-variant__color {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 16px;
+  position: relative;
+}
+@media screen and (max-width: 990px) {
+  .product-variant__color {
+    width: 20px;
+    height: 20px;
+    margin-right: 6px;
+  }
+}
+.product-variant__color.active::before {
+  content: "";
+  border: 3px solid #d5d5d5;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.product__reviews-view {
+  margin-left: 16px;
+}
+
+.form__buttons-wrapper {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+@media screen and (max-width: 450px) {
+  .form__buttons-wrapper {
+    display: none;
+  }
+}
+
+.product__form-button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 77%;
+  width: 100%;
+  justify-content: center;
+}
+@media screen and (max-width: 990px) {
+  .product__form-button {
+    max-width: 50%;
+    padding: 16px 48px;
+  }
+}
+
+.product__klarna img,
+.product__paypal img {
+  width: fit-content;
+  max-height: 55px;
+  height: fit-content;
+}
+
+.product__sticky-buttons {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 99;
+  background: #ff8300;
+  padding: 20.5px 24px;
+  align-items: center;
+  justify-content: space-between;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 120%;
+  text-transform: uppercase;
+  display: none;
+}
+.product__sticky-buttons .button {
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  line-height: 120%;
+  padding: 0;
+  background: transparent;
+  border: none;
+  max-width: fit-content;
+}
+@media screen and (max-width: 450px) {
+  .product__sticky-buttons .button {
+    max-width: 34%;
+  }
+}
+.product__sticky-buttons img {
+  width: fit-content;
+  height: fit-content;
+}
+@media screen and (max-width: 450px) {
+  .product__sticky-buttons {
+    display: flex;
+  }
+}
+
+.product__sticky-icons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.tolstoy-stories {
+  margin-bottom: 40px;
+  display: block;
+}

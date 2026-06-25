@@ -1,0 +1,22 @@
+{% comment %}
+  Examplae usage: {% render 'article-card', article: article, classes: "custom-class" %}
+{% endcomment %}
+
+<a href="{{ article.url }}" class="{{ classes }} article">
+  <div class="article__image image-wrapper">
+    {% if article.image != blank %}
+      {% render 'image', image: article.image %}
+    {% else %}
+      {{ 'image' | placeholder_svg_tag }}
+    {% endif %}
+  </div>
+  <div class="article__content">
+    <p class="article__date paragraph">{{ article.updated_at | date: '%d %B %Y' }}</p>
+    <p class="article__title">{{ article.title }}</p>
+    {% if article.excerpt != blank %}
+      <p class="article__excerpt">{{ article.excerpt }}</p>
+    {% else %}
+      <p class="article__excerpt">{{ article.content | strip_html | truncate: 150 }}</p>
+    {% endif %}
+  </div>
+</a>

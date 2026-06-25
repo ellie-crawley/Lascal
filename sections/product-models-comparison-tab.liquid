@@ -1,0 +1,105 @@
+{{ 'section-models-comparison.css' | asset_url | stylesheet_tag }}
+
+{% assign meta = product.metafields.custom.models_comparison_tab_with_title.value %}
+
+{% if meta != blank %}
+    <section class="models-comparison-tab container">
+        <div class="models-comparison-tab__wrapper">
+            <div class="models-comparison-tab__item accordion__item">
+                <div class="models-comparison-tab__trigger accordion__trigger">
+                    <div class="models-comparison-tab__question">{{ section.settings.title }}</div>
+                    <div class="accordion__item-icon">
+                        {% include 'icons', icon: 'accordion-arrow' %}
+                    </div>
+                </div>
+                <div class="models-comparison-tab__content accordion__content" style="display: none;">
+                    <div class="models-comparison-tab__products">
+                        {% for item in meta.products.value %}
+                            <div class="models-comparison-tab__product">
+                                <div class="models-comparison-tab__product--image">
+                                    <img src="{{ item.images[0] | img_url: 'master' }}" alt="{{ item.images[0].alt }}">
+                                </div>
+                                <div class="models-comparison-tab__product--title">{{ item.title }}</div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="models-comparison-tab__table">
+                        <div class="models-comparison-tab__row">
+                            <div class="models-comparison-tab__item--title">{{ meta.stroller_fitting_title | metafield_tag }}</div>
+                            {% for item in meta.products.value %}
+                                {% assign productMeta = item.metafields.custom.models_comparison_info.value %}
+                                <div class="models-comparison-tab__item--text">{{ productMeta.stroller_fitting | metafield_tag }}</div>
+                            {% endfor %}
+                        </div>
+                        <div class="models-comparison-tab__row">
+                            <div class="models-comparison-tab__item--title">{{ meta.platform_size_title | metafield_tag }}</div>
+                            {% for item in meta.products.value %}
+                                {% assign productMeta = item.metafields.custom.models_comparison_info.value %}
+                                <div class="models-comparison-tab__item--text">{{ productMeta.platform_size | metafield_tag }}</div>
+                            {% endfor %}
+                        </div>
+                        <div class="models-comparison-tab__row">
+                            <div class="models-comparison-tab__item--title">{{ meta.reflective_wheels_title | metafield_tag }}</div>
+                            {% for item in meta.products.value %}
+                                {% assign productMeta = item.metafields.custom.models_comparison_info.value %}
+                                <div class="models-comparison-tab__item--text">
+                                    {% if productMeta.reflective_wheels == true %}
+                                        ✓
+                                    {% elsif productMeta.reflective_wheels == false %}
+                                        X
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <div class="models-comparison-tab__row">
+                            <div class="models-comparison-tab__item--title">{{ meta.saddle_compatible_title | metafield_tag }}</div>
+                            {% for item in meta.products.value %}
+                                {% assign productMeta = item.metafields.custom.models_comparison_info.value %}
+                                <div class="models-comparison-tab__item--text">
+                                    {% if productMeta.saddle_compatible == true %}
+                                        ✓
+                                    {% elsif productMeta.saddle_compatible == false %}
+                                        X
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <div class="models-comparison-tab__row">
+                            <div class="models-comparison-tab__item--title">{{ meta.saddle_included_title | metafield_tag }}</div>
+                            {% for item in meta.products.value %}
+                                {% assign productMeta = item.metafields.custom.models_comparison_info.value %}
+                                <div class="models-comparison-tab__item--text">
+                                    {% if productMeta.saddle_included == true %}
+                                        ✓
+                                    {% elsif productMeta.saddle_included == false %}
+                                        X
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endif %}
+
+{% schema %}
+{
+    "name": "Models comparison tab",
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Models comparison"
+        }
+    ],
+    "presets": [
+        {
+            "category": "Models comparison tab",
+            "name": "Models comparison tab"
+        }
+    ]
+}
+{% endschema %}

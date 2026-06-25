@@ -1,0 +1,44 @@
+{{ 'section-features-tab.css' | asset_url | stylesheet_tag }}
+
+{% assign meta = product.metafields.custom.features_tab.value %}
+
+{% if meta != blank %}
+    <section class="features-tab container">
+        <div class="features-tab__wrapper">
+            <div class="features-tab__item accordion__item open">
+                <div class="features-tab__trigger accordion__trigger">
+                    <div class="features-tab__question">{{ section.settings.title }}</div>
+                    <div class="accordion__item-icon">
+                        {% include 'icons', icon: 'accordion-arrow' %}
+                    </div>
+                </div>
+                <div class="features-tab__content accordion__content">
+                    <div class="features-tab__content--text">{{ meta.text | metafield_tag }}</div>
+                    <div class="features-tab__content--image">
+                        <img lazy="lazy" src="{{ meta.image | img_url: 'master' }}" alt="{{ meta.image.alt }}">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endif %}
+
+{% schema %}
+{
+    "name": "Product features tab",
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Features"
+        }
+    ],
+    "presets": [
+        {
+            "category": "Product features tab",
+            "name": "Product features tab"
+        }
+    ]
+}
+{% endschema %}

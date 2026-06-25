@@ -1,0 +1,124 @@
+{{ 'section-image-text.css' | asset_url | stylesheet_tag }}
+
+<div class="image-text__container container">
+  <a href="{{ section.settings.btn_url }}" class="image-text__image image-wrapper">
+    {% if section.settings.video != blank %}
+      {{ section.settings.video | video_tag: controls: true, autoplay: true, muted: true, loop: true, playsinline: true }}
+    {% elsif section.settings.image != blank %}
+      {% render 'image', image: section.settings.image %}
+    {% else %}
+      {{ 'image' | placeholder_svg_tag }}
+    {% endif %}
+  </a>
+  <div class="image-text__content">
+    {% if section.settings.title != blank %}
+      <h2 class="image-text__title h2">{{ section.settings.title }}</h2>
+    {% endif %}
+    {% if section.settings.text != blank %}
+      <div class="image-text__text paragraph">
+        {{ section.settings.text }}
+      </div>
+    {% endif %}
+    {% if section.settings.name != blank %}
+      <p class="image-text__name paragraph">{{ section.settings.name }}</p>
+    {% endif %}
+    {% if section.settings.role != blank %}
+      <p class="image-text__role">{{ section.settings.role }}</p>
+    {% endif %}
+    {% if section.settings.btn_url != blank and section.settings.btn_text != blank %}
+      <a href="{{ section.settings.btn_url }}" class="image-text__button button">{{ section.settings.btn_text }}</a>
+    {% endif %}
+  </div>
+</div>
+
+{% style %}
+  #shopify-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  @media screeen and (max-width: 760px) {
+    #shopify-section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top | divided_by: 2 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | divided_by: 2 }}px;
+    }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Image with text",
+  "tag": "section",
+  "class": "image-text",
+  "settings": [
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Padding top",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Padding bottom",
+      "default": 80
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Video"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Title",
+      "default": "Who we are and what we do"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>Lascal is a design-led company with a small but distinctive range of children's nursery equipment. Our philosophy is to develop and manufacture high quality products that fulfil a real demand, and contribute to the security of children's environment.</p><p>To market our products, we have a well-established network of distributors. Each distributor is an independent company with a similar commitment to quality and customer service as our own.</p><p>Yours sincerely,</p>"
+    },
+    {
+      "type": "text",
+      "id": "name",
+      "label": "Name",
+      "default": "Mr. Joran Lundh"
+    },
+    {
+      "type": "text",
+      "id": "role",
+      "label": "Role",
+      "default": "President"
+    },
+    {
+      "type": "url",
+      "id": "btn_url",
+      "label": "Button url"
+    },
+    {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Button text"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image with text",
+      "category": "Image with text"
+    }
+  ]
+}
+{% endschema %}

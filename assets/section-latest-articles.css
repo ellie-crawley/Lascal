@@ -1,0 +1,110 @@
+.latest-articles {
+  margin: 0 0 60px;
+}
+@media screen and (min-width: 750px) {
+  .latest-articles {
+    margin: 0 0 160px;
+  }
+}
+.latest-articles__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 0 32px;
+}
+@media screen and (min-width: 750px) {
+  .latest-articles__header {
+    margin-bottom: 40px;
+  }
+}
+.latest-articles__title {
+  max-width: 50%;
+}
+.latest-articles .recommended-articles__title {
+  margin: 0 0 32px;
+}
+@media screen and (min-width: 750px) {
+  .latest-articles .recommended-articles__title {
+    text-align: center;
+    margin: 0 0 60px;
+  }
+}
+.latest-articles__articles {
+  position: relative;
+  width: calc(100% + 20px);
+  max-width: calc(100% + 20px);
+  display: flex;
+  gap: 30px;
+  overflow: hidden;
+  margin-right: -20px;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+}
+@media screen and (min-width: 750px) {
+  .latest-articles__articles {
+    gap: 24px;
+    width: 100%;
+    margin-right: 0;
+  }
+}
+.latest-articles .article {
+  min-width: 246px;
+  flex: 1;
+}
+.latest-articles .article:hover .article__image img {
+  scale: 1.2;
+}
+.latest-articles .article__excerpt {
+  font-family: "Open Sans";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 160%;
+  color: #000;
+}
+@media screen and (max-width: 990px) {
+  .latest-articles .article__excerpt {
+    font-size: 14px;
+  }
+}
+.latest-articles .article__image {
+  margin: 0 0 16px;
+  overflow: hidden;
+}
+.latest-articles .article__image img {
+  transition: 0.3s ease;
+}
+.latest-articles .article__image::before {
+  padding-top: 74.39%;
+}
+@media screen and (min-width: 750px) {
+  .latest-articles .article__image::before {
+    padding-top: 100%;
+  }
+}
+@media screen and (min-width: 750px) {
+  .latest-articles .article__image {
+    margin: 0 0 32px;
+  }
+}
+.latest-articles .article__date {
+  color: #000;
+  opacity: 0.6;
+  font-size: 14px;
+  font-family: "Open Sans", sans-serif;
+  line-height: 140%;
+  margin: 0 0 6px;
+}
+.latest-articles .article__title {
+  color: #000;
+  font-size: 18px;
+  font-family: "Museo Sans Rounded", "Open Sans", sans-serif;
+  font-weight: 300;
+  line-height: 120%;
+  margin-bottom: 5px;
+}
+@media screen and (min-width: 750px) {
+  .latest-articles .article__title {
+    font-size: 24px;
+  }
+}

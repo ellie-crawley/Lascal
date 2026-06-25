@@ -1,0 +1,32 @@
+.big-icons__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 20px;
+  margin-bottom: 95px;
+  padding: 0 40px;
+}
+@media screen and (max-width: 990px) {
+  .big-icons__wrapper {
+    padding: 0;
+  }
+}
+
+.big-icons__item {
+  max-width: 150px;
+  width: 100%;
+  position: relative;
+}
+.big-icons__item::before {
+  content: "";
+  display: block;
+  padding-top: 100%;
+}
+.big-icons__item img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}

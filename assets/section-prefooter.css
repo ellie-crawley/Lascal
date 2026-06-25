@@ -1,0 +1,222 @@
+.prefooter {
+  margin-bottom: 24px;
+}
+@media screen and (max-width: 768px) {
+  .prefooter {
+    margin-bottom: 16px;
+  }
+}
+@media screen and (max-width: 1023px) {
+  .prefooter .padding-0 {
+    padding: 0;
+  }
+}
+@media screen and (max-width: 1023px) {
+  .prefooter .padding-0.mobile-pading {
+    padding: 0 20px;
+  }
+}
+.prefooter__bar.social {
+  padding: 33px 24px;
+}
+@media screen and (max-width: 990px) {
+  .prefooter__bar.social {
+    padding: 16px;
+  }
+}
+.prefooter__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.prefooter__logo svg {
+  width: 130px;
+  height: 33.39px;
+}
+@media screen and (max-width: 768px) {
+  .prefooter__logo svg {
+    width: 65px;
+    height: 16.7px;
+  }
+}
+.prefooter__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin: 24px 0;
+}
+@media screen and (max-width: 1023px) {
+  .prefooter__grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .prefooter__grid {
+    margin: 16px 0;
+  }
+}
+.prefooter__block {
+  background: #f3e9dd;
+  padding: 80px 40px;
+  text-align: center;
+}
+@media screen and (max-width: 1024px) {
+  .prefooter__block {
+    padding: 50px 30px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .prefooter__block {
+    padding: 32px 20px;
+  }
+}
+.prefooter__title {
+  font-size: 32px;
+  line-height: 38.4px;
+  font-weight: 300;
+  margin-bottom: 30px;
+}
+@media screen and (max-width: 768px) {
+  .prefooter__title {
+    font-size: 18px;
+    line-height: 21.6px;
+    margin-bottom: 24px;
+    font-weight: 400;
+  }
+}
+.prefooter__subtitle {
+  line-height: 25.6px;
+  margin-bottom: 30px;
+}
+@media screen and (max-width: 768px) {
+  .prefooter__subtitle {
+    font-size: 14px;
+    line-height: 19.6px;
+    margin-bottom: 24px;
+  }
+}
+.prefooter__bar {
+  background: rgba(133, 138, 135, 0.1);
+  padding: 24px 40px;
+}
+@media screen and (max-width: 768px) {
+  .prefooter__bar {
+    padding: 17px 16px;
+  }
+}
+.prefooter__bar-title {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 21.6px;
+}
+@media screen and (max-width: 768px) {
+  .prefooter__bar-title {
+    font-size: 12px;
+    line-height: 14.52px;
+  }
+}
+.prefooter__social {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+@media screen and (max-width: 768px) {
+  .prefooter__social {
+    gap: 10px;
+  }
+}
+.prefooter__social-item {
+  display: flex;
+}
+.prefooter__social-item svg {
+  width: 24px;
+  height: 24px;
+}
+@media screen and (max-width: 768px) {
+  .prefooter__social-item svg {
+    width: 12px;
+    height: 12px;
+  }
+}
+.prefooter__button {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.prefooter__button svg {
+  width: 24px;
+  height: 24px;
+}
+.prefooter__form input {
+  width: 100%;
+}
+@media screen and (max-width: 768px) {
+  .prefooter__button {
+    padding: 5.5px 16px;
+  }
+}
+.prefooter #contact_form {
+  position: relative;
+  display: flex;
+  scroll-margin: 300px 0 0;
+}
+.prefooter #contact_form button {
+  position: absolute;
+  width: fit-content;
+  padding: 0 10px;
+  top: 0;
+  right: 0;
+  height: 100%;
+}
+@media screen and (max-width: 768px) {
+  .prefooter #contact_form button {
+    width: 110px;
+  }
+}
+.prefooter #contact_form #Email {
+  width: 100%;
+  text-align: center;
+}
+@media screen and (max-width: 768px) {
+  .prefooter #contact_form #Email {
+    width: 100%;
+  }
+}
+.prefooter__languages {
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  gap: 16px;
+}
+@media screen and (max-width: 990px) {
+  .prefooter__languages {
+    gap: 8px;
+    flex-direction: row;
+  }
+}
+.prefooter__languages .disclosure__button.header__icon--flag svg {
+  width: 24px;
+  height: 24px;
+}
+@media screen and (max-width: 767px) {
+  .prefooter__languages .disclosure__button.header__icon--flag svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+.prefooter__languages .disclosure__button,
+.prefooter__languages .country-selector__close,
+.prefooter__languages .language-selector__close {
+  background: transparent;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.prefooter__button-submit {
+  background: transparent;
+  border: none;
+  padding: 0;
+  width: fit-content;
+}

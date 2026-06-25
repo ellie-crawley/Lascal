@@ -1,0 +1,27 @@
+{
+  "products": {
+    "product": {
+      "sold_out": "Vyprodáno",
+      "unavailable": "Nedostupné",
+      "add_to_cart": "Přidat do košíku",
+      "find_retailer": "Najít prodejce"
+    },
+    "notify_form": {
+      "email": "Zadejte svou e-mailovou adresu..."
+    }
+  },
+  "general": {
+    "models": {
+      "title_1": "Uchycení na kočárek",
+      "title_1_2": "(šířka)",
+      "title_2": "Velikost platformy",
+      "title_2_2": "(šířka x hloubka x výška)",
+      "title_3": "Reflexní ",
+      "title_3_2": "kola",
+      "title_4": "Kompatibilní se ",
+      "title_4_2": "sedlem",
+      "title_5": "Sedlo v ",
+      "title_5_2": "ceně"
+    }
+  }
+}

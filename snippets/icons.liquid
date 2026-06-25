@@ -1,0 +1,309 @@
+{% case icon %}
+  {% when 'close' %}
+    <svg class="{{icon}}" height="16" viewbox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+          <style>.{{icon}}{fill:#4e4b48;}</style>
+      </defs>
+      <g transform="translate(-60.953 -50.953)"><path class="{{icon}}" d="M0,0,21.241.055l0,1.328L0,1.328Z" transform="translate(61.931 50.953) rotate(45)"/><path class="{{icon}}" d="M0,.055,21.244,0l0,1.328L0,1.383Z" transform="translate(76.953 51.931) rotate(135)"/></g>
+    </svg>
+
+  {%- when 'burger-close' -%}
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g clip-path="url(#clip0_581_5800)">
+      <path d="M13.5 4.5L4.5 13.5" stroke="black" stroke-width="1.125" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M4.5 4.5L13.5 13.5" stroke="black" stroke-width="1.125" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      <defs>
+      <clipPath id="clip0_581_5800">
+      <rect width="18" height="18" fill="white"/>
+      </clipPath>
+      </defs>
+    </svg>
+
+  {%- when 'search' -%}
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g clip-path="url(#clip0_2471_15681)">
+        <path d="M10 17C13.866 17 17 13.866 17 10C17 6.13401 13.866 3 10 3C6.13401 3 3 6.13401 3 10C3 13.866 6.13401 17 10 17Z" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M21 21L15 15" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      <defs>
+        <clipPath id="clip0_2471_15681">
+          <rect width="24" height="24" fill="white"/>
+        </clipPath>
+      </defs>
+    </svg>
+    
+  {%- when 'country-selector' -%}
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
+    <g clip-path="url(#clip0_1396_9466)">
+      <path d="M12 21.6953C16.9706 21.6953 21 17.6659 21 12.6953C21 7.72475 16.9706 3.69531 12 3.69531C7.02944 3.69531 3 7.72475 3 12.6953C3 17.6659 7.02944 21.6953 12 21.6953Z" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M3.59961 9.69531H20.3996" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M3.59961 15.6953H20.3996" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M11.4997 3.69531C9.81501 6.39492 8.92188 9.51318 8.92188 12.6953C8.92188 15.8774 9.81501 18.9957 11.4997 21.6953" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M12.5 3.69531C14.1847 6.39492 15.0778 9.51318 15.0778 12.6953C15.0778 15.8774 14.1847 18.9957 12.5 21.6953" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <defs>
+      <clipPath id="clip0_1396_9466">
+        <rect width="24" height="24" fill="white" transform="translate(0 0.695312)"/>
+      </clipPath>
+    </defs>
+  </svg>
+  {%- when 'cart' -%}
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g clip-path="url(#clip0_2471_15682)">
+        <path d="M6 21C7.10457 21 8 20.1046 8 19C8 17.8954 7.10457 17 6 17C4.89543 17 4 17.8954 4 19C4 20.1046 4.89543 21 6 21Z" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21Z" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M17 17H6V3H4" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M6 5L20 6L19 13H6" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      <defs>
+        <clipPath id="clip0_2471_15682">
+          <rect width="24" height="24" fill="white"/>
+        </clipPath>
+      </defs>
+    </svg>
+    
+  {%- when 'burger' -%}
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g clip-path="url(#clip0_651_880)">
+      <path d="M4 6H20" stroke="#FF8300" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M4 12H20" stroke="#FF8300" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M4 18H20" stroke="#FF8300" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      <defs>
+      <clipPath id="clip0_651_880">
+      <rect width="24" height="24" fill="white"/>
+      </clipPath>
+      </defs>
+    </svg>
+  {%- when 'arrow-right' -%}
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g clip-path="url(#clip0_581_5789)">
+      <path d="M5 12H19" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M15 16L19 12" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M15 8L19 12" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      <defs>
+      <clipPath id="clip0_581_5789">
+      <rect width="24" height="24" fill="white"/>
+      </clipPath>
+      </defs>
+    </svg>
+  {%- when 'arrow-right-c' -%}
+    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g clip-path="url(#clip0_707_1168)">
+      <path d="M6.66602 16L25.3327 16" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M17.334 24L25.334 16" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M17.334 8L25.334 16" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      <defs>
+      <clipPath id="clip0_707_1168">
+      <rect width="32" height="32" fill="white"/>
+      </clipPath>
+      </defs>
+    </svg>
+  {%- when 'arrow-prev-slider' -%}
+    <svg width="65" height="66" viewBox="0 0 65 66" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="32.5" cy="33" r="32" stroke="black" />
+      <g clip-path="url(#clip0_1396_9122)">
+        <path d="M21.666 33H43.3327" stroke="black" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M21.666 33L30.9517 42.2857" stroke="black" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M21.666 33.0006L30.9517 23.7148" stroke="black" stroke-linecap="round" stroke-linejoin="round" />
+      </g>
+      <defs>
+        <clipPath id="clip0_1396_9122">
+          <rect width="37.1429" height="37.1429" fill="white" transform="translate(13.9277 14.4287)" />
+        </clipPath>
+      </defs>
+    </svg>
+    
+  {%- when 'arrow-next-slider' -%}
+    <svg width="65" height="66" viewBox="0 0 65 66" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="32.5" cy="32.5" r="32" transform="matrix(-1 0 0 1 65 0.5)" stroke="black" />
+      <g clip-path="url(#clip0_1396_9339)">
+        <path d="M43.334 33H21.6673" stroke="black" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M43.334 33L34.0483 42.2857" stroke="black" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M43.334 33.0006L34.0483 23.7148" stroke="black" stroke-linecap="round" stroke-linejoin="round" />
+      </g>
+      <defs>
+        <clipPath id="clip0_1396_9339">
+          <rect width="37.1429" height="37.1429" fill="white" transform="matrix(-1 0 0 1 51.0723 14.4287)" />
+        </clipPath>
+      </defs>
+    </svg>
+    
+  {%- when 'arrow-down' -%}
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <g clip-path="url(#clip0_306_5582)">
+        <path d="M12 5L12 19" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M6 13L12 19" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M18 13L12 19" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      <defs>
+        <clipPath id="clip0_306_5582">
+          <rect width="24" height="24" fill="white" transform="translate(24) rotate(90)"/>
+        </clipPath>
+      </defs>
+    </svg>
+  {% when 'download' %}
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g clip-path="url(#clip0_886_4039)">
+      <path d="M4 17V19C4 19.5304 4.21071 20.0391 4.58579 20.4142C4.96086 20.7893 5.46957 21 6 21H18C18.5304 21 19.0391 20.7893 19.4142 20.4142C19.7893 20.0391 20 19.5304 20 19V17" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M7 11L12 16L17 11" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M12 4V16" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      <defs>
+      <clipPath id="clip0_886_4039">
+      <rect width="24" height="24" fill="white"/>
+      </clipPath>
+      </defs>
+    </svg>
+  {%- when 'plus' -%}
+    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="11" cy="11" r="10.5" transform="matrix(-1 0 0 1 22 0)" stroke="black"/>
+      <path d="M11 6V16M16 11H6" stroke="black" stroke-linecap="round"/>
+    </svg>
+  {%- when 'minus' -%}
+    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="11" cy="11" r="10.5" transform="matrix(-1 0 0 1 22 0)" stroke="black"/>
+      <path d="M16 11H6" stroke="black" stroke-linecap="round"/>
+    </svg>
+  {% when 'slider-banner__next' %}
+    <svg id="icon-416" focusable="false" class="a-icon icon--arrow-right-v2 carousel__button-icon carousel__button-icon--next" viewBox="0 0 15 14" width="12px" height="12px">
+      <title>arrow right</title>
+      <path d="M14.9232 6.99967L7.89815 13.9993L6.57937 12.6806L11.3219 7.93803H0.919922V6.06131H11.3219L6.57937 1.31878L7.89815 0L14.9232 6.99967Z" fill="currentColor"></path>
+    </svg>
+  {% when 'slider-banner__prev' %}
+    <svg id="icon-270" focusable="false" class="a-icon icon--arrow-right-v2 carousel__button-icon carousel__button-icon--prev" viewBox="0 0 15 14" width="12px" height="12px">
+      <title>arrow right</title>
+      <path d="M14.9232 6.99967L7.89815 13.9993L6.57937 12.6806L11.3219 7.93803H0.919922V6.06131H11.3219L6.57937 1.31878L7.89815 0L14.9232 6.99967Z" fill="currentColor"></path>
+    </svg>
+  {% when 'cart-back' %}
+    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="20" cy="20" r="19.5" stroke="black"/>
+      <path d="M13.333 19.9998H26.6663" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M13.333 19.9998L19.0473 25.714" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M13.333 19.9999L19.0473 14.2856" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  {% when 'cart-minus' %}
+    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+      <circle cx="11" cy="11" r="10.5" transform="matrix(-1 0 0 1 22 0)" stroke="black"/>
+      <path d="M16 11H6" stroke="black" stroke-linecap="round"/>
+    </svg>
+  {% when 'cart-plus' %}
+    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+      <circle cx="11" cy="11" r="10.5" transform="matrix(-1 0 0 1 22 0)" stroke="black"/>
+      <path d="M11 6V16M16 11H6" stroke="black" stroke-linecap="round"/>
+    </svg>
+
+  {% when 'remove-cart' %}
+    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="28" height="28" rx="14" fill="#4d4d4f"/>
+      <g clip-path="url(#clip0_817_3946)">
+      <path d="M17.5 10.5L10.5 17.5" stroke="white" stroke-width="1.83333" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M10.5 10.5L17.5 17.5" stroke="white" stroke-width="1.83333" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      <defs>
+      <clipPath id="clip0_817_3946">
+      <rect width="14" height="14" fill="white" transform="translate(7 7)"/>
+      </clipPath>
+      </defs>
+    </svg>
+  {% when 'cart-white' %}
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g clip-path="url(#clip0_631_876)">
+    <path d="M3.99996 13.9999C4.73634 13.9999 5.33329 13.403 5.33329 12.6666C5.33329 11.9302 4.73634 11.3333 3.99996 11.3333C3.26358 11.3333 2.66663 11.9302 2.66663 12.6666C2.66663 13.403 3.26358 13.9999 3.99996 13.9999Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"></path>
+    <path d="M11.3333 13.9999C12.0697 13.9999 12.6667 13.403 12.6667 12.6666C12.6667 11.9302 12.0697 11.3333 11.3333 11.3333C10.597 11.3333 10 11.9302 10 12.6666C10 13.403 10.597 13.9999 11.3333 13.9999Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"></path>
+    <path d="M11.3333 11.3333H3.99996V2H2.66663" stroke="white" stroke-linecap="round" stroke-linejoin="round"></path>
+    <path d="M4 3.33325L13.3333 3.99992L12.6667 8.66659H4" stroke="white" stroke-linecap="round" stroke-linejoin="round"></path>
+    </g>
+    <defs>
+    <clipPath id="clip0_631_876">
+    <rect width="16" height="16" fill="white"></rect>
+    </clipPath>
+    </defs>
+  </svg>
+
+  {% when 'location' %}
+    <svg width="14" height="21" viewBox="0 0 14 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M6.97516 2.52905C9.33413 2.52905 11.2316 4.43873 11.2316 6.81292C11.2316 9.1355 9.33413 11.0452 6.97516 11.0452C4.66747 11.0452 2.71875 9.1355 2.71875 6.81292C2.71875 4.43873 4.66747 2.52905 6.97516 2.52905ZM6.97516 3.45809C5.18029 3.45809 3.69311 4.95486 3.69311 6.81292C3.69311 8.61938 5.18029 10.1161 6.97516 10.1161C8.82131 10.1161 10.2572 8.61938 10.2572 6.81292C10.2572 4.95486 8.82131 3.45809 6.97516 3.45809Z" fill="black"/>
+      <path d="M6.97436 0C10.8718 0 14 3.14839 14 7.01935C14 10.4258 12.1538 12.4387 10.5128 15.071L6.97436 20.8L3.4359 15.071C1.79487 12.4387 0 10.4258 0 7.01935C0 3.14839 3.12821 0 6.97436 0ZM6.97436 0.980645C3.64103 0.980645 0.974359 3.66452 0.974359 7.01935C0.974359 10.1161 2.76923 12.129 4.25641 14.5548L6.97436 18.9935L9.69231 14.5548C11.2308 12.129 13.0256 10.1161 13.0256 7.01935C13.0256 3.66452 10.3077 0.980645 6.97436 0.980645Z" fill="black"/>
+    </svg>
+
+  {% when 'main-banner__prev' %}
+    <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="30" cy="30" r="29.5" stroke="white"/>
+      <g clip-path="url(#clip0_1396_9230)">
+        <path d="M19.998 30H39.998" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M19.998 30L28.5695 38.5714" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M19.998 30.0001L28.5695 21.4287" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      <defs>
+        <clipPath id="clip0_1396_9230">
+          <rect width="34.2857" height="34.2857" fill="white" transform="translate(12.8555 12.8574)"/>
+        </clipPath>
+      </defs>
+    </svg>
+
+  {% when 'main-banner__next' %}
+    <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="30" cy="30" r="29.5" transform="matrix(-1 0 0 1 60 0)" stroke="white"/>
+      <g clip-path="url(#clip0_1396_9237)">
+        <path d="M40.002 30H20.002" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M40.002 30L31.4305 38.5714" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M40.002 30.0001L31.4305 21.4287" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      <defs>
+        <clipPath id="clip0_1396_9237">
+          <rect width="34.2857" height="34.2857" fill="white" transform="matrix(-1 0 0 1 47.1445 12.8574)"/>
+        </clipPath>
+      </defs>
+    </svg>
+
+  {% when 'accordion-arrow' %}
+    <svg width="12" height="22" viewBox="0 0 12 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="0.646447" y1="21.6464" x2="10.6464" y2="11.6464" stroke="black"/>
+      <line x1="0.353553" y1="0.646447" x2="11.3536" y2="11.6464" stroke="black"/>
+    </svg>
+
+  {% when 'slider-next' %}
+    <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38" fill="none">
+      <path d="M29.4043 19.4285L7.73763 19.4285" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M29.4043 19.4285L20.1186 10.1428" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M29.4043 19.4286L20.1186 28.7144" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+
+  {% when 'slider-prev' %}
+    <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38" fill="none">
+      <g clip-path="url(#clip0_12_14290)">
+        <path d="M7.73828 18.5715H29.4049" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M7.73828 18.5715L17.024 27.8572" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M7.73828 18.5714L17.024 9.28564" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      <defs>
+        <clipPath id="clip0_12_14290">
+          <rect width="37.1429" height="37.1429" fill="white"/>
+        </clipPath>
+      </defs>
+    </svg>
+  {% when 'back-to-top' %}
+    <svg width="65" height="65" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="32.5" cy="32.5" r="32" transform="rotate(90 32.5 32.5)" stroke="black"/>
+      <path d="M32.5 21.6665L32.5 43.3332" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M32.5 21.6665L23.2143 30.9522" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M32.4999 21.6665L41.7856 30.9522" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  {% when 'add-to-cart-new' %}
+    <svg width="25" height="31" viewBox="0 0 25 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g clip-path="url(#clip0_2869_3786)">
+        <path d="M9.42513 0C6.8516 0 4.74599 2.0924 4.74599 4.64978V7.37322H0.334224C0.13369 7.37322 0 7.50607 0 7.70535V25.5406C0 26.8359 1.0361 27.8655 2.33957 27.8655H13.1016C14.9733 30.8546 18.9505 31.7846 21.992 29.9246C25.0334 28.0647 25.9358 24.1124 24.0642 21.0901C22.9278 19.2966 20.9893 18.1674 18.8837 18.0677V7.70535C18.8837 7.50607 18.75 7.37322 18.5495 7.37322H14.1377V4.64978C14.1043 2.0924 11.9987 0 9.42513 0ZM5.41444 4.64978C5.41444 2.42453 7.21925 0.664254 9.45855 0.664254C11.6979 0.664254 13.4692 2.45774 13.4692 4.64978V7.37322H5.41444V4.64978ZM24.3315 24.4778C24.3315 27.633 21.7246 30.2236 18.5495 30.2236C15.3743 30.2236 12.7674 27.633 12.7674 24.4778C12.7674 21.3226 15.3409 18.732 18.5495 18.732C21.7246 18.732 24.3315 21.3226 24.3315 24.4778ZM18.1818 8.07069V18.1009C14.639 18.3002 11.9318 21.3226 12.1323 24.8431C12.1658 25.6734 12.3997 26.4705 12.734 27.2344H2.33957C1.40374 27.2344 0.668449 26.5037 0.668449 25.5738V8.07069H4.71257V11.8901C4.71257 12.0894 4.84626 12.2223 5.04679 12.2223C5.24732 12.2223 5.38101 12.0894 5.38101 11.8901V8.07069H13.4358V11.8901C13.4358 12.0894 13.5695 12.2223 13.77 12.2223C13.9706 12.2223 14.1043 12.0894 14.1043 11.8901V8.07069H18.1818Z" fill="black"/>
+        <path d="M18.2142 21.9204V24.1456H15.9748C15.7743 24.1456 15.6406 24.2785 15.6406 24.4778C15.6406 24.677 15.7743 24.8099 15.9748 24.8099H18.2142V27.0351C18.2142 27.2344 18.3478 27.3673 18.5484 27.3673C18.7489 27.3673 18.8826 27.2344 18.8826 27.0351V24.8099H21.1219C21.3224 24.8099 21.4561 24.677 21.4561 24.4778C21.4561 24.2785 21.3224 24.1456 21.1219 24.1456H18.8826V21.9204C18.8826 21.7211 18.7489 21.5883 18.5484 21.5883C18.3478 21.5883 18.2142 21.7211 18.2142 21.9204Z" fill="black"/>
+      </g>
+      <defs>
+      <clipPath id="clip0_2869_3786">
+        <rect width="25" height="30.921" fill="white"/>
+      </clipPath>
+      </defs>
+    </svg>
+    
+{% endcase %}

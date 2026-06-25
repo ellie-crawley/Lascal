@@ -1,0 +1,169 @@
+{% comment %} {% liquid
+  assign showCart = false
+
+  for country in shop.metaobjects.countries['countries-pjkwvxbq'].country.value
+    if country == localization.country
+      assign showCart = true
+    endif
+  endfor
+%} {% endcomment %}
+
+{% assign showCart = true %}
+
+{% unless showCart %}
+  <script>
+    window.location.replace('{{ routes.root_url }}');
+  </script>
+{% endunless %}
+
+{{ 'section-cart.css' | asset_url | stylesheet_tag }}
+
+<section class="wrapper cart">
+  <div class="cart__template" data-cart-view="data-cart-view">
+    <div
+      class="container"
+      data-section-id="{{ section.id }}"
+      data-section-type="cart-template"
+      data-ajax-enabled="{{ section.settings.cart_ajax_enable }}"
+    >
+      <h1 class="cart__title h2">{{ 'cart.general.title' | t }}</h1>
+      <form action="/cart" method="post" novalidate class="cart__form">
+        <div class="cart__wrapper">
+          <div class="cart__products-container">
+            <div class="cart__headers" rv-show="cart.item_count |= eq 0">
+              <div class="cart__headers-item cart__headers-item--products">{{ 'cart.general.products' | t }}</div>
+              <div class="cart__headers-item cart__headers-item--qty hide-mobile">
+                {{ 'cart.general.quantity' | t }}
+              </div>
+              <div class="cart__headers-item cart__headers-item--subtotal">{{ 'cart.general.subtotal' | t }}</div>
+              <div class="cart__headers-item cart__headers-item--empty hide-mobile"></div>
+            </div>
+
+            <div class="cart__empty" rv-show="cart.item_count | eq 0">
+              <h5>{{ 'cart.general.continue_browsing_html' | t }}</h5>
+            </div>
+
+            <div class="cart__items is-show">
+              <div class="cart__item" rv-each-item="cart.items">
+                <a rv-href="item.url" class="cart__item-product">
+                  <div class="cart__item-image image-wrapper">
+                    <img
+                      class="lazy"
+                      rv-src="item.featured_image.url | product_image_size 'master'"
+                    >
+                  </div>
+                  <div class="cart__item-content">
+                    <h5 class="cart__item-title h5" rv-text="item.product_title"></h5>
+                    <div class="cart__item-actions hide-desktop">
+                      <div class="quantity-block hide-desktop">
+                        <button
+                          class="quantity-icon image-wrapper"
+                          rv-data-cart-quantity="item.quantity | minus 1"
+                          rv-data-cart-update="index | plus 1"
+                        >
+                          {%- render 'icons', icon: 'minus' -%}
+                        </button>
+                        <span class="quantity" rv-text="item.quantity"></span>
+                        <button
+                          class="quantity-icon image-wrapper"
+                          rv-data-cart-quantity="item.quantity | plus 1"
+                          rv-data-cart-update="index | plus 1"
+                        >
+                          {%- render 'icons', icon: 'plus' -%}
+                        </button>
+                      </div>
+                      <button class="remove-btn" rv-data-cart-remove="index | plus 1">
+                        {% render 'icons', icon: 'burger-close' %}
+                      </button>
+                    </div>
+                  </div>
+                </a>
+
+                <div class="cart__item-quantity hide-mobile">
+                  <div class="quantity-block">
+                    <a
+                      class="quantity-icon image-wrapper"
+                      href="#"
+                      rv-data-cart-quantity="item.quantity | minus 1"
+                      rv-data-cart-update="index | plus 1"
+                    >
+                      {%- render 'icons', icon: 'minus' -%}
+                    </a>
+                    <span class="quantity" rv-text="item.quantity"></span>
+                    <a
+                      class="quantity-icon image-wrapper"
+                      href="#"
+                      rv-data-cart-quantity="item.quantity | plus 1"
+                      rv-data-cart-update="index | plus 1"
+                    >
+                      {%- render 'icons', icon: 'plus' -%}
+                    </a>
+                  </div>
+                </div>
+
+                <div class="cart__item-total">
+                  <div
+                    class="total-price"
+                    rv-html="item.line_price | money Currency.currentCurrency"
+                  ></div>
+                </div>
+
+                <div class="cart__item-remove hide-mobile">
+                  <a class="remove-btn" href="#" rv-data-cart-remove="index | plus 1">
+                    {% render 'icons', icon: 'burger-close' %}
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cart__summary-container" rv-unless="cart.item_count | eq 0">
+            <div class="cart__headers">
+              <div class="cart__headers-item cart__headers-item--summary">{{ 'cart.general.summary' | t }}</div>
+            </div>
+            <div class="cart__summary-content">
+              <div class="cart__subtotal-container">
+                <p class="cart__subtotal">{{ 'cart.general.subtotal' | t }}</p>
+                <h5 class="cart__subtotal-value h5" rv-text="cart.total_price | money Currency.currentCurrency"></h5>
+              </div>
+              <p class="cart__summary-delivery">{{ 'cart.general.delivery-text' | t }}</p>
+              <button class="cart__button button" type="submit" name="checkout" tac-co-override="true">
+                {{ 'cart.general.checkout' | t }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Cart page",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title_page",
+      "label": "Title page",
+      "default": "Warenkorb"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button url"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text"
+    }
+  ],
+  "presets": [
+    {
+      "category": "Cart page",
+      "name": "Cart page"
+    }
+  ]
+}
+{% endschema %}

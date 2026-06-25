@@ -1,0 +1,73 @@
+.blog {
+  margin: 24px 0 60px;
+}
+@media screen and (min-width: 750px) {
+  .blog {
+    margin: 80px 0 160px;
+  }
+}
+.blog__title {
+  margin: 0 0 32px;
+}
+@media screen and (min-width: 750px) {
+  .blog__title {
+    margin: 0 0 60px;
+  }
+}
+.blog__grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 24px;
+}
+@media screen and (min-width: 750px) {
+  .blog__grid {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 32px;
+  }
+}
+@media screen and (min-width: 990px) {
+  .blog__grid {
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 40px;
+  }
+}
+.blog__pagination {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+.blog__pagination-container {
+  padding: 24px;
+  overflow: hidden;
+}
+.blog__pagination-page {
+  text-decoration: none;
+  background: #fff;
+  position: relative;
+}
+.blog__pagination-page a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.blog__pagination-page.active {
+  filter: invert(1);
+}
+.blog__pagination .swiper-button {
+  width: 35px;
+  height: 35px;
+}
+@media screen and (min-width: 750px) {
+  .blog__pagination .swiper-button {
+    width: 65px;
+    height: 65px;
+  }
+}

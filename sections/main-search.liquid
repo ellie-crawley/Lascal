@@ -1,0 +1,48 @@
+{{ 'section-main-search.css' | asset_url | stylesheet_tag }}
+{{ 'component-product-card.css' | asset_url | stylesheet_tag }}
+
+<div class="main-search__container container">
+  <h1 class="h2 main-search__title">
+    {%- if search.performed -%}
+      {{- 'templates.search.title' | t -}}
+    {%- else -%}
+      {{- 'general.search.title' | t -}}
+    {%- endif -%}
+  </h1>
+  <form action="{{ routes.search_url }}" class="main-search__form">
+    <input
+      type="text"
+      name="q"
+      value="{{ search.terms | escape }}"
+      class="input main-search__input"
+    >
+    <button type="submit" class="main-search__submit image-wrapper">{% render 'icons', icon: 'search' %}</button>
+  </form>
+  {% if search.performed and search.results_count > 0 %}
+    <div class="main-search__grid">
+      {%- for item in search.results -%}
+        {% if item.object_type == 'product' %}
+          {% render 'product-card', product: item %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% elsif search.performed and search.results_count == 0 %}
+    <p class="paragraph main-search__no-results">No results for {{ search.terms }}</p>
+  {% endif %}
+</div>
+
+{{ 'product-card.js' | asset_url | script_tag }}
+
+{% schema %}
+{
+  "name": "Main Search",
+  "tag": "section",
+  "class": "main-search",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Main Search"
+    }
+  ]
+}
+{% endschema %}

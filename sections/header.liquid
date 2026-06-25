@@ -1,0 +1,476 @@
+{% comment %} {% liquid
+  assign showCart = false
+
+  for country in shop.metaobjects.countries['countries-dbxgfi0d'].country.value
+    if country == localization.country
+      assign showCart = true
+    endif
+  endfor
+%} {% endcomment %}
+
+{% assign showCart = true %}
+
+{{ 'section-header.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'header.js' | asset_url }}" defer="defer"></script>
+
+{% style %}
+  .header--{{ section.id }} .header__heading-link {
+    width: 100%;
+    max-width: {{ settings.logo_width | times: 0.5 | round }}px;
+  }
+
+  .header--{{ section.id }} .header__heading-link::before {
+    padding-top: {{ settings.logo_width | divided_by: settings.logo.aspect_ratio }}%;
+  }
+
+  @media screen and (min-width: 750px) {
+    .header--{{ section.id }} .header__heading-link {
+      max-width: {{ settings.logo_width }}px;
+    }
+  }
+{% endstyle %}
+
+<div id='fsb_placeholder'></div>
+
+<header class="header header--{{ section.id }}">
+
+  {% if section.settings.show == true %}
+
+    {{ 'section-announcement.css' | asset_url | stylesheet_tag }}
+
+    <section class="announcement">
+      <a href="{{ section.settings.url }}" class="announcement__wrapper">
+          <div class="announcement__text">{{ section.settings.text }}</div>
+      </a>
+    </section>
+    
+  {% endif %}
+  <div class="header__wrapper">
+    <div class="container">
+      <div class="header__container">
+        <a href="{{ routes.root_url }}" class="header__heading-link image-wrapper">
+          {%- if settings.logo != blank -%}
+            {% render 'image', image: settings.logo %}
+          {%- else -%}
+            <span class="h2">{{ shop.name }}</span>
+          {%- endif -%}
+        </a>
+
+        {% if section.settings.link_list != blank %}
+          <nav class="header__menu-desktop">
+            <ul class="menu-desktop__container">
+              {% for link in section.settings.link_list.links %}
+                {%- comment -%}
+                  {% liquid
+                    if link.url contains 'pages/store-locator' and showCart
+                      continue
+                    endif
+                  %}
+                {%- endcomment -%}
+                
+                <li class="menu-desktop__link-container">
+                  <a href="{{ link.url }}" {% if link.title contains 'new-window' %} target="_blank" {% endif %} class="menu-desktop__link">{{ link.title | remove: 'new-window' | split: "&&&" | last }}</a>
+
+                  {% assign linkId = link.title | split: "&&&" | last | handleize %}
+                
+                  {% for block in section.blocks %}
+                    {% assign blockMenuId = block.settings.id | handleize %}
+                    
+                    {% if linkId == blockMenuId %}
+                      {% if link.links != blank %}
+                        <div class="header__mega-menu mega-menu">
+                          <div class="mega-menu__container">
+                            <ul class="mega-menu__menu">
+                              {% for child_link in link.links %}
+                                {% assign isOddEven = forloop.index | modulo: 2 %}
+                                {% if isOddEven == 0 %}
+                                  {% assign gridOrder = 1 %}
+                                {% else %}
+                                  {% assign gridOrder = 0 %}
+                                {% endif %}
+
+                                {% if forloop.index > 6 %}
+                                  {% if isOddEven == 0 %}
+                                    {% assign gridOrder = 3 %}
+                                  {% else %}
+                                    {% assign gridOrder = 2 %}
+                                  {% endif %}
+                                {% endif %}
+
+                                <li class="mega-menu__child-link-container" style="order: {{ gridOrder }};">
+                                  <a href="{{ child_link.url }}" {% if child_link.title contains 'new-window' %} target="_blank" {% endif %} class="mega-menu__child-link">
+                                    {{- child_link.title | remove: 'new-window' -}}
+                                  </a>
+                                  {% if child_link.links != blank %}
+                                    <ul class="mega-menu__grandchild-menu">
+                                      {% for grandchild_link in child_link.links %}
+                                        <li class="mega-menu__grandchild-link-container">
+                                          {% if grandchild_link.title contains '&&orange' %}
+                                          <a href="{{ grandchild_link.url }}" {% if grandchild_link.title contains 'new-window' %} target="_blank" {% endif %} class="mega-menu__grandchild-link orange">
+                                            {{- grandchild_link.title | remove: '&&orange' | remove: 'new-window' -}}
+                                          </a>
+                                          {% else %}
+                                          <a href="{{ grandchild_link.url }}" {% if grandchild_link.title contains 'new-window' %} target="_blank" {% endif %} class="mega-menu__grandchild-link">
+                                            {{- grandchild_link.title | remove: 'new-window' -}}
+                                          </a>
+                                          {% endif %}
+                                        
+                                        </li>
+                                      {% endfor %}
+                                    </ul>
+                                  {% endif %}
+                                </li>
+                              {% endfor %}
+                            </ul>
+                            <div class="mega-menu__image image-wrapper">
+                              {% if block.settings.image != blank %}
+                                {% render 'image', image: block.settings.image %}
+                              {% else %}
+                                {{ 'image' | placeholder_svg_tag }}
+                              {% endif %}
+                            </div>
+                          </div>
+                        </div>
+                      {% endif %}
+                    {% endif %}
+                  {% endfor %}
+                </li>
+              {% endfor %}
+            </ul>
+          </nav>
+        {% endif %}
+
+        <div class="header__icons">
+            {% comment %} Country selector {% endcomment %}
+            <localization-form class="header__country-selector">
+              <div class="disclosure">
+                <button
+                  type="button"
+                  class="disclosure__button"
+                  aria-expanded="false"
+                  aria-controls="CountryList"
+                >
+                  {% include 'icons', icon: 'location' %}
+                  {{localization.country}}
+                </button>
+                <div class="disclosure__overlay"></div>
+                <ul
+                  id="CountryList"
+                  role="list"
+                  class="disclosure__list"
+                  hidden
+                >
+                  <div class="country-selector__close image-wrapper">
+                    {% render 'icons', icon: 'burger-close' %}
+                  </div>
+
+                  {% for block in section.blocks %}
+                    {% if block.type == 'land' %}
+                      <div class="disclosure__land">
+                        <h4 class="disclosure__land-title">{{ block.settings.title }}</h4>
+                        {% assign countries = block.settings.countries_list | split: ',' %}
+                        {% for country in countries %}
+
+                          {% assign image = country | split: '&' | last %}
+                          {% assign title = country | split: '&' | first %}
+
+                          {% assign title_new = title | remove: ' '  %}
+                          {% assign country_new = localization.country.name | remove: ' '  %}
+
+                          {% unless title_new == country_new %}
+                            <li class="disclosure__item" tabindex="-1">
+                              {% if title_new == 'Germany' %}
+                                <a
+                                  href="https://lascalshop.de/"
+                                  class="disclosure__item-link redirect"
+                                >
+                              {% elsif title_new == 'France' %}
+                                <a
+                                  href="https://lascal.fr/"
+                                  class="disclosure__item-link redirect"
+                                >
+                              {% elsif title_new == 'UnitedStates' %}
+                                  <a
+                                    href="https://shoplascal.com/"
+                                    class="disclosure__item-link redirect"
+                                  >
+                              {% else %}
+                                <a
+                                  href="https://lascal.net?country={{title | remove: ' '}}"
+                                  class="disclosure__item-link"
+                                >
+                              {% endif %}
+          
+                                {% if image contains 'cdn' %}
+                                  <div class="disclosure__item-flag image-wrapper">
+                                    <img src="{{ image }}" alt="">
+                                  </div>
+                                {% endif %}
+                              
+                                {{ title }}
+                              </a>
+                            </li>
+                          {% endunless %}
+                        {% endfor %}
+                      </div>
+                    {% endif %}
+                  {% endfor %}
+                </ul>
+
+                <input
+                  type="hidden"
+                  name="country_code"
+                  value="{{ localization.country.iso_code }}"
+                >
+              </div>
+            </localization-form>
+
+          {% comment %} Language Selector {% endcomment %}
+          {% if localization.available_languages.size > 1 %}
+            <localization-form class="header__language-selector">
+              {% form 'localization' %}
+                <div class="disclosure">
+                  <button type="button" class="disclosure__button" aria-expanded="false" aria-controls="LanguageList">
+                    {{ localization.language.iso_code | upcase }}
+
+                    <svg
+                      aria-hidden="true"
+                      focusable="false"
+                      role="presentation"
+                      class="icon icon-caret"
+                      viewBox="0 0 10 6"
+                    >
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor">
+                    </svg>
+                  </button>
+
+                  <div class="disclosure__overlay"></div>
+
+                  <ul id="LanguageList" role="list" class="disclosure__list" hidden>
+                    <button class="language-selector__close image-wrapper">
+                      {% render 'icons', icon: 'burger-close' %}
+                    </button>
+                    <h4 class="disclosure__land-title">{{ section.settings.language_title }}</h4>
+                    {% for language in localization.available_languages %}
+                      <li class="disclosure__item" tabindex="-1">
+                        <a
+                          href="#"
+                          {% if language.iso_code == localization.language.iso_code %}
+                            aria-current="true"
+                          {% endif %}
+                          hreflang="{{ language.iso_code }}"
+                          lang="{{ language.iso_code }}"
+                          data-value="{{ language.iso_code }}"
+                          class="disclosure__item-link"
+                        >
+                          <div class="disclosure__item-flag image-wrapper">
+                            {% if language.iso_code == 'en' %}
+                              <img
+                                src="//cdn.shopify.com/static/images/flags/gb.svg?width=32"
+                                alt="{{- language.name -}}"
+                                srcset="//cdn.shopify.com/static/images/flags/gb.svg?width=32 32w"
+                                width="32"
+                                height="24"
+                              >
+                            {% else %}
+                              <img
+                                {% if language.iso_code == 'cs' %}
+                                  src="//cdn.shopify.com/static/images/flags/cz.svg?width=32"
+                                  srcset="//cdn.shopify.com/static/images/flags/cz.svg?width=32 32w"
+                                {% elsif language.iso_code == 'ja' %}
+                                  src="//cdn.shopify.com/static/images/flags/jp.svg?width=32"
+                                  srcset="//cdn.shopify.com/static/images/flags/jp.svg?width=32 32w"
+                                {% elsif language.iso_code == 'zh-CN' %}
+                                  src="//cdn.shopify.com/static/images/flags/cn.svg?width=32"
+                                  srcset="//cdn.shopify.com/static/images/flags/cn.svg?width=32 32w"
+                                {% elsif language.iso_code == 'sv' %}
+                                  src="//cdn.shopify.com/static/images/flags/se.svg?width=32"
+                                  srcset="//cdn.shopify.com/static/images/flags/se.svg?width=32 32w"
+                                {% else %}
+                                  src="//cdn.shopify.com/static/images/flags/{{- language.iso_code -}}.svg?width=32"
+                                  srcset="//cdn.shopify.com/static/images/flags/{{- language.iso_code -}}.svg?width=32 32w"
+                                {% endif %}
+                                alt="{{- language.name -}}"
+                                width="32"
+                                height="24"
+                              >
+                            {% endif %}
+                          </div>
+                          {{ language.endonym_name | capitalize }}
+                        </a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+
+                  <input type="hidden" name="language_code" value="{{ localization.language.iso_code }}">
+                </div>
+              {% endform %}
+            </localization-form>
+          {% endif %}
+
+          <div class="header__search-container">
+            <button class="header__search-trigger header__icon image-wrapper">
+              {% render 'icons', icon: 'search' %}
+            </button>
+          </div>
+
+          {% if showCart %}
+            <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart image-wrapper" data-cart-trigger>
+              {%- render 'icons', icon: 'cart' -%}
+              <span
+                data-cart-view="data-cart-view"
+                class="count__item cart-count"
+                rv-unless="cart.item_count | eq 0"
+                rv-html="cart.item_count"
+              ></span>
+            </a>
+          {% endif %}
+          {% if section.settings.link_list != blank %}
+            <button class="header__burger image-wrapper">{% render 'icons', icon: 'burger' %}</button>
+          {% endif %}
+        </div>
+
+        {% render 'predictive-search' %}
+      </div>
+    </div>
+    {% if section.settings.link_list != blank %}
+      <nav class="header__menu-mobile">
+        <button class="menu-mobile__close-trigger image-wrapper">{% render 'icons', icon: 'burger-close' %}</button>
+        <button class="menu-mobile__back-trigger image-wrapper" data-state="none">
+          {% render 'icons', icon: 'arrow-right' %}
+        </button>
+        <ul class="menu-mobile__links" role="list">
+          {% for link in section.settings.link_list.links %}
+          {%- comment -%}
+          {% liquid
+              if link.url contains 'pages/store-locator' and showCart
+                continue
+              endif
+            %}
+          {%- endcomment -%}
+            
+            <li class="menu-mobile__link-container">
+              <a href="{{ link.url }}" class="menu-mobile__link">
+                {% if link.title contains 'img:' %}
+                  <img src="{{ link.title | remove: "img:"  | split: "&&&" | first }}" alt="img">
+                {% endif %}
+                {{ link.title | split: "&&&" | last }}
+                </a>
+              {% if link.links != blank %}
+                <button class="menu-mobile__child-link-trigger">{% render 'icons', icon: 'arrow-right' %}</button>
+                <ul class="menu-mobile__child-links" role="list">
+                  <li class="menu-mobile__link-container--parent">
+                    <a href="{{ link.url }}" class="menu-mobile__link menu-mobile__link--parent">{{ link.title  | split: "&&&" | last }}</a>
+                  </li>
+                  {% for child_link in link.links %}
+                    <li class="menu-mobile__link-container">
+                      <a href="{{ child_link.url }}" class="menu-mobile__link">{{ child_link.title }}</a>
+                      {% if child_link.links != blank %}
+                        {% comment %} <button class="menu-mobile__grandchild-link-trigger">
+                          {% render 'icons', icon: 'arrow-right' %}
+                        </button> {% endcomment %}
+                        <ul class="menu-mobile__grandchild-links" role="list">
+                          {% comment %} <li class="menu-mobile__link-container--parent">
+                            <a href="{{ child_link.url }}" class="menu-mobile__link menu-mobile__link--parent">
+                              {{- child_link.title -}}
+                            </a>
+                          </li> {% endcomment %}
+                          {% for grandchild_link in child_link.links %}
+                            <li class="menu-mobile__link-container">
+                              {% if grandchild_link.title contains '&&orange' %}
+                                <a href="{{ grandchild_link.url }}" class="menu-mobile__link--grandchild orange">
+                                  {{- grandchild_link.title | remove: '&&orange' -}}
+                                </a>
+                              {% else %}
+                                <a href="{{ grandchild_link.url }}" class="menu-mobile__link--grandchild">
+                                  {{- grandchild_link.title -}}
+                                </a>
+                              {% endif %}
+                            </li>
+                          {% endfor %}
+                        </ul>
+                      {% endif %}
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      </nav>
+    {% endif %}
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show",
+      "label": "Show bar",
+      "default": true
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>FREE SHIPPING FOR ORDERS OVER <strong>€75</strong></p>"
+    },
+    {
+      "type": "url",
+      "id": "url",
+      "label": "Url"
+    },
+    {
+      "type": "link_list",
+      "id": "link_list",
+      "label": "Main menu"
+    },
+    {
+      "type": "text",
+      "id": "language_title",
+      "label": "Language popup title",
+      "default": "Languages"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "megamenu",
+      "name": "Megamenu",
+      "settings": [
+        {
+          "type": "text",
+          "id": "id",
+          "label": "ID header item"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        }
+      ]
+    },
+    {
+      "type": "land",
+      "name": "Land",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Land",
+          "default": "Europe"
+        },
+        {
+          "type": "textarea",
+          "id": "countries_list",
+          "label": "List of countries",
+          "default": "Albania, Austria, Belgium, Czechia, France, Germany, Hungary, Iceland Ireland, Italy, Latvia, Lithuania, Netherlands, Poland, Romania, Serbia, Slovakia, Slovenia, Spain, Sweden, Switzerland, Ukraine, United Kingdom",
+          "info": "Input list of countries with comma separator"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

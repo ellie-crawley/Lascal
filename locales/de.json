@@ -1,0 +1,27 @@
+{
+  "products": {
+    "product": {
+      "add_to_cart": "In den Warenkorb legen",
+      "find_retailer": "Händlersuche",
+      "sold_out": "Ausverkauft",
+      "unavailable": "Ausverkauft"
+    },
+    "notify_form": {
+      "email": "Geben Sie Ihre E-Mail-Adresse ein..."
+    }
+  },
+  "general": {
+    "models": {
+      "title_1": "Kinderwagenpassung",
+      "title_1_2": "(Breite)",
+      "title_2": "Plattformgröße ",
+      "title_2_2": "(Breite x Tiefe x Höhe)",
+      "title_3": "Reflektierende ",
+      "title_3_2": "Räder",
+      "title_4": "Sattel ",
+      "title_4_2": "kompatibel",
+      "title_5": "Sattel ",
+      "title_5_2": "enthalten"
+    }
+  }
+}

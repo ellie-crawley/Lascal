@@ -1,0 +1,27 @@
+{
+  "products": {
+    "product": {
+      "sold_out": "Agotado",
+      "unavailable": "No disponible",
+      "add_to_cart": "Agregar al carrito",
+      "find_retailer": "Encuentra un punto de venta"
+    },
+    "notify_form": {
+      "email": "Ingrese su dirección de correo electrónico..."
+    }
+  },
+  "general": {
+    "models": {
+      "title_1": "Ajuste para cochecito",
+      "title_1_2": "(ancho)",
+      "title_2": "Tamaño de la plataforma",
+      "title_2_2": "(ancho x profundidad x altura)",
+      "title_3": "Ruedas ",
+      "title_3_2": "reflectantes",
+      "title_4": "Compatible con ",
+      "title_4_2": "sillín",
+      "title_5": "Sillín ",
+      "title_5_2": "incluido"
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{{ 'section-specifications.css' | asset_url | stylesheet_tag }}
+
+{% assign meta = product.metafields.custom.specifications_tab.value %}
+
+{% if meta != blank %}
+    <section class="specifications-tab container">
+        <div class="specifications-tab__wrapper">
+            <div class="specifications-tab__item accordion__item">
+                <div class="specifications-tab__trigger accordion__trigger">
+                    <div class="specifications-tab__question">{{ section.settings.title }}</div>
+                    <div class="accordion__item-icon">
+                        {% include 'icons', icon: 'accordion-arrow' %}
+                    </div>
+                </div>
+                <div class="specifications-tab__content accordion__content" style="display: none;">
+                    {% for item in meta %}
+                        <div class="specifications-tab__content--wrapper">
+                            <div class="specifications-tab__content--title">{{ item.title | metafield_tag }}</div>
+                            <div class="specifications-tab__content--value">{{ item.value | metafield_tag }}</div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endif %}
+
+{% schema %}
+{
+    "name": "Specifications tab",
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Specifications"
+        }
+    ],
+    "presets": [
+        {
+            "category": "Specifications tab",
+            "name": "Specifications tab"
+        }
+    ]
+}
+{% endschema %}

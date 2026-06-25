@@ -1,0 +1,29 @@
+.recomended-products {
+  margin: 0 0 60px;
+  position: relative;
+}
+.recomended-products .swiper-slide.recomended-products__slide {
+  height: auto !important;
+}
+.recomended-products__container {
+  padding-right: 0;
+}
+@media screen and (min-width: 990px) {
+  .recomended-products__container {
+    padding-right: 40px;
+  }
+}
+.recomended-products__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 0 12px;
+}
+.recomended-products__title {
+  margin: 0 0 20px;
+}
+.recomended-products__slider {
+  overflow: hidden;
+  max-width: 100%;
+  width: 100%;
+}

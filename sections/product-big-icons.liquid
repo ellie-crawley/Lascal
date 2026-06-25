@@ -1,0 +1,27 @@
+{{ 'section-big-icons.css' | asset_url | stylesheet_tag }}
+
+{% if product.metafields.custom.big_icons.value != blank %}
+    <div class="big-icons container">
+        <div class="big-icons__wrapper">
+        {% for icon in product.metafields.custom.big_icons.value limit: 3 %}
+            <div class="big-icons__item">
+                <img lazy="lazy" src="{{ icon | img_url: 'master' }}" alt="{{ icon.alt }}">
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+{% endif %}
+
+{% schema %}
+{
+    "name": "Big icons",
+    "settings": [
+        
+    ],
+    "presets": [
+        {
+            "name": "Big icons"
+        }
+    ]
+}
+{% endschema %}

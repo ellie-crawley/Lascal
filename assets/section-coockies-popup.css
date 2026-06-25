@@ -1,0 +1,36 @@
+#seers-cmp-cookie-data-hol #SeersCMPBannerMainBar .seers-cmp-default-style-btn {
+  font-family: "Open Sans" !important;
+  font-weight: 600;
+  line-height: 160% !important;
+  text-transform: uppercase !important;
+  padding: 16px 24px !important;
+  background: #000000 !important;
+  border-radius: 0 !important;
+}
+#seers-cmp-cookie-data-hol #seers-cmp-default-cookie-banner #seers-cmp-cookie-policy-default-banner-content .seers-cmp-btn.seers-cmp-agree-button,
+#seers-cmp-cookie-data-hol #seers-cmp-default-cookie-banner #seers-cmp-cookie-policy-default-banner-content .seers-cmp-default-style-btn {
+  background-color: #000000 !important;
+  border-radius: 0 !important;
+  font-family: "Open Sans" !important;
+  line-height: 160% !important;
+  text-transform: uppercase !important;
+}
+#seers-cmp-cookie-data-hol #seers-cmp-default-cookie-banner .seers-cmp-cookie-policy-accordion-tab-label::before,
+#seers-cmp-cookie-data-hol #seers-cmp-default-cookie-banner .seers-cmp-cookie-policy-accordion-tab-label::after {
+  background-color: #000000 !important;
+}
+#seers-cmp-cookie-data-hol #seers-cmp-default-cookie-banner span.seers-cmp-cookie-policy-always-active {
+  color: #000000 !important;
+}
+#seers-cmp-cookie-data-hol #seers-cmp-default-cookie-banner .seers-cmp-default-banner-close {
+  color: #000000 !important;
+}
+#seers-cmp-cookie-data-hol #seers-cmp-default-cookie-banner .seers-cmp-cookie-policy-power-by {
+  display: none;
+}
+#seers-cmp-cookie-data-hol #seers-cmp-default-cookie-banner input.seers-cmp-cookie-policy-banner-switch:checked + label::after {
+  background-color: #000000 !important;
+}
+#seers-cmp-cookie-data-hol #seers-cmp-default-cookie-banner input.seers-cmp-cookie-policy-banner-switch:checked + label:before {
+  background-color: #a5a5a5 !important;
+}

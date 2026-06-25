@@ -1,0 +1,78 @@
+{{ 'section-product-support.css' | asset_url | stylesheet_tag }}
+{% if product.metafields.custom.product_support_url_1 != blank and product.metafields.custom.product_support_svg_1 != blank and product.metafields.custom.product_support_icon_text_1 != blank %}
+  <section class="product-support container">
+    <div class="product-support__container">
+      <div class="product-support__title h2">{{ product.metafields.custom.product_support_title_ }}</div>
+      <div class="product-support__text paragraph">{{ product.metafields.custom.product_support_text }}</div>
+      <div class="product-support__wrapper">
+      
+        {% if product.metafields.custom.product_support_url_1 != blank and product.metafields.custom.product_support_svg_1 != blank and product.metafields.custom.product_support_icon_text_1 != blank %}
+          <a href="{{ product.metafields.custom.product_support_url_1 }}" class="product-support__item" target="_blank">
+            <div class="product-support__item-svg image-wrapper">
+              {{ product.metafields.custom.product_support_svg_1 }}
+            </div>
+            <div class="product-support__item-text">{{ product.metafields.custom.product_support_icon_text_1 }}</div>
+          </a>
+        {% endif %}
+
+        {% if product.metafields.custom.product_support_url_2 != blank and product.metafields.custom.product_support_svg_2 != blank and product.metafields.custom.product_support_icon_text_2 != blank %}
+          <a href="{{ product.metafields.custom.product_support_url_2 }}" class="product-support__item" target="_blank">
+            <div class="product-support__item-svg image-wrapper">
+              {{ product.metafields.custom.product_support_svg_2 }}
+            </div>
+            <div class="product-support__item-text">{{ product.metafields.custom.product_support_icon_text_2 }}</div>
+          </a>
+        {% endif %}
+
+        {% if product.metafields.custom.product_support_url_3 != blank and product.metafields.custom.product_support_svg_3 != blank and product.metafields.custom.product_support_icon_text_3 != blank %}
+          <a href="{{ product.metafields.custom.product_support_url_3 }}" class="product-support__item" target="_blank">
+            <div class="product-support__item-svg image-wrapper">
+              {{ product.metafields.custom.product_support_svg_3 }}
+            </div>
+            <div class="product-support__item-text">{{ product.metafields.custom.product_support_icon_text_3 }}</div>
+          </a>
+        {% endif %}
+
+        {% if product.metafields.custom.product_support_url_4 != blank and product.metafields.custom.product_support_svg_4 != blank and product.metafields.custom.product_support_icon_text_4 != blank %}
+          <a href="{{ product.metafields.custom.product_support_url_4 }}" class="product-support__item" target="_blank">
+            <div class="product-support__item-svg image-wrapper">
+              {{ product.metafields.custom.product_support_svg_4 }}
+            </div>
+            <div class="product-support__item-text">{{ product.metafields.custom.product_support_icon_text_4 }}</div>
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+{% endif %}
+{% schema %}
+{
+  "name": "Product support (mtfld)",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text"
+    }
+  ],
+  "presets": [
+    {
+      "category": "Product support (mtfld)",
+      "name": "Product support (mtfld)"
+    }
+  ]
+}
+{% endschema %}
+
+
+
+
+
+
+
+

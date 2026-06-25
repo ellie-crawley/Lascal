@@ -1,0 +1,198 @@
+{{ 'component-product-card.css' | asset_url | stylesheet_tag }}
+{{ 'section-collection-page.css' | asset_url | stylesheet_tag }}
+
+<style>
+  .collection__title.{{ section.id }} img{
+    max-width: {{ section.settings.width_logo }}px;
+    max-height: {{ section.settings.height_logo }}px;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: left;
+  }
+</style>
+
+<section class="collection container">
+  <div class="collection__wrapper">
+    <div class="collection__tabs">
+      {% for block in section.blocks %}
+        <a
+          href="{{ block.settings.collection.url }}"
+          class="collection__tab{% if block.settings.collection.title == collection.title %} active{% endif %}{% if block.settings.subcategorie == true %} subcategorie{% endif %}{% if block.settings.subsubcategorie == true %} subsubcategorie{% endif %}"
+        >
+          {{ block.settings.collection.title }}
+          <svg width="9" height="6" viewBox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0.5 1L4.5 5L8.5 1" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      {% endfor %}
+      <div class="collection__tabs-mobile">
+        {% for block in section.blocks %}
+          <a
+            href="{{ block.settings.collection.url }}"
+            class="collection__tab{% if block.settings.collection.title == collection.title %} hidden{% endif %}"
+          >
+            {{ block.settings.collection.title }}
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="collection__content">
+      <div class="collection__header">
+        <div class="collection__image image">
+          {% render 'image', image: collection.image %}
+        </div>
+        <div class="collection__info">
+          <h1 class="collection__title h2 {{ section.id }}">
+            {% if collection.metafields.custom.title_logo != blank %}
+              {% render 'image', image: collection.metafields.custom.title_logo %}
+            {% else %}
+              {{ collection.title }}
+            {% endif %}
+          </h1>
+          <div class="collection__description paragraph">{{ collection.description }}</div>
+        </div>
+      </div>
+      {% assign language_iso = localization.language.iso_code | handleize %}
+      {% for block in collection.metafields.custom.video_and_images_sections.value %}
+        {% assign block_language_iso = block.country | split: '-' | first | handleize %}
+        {% if language_iso == block_language_iso %}
+          {% if block.youtube_video_id != blank %}
+            <div class="collection__video image-wrapper">
+              <iframe
+                src="https://www.youtube.com/embed/{{ block.youtube_video_id }}"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
+            </div>
+          {% endif %}
+          {% if block.image_1 != blank or block.image_2 != blank %}
+            <div class="collection__two-images">
+              <div class="collection__two-images-image image-wrapper">
+                {% render 'image', image: block.image_1 %}
+              </div>
+              <div class="collection__two-images-image image-wrapper">
+                {% render 'image', image: block.image_2 %}
+              </div>
+            </div>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+
+      {% if collection.metafields.custom.big_icons.value != blank %}
+        <div class="big-icons">
+          <div class="big-icons__wrapper">
+            {% for icon in collection.metafields.custom.big_icons.value limit: 3 %}
+                <div class="big-icons__item">
+                    <img lazy="lazy" src="{{ icon | img_url: 'master' }}" alt="{{ icon.alt }}">
+                </div>
+            {% endfor %}
+          </div>
+        </div>
+      {% endif %}
+
+      <div class="collection__products">
+        {% for product in collection.products %}
+          {% render 'product-card', product: product %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{{ 'product-card.js' | asset_url | script_tag }}
+{{ 'collection-page.js' | asset_url | script_tag }}
+
+{% style %}
+  #shopify-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  @media screeen and (max-width: 760px) {
+    #shopify-section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top | divided_by: 2 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | divided_by: 2 }}px;
+    }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Collection page",
+  "settings": [
+    {
+      "type": "range",
+      "id": "width_logo",
+      "label": "Logo max-width",
+      "min": 50,
+      "max": 500,
+      "step": 10,
+      "unit": "px",
+      "default": 200
+    },
+    {
+      "type": "range",
+      "id": "height_logo",
+      "label": "Logo max-height",
+      "min": 20,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Padding top",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Padding bottom",
+      "default": 80
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Collection",
+      "type": "collection",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "subcategorie",
+          "label": "Sub-categorie",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "subsubcategorie",
+          "label": "Sub-sub-categorie",
+          "default": false
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "category": "Collection page",
+      "name": "Collection page"
+    }
+  ]
+}
+{% endschema %}

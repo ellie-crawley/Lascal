@@ -1,0 +1,132 @@
+{{ 'section-slider-banner.css' | asset_url | stylesheet_tag }}
+
+<section class="container">
+    <div class="slider-banner">
+        <div class="swiper-wrapper slider-banner__container">
+            {% for slide in section.blocks %}
+                <div class="slider-banner__wrapper swiper-slide">
+                    <div class="slider-banner__item content" style="background: {{ slide.settings.background_gradient }};">
+                        {% if slide.settings.title != blank %}
+                            <div class="slider-banner__title">{{ slide.settings.title }}</div>
+                        {% endif %}
+                        {% if slide.settings.text != blank %}
+                            <div class="slider-banner__text">{{ slide.settings.text }}</div>
+                        {% endif %}
+                        <div class="slider-banner__buttons">
+                            {% if slide.settings.btn_url != blank and slide.settings.btn_text != blank %}
+                                <a class="slider-banner__button button" href="{{ slide.settings.btn_url }}">{{ slide.settings.btn_text }}</a>
+                            {% endif %}
+                            {% if slide.settings.btn_url2 != blank and slide.settings.btn_text2 != blank %}
+                                <a class="slider-banner__button button_white" href="{{ slide.settings.btn_url2 }}">{{ slide.settings.btn_text2 }}</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="slider-banner__item image">
+                        {% render 'image', image: slide.settings.image %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="swiper-button-next slider-banner__next">
+            {% render 'icons', icon: 'slider-banner__next' %}
+        </div>
+        <div class="swiper-button-prev slider-banner__prev">
+            {% render 'icons', icon: 'slider-banner__prev' %}
+        </div>
+        <div class="swiper-pagination slider-banner__pagination"></div>
+    </div>
+</section>
+
+{% style %}
+  #shopify-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  @media screeen and (max-width: 760px) {
+    #shopify-section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top | divided_by: 2 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | divided_by: 2 }}px;
+    }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+    "name": "New slider",
+    "settings": [
+        {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Padding top",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "Padding bottom",
+      "default": 80
+    }
+    ],
+    "blocks": [
+        {
+            "name": "Slide",
+            "type": "slide",
+            "settings": [
+                {
+                    "type": "color_background",
+                    "id": "background_gradient",
+                    "label": "Background gradient"
+                },
+                {
+                    "type": "richtext",
+                    "id": "title",
+                    "label": "Title"
+                },
+                {
+                    "type": "text",
+                    "id": "text",
+                    "label": "Text"
+                },
+                {
+                    "type": "text",
+                    "id": "btn_text",
+                    "label": "Button text"
+                },
+                {
+                    "type": "url",
+                    "id": "btn_url",
+                    "label": "Button url"
+                },
+                {
+                    "type": "text",
+                    "id": "btn_text2",
+                    "label": "Button text"
+                },
+                {
+                    "type": "url",
+                    "id": "btn_url2",
+                    "label": "Button url"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Image"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "category": "New slider",
+            "name": "New slider"
+        }
+    ]
+}
+{% endschema %}

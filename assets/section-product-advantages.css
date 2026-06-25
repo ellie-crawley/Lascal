@@ -1,0 +1,33 @@
+.product-advantages {
+  margin: 0 0 60px;
+}
+@media screen and (min-width: 750px) {
+  .product-advantages {
+    margin-bottom: 200px;
+  }
+}
+.product-advantages__container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+@media screen and (min-width: 750px) {
+  .product-advantages__container {
+    flex-direction: row;
+    gap: 24px;
+  }
+}
+.product-advantages__block {
+  padding: 16px 24px;
+  background-color: #fff;
+  border-radius: 6px;
+}
+@media screen and (min-width: 750px) {
+  .product-advantages__block {
+    padding: 32px;
+    flex: 1;
+  }
+}
+.product-advantages__title {
+  margin: 0 0 24px;
+}

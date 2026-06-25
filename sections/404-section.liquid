@@ -1,0 +1,49 @@
+{{ '404-section.css' | asset_url | stylesheet_tag }}
+
+<section class="section-404 container">
+    <div class="section-404__wrapper">
+        <div class="section-404__title">{{ section.settings.title }}</div>
+        <div class="section-404__text">{{ section.settings.text }}</div>
+        <div class="section-404__menu">
+            {% for link in section.settings.menu.links %}
+                <div class="section-404__menu-block">
+                    <a href="{{ link.url }}" class="section-404__link">{{ link.title }}</a>
+                    {% if link.links != blank %}
+                        {% for child_link in link.links %}
+                            <a href="{{ child_link.url }}" class="section-404__sublink">{{ child_link.title }}</a>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "404 section",
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+        },
+        {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text"
+        },
+        {
+            "type": "link_list",
+            "id": "menu",
+            "label": "Menu"
+        }
+    ],
+    "presets": [
+        {
+            "category": "404 section",
+            "name": "404 section"
+        }
+    ]
+}
+{% endschema %}

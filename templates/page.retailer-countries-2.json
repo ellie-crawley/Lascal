@@ -1,0 +1,508 @@
+{
+  "sections": {
+    "7bc82c7d-c8ae-4fc6-be6b-e8f729f11d44": {
+      "type": "retailer-country",
+      "blocks": {
+        "template--19870624121108__7bc82c7d-c8ae-4fc6-be6b-e8f729f11d44-16892308605f3fdc5c-0": {
+          "type": "shop",
+          "settings": {
+            "shop_name": "amazon.pl",
+            "shop_url": "https://amazon.pl"
+          }
+        },
+        "template--19870624121108__7bc82c7d-c8ae-4fc6-be6b-e8f729f11d44-16892308605f3fdc5c-1": {
+          "type": "shop",
+          "settings": {
+            "shop_name": "smyk.com",
+            "shop_url": "https://www.smyk.com/"
+          }
+        },
+        "template--19870624121108__7bc82c7d-c8ae-4fc6-be6b-e8f729f11d44-16892308605f3fdc5c-2": {
+          "type": "shop",
+          "settings": {
+            "shop_name": "bobowozki.com.pl",
+            "shop_url": "https://www.bobowozki.com.pl/"
+          }
+        },
+        "d0018238-c7e8-4596-b7ec-237dd6178539": {
+          "type": "shop",
+          "settings": {
+            "shop_name": "dino.sklep.pl",
+            "shop_url": "https://dino.sklep.pl/"
+          }
+        },
+        "1abefd6f-ed5c-431f-bcbe-2a6fab7c5860": {
+          "type": "shop",
+          "settings": {
+            "shop_name": "agdperfekt.pl",
+            "shop_url": "https://agdperfekt.pl/"
+          }
+        },
+        "4369a6ad-06d2-479c-9564-bf3dfcb7fe39": {
+          "type": "shop",
+          "settings": {
+            "shop_name": "emaluch.com",
+            "shop_url": "https://emaluch.com/"
+          }
+        },
+        "1fd42132-89cd-4305-ab91-a958b19f9d57": {
+          "type": "shop",
+          "settings": {
+            "shop_name": "emaluszek.pl",
+            "shop_url": "https://emaluszek.pl/"
+          }
+        },
+        "e8e2578b-305d-4d0d-813c-090c0a330e0b": {
+          "type": "shop",
+          "settings": {
+            "shop_name": "tomi.pl",
+            "shop_url": "https://www.tomi.pl/"
+          }
+        },
+        "97de7b25-b4d3-4cd9-87a9-48cc5bbd2d57": {
+          "type": "shop",
+          "settings": {
+            "shop_name": "ewozki.eu",
+            "shop_url": "https://ewozki.eu/"
+          }
+        },
+        "318de143-01a9-4c81-ad31-580d61c496cf": {
+          "type": "shop",
+          "settings": {
+            "shop_name": "shop.itooti.net",
+            "shop_url": "https://shop.itooti.net/"
+          }
+        },
+        "4d323133-ed55-4379-880c-fb43dc883b96": {
+          "type": "shop",
+          "settings": {
+            "shop_name": "empik.com",
+            "shop_url": "https://www.empik.com/"
+          }
+        },
+        "3c853851-53f2-4611-ba11-dcebd3420912": {
+          "type": "shop",
+          "settings": {
+            "shop_name": "askot.pl",
+            "shop_url": "https://askot.pl/"
+          }
+        },
+        "6d5ba1fc-2a4b-411f-8148-c55fa98ae6d5": {
+          "type": "shop",
+          "settings": {
+            "shop_name": "babyhit.pl",
+            "shop_url": "https://babyhit.pl/"
+          }
+        },
+        "bd5642f9-bbf8-4df5-a25c-64d622e943b5": {
+          "type": "shop",
+          "settings": {
+            "shop_name": "morele.net",
+            "shop_url": "https://www.morele.net/"
+          }
+        },
+        "eff5577d-49f5-4156-8263-3f164b87d162": {
+          "type": "shop",
+          "settings": {
+            "shop_name": "umalucha.pl",
+            "shop_url": "https://umalucha.pl/"
+          }
+        },
+        "860516d4-3f4b-4c35-b542-f67421685f49": {
+          "type": "shop",
+          "settings": {
+            "shop_name": "sklep-smile.pl",
+            "shop_url": "https://www.sklep-smile.pl/"
+          }
+        }
+      },
+      "block_order": [
+        "template--19870624121108__7bc82c7d-c8ae-4fc6-be6b-e8f729f11d44-16892308605f3fdc5c-0",
+        "template--19870624121108__7bc82c7d-c8ae-4fc6-be6b-e8f729f11d44-16892308605f3fdc5c-1",
+        "template--19870624121108__7bc82c7d-c8ae-4fc6-be6b-e8f729f11d44-16892308605f3fdc5c-2",
+        "d0018238-c7e8-4596-b7ec-237dd6178539",
+        "1abefd6f-ed5c-431f-bcbe-2a6fab7c5860",
+        "4369a6ad-06d2-479c-9564-bf3dfcb7fe39",
+        "1fd42132-89cd-4305-ab91-a958b19f9d57",
+        "e8e2578b-305d-4d0d-813c-090c0a330e0b",
+        "97de7b25-b4d3-4cd9-87a9-48cc5bbd2d57",
+        "318de143-01a9-4c81-ad31-580d61c496cf",
+        "4d323133-ed55-4379-880c-fb43dc883b96",
+        "3c853851-53f2-4611-ba11-dcebd3420912",
+        "6d5ba1fc-2a4b-411f-8148-c55fa98ae6d5",
+        "bd5642f9-bbf8-4df5-a25c-64d622e943b5",
+        "eff5577d-49f5-4156-8263-3f164b87d162",
+        "860516d4-3f4b-4c35-b542-f67421685f49"
+      ],
+      "settings": {
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "title": "Poland",
+        "company_title": "Company",
+        "website_title": "website"
+      }
+    },
+    "5c523d02-068a-4ee4-b9db-e2c7b301ad6c": {
+      "type": "retailer-country",
+      "blocks": {
+        "template--19870611505428__5c523d02-068a-4ee4-b9db-e2c7b301ad6c-shop-1": {
+          "type": "shop",
+          "settings": {
+            "shop_name": "beberebelde.es",
+            "shop_url": "https://www.beberebelde.es/"
+          }
+        }
+      },
+      "block_order": [
+        "template--19870611505428__5c523d02-068a-4ee4-b9db-e2c7b301ad6c-shop-1"
+      ],
+      "settings": {
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "title": "Portugal",
+        "company_title": "Company",
+        "website_title": "website"
+      }
+    },
+    "5430a0d5-2787-43e6-9e85-b2076b6e4531": {
+      "type": "retailer-country",
+      "blocks": {
+        "template--19870611505428__5430a0d5-2787-43e6-9e85-b2076b6e4531-shop-1": {
+          "type": "shop",
+          "settings": {
+            "shop_name": "predeti.sk",
+            "shop_url": "https://www.predeti.sk/"
+          }
+        },
+        "template--19870611505428__5430a0d5-2787-43e6-9e85-b2076b6e4531-shop-2": {
+          "type": "shop",
+          "settings": {
+            "shop_name": "mall.sk",
+            "shop_url": "https://www.mall.sk/"
+          }
+        },
+        "template--19870611505428__5430a0d5-2787-43e6-9e85-b2076b6e4531-shop-3": {
+          "type": "shop",
+          "settings": {
+            "shop_name": "forbaby.sk",
+            "shop_url": "https://www.forbaby.sk/"
+          }
+        },
+        "3381dbf0-37cc-4698-9a8f-63e0bd022a4d": {
+          "type": "shop",
+          "settings": {
+            "shop_name": "prenasedeti.sk",
+            "shop_url": "https://www.prenasedeti.sk/"
+          }
+        }
+      },
+      "block_order": [
+        "template--19870611505428__5430a0d5-2787-43e6-9e85-b2076b6e4531-shop-1",
+        "template--19870611505428__5430a0d5-2787-43e6-9e85-b2076b6e4531-shop-2",
+        "template--19870611505428__5430a0d5-2787-43e6-9e85-b2076b6e4531-shop-3",
+        "3381dbf0-37cc-4698-9a8f-63e0bd022a4d"
+      ],
+      "settings": {
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "title": "Slovakia",
+        "company_title": "Company",
+        "website_title": "website"
+      }
+    },
+    "2b00b8a6-a92c-4bd4-89e4-1fccfaed8633": {
+      "type": "retailer-country",
+      "blocks": {
+        "b73f8151-d4f4-4a9e-bb87-a3e9c97f557a": {
+          "type": "shop",
+          "settings": {
+            "shop_name": "infantree.com.my",
+            "shop_url": "https://www.infantree.com.my/shop/"
+          }
+        },
+        "template--19870611505428__2b00b8a6-a92c-4bd4-89e4-1fccfaed8633-shop-1": {
+          "type": "shop",
+          "settings": {
+            "shop_name": "lazada.com.my",
+            "shop_url": "https://www.lazada.com.my/"
+          }
+        },
+        "template--19870611505428__2b00b8a6-a92c-4bd4-89e4-1fccfaed8633-shop-2": {
+          "type": "shop",
+          "settings": {
+            "shop_name": "shopee.com.my",
+            "shop_url": "https://shopee.com.my/"
+          }
+        },
+        "template--19870611505428__2b00b8a6-a92c-4bd4-89e4-1fccfaed8633-shop-3": {
+          "type": "shop",
+          "settings": {
+            "shop_name": "motherhood.com.my",
+            "shop_url": "https://www.motherhood.com.my/"
+          }
+        }
+      },
+      "block_order": [
+        "b73f8151-d4f4-4a9e-bb87-a3e9c97f557a",
+        "template--19870611505428__2b00b8a6-a92c-4bd4-89e4-1fccfaed8633-shop-1",
+        "template--19870611505428__2b00b8a6-a92c-4bd4-89e4-1fccfaed8633-shop-2",
+        "template--19870611505428__2b00b8a6-a92c-4bd4-89e4-1fccfaed8633-shop-3"
+      ],
+      "settings": {
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "title": "Malaysia",
+        "company_title": "Company",
+        "website_title": "website"
+      }
+    },
+    "84739060-a9e2-40eb-a39b-e6e58ae5fe8e": {
+      "type": "retailer-country",
+      "blocks": {
+        "template--19870611505428__84739060-a9e2-40eb-a39b-e6e58ae5fe8e-shop-1": {
+          "type": "shop",
+          "settings": {
+            "shop_name": "amazon.es",
+            "shop_url": "https://amazon.es"
+          }
+        },
+        "template--19870611505428__84739060-a9e2-40eb-a39b-e6e58ae5fe8e-shop-2": {
+          "type": "shop",
+          "settings": {
+            "shop_name": "beberebelde.es",
+            "shop_url": "https://www.beberebelde.es/"
+          }
+        }
+      },
+      "block_order": [
+        "template--19870611505428__84739060-a9e2-40eb-a39b-e6e58ae5fe8e-shop-1",
+        "template--19870611505428__84739060-a9e2-40eb-a39b-e6e58ae5fe8e-shop-2"
+      ],
+      "settings": {
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "title": "Spain",
+        "company_title": "Company",
+        "website_title": "website"
+      }
+    },
+    "ed4468c4-f712-4921-b2b2-ac9da82b30ed": {
+      "type": "retailer-country",
+      "blocks": {
+        "template--19870611505428__ed4468c4-f712-4921-b2b2-ac9da82b30ed-shop-1": {
+          "type": "shop",
+          "settings": {
+            "shop_name": "amazon.se",
+            "shop_url": "https://amazon.se"
+          }
+        },
+        "template--19870611505428__ed4468c4-f712-4921-b2b2-ac9da82b30ed-shop-2": {
+          "type": "shop",
+          "settings": {
+            "shop_name": "jollyroom.se",
+            "shop_url": "https://www.jollyroom.se/"
+          }
+        },
+        "template--19870611505428__ed4468c4-f712-4921-b2b2-ac9da82b30ed-shop-3": {
+          "type": "shop",
+          "settings": {
+            "shop_name": "babyland.se",
+            "shop_url": "https://www.babyland.se/"
+          }
+        },
+        "c9afe911-00bc-453b-b84a-9f63f163ac14": {
+          "type": "shop",
+          "settings": {
+            "shop_name": "lekmer.se",
+            "shop_url": "https://lekmer.se"
+          }
+        },
+        "be1f0ac6-1594-44a4-a11c-006caf9636b9": {
+          "type": "shop",
+          "settings": {
+            "shop_name": "homesafety.se",
+            "shop_url": "https://www.homesafety.se/"
+          }
+        },
+        "92ff3c8c-fe66-4f66-9cdb-f5d1f8e4d17a": {
+          "type": "shop",
+          "settings": {
+            "shop_name": "babyworld.se",
+            "shop_url": "https://www.babyworld.se/"
+          }
+        }
+      },
+      "block_order": [
+        "template--19870611505428__ed4468c4-f712-4921-b2b2-ac9da82b30ed-shop-1",
+        "template--19870611505428__ed4468c4-f712-4921-b2b2-ac9da82b30ed-shop-2",
+        "template--19870611505428__ed4468c4-f712-4921-b2b2-ac9da82b30ed-shop-3",
+        "c9afe911-00bc-453b-b84a-9f63f163ac14",
+        "be1f0ac6-1594-44a4-a11c-006caf9636b9",
+        "92ff3c8c-fe66-4f66-9cdb-f5d1f8e4d17a"
+      ],
+      "settings": {
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "title": "Sweden",
+        "company_title": "Company",
+        "website_title": "website"
+      }
+    },
+    "81038594-2c04-4143-9386-c5e1dc157b6f": {
+      "type": "retailer-country",
+      "blocks": {
+        "template--19870611505428__81038594-2c04-4143-9386-c5e1dc157b6f-shop-1": {
+          "type": "shop",
+          "settings": {
+            "shop_name": "lazada.co.th",
+            "shop_url": "https://lazada.co.th"
+          }
+        },
+        "template--19870611505428__81038594-2c04-4143-9386-c5e1dc157b6f-shop-2": {
+          "type": "shop",
+          "settings": {
+            "shop_name": "shopee.co.th",
+            "shop_url": "https://shopee.co.th"
+          }
+        }
+      },
+      "block_order": [
+        "template--19870611505428__81038594-2c04-4143-9386-c5e1dc157b6f-shop-1",
+        "template--19870611505428__81038594-2c04-4143-9386-c5e1dc157b6f-shop-2"
+      ],
+      "settings": {
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "title": "Thailand",
+        "company_title": "Company",
+        "website_title": "website"
+      }
+    },
+    "10d26c04-7d5f-4bb9-8a4f-de00ea4fa813": {
+      "type": "retailer-country",
+      "blocks": {
+        "template--19870611505428__10d26c04-7d5f-4bb9-8a4f-de00ea4fa813-shop-1": {
+          "type": "shop",
+          "settings": {
+            "shop_name": "amazon.co.uk",
+            "shop_url": "https://amazon.co.uk/lascal"
+          }
+        },
+        "template--19870611505428__10d26c04-7d5f-4bb9-8a4f-de00ea4fa813-shop-2": {
+          "type": "shop",
+          "settings": {
+            "shop_name": "cheekyrascals.co.uk",
+            "shop_url": "https://cheekyrascals.co.uk"
+          }
+        },
+        "template--19870611505428__10d26c04-7d5f-4bb9-8a4f-de00ea4fa813-shop-3": {
+          "type": "shop",
+          "settings": {
+            "shop_name": "babysafesteps.co.uk",
+            "shop_url": "https://babysafesteps.co.uk/"
+          }
+        },
+        "898061ea-7d33-491c-9bd5-c097f6ba394a": {
+          "type": "shop",
+          "settings": {
+            "shop_name": "mylittlebubba.co.uk",
+            "shop_url": "https://www.mylittlebubba.co.uk/"
+          }
+        }
+      },
+      "block_order": [
+        "template--19870611505428__10d26c04-7d5f-4bb9-8a4f-de00ea4fa813-shop-1",
+        "template--19870611505428__10d26c04-7d5f-4bb9-8a4f-de00ea4fa813-shop-2",
+        "template--19870611505428__10d26c04-7d5f-4bb9-8a4f-de00ea4fa813-shop-3",
+        "898061ea-7d33-491c-9bd5-c097f6ba394a"
+      ],
+      "settings": {
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "title": "United Kingdom",
+        "company_title": "Company",
+        "website_title": "website"
+      }
+    },
+    "retailer_country_RgTKDA": {
+      "type": "retailer-country",
+      "blocks": {
+        "shop_RLjbLP": {
+          "type": "shop",
+          "settings": {
+            "shop_name": "galaxus.ch",
+            "shop_url": "https://www.galaxus.ch"
+          }
+        },
+        "shop_4AHrpz": {
+          "type": "shop",
+          "settings": {
+            "shop_name": "4mybaby.ch",
+            "shop_url": "https://www.4mybaby.ch"
+          }
+        },
+        "shop_kiPmKV": {
+          "type": "shop",
+          "settings": {
+            "shop_name": "orchestra.ch",
+            "shop_url": "https://www.orchestra.ch"
+          }
+        },
+        "shop_GUXDke": {
+          "type": "shop",
+          "settings": {
+            "shop_name": "babystar.ch",
+            "shop_url": "https://www.babystar.ch"
+          }
+        }
+      },
+      "block_order": [
+        "shop_RLjbLP",
+        "shop_4AHrpz",
+        "shop_kiPmKV",
+        "shop_GUXDke"
+      ],
+      "settings": {
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "title": "Switzerland",
+        "company_title": "Company",
+        "website_title": "website"
+      }
+    },
+    "d069cb80-2e4b-48e0-91a3-dcfcfe335f7b": {
+      "type": "retailer-country",
+      "blocks": {
+        "template--19870611505428__d069cb80-2e4b-48e0-91a3-dcfcfe335f7b-shop-1": {
+          "type": "shop",
+          "settings": {
+            "shop_name": "regallager.com",
+            "shop_url": "https://bit.ly/lascalbuggyboardus"
+          }
+        }
+      },
+      "block_order": [
+        "template--19870611505428__d069cb80-2e4b-48e0-91a3-dcfcfe335f7b-shop-1"
+      ],
+      "settings": {
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "title": "United States",
+        "company_title": "Company",
+        "website_title": "website"
+      }
+    }
+  },
+  "order": [
+    "7bc82c7d-c8ae-4fc6-be6b-e8f729f11d44",
+    "5c523d02-068a-4ee4-b9db-e2c7b301ad6c",
+    "5430a0d5-2787-43e6-9e85-b2076b6e4531",
+    "2b00b8a6-a92c-4bd4-89e4-1fccfaed8633",
+    "84739060-a9e2-40eb-a39b-e6e58ae5fe8e",
+    "ed4468c4-f712-4921-b2b2-ac9da82b30ed",
+    "81038594-2c04-4143-9386-c5e1dc157b6f",
+    "10d26c04-7d5f-4bb9-8a4f-de00ea4fa813",
+    "retailer_country_RgTKDA",
+    "d069cb80-2e4b-48e0-91a3-dcfcfe335f7b"
+  ]
+}

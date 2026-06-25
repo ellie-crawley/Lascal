@@ -1,0 +1,43 @@
+{{ 'section-icon-with-text.css' | asset_url | stylesheet_tag }}
+
+<section class="icon-with-text container">
+  <div class="icon-with-text__wrapper">
+    {% for block in section.blocks %}
+      <div class="icon-with-text__item">
+        <div class="icon-with-text__icon">{{ block.settings.icon }}</div>
+        <div class="icon-with-text__text paragraph">{{ block.settings.text }}</div>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Icon with text",
+  "max_blocks": 4,
+  "blocks": [
+    {
+      "name": "Block",
+      "type": "block",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "icon",
+          "label": "Icon svg"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "category": "Icon with text",
+      "name": "Icon with text"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,96 @@
+{{ 'section-faq.css' | asset_url | stylesheet_tag }}
+
+<section class="faq container">
+    <div class="faq__wrapper">
+        <div class="faq__section-title h2">{{ section.settings.title }}</div>
+
+        <div class="faq__container">
+            {% for block in section.blocks %}
+                {% if block.type == 'item_1' %}
+                <div class="faq__accordion-item accordion__item">
+                    <div class="faq__accordion-trigger accordion__trigger">
+                        <div class="accordion__item-icon">
+                            {% include 'icons', icon: 'accordion-arrow' %}
+                        </div>
+                        <div class="faq__accordion-question">
+                            <div class="faq__number">{{ forloop.index }}.</div>
+                            <div class="faq__title">{{ block.settings.question }}</div>
+                        </div>
+                    </div>
+                    <div class="faq__accordion-content accordion__content" style="display: none;">{{ block.settings.answer }}</div>
+                </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% style %}
+  #shopify-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  @media screeen and (max-width: 760px) {
+    #shopify-section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top | divided_by: 2 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | divided_by: 2 }}px;
+    }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+    "name": "FAQ section",
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Top 10 most frequently asked questions"
+        }, 
+        {
+          "type": "range",
+          "id": "padding_top",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "label": "Padding top",
+          "default": 80
+        },
+        {
+          "type": "range",
+          "id": "padding_bottom",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "label": "Padding bottom",
+          "default": 80
+        }
+    ],
+    "blocks": [
+        {
+            "name": "FAQ column 1",
+            "type": "item_1",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "question",
+                    "label": "Question"
+                },
+                {
+                    "type": "richtext",
+                    "id": "answer",
+                    "label": "Answer"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "category": "FAQ section",
+            "name": "FAQ section"
+        }
+    ]
+}
+{% endschema %}

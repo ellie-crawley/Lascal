@@ -1,0 +1,27 @@
+{
+  "products": {
+    "product": {
+      "sold_out": "Slutsåld",
+      "unavailable": "Ej tillgänglig",
+      "add_to_cart": "Lägg till i varukorgen",
+      "find_retailer": "Hitta en återförsäljare"
+    },
+    "notify_form": {
+      "email": "Fyll i din e-postadress..."
+    }
+  },
+  "general": {
+    "models": {
+      "title_1": "Barnvagnsanpassning",
+      "title_1_2": "(bredd)",
+      "title_2": "Plattformsstorlek",
+      "title_2_2": "(bredd x djup x höjd)",
+      "title_3": "Reflekterande ",
+      "title_3_2": "hjul",
+      "title_4": "Kompatibel med ",
+      "title_4_2": "sadel",
+      "title_5": "Sadel ",
+      "title_5_2": "ingår"
+    }
+  }
+}
