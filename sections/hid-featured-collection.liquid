@@ -1,3 +1,74 @@
+
+{% style %}
+.hid-product__card{
+  border: 1px solid #ece6df;
+  border-radius: 14px;
+  padding: 15px;
+  text-align: center;
+}
+
+/* ── Shared grid ── */
+.section-id-{{ section.id }} .product-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat({{ product_count }}, 1fr);
+}
+
+.section-id-{{ section.id }} .product-grid--carousel {
+  grid-template-columns: repeat(var(--per-row-desk), 1fr);
+}
+
+@media (max-width: 767px) {
+  .section-id-{{ section.id }} .product-grid {
+    grid-template-columns: repeat(var(--per-row-mob), 1fr);
+    gap: 16px;
+  }
+}
+
+/* ── Carousel ── */
+.section-id-{{ section.id }} .collection-listing--carousel {
+  overflow: hidden;
+}
+
+.section-id-{{ section.id }} .product-grid--carousel .slider__item {
+  display: none;
+}
+
+{% assign cols = per_row_desk %}
+{% for i in (1..last_slide) %}
+  {% for j in (0..cols) %}
+    {% if j < cols %}
+      {% assign item_index = i | plus: j %}
+      #slide-{{ section.id }}-{{ i }}:checked ~ * .slider__item--{{ item_index }} { display: block; }
+    {% endif %}
+  {% endfor %}
+{% endfor %}
+
+/* ── Nav ── */
+.section-id-{{ section.id }} .slider-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.section-id-{{ section.id }} .slider-nav__btn {
+  cursor: pointer;
+  font-size: 32px;
+  line-height: 1;
+  padding: 0 12px;
+  background: none;
+  border: none;
+  color: inherit;
+  user-select: none;
+}
+
+.section-id-{{ section.id }} .slider-nav__btn:disabled {
+  opacity: 0.2;
+  cursor: default;
+}
+{% endstyle %}
+
 {%- liquid
   if section.settings.enable_carousel
     assign product_limit = section.settings.product_limit
@@ -75,12 +146,12 @@
           {%- endif -%}
         {% else %}
           {%- if section.blocks.size > 0 -%}
-            {%- for product in section.blocks.product limit: product_limit -%}
+            {%- for block in section.blocks limit: product_limit -%}
               <div class="product-grid__item{% if show_carousel %} slider__item slider__item--{{ forloop.index }}{% endif %}">
                 {%- render 'hid-product-card',
-                  product: product.product,
-                  configured_image_primary: {{ product.configured_image_primary }},
-                  configured_image_secondary: {{ product.configured_image_secondary }} -%}
+                  product: block.settings.product,
+                  configured_image_primary: block.settings.configured_image_primary,
+                  configured_image_secondary: block.settings.configured_image_secondary -%}
               </div>
             {%- endfor -%}
           {%- endif -%}
@@ -95,76 +166,6 @@
 
   </div>
 </div>
-
-{% style %}
-.hid-product__card{
-  border: 1px solid #ece6df;
-  border-radius: 14px;
-  padding: 15px;
-  text-align: center;
-}
-
-/* ── Shared grid ── */
-.section-id-{{ section.id }} .product-grid {
-  display: grid;
-  gap: 24px;
-  grid-template-columns: repeat({{ product_count }}, 1fr);
-}
-
-.section-id-{{ section.id }} .product-grid--carousel {
-  grid-template-columns: repeat(var(--per-row-desk), 1fr);
-}
-
-@media (max-width: 767px) {
-  .section-id-{{ section.id }} .product-grid {
-    grid-template-columns: repeat(var(--per-row-mob), 1fr);
-    gap: 16px;
-  }
-}
-
-/* ── Carousel ── */
-.section-id-{{ section.id }} .collection-listing--carousel {
-  overflow: hidden;
-}
-
-.section-id-{{ section.id }} .product-grid--carousel .slider__item {
-  display: none;
-}
-
-{% assign cols = per_row_desk %}
-{% for i in (1..last_slide) %}
-  {% for j in (0..cols) %}
-    {% if j < cols %}
-      {% assign item_index = i | plus: j %}
-      #slide-{{ section.id }}-{{ i }}:checked ~ * .slider__item--{{ item_index }} { display: block; }
-    {% endif %}
-  {% endfor %}
-{% endfor %}
-
-/* ── Nav ── */
-.section-id-{{ section.id }} .slider-nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-}
-
-.section-id-{{ section.id }} .slider-nav__btn {
-  cursor: pointer;
-  font-size: 32px;
-  line-height: 1;
-  padding: 0 12px;
-  background: none;
-  border: none;
-  color: inherit;
-  user-select: none;
-}
-
-.section-id-{{ section.id }} .slider-nav__btn:disabled {
-  opacity: 0.2;
-  cursor: default;
-}
-{% endstyle %}
 
 <script>
 (function () {
