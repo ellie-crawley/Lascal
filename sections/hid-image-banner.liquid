@@ -7,9 +7,12 @@
     object-fit: cover;
     height: auto;
   }
+  .hid-image-banner-{{section.id}}{
+    margin: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px 0;
+  }
 {% endstyle %}
 
-<section class="hid-image-banner container">
+<section class="hid-image-banner-{{section.id}} hid-image-banner container">
   {% if section.settings.image != blank  %}
     <img
       src="{{ section.settings.image | image_url }}"
@@ -41,6 +44,26 @@
       "type": "image_picker",
       "id": "mobile_image",
       "label": "Image on mobile"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 20
     }
   ],
   "presets": [
