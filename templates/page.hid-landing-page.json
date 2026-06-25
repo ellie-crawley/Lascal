@@ -152,18 +152,20 @@
         "logo_iFCCUM": {
           "type": "logo",
           "settings": {
-            "image_width": 20,
+            "image": "shopify://shop_images/The-Original-BB-Icon.png",
+            "image_width": 40,
             "link": "",
-            "text": "<p>🚚 <strong>Free UK Delivery</strong></p>",
+            "text": "<p>Free UK Delivery</p>",
             "justify-content": "flex-end"
           }
         },
         "logo_feyUQi": {
           "type": "logo",
           "settings": {
-            "image_width": 20,
+            "image": "shopify://shop_images/The-Original-BB-Icon.png",
+            "image_width": 40,
             "link": "",
-            "text": "<p>↺ <strong>30-Day Money Back</strong></p>",
+            "text": "<p>30-Day Money Back</p>",
             "justify-content": "flex-start"
           }
         }
@@ -180,7 +182,7 @@
         "text_icon_alignment": "row",
         "image_opacity": 100,
         "font_size": 11,
-        "logo_bg_color": "#f6f2ec",
+        "logo_bg_color": "#F4EADD",
         "font_colour": "#4a443d",
         "padding_top": 10,
         "padding_bottom": 10
