@@ -326,11 +326,20 @@
 
 <div class="hid-product__card" data-product-url="{{ product.url |  split: "?" | first }}">
   <a href="{{ product.url }}" class="hid-product__card-image image">
-    {% for image in product.images %}
-      {% unless image.alt contains '<iframe' %}
-        {% render 'image', image: image, img_classes: img_classes %}
-      {% endunless %}
-    {% endfor %}
+    {% if configured_image_primary != blank or configured_image_secondary != blank %}
+      {% if configured_image_primary != blank %}
+        {% render 'image', image: configured_image_primary %}
+      {% endif %}
+      {% if configured_image_secondary != blank %}
+        {% render 'image', image: configured_image_secondary %}
+      {% endif %}
+    {% else %}
+      {% for image in product.images %}
+        {% unless image.alt contains '<iframe' %}
+          {% render 'image', image: image %}
+        {% endunless %}
+      {% endfor %}
+    {% endif %}
   </a>
 
   <div class="hid-product__card-content">
