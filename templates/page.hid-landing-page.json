@@ -678,8 +678,8 @@
           "settings": {
             "button_label": "SHOP NOW RISK-FREE >",
             "button_link": "",
-            "button_text_colour": "#FFFFFF",
-            "button_bg_colour": "#E98739"
+            "button_text_colour": "#ffffff",
+            "button_bg_colour": "#e98739"
           }
         }
       },
@@ -692,6 +692,55 @@
         "padding_top": 20,
         "padding_bottom": 20,
         "gap": 20
+      }
+    },
+    "hid_carousel_RVNEMX": {
+      "type": "hid-carousel",
+      "blocks": {
+        "review_EyJrmW": {
+          "type": "review",
+          "settings": {
+            "image": "shopify://shop_images/Cheeky_Rascals_Blog_Images_2_8.jpg",
+            "image_width": 60,
+            "link": "",
+            "text": "<p>“I like riding along next to Daddy<br/>and I can tell him about all the<br/>things we see on the way.”</p>",
+            "author": "Tommy, aged 4",
+            "star_rating": 5,
+            "text_icon_alignment": "row",
+            "font_size": 14,
+            "logo_bg_color": "#F4EADD",
+            "font_colour": ""
+          }
+        },
+        "review_kcFg6w": {
+          "type": "review",
+          "settings": {
+            "image": "shopify://shop_images/Cheeky_Rascals_Blog_Images_2_8.jpg",
+            "image_width": 60,
+            "link": "",
+            "text": "<p>“BuggyBoard is so fun to ride<br/>on and it keeps me really safe<br/>along the road. The best thing is I<br/>can decide whether I want to<br/>stand up or sit down.”</p>",
+            "author": "Sophie, aged 3",
+            "star_rating": 5,
+            "text_icon_alignment": "row",
+            "font_size": 14,
+            "logo_bg_color": "#F4EADD",
+            "font_colour": ""
+          }
+        }
+      },
+      "block_order": [
+        "review_EyJrmW",
+        "review_kcFg6w"
+      ],
+      "name": "HID Carousel",
+      "settings": {
+        "title": "",
+        "show_title": true,
+        "full_width": false,
+        "per_row_desk": 4,
+        "per_row_mobile": 2,
+        "padding_top": 20,
+        "padding_bottom": 20
       }
     }
   },
@@ -712,6 +761,7 @@
     "hid_logo_list_PQ78BY",
     "hid_rich_text_pj9xNK",
     "hid_rich_text_tEYqhk",
-    "hid_rich_text_G7CCiC"
+    "hid_rich_text_G7CCiC",
+    "hid_carousel_RVNEMX"
   ]
 }
