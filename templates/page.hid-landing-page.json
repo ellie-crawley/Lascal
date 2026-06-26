@@ -275,7 +275,7 @@
       "name": "HID image with text cards",
       "settings": {
         "title": "Make every outing easier",
-        "subtitle": "",
+        "subtitle": "<p>More outings. More fun for them.</p>",
         "show_title": true,
         "text_alignment": "center",
         "font_size": 12,
