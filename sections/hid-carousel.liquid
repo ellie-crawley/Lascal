@@ -66,18 +66,8 @@
     object-fit: cover;
   }
 
-  #section-id-{{ section.id }} .review-card__stars {
-    display: flex;
-    gap: 2px;
-    justify-content: center;
-    margin-bottom: 8px;
-    color: #f5a623;
-    font-size: 18px;
-  }
-
   #section-id-{{ section.id }} .review-card__text {
     flex: 1;
-    margin-bottom: 10px;
   }
 
   #section-id-{{ section.id }} .review-card__author {
@@ -100,10 +90,17 @@
         color: {{ block.settings.font_colour }};
       {% endif %}
       flex-direction: {{ block.settings.text_icon_alignment }};
-    {% if block.settings.text_icon_alignment == 'row' %}
+      {% if block.settings.text_icon_alignment == 'row' %}
         align-items: flex-start;
         text-align: left;
       {% endif %}
+    }
+    #section-id-{{ section.id }} .review-card__stars {
+      display: flex;
+      gap: 2px;
+      justify-content: center;
+      color: {{ block.settings.star_colour }};
+      font-size: 18px;
     }
     #section-id-{{ section.id }} .review-block--{{ forloop.index }} .review-card__text p {
       font-size: {{ block.settings.font_size }}px;
@@ -382,6 +379,11 @@
           "max": 5,
           "step": 1,
           "default": 5
+        },
+        {
+          "type": "color",
+          "id": "star_colour",
+          "label": "Star Colour"
         },
         {
           "type": "radio",
