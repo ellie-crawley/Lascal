@@ -16,7 +16,7 @@
   }
 {% endstyle %}
 
-<div class="hid-container countdown-container align-ltr-{{ section.settings.text_alignment }}">
+<div class="countdown-container align-ltr-{{ section.settings.text_alignment }}">
   {% assign skip_block_count = 0 %}
   {% for block in section.blocks %}
     {%- liquid
@@ -216,7 +216,7 @@
 {% schema %}
 {
   "name": "HID Countdown timer",
-  "class": "section-countdown-timer",
+  "class": "section-countdown-timer hid-container",
   "settings": [
     {
       "type": "text_alignment",
