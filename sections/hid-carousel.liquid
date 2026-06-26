@@ -78,6 +78,13 @@
     display: flex;
     flex-direction: column;
   }
+  #section-id-{{ section.id }} .review-card__stars {
+    display: flex;
+    gap: 2px;
+    justify-content: center;
+    font-size: 18px;
+    justify-content: flex-start;
+  }
 
   /* ── Per-block overrides ── */
   {%- for block in section.blocks -%}
@@ -95,11 +102,7 @@
       {% endif %}
     }
     #section-id-{{ section.id }} .review-block--{{ forloop.index }} .review-card__stars {
-      display: flex;
-      gap: 2px;
-      justify-content: center;
       color: {{ block.settings.star_colour }};
-      font-size: 18px;
     }
     #section-id-{{ section.id }} .review-block--{{ forloop.index }} .review-card__text p {
       font-size: {{ block.settings.font_size }}px;
