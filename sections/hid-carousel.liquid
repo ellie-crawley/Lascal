@@ -220,6 +220,11 @@
     margin-top: 20px;
   }
 
+  #section-id-{{ section.id }} .slider-nav p{
+    font-size: 12px;
+    text-align: center;
+  }
+
   /* Hide nav when no carousel needed at that breakpoint */
   {% unless carousel_desk %}
     @media (min-width: 1024px) {
