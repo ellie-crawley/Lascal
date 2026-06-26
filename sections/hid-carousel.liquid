@@ -3,25 +3,11 @@
 {%- style -%}
   #section-id-{{ section.id }} {
     margin: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px 0;
-    --cols-per-row-desk: {{ section.settings.per_row_desk }};
-    --cols-per-row-tab: {{ section.settings.per_row_tab }};
-    --cols-per-row-mob: {{ section.settings.per_row_mobile }};
   }
 
   #section-id-{{ section.id }} .hometitle {
     margin-bottom: 20px;
     text-align: center;
-  }
-
-  /* ── Grid (always carousel) ── */
-  #section-id-{{ section.id }} .product-grid {
-    display: grid;
-    gap: 24px;
-    grid-template-columns: repeat(var(--cols-per-row-desk), 1fr);
-  }
-
-  #section-id-{{ section.id }} .product-grid .slider__item {
-    display: none;
   }
 
   {%- assign cols_desk  = section.settings.per_row_desk -%}
@@ -38,61 +24,119 @@
   {%- assign last_slide_mob = item_count | minus: cols_mob | plus: 1 -%}
   {%- if last_slide_mob < 1 -%}{%- assign last_slide_mob = 1 -%}{%- endif -%}
 
-  /* Desktop: show cols_desk items per slide */
-  {% for i in (1..last_slide_desk) %}
-    {% for j in (0..cols_desk) %}
-      {% if j < cols_desk %}
-        {% assign item_index = i | plus: j %}
-        {% if item_index <= item_count %}
-          @media (min-width: 1024px) {
-            #slide-desk-{{ section.id }}-{{ i }}:checked ~ * .slider__item--{{ item_index }} { display: block; }
-          }
-        {% endif %}
-      {% endif %}
-    {% endfor %}
-  {% endfor %}
+  {%- assign carousel_desk = false -%}
+  {%- if item_count > cols_desk -%}{%- assign carousel_desk = true -%}{%- endif -%}
 
-  /* Tablet: show cols_tab items per slide */
-  {% for i in (1..last_slide_tab) %}
-    {% for j in (0..cols_tab) %}
-      {% if j < cols_tab %}
-        {% assign item_index = i | plus: j %}
-        {% if item_index <= item_count %}
-          @media (min-width: 768px) and (max-width: 1023px) {
-            #slide-tab-{{ section.id }}-{{ i }}:checked ~ * .slider__item--{{ item_index }} { display: block; }
-          }
-        {% endif %}
-      {% endif %}
-    {% endfor %}
-  {% endfor %}
+  {%- assign carousel_tab = false -%}
+  {%- if item_count > cols_tab -%}{%- assign carousel_tab = true -%}{%- endif -%}
 
-  /* Mobile: show cols_mob items per slide */
-  {% for i in (1..last_slide_mob) %}
-    {% for j in (0..cols_mob) %}
-      {% if j < cols_mob %}
-        {% assign item_index = i | plus: j %}
-        {% if item_index <= item_count %}
-          @media (max-width: 767px) {
-            #slide-mob-{{ section.id }}-{{ i }}:checked ~ * .slider__item--{{ item_index }} { display: block; }
-          }
-        {% endif %}
-      {% endif %}
-    {% endfor %}
-  {% endfor %}
+  {%- assign carousel_mob = false -%}
+  {%- if item_count > cols_mob -%}{%- assign carousel_mob = true -%}{%- endif -%}
 
-  @media (max-width: 1023px) {
+  /* ── Grid ── */
+  /* Desktop */
+  @media (min-width: 1024px) {
     #section-id-{{ section.id }} .product-grid {
-      grid-template-columns: repeat(var(--cols-per-row-tab), 1fr);
-      gap: 20px;
+      display: grid;
+      gap: 24px;
+      {% if carousel_desk %}
+        grid-template-columns: repeat({{ cols_desk }}, 1fr);
+      {% else %}
+        grid-template-columns: repeat({{ item_count }}, 1fr);
+      {% endif %}
     }
+    {% if carousel_desk %}
+      #section-id-{{ section.id }} .product-grid .slider__item {
+        display: none;
+      }
+    {% endif %}
   }
 
+  /* Tablet */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    #section-id-{{ section.id }} .product-grid {
+      display: grid;
+      gap: 20px;
+      {% if carousel_tab %}
+        grid-template-columns: repeat({{ cols_tab }}, 1fr);
+      {% else %}
+        grid-template-columns: repeat({{ item_count }}, 1fr);
+      {% endif %}
+    }
+    {% if carousel_tab %}
+      #section-id-{{ section.id }} .product-grid .slider__item {
+        display: none;
+      }
+    {% endif %}
+  }
+
+  /* Mobile */
   @media (max-width: 767px) {
     #section-id-{{ section.id }} .product-grid {
-      grid-template-columns: repeat(var(--cols-per-row-mob), 1fr);
+      display: grid;
       gap: 16px;
+      {% if carousel_mob %}
+        grid-template-columns: repeat({{ cols_mob }}, 1fr);
+      {% else %}
+        grid-template-columns: repeat({{ item_count }}, 1fr);
+      {% endif %}
     }
+    {% if carousel_mob %}
+      #section-id-{{ section.id }} .product-grid .slider__item {
+        display: none;
+      }
+    {% endif %}
   }
+
+  /* ── Carousel slide visibility rules ── */
+
+  /* Desktop */
+  {% if carousel_desk %}
+    {% for i in (1..last_slide_desk) %}
+      {% for j in (0..cols_desk) %}
+        {% if j < cols_desk %}
+          {% assign item_index = i | plus: j %}
+          {% if item_index <= item_count %}
+            @media (min-width: 1024px) {
+              #slide-desk-{{ section.id }}-{{ i }}:checked ~ * .slider__item--{{ item_index }} { display: block; }
+            }
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
+  {% endif %}
+
+  /* Tablet */
+  {% if carousel_tab %}
+    {% for i in (1..last_slide_tab) %}
+      {% for j in (0..cols_tab) %}
+        {% if j < cols_tab %}
+          {% assign item_index = i | plus: j %}
+          {% if item_index <= item_count %}
+            @media (min-width: 768px) and (max-width: 1023px) {
+              #slide-tab-{{ section.id }}-{{ i }}:checked ~ * .slider__item--{{ item_index }} { display: block; }
+            }
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
+  {% endif %}
+
+  /* Mobile */
+  {% if carousel_mob %}
+    {% for i in (1..last_slide_mob) %}
+      {% for j in (0..cols_mob) %}
+        {% if j < cols_mob %}
+          {% assign item_index = i | plus: j %}
+          {% if item_index <= item_count %}
+            @media (max-width: 767px) {
+              #slide-mob-{{ section.id }}-{{ i }}:checked ~ * .slider__item--{{ item_index }} { display: block; }
+            }
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
+  {% endif %}
 
   /* ── Cards ── */
   #section-id-{{ section.id }} .review-card {
@@ -176,22 +220,22 @@
     margin-top: 20px;
   }
 
-  /* Hide nav entirely when there is only one slide at a given breakpoint */
-  {% if last_slide_desk <= 1 %}
+  /* Hide nav when no carousel needed at that breakpoint */
+  {% unless carousel_desk %}
     @media (min-width: 1024px) {
       #section-id-{{ section.id }} .slider-nav { display: none; }
     }
-  {% endif %}
-  {% if last_slide_tab <= 1 %}
+  {% endunless %}
+  {% unless carousel_tab %}
     @media (min-width: 768px) and (max-width: 1023px) {
       #section-id-{{ section.id }} .slider-nav { display: none; }
     }
-  {% endif %}
-  {% if last_slide_mob <= 1 %}
+  {% endunless %}
+  {% unless carousel_mob %}
     @media (max-width: 767px) {
       #section-id-{{ section.id }} .slider-nav { display: none; }
     }
-  {% endif %}
+  {% endunless %}
 
   #section-id-{{ section.id }} .slider-nav__btn {
     cursor: pointer;
@@ -230,39 +274,65 @@
   if last_slide_mob < 1
     assign last_slide_mob = 1
   endif
+
+  assign carousel_desk = false
+  if item_count > cols_desk
+    assign carousel_desk = true
+  endif
+
+  assign carousel_tab = false
+  if item_count > cols_tab
+    assign carousel_tab = true
+  endif
+
+  assign carousel_mob = false
+  if item_count > cols_mob
+    assign carousel_mob = true
+  endif
+
+  assign any_carousel = false
+  if carousel_desk or carousel_tab or carousel_mob
+    assign any_carousel = true
+  endif
 -%}
 
 <div id="section-id-{{ section.id }}" class="section-id-{{ section.id }} collection-slider-row">
 
-  {%- for i in (1..last_slide_desk) -%}
-    <input
-      type="radio"
-      name="slider-desk-{{ section.id }}"
-      id="slide-desk-{{ section.id }}-{{ forloop.index }}"
-      class="slider-radio"
-      style="display:none"
-      {% if forloop.first %}checked{% endif %}>
-  {%- endfor -%}
+  {%- if carousel_desk -%}
+    {%- for i in (1..last_slide_desk) -%}
+      <input
+        type="radio"
+        name="slider-desk-{{ section.id }}"
+        id="slide-desk-{{ section.id }}-{{ forloop.index }}"
+        class="slider-radio"
+        style="display:none"
+        {% if forloop.first %}checked{% endif %}>
+    {%- endfor -%}
+  {%- endif -%}
 
-  {%- for i in (1..last_slide_tab) -%}
-    <input
-      type="radio"
-      name="slider-tab-{{ section.id }}"
-      id="slide-tab-{{ section.id }}-{{ forloop.index }}"
-      class="slider-radio"
-      style="display:none"
-      {% if forloop.first %}checked{% endif %}>
-  {%- endfor -%}
+  {%- if carousel_tab -%}
+    {%- for i in (1..last_slide_tab) -%}
+      <input
+        type="radio"
+        name="slider-tab-{{ section.id }}"
+        id="slide-tab-{{ section.id }}-{{ forloop.index }}"
+        class="slider-radio"
+        style="display:none"
+        {% if forloop.first %}checked{% endif %}>
+    {%- endfor -%}
+  {%- endif -%}
 
-  {%- for i in (1..last_slide_mob) -%}
-    <input
-      type="radio"
-      name="slider-mob-{{ section.id }}"
-      id="slide-mob-{{ section.id }}-{{ forloop.index }}"
-      class="slider-radio"
-      style="display:none"
-      {% if forloop.first %}checked{% endif %}>
-  {%- endfor -%}
+  {%- if carousel_mob -%}
+    {%- for i in (1..last_slide_mob) -%}
+      <input
+        type="radio"
+        name="slider-mob-{{ section.id }}"
+        id="slide-mob-{{ section.id }}-{{ forloop.index }}"
+        class="slider-radio"
+        style="display:none"
+        {% if forloop.first %}checked{% endif %}>
+    {%- endfor -%}
+  {%- endif -%}
 
   <div class="container{% if section.settings.full_width %} container--no-max{% endif %}">
 
@@ -272,14 +342,14 @@
       </div>
     {%- endif -%}
 
-    <div class="product-grid product-grid--carousel">
+    <div class="product-grid{% if any_carousel %} product-grid--carousel{% endif %}">
       {%- for block in section.blocks -%}
         {%- liquid
           assign filled_stars = block.settings.star_rating
           assign empty_stars  = 5 | minus: filled_stars
         -%}
         <div
-          class="review-block--{{ forloop.index }} slider__item slider__item--{{ forloop.index }}"
+          class="review-block--{{ forloop.index }}{% if any_carousel %} slider__item slider__item--{{ forloop.index }}{% endif %}"
           {{ block.shopify_attributes }}
         >
           {%- if block.settings.link != blank -%}
@@ -328,30 +398,36 @@
       {%- endfor -%}
     </div>
 
-    <div class="slider-nav">
-      <button
-        class="slider-nav__btn slider-nav__btn--prev"
-        data-slider="{{ section.id }}"
-        aria-label="Previous"
-        disabled
-      >&#8249;</button>
-      <p>swipe for more reviews</p>
-      <button
-        class="slider-nav__btn slider-nav__btn--next"
-        data-slider="{{ section.id }}"
-        aria-label="Next"
-      >&#8250;</button>
-    </div>
+    {%- if any_carousel -%}
+      <div class="slider-nav">
+        <button
+          class="slider-nav__btn slider-nav__btn--prev"
+          data-slider="{{ section.id }}"
+          aria-label="Previous"
+          disabled
+        >&#8249;</button>
+        <p>swipe for more reviews</p>
+        <button
+          class="slider-nav__btn slider-nav__btn--next"
+          data-slider="{{ section.id }}"
+          aria-label="Next"
+        >&#8250;</button>
+      </div>
+    {%- endif -%}
 
   </div>
 </div>
 
+{%- if any_carousel -%}
 <script>
 (function () {
   var sectionId     = {{ section.id | json }};
   var lastSlideDesk = {{ last_slide_desk }};
   var lastSlideTab  = {{ last_slide_tab }};
   var lastSlideMob  = {{ last_slide_mob }};
+  var carouselDesk  = {{ carousel_desk }};
+  var carouselTab   = {{ carousel_tab }};
+  var carouselMob   = {{ carousel_mob }};
   var current       = 1;
 
   var root    = document.getElementById('section-id-' + sectionId);
@@ -365,6 +441,13 @@
     return 'mob';
   }
 
+  function isCarouselActive() {
+    var bp = getBreakpoint();
+    if (bp === 'desk') return carouselDesk;
+    if (bp === 'tab')  return carouselTab;
+    return carouselMob;
+  }
+
   function getLastSlide() {
     var bp = getBreakpoint();
     if (bp === 'desk') return lastSlideDesk;
@@ -372,7 +455,14 @@
     return lastSlideMob;
   }
 
+  function updateNav() {
+    var nav = root.querySelector('.slider-nav');
+    if (!nav) return;
+    nav.style.display = isCarouselActive() ? '' : 'none';
+  }
+
   function goTo(index) {
+    if (!isCarouselActive()) return;
     var lastSlide = getLastSlide();
     if (index < 1 || index > lastSlide) return;
     var bp    = getBreakpoint();
@@ -386,15 +476,20 @@
   var resizeTimer;
   window.addEventListener('resize', function () {
     clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(function () { goTo(1); }, 150);
+    resizeTimer = setTimeout(function () {
+      updateNav();
+      goTo(1);
+    }, 150);
   });
 
   prevBtn.addEventListener('click', function () { goTo(current - 1); });
   nextBtn.addEventListener('click', function () { goTo(current + 1); });
 
+  updateNav();
   goTo(1);
 })();
 </script>
+{%- endif -%}
 
 {% schema %}
 {
