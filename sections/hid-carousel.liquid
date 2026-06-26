@@ -85,6 +85,11 @@
     margin-top: auto;
   }
 
+   #section-id-{{ section.id }}  .review-body{
+    display: flex;
+    flex-direction: column;
+  }
+
   /* ── Per-block overrides ── */
   {%- for block in section.blocks -%}
     #section-id-{{ section.id }} .review-block--{{ forloop.index }} .review-card {
@@ -95,7 +100,7 @@
         color: {{ block.settings.font_colour }};
       {% endif %}
       flex-direction: {{ block.settings.text_icon_alignment }};
-      {% if block.settings.text_icon_alignment == 'row' %}
+    {% if block.settings.text_icon_alignment == 'row' %}
         align-items: flex-start;
         text-align: left;
       {% endif %}
@@ -198,7 +203,7 @@
               </div>
             {%- endif -%}
 
-            <div>
+            <div class="review-body">
               {%- if block.settings.star_rating > 0 -%}
                 <div class="review-card__stars" aria-label="{{ block.settings.star_rating }} out of 5 stars">
                   {%- for i in (1..filled_stars) -%}★{%- endfor -%}
