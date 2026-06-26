@@ -96,7 +96,7 @@
 }
 {% endstyle %}
 
-<div class="section-id-{{ section.id }} collection-slider-row">
+<div class="section-id-{{ section.id }}">
 
   {%- if show_carousel -%}
     {% for i in (1..last_slide) %}
@@ -133,11 +133,11 @@
     </div>
 
     <div class="collection-listing{% if show_carousel %} collection-listing--carousel{% endif %}">
-      <div class="product-grid product-grid--desk-{{ per_row_desk }} product-grid--mob-{{ per_row_mob }}{% if show_carousel %} product-grid--carousel{% endif %}">
+      <div class="product-grid{% if show_carousel %} product-grid--carousel{% endif %}">
         {% if section.settings.collection_type == 'auto' %}
           {%- if section.settings.collection != blank -%}
             {%- for product in collection.products limit: product_limit -%}
-              <div class="product-grid__item{% if show_carousel %} slider__item slider__item--{{ forloop.index }}{% endif %}">
+              <div{% if show_carousel %} class="slider__item slider__item--{{ forloop.index }}"{% endif %}>
                 {%- render 'hid-product-card', product: product -%}
               </div>
             {%- endfor -%}
@@ -145,7 +145,7 @@
         {% else %}
           {%- if section.blocks.size > 0 -%}
             {%- for block in section.blocks limit: product_limit -%}
-              <div class="product-grid__item{% if show_carousel %} slider__item slider__item--{{ forloop.index }}{% endif %}">
+              <div{% if show_carousel %} class="slider__item slider__item--{{ forloop.index }}"{% endif %}>
                 {%- render 'hid-product-card',
                   product: block.settings.product,
                   configured_image_primary: block.settings.configured_image_primary,
@@ -156,6 +156,7 @@
         {% endif %}
       </div>
     </div>
+
     {% if section.settings.collection_type == 'auto' and section.settings.collection != blank and section.settings.show_view_all -%}
       <div class="view-all align-center">
         <a class="small-feature-link" href="{{ collection.url }}">View all</a>
