@@ -716,7 +716,7 @@
         "font_size": 16,
         "border_radius": 8,
         "max_width": 600,
-        "bottom_spacing": 16
+        "bottom_spacing": 0
       }
     }
   },
