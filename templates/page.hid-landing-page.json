@@ -709,9 +709,9 @@
       "type": "hid-sticky-button",
       "name": "HID Sticky Button",
       "settings": {
-        "button_text": "Shop Now",
+        "button_text": "Shop BuggyBoard",
         "button_link": "shopify://collections/buggyboard",
-        "background": "#000000",
+        "background": "#E98739",
         "text_color": "#FFFFFF",
         "font_size": 16,
         "border_radius": 8,
