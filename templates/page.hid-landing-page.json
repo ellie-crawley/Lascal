@@ -648,31 +648,16 @@
         "max_width": 250
       }
     },
-    "hid_rich_text_pj9xNK": {
+    "hid_rich_text_tEYqhk": {
       "type": "hid-rich-text",
       "blocks": {
-        "image_6B9jJh": {
+        "image_FNMnw3": {
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/The-Original-BB-Icon.png",
             "image_width": 100
           }
-        }
-      },
-      "block_order": [
-        "image_6B9jJh"
-      ],
-      "name": "HID rich text",
-      "settings": {
-        "text_alignment": "center",
-        "padding_top": 20,
-        "padding_bottom": 20,
-        "gap": 20
-      }
-    },
-    "hid_rich_text_tEYqhk": {
-      "type": "hid-rich-text",
-      "blocks": {
+        },
         "text_TkwDbE": {
           "type": "text",
           "settings": {
@@ -690,24 +675,8 @@
             "after_text": "",
             "after_text_colour": ""
           }
-        }
-      },
-      "block_order": [
-        "text_TkwDbE",
-        "text_CJmYap"
-      ],
-      "name": "HID rich text",
-      "settings": {
-        "text_alignment": "center",
-        "padding_top": 20,
-        "padding_bottom": 20,
-        "gap": 5
-      }
-    },
-    "hid_rich_text_G7CCiC": {
-      "type": "hid-rich-text",
-      "blocks": {
-        "button_r8z6c7": {
+        },
+        "button_CriNTN": {
           "type": "button",
           "settings": {
             "button_label": "SHOP NOW RISK-FREE >",
@@ -718,14 +687,17 @@
         }
       },
       "block_order": [
-        "button_r8z6c7"
+        "image_FNMnw3",
+        "text_TkwDbE",
+        "text_CJmYap",
+        "button_CriNTN"
       ],
       "name": "HID rich text",
       "settings": {
         "text_alignment": "center",
         "padding_top": 20,
         "padding_bottom": 20,
-        "gap": 20
+        "gap": 10
       }
     }
   },
@@ -744,8 +716,6 @@
     "hid_rich_text_aAGeP4",
     "hid_image_banner_iQjfwX",
     "hid_logo_list_PQ78BY",
-    "hid_rich_text_pj9xNK",
-    "hid_rich_text_tEYqhk",
-    "hid_rich_text_G7CCiC"
+    "hid_rich_text_tEYqhk"
   ]
 }
