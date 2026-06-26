@@ -7,7 +7,7 @@
     margin: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px 0;
   }
   #section-id-{{ section.id }}{
-    .logo-list {
+    .carousel-item {
       --gap: 10px;
       display: flex;
       flex-wrap: wrap;
@@ -15,13 +15,13 @@
       justify-content: center;
       text-align: center;
     }
-    .logo-list__link:hover .logo-list__logo-image {
+    .carousel-item__link:hover .carousel-item__logo-image {
       opacity: {{ section.settings.image_opacity | times: 1.2 | at_most: 100 }}%;
     }
     .hometitle{
       margin-bottom: 20px;
     }
-    .logo-list__logo-image {
+    .carousel-item__logo-image {
       display: flex;
       align-items: center;
       width: var(--logo-max-width, none);
@@ -29,17 +29,17 @@
       transition: opacity 100ms;
       opacity: {{ section.settings.image_opacity }}%;
     }
-    .layout-row .logo-list__logo-image {
+    .layout-row .carousel-item__logo-image {
       margin: 0;
     }
-    .layout-column .logo-list__logo-image {
+    .layout-column .carousel-item__logo-image {
       margin: 0 auto;
     }
-    .logo-list__logo-image img{
+    .carousel-item__logo-image img{
       width: var(--logo-max-width, none);
       max-width: var(--logo-max-width, none);
     }
-    .logo-list-wrapper{
+    .carousel-item-wrapper{
       display: flex;
       flex-direction: {{ section.settings.text_icon_alignment }};
       align-items: center;
@@ -57,40 +57,40 @@
     .layout--grid{
       flex-wrap: wrap;
     }
-    .layout--grid .logo-list{
+    .layout--grid .carousel-item{
       justify-content: flex-start;
     }
-    .layout--grid .logo-list-wrapper {
+    .layout--grid .carousel-item-wrapper {
       flex: 0 1 calc(50% - (var(--gap) / 2));
     }
-    .logo-list__logo-text p{
+    .carousel-item__logo-text p{
       font-size: {{section.settings.font_size}}px;
       color: {{section.settings.font_colour}}
     }
 
     {%- for block in section.blocks -%}
-      .logo-list__logo-{{ forloop.index }} {
+      .carousel-item__logo-{{ forloop.index }} {
         --logo-max-width: {{ block.settings.image_width }}px;
       }
-      .text_icon_alignment-row.logo-list__logo-{{ forloop.index }} {
+      .text_icon_alignment-row.carousel-item__logo-{{ forloop.index }} {
         justify-content: {{  block.settings.justify-content }}
       }
     {%- endfor -%}
 
     @media (min-width: 769px) {
-      .layout--grid .logo-list-wrapper {
+      .layout--grid .carousel-item-wrapper {
         flex: 0 1 calc(33% - (2 * var(--gap)) / 2);
       }
     }
 
     @media (min-width: 1000px) {
-      .logo-list {
+      .carousel-item {
         --gap: 20px;
       }
-      .layout--grid .logo-list-wrapper {
+      .layout--grid .carousel-item-wrapper {
         flex: 0 1 calc(25% - (3 * var(--gap)) / 4);
       }
-      .logo-list__logo-text p{
+      .carousel-item__logo-text p{
         font-size: calc({{section.settings.font_size}} + 2)px;
       }
     }
@@ -104,7 +104,7 @@
   assign item_count = section.blocks.size
   assign last_slide = item_count | minus: cols_per_row_desk | plus: 1
   assign show_carousel = true
-  if item_count <= cols
+  if item_count <= cols_per_row_desk
     assign show_carousel = false
   endif
   if last_slide < 1
@@ -182,8 +182,8 @@
 }
 
 .section-id-{{ section.id }} {
-  --per-row-desk: {{ per_row_desk }};
-  --per-row-mob: {{ per_row_mob }};
+  --per-row-desk: {{ cols_per_row_desk }};
+  --per-row-mob: {{ cols_per_row_mob }};
   margin: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px 0;
 }
 {% endstyle %}
@@ -191,13 +191,13 @@
 {%- capture block_html -%}
   {%- for block in section.blocks -%}
     {%- if block.settings.link != blank -%}
-      <a class="logo-list__link logo-list__logo logo-list__logo-{{ forloop.index }} text_icon_alignment-{{ section.settings.text_icon_alignment }}" href="{{ block.settings.link }}" {{ block.shopify_attributes }}>
+      <a class="carousel-item__link carousel-item--{{ forloop.index }} text_image_alignment-{{ section.settings.text_icon_alignment }}" href="{{ block.settings.link }}" {{ block.shopify_attributes }}>
     {%- else -%}
-      <div class="logo-list-wrapper logo-list__logo logo-list__logo-{{ forloop.index }} text_icon_alignment-{{ section.settings.text_icon_alignment }}" {{ block.shopify_attributes }}>
+      <div class="carousel-item-wrapper carousel-item--{{ forloop.index }} text_image_alignment-{{ section.settings.text_icon_alignment }}" {{ block.shopify_attributes }}>
     {%- endif -%}
 
     {%- if block.settings.image != blank -%}
-      <div class="logo-list__logo-image">
+      <div class="carousel-item-image">
         {%- liquid
           assign image_sizes = block.settings.image_width | append: 'px'
           assign image_widths = block.settings.image_width | times: 2 | prepend: ', ' | prepend: block.settings.image_width
@@ -207,7 +207,7 @@
     {%- endif -%}
 
     {%- if block.settings.text != blank -%}
-      <div class="logo-list__logo-text">{{ block.settings.text }}</div>
+      <div class="carousel-item-text">{{ block.settings.text }}</div>
     {%- endif -%}
 
     {%- unless block.settings.link != blank -%}
@@ -241,9 +241,9 @@
       </div>
     {% endif %}
 
-    <div class="collection-listing{% if show_carousel %} collection-listing--carousel{% endif %}">
-      <div class="product-grid product-grid--desk-{{ per_row_desk }} product-grid--mob-{{ per_row_mob }}{% if show_carousel %} product-grid--carousel{% endif %}">
-        {%- for block in section.blocks limit: product_limit -%}
+    <div class="{% if show_carousel %} block-item--carousel{% endif %}">
+      <div class="product-grid product-grid--desk-{{ cols_per_row_desk }} product-grid--mob-{{ cols_per_row_mobile }}{% if show_carousel %} product-grid--carousel{% endif %}">
+        {%- for block in section.blocks -%}
           <div class="product-grid__item{% if show_carousel %} slider__item slider__item--{{ forloop.index }}{% endif %}">
             {{- block_html -}}
           </div>
