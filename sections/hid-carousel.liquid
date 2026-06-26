@@ -55,7 +55,7 @@
     {% for j in (0..cols_tab) %}
       {% if j < cols_tab %}
         {% assign item_index = i | plus: j %}
-        @media (min-width: 425px) and (max-width: 1023px) {
+        @media (min-width: 426px) and (max-width: 1023px) {
           #slide-tab-{{ section.id }}-{{ i }}:checked ~ * .slider__item--{{ item_index }} { display: block; }
         }
       {% endif %}
@@ -67,7 +67,7 @@
     {% for j in (0..cols_mob) %}
       {% if j < cols_mob %}
         {% assign item_index = i | plus: j %}
-        @media (max-width: 767px) {
+        @media (max-width: 425px) {
           #slide-mob-{{ section.id }}-{{ i }}:checked ~ * .slider__item--{{ item_index }} { display: block; }
         }
       {% endif %}
