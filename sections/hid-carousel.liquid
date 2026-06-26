@@ -124,16 +124,16 @@
 .section-id-{{ section.id }} .product-grid {
   display: grid;
   gap: 24px;
-  grid-template-columns: repeat({{ product_count }}, 1fr);
+  grid-template-columns: repeat({{ item_count }}, 1fr);
 }
 
 .section-id-{{ section.id }} .product-grid--carousel {
-  grid-template-columns: repeat(var(--per-row-desk), 1fr);
+  grid-template-columns: repeat(var(--cols-per-row-desk), 1fr);
 }
 
 @media (max-width: 767px) {
   .section-id-{{ section.id }} .product-grid {
-    grid-template-columns: repeat(var(--per-row-mob), 1fr);
+    grid-template-columns: repeat(var(--cols_per_row_mob), 1fr);
     gap: 16px;
   }
 }
@@ -147,7 +147,7 @@
   display: none;
 }
 
-{% assign cols = per_row_desk %}
+{% assign cols = cols_per_row_desk %}
 {% for i in (1..last_slide) %}
   {% for j in (0..cols) %}
     {% if j < cols %}
