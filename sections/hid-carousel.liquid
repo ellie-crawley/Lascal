@@ -198,22 +198,24 @@
               </div>
             {%- endif -%}
 
-            {%- if block.settings.star_rating > 0 -%}
-              <div class="review-card__stars" aria-label="{{ block.settings.star_rating }} out of 5 stars">
-                {%- for i in (1..filled_stars) -%}★{%- endfor -%}
-                {%- if empty_stars > 0 -%}
-                  {%- for i in (1..empty_stars) -%}☆{%- endfor -%}
-                {%- endif -%}
-              </div>
-            {%- endif -%}
+            <div>
+              {%- if block.settings.star_rating > 0 -%}
+                <div class="review-card__stars" aria-label="{{ block.settings.star_rating }} out of 5 stars">
+                  {%- for i in (1..filled_stars) -%}★{%- endfor -%}
+                  {%- if empty_stars > 0 -%}
+                    {%- for i in (1..empty_stars) -%}☆{%- endfor -%}
+                  {%- endif -%}
+                </div>
+              {%- endif -%}
 
-            {%- if block.settings.text != blank -%}
-              <div class="review-card__text">{{ block.settings.text }}</div>
-            {%- endif -%}
+              {%- if block.settings.text != blank -%}
+                <div class="review-card__text">{{ block.settings.text }}</div>
+              {%- endif -%}
 
-            {%- if block.settings.author != blank -%}
+              {%- if block.settings.author != blank -%}
               <div class="review-card__author">{{ block.settings.author }}</div>
             {%- endif -%}
+            </div>
 
           {%- if block.settings.link != blank -%}
             </a>
