@@ -238,38 +238,12 @@
   visibility: visible;
 }
 
-.lds-dual-ring {
-  display: inline-block;
-  width: 35px;
-  height: 35px;
-}
-
-.lds-dual-ring:after {
-  content: " ";
-  display: block;
-  width: 30px;
-  height: 30px;
-  margin: 4px;
-  border-radius: 50%;
-  border: 2px solid #fff;
-  border-color: #000 transparent #000 transparent;
-  animation: lds-dual-ring 1.2s linear infinite;
-}
-
 .hid-product__card-add-cart__container .find-retailer {
   display: block;
   margin-top: 20px;
   text-align: center;
 }
 
-@keyframes lds-dual-ring {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
 .hid-product__card-variants {
   display: flex;
   align-items: center;
@@ -282,9 +256,6 @@
   border: 1px solid #C7C7CC;
   max-width: 35px;
   max-height: 35px;
-}
-.hid-product__card-variants-item.active {
-  border: 1px solid #FF8300;
 }
 .hid-product__card-variants-item img {
   border-radius: 50%;
@@ -300,7 +271,7 @@
 }
 
 .stamped-fa-star{
-  color: #FF8300;
+  color: {{btn_star_colour}};
 }
 .stamped-fa-star:before,
 .stamped-fa-star{
@@ -309,8 +280,8 @@
 
 .form__button {
   margin-top: 10px;
-  background: #FF8300;
-  color: #fff;
+  background: {{btn_colour}};
+  color: {{btn_text_colour}};
   border: none;
   width: 100%;
   padding: 11px;
