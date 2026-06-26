@@ -61,7 +61,7 @@
   {% endif %}
   {% if min_collection_price %}
     <span class="sticky-button__from-text">
-      {{ 'sticky_button.starting_from' | t }} {{ min_collection_price | money }}
+      From {{ min_collection_price | money }}
     </span>
   {% endif %}
   <a href="{{ section.settings.button_link }}" class="sticky_button">
