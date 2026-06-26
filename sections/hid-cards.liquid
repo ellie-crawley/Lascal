@@ -131,9 +131,16 @@
 
   {% if section.settings.title != blank %}
     <div class="hometitle align-center{% if section.settings.show_title == false %} visually-hidden{% endif %}">
-      <h2>
-        {{- section.settings.title | escape -}}
-      </h2>
+      {% if section.settings.title != blank %}
+        <h2>
+          {{- section.settings.title | escape -}}
+        </h2>
+      {% endif %}
+      {% if section.settings.subtitle != blank %}
+        <p>
+          {{- section.settings.subtitle | escape -}}
+        </p>
+      {% endif %}
     </div>
   {% endif %}
   <div class="card-list card-list--count-{{ section.blocks.size }}">
