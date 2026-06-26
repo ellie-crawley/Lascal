@@ -123,7 +123,7 @@
         "gap_mobile": 10,
         "gap_desktop": 20,
         "enable_max_width": true,
-        "max_width": 100
+        "max_width": 125
       }
     },
     "hid_rich_text_fWJNdg": {
