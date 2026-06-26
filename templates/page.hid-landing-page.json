@@ -386,9 +386,9 @@
           "type": "countdown",
           "settings": {
             "text_color": "",
-            "countdown_bg_color": "#2c2620",
+            "countdown_bg_color": "#E2A778",
             "countdown_number_color": "#ffffff",
-            "countdown_unit_color": "#a89e93",
+            "countdown_unit_color": "#FFFFFF",
             "end_date": "2026-06-28",
             "end_time": "17:00",
             "end_text": "",
@@ -418,7 +418,7 @@
       "name": "HID Countdown timer",
       "settings": {
         "text_alignment": "center",
-        "bg_color": "#1c1814"
+        "bg_color": "#E98739"
       }
     },
     "hid_featured_collection_RzhnYR": {
