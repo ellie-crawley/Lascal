@@ -82,12 +82,6 @@
       }
     {%- endfor -%}
 
-    @media (min-width: 769px) {
-      .layout--grid .logo-list-wrapper {
-        flex: 0 1 calc(33% - (2 * var(--gap)) / 2);
-      }
-    }
-
     @media (min-width: 1000px) {
       .logo-list {
         --gap: {{section.settings.gap_desktop}}px;
@@ -102,7 +96,7 @@
   }
 {%- endstyle -%}
 
-<div id="section-id-{{ section.id }}" class="hid-container logo-container">
+<div id="section-id-{{ section.id }}" class="logo-container">
 
   {%- capture logos_html -%}
     {%- for block in section.blocks -%}
@@ -154,7 +148,7 @@
 {% schema %}
 {
   "name": "HID Logo list",
-  "class": "section-logo-list",
+  "class": "section-logo-list hid-container",
   "settings": [
     {
       "type": "text",
@@ -274,7 +268,7 @@
     {
       "type": "checkbox",
       "id": "enable_max_width",
-      "label": "Enable con and text max width",
+      "label": "Enable icon and text max width",
       "default": false
     },
     {
