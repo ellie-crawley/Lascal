@@ -45,9 +45,6 @@
       align-items: center;
       gap: 5px;
       flex: 1;
-      {% if section.settings.enable_max_width %}
-        max-width: {{ section.settings.max_width }};
-      {% endif %}
       {% if section.settings.logo_bg_color != blank %}
         border-radius: 9px;
         padding: 11px;
@@ -78,6 +75,11 @@
       .text_icon_alignment-row.logo-list__logo-{{ forloop.index }} {
         justify-content: {{  block.settings.justify-content }}
       }
+      {% if section.settings.enable_max_width %}
+        .logo-list-wrapper{
+          max-width: {{ section.settings.max_width }}px;
+        }
+      {% endif %}
     {%- endfor -%}
 
     @media (min-width: 769px) {
