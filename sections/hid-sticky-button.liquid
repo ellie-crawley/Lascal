@@ -45,18 +45,27 @@
 
 {% if section.settings.button_text != blank and section.settings.button_link != blank %}
   <div id="sticky-button-{{ section_id }}">
-    {% if section.settings.button_link.type == 'collection_link' %}
-      {% assign lowest_in_collection = collection.products | map: 'price_min' | min %}
-    
-      {% if lowest_in_collection %}
-        {% assign from_text = 'From ' | append: lowest_in_collection | money %}
-      {% endif %}
-    {% endif %}
-    {{ from_text }}
-    <a href="{{ section.settings.button_link }}" class="sticky_button">
-      {{ section.settings.button_text }}
-    </a>
-  </div>
+
+  {% assign linked_collection = section.settings.button_link.object %}
+  {% if linked_collection != blank and linked_collection.products_count > 0 %}
+    {% assign min_collection_price = nil %}
+    {% for product in linked_collection.products %}
+        {% if forloop.first %}
+          {% assign min_collection_price = product.price_min %}
+        {% elsif product.price_min < min_collection_price %}
+          {% assign min_collection_price = product.price_min %}
+        {% endif %}
+    {% endfor %}
+  {% endif %}
+  {% if min_collection_price %}
+    <span class="sticky-button__from-text">
+      {{ 'sticky_button.starting_from' | t }} {{ min_collection_price | money }}
+    </span>
+  {% endif %}
+  <a href="{{ section.settings.button_link }}" class="sticky_button">
+    {{ section.settings.button_text }}
+  </a>
+</div>
 {% endif %}
 
 {% schema %}
