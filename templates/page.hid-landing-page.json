@@ -702,7 +702,21 @@
         "padding_top": 20,
         "padding_bottom": 20,
         "gap": 10,
-        "bg_colour": "#F4EADD"
+        "bg_colour": "#f4eadd"
+      }
+    },
+    "hid_sticky_button_VEGq7d": {
+      "type": "hid-sticky-button",
+      "name": "HID Sticky Button",
+      "settings": {
+        "button_text": "Shop Now",
+        "button_link": "shopify://collections/buggyboard",
+        "background": "#000000",
+        "text_color": "#FFFFFF",
+        "font_size": 16,
+        "border_radius": 8,
+        "max_width": 600,
+        "bottom_spacing": 16
       }
     }
   },
@@ -721,6 +735,7 @@
     "hid_rich_text_aAGeP4",
     "hid_image_banner_iQjfwX",
     "hid_logo_list_PQ78BY",
-    "hid_rich_text_tEYqhk"
+    "hid_rich_text_tEYqhk",
+    "hid_sticky_button_VEGq7d"
   ]
 }
