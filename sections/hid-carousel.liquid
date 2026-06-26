@@ -195,7 +195,7 @@
 }
 {% endstyle %}
 
-{%- capture logos_html -%}
+{%- capture block_html -%}
   {%- for block in section.blocks -%}
     {%- if block.settings.link != blank -%}
       <a class="logo-list__link logo-list__logo logo-list__logo-{{ forloop.index }} text_icon_alignment-{{ section.settings.text_icon_alignment }}" href="{{ block.settings.link }}" {{ block.shopify_attributes }}>
@@ -252,7 +252,7 @@
       <div class="product-grid product-grid--desk-{{ per_row_desk }} product-grid--mob-{{ per_row_mob }}{% if show_carousel %} product-grid--carousel{% endif %}">
         {%- for block in section.blocks limit: product_limit -%}
           <div class="product-grid__item{% if show_carousel %} slider__item slider__item--{{ forloop.index }}{% endif %}">
-            {%- render 'hid-product-card', product: product -%}
+            {{- block_html -}}
           </div>
         {%- endfor -%}
       </div>
@@ -275,20 +275,6 @@
           aria-label="Next"
         >&#8250;</button>
       {% endif %}
-    </div>
-  </div>
-</div>
-
-<div id="section-id-{{ section.id }}" class="hid-container logo-container">
-
-
-
-  <div class="{% if section.settings.full_width == false %}container{% endif %}">
-
-    <div class="logo-list-container">
-      <div class="logo-list logo-list--count-{{ section.blocks.size }} layout--{{ section.settings.layout }}">
-        {{- logos_html -}}
-      </div>
     </div>
   </div>
 </div>
