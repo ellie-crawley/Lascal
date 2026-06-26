@@ -135,7 +135,12 @@
         {%- if section.settings.collection != blank -%}
           {%- for product in collection.products limit: product_limit -%}
             <div{% if show_carousel %} class="slider__item slider__item--{{ forloop.index }}"{% endif %}>
-              {%- render 'hid-product-card', product: product -%}
+              {%- render
+                'hid-product-card',
+                product: product,
+                btn_colour: {{ section.settings.button_colour }},
+                btn_text_colour: {{ section.settings.button_text_colour }}
+              -%}
             </div>
           {%- endfor -%}
         {%- endif -%}
@@ -286,6 +291,16 @@
       "id": "show_view_all",
       "label": "Show 'View all' link",
       "default": true
+    },
+    {
+      "type": "color",
+      "id": "btn_colour",
+      "label": "Button colour"
+    },
+    {
+      "type": "color",
+      "id": "btn_text_colour",
+      "label": "Button text colour"
     }
   ],
   "blocks": [
