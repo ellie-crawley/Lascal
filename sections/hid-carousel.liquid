@@ -310,8 +310,7 @@
     {
       "type": "text",
       "id": "title",
-      "label": "Heading",
-      "default": "Logo list"
+      "label": "Heading"
     },
     {
       "type": "checkbox",
@@ -319,52 +318,6 @@
       "label": "Show heading",
       "info": "If not visible, heading is still used for accessibility & SEO",
       "default": true
-    },
-    {
-      "type": "radio",
-      "id": "text_icon_alignment",
-      "label": "Text and Icon alignment",
-      "default": "column",
-      "options": [
-        {
-          "value": "column",
-          "label": "Stacked"
-        },
-        {
-          "value": "row",
-          "label": "Inline"
-        }
-      ]
-    },
-    {
-      "type": "range",
-      "id": "image_opacity",
-      "label": "Logo opacity",
-      "min": 20,
-      "max": 100,
-      "step": 1,
-      "unit": "%",
-      "default": 75
-    },
-    {
-      "type": "range",
-      "id": "font_size",
-      "label": "Text size",
-      "min": 8,
-      "max": 30,
-      "step": 1,
-      "unit": "px",
-      "default": 12
-    },
-    {
-      "type": "color",
-      "id": "logo_bg_color",
-      "label": "Background color"
-    },
-    {
-      "type": "color",
-      "id": "font_colour",
-      "label": "Text color"
     },
     {
       "type": "range",
@@ -387,30 +340,30 @@
       "default": 20
     },
     {
-      "type": "range",
-      "id": "gap_mobile",
-      "label": "Gap (Mobile)",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "default": 10
-    },
-    {
-      "type": "range",
-      "id": "gap_desktop",
-      "label": "Gap (Desktop)",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "default": 20
+      "type": "radio",
+      "id": "justify-content",
+      "label": "Text and Icon alignment",
+      "default": "center",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Centre"
+        },
+        {
+          "value": "flex-end",
+          "label": "Right"
+        }
+      ]
     }
   ],
   "blocks": [
     {
-      "type": "logo",
-      "name": "Logo",
+      "type": "image_with_text",
+      "name": "Image with Text",
       "settings": [
         {
           "type": "image_picker",
@@ -422,10 +375,11 @@
           "id": "image_width",
           "label": "Logo width",
           "min": 10,
-          "max": 280,
-          "step": 10,
-          "unit": "px",
-          "default": 180
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 50,
+          "info": "Image column width when image and text are inline"
         },
         {
           "type": "url",
@@ -436,27 +390,42 @@
           "type": "richtext",
           "id": "text",
           "label": "Text",
-          "info": "Optional",
         },
         {
           "type": "radio",
-          "id": "justify-content",
+          "id": "text_icon_alignment",
           "label": "Text and Icon alignment",
-          "default": "center",
+          "default": "column",
           "options": [
             {
-              "value": "flex-start",
-              "label": "Left"
+              "value": "column",
+              "label": "Stacked"
             },
             {
-              "value": "center",
-              "label": "Centre"
-            },
-            {
-              "value": "flex-end",
-              "label": "Right"
+              "value": "row",
+              "label": "Inline"
             }
           ]
+        },
+        {
+          "type": "range",
+          "id": "font_size",
+          "label": "Text size",
+          "min": 8,
+          "max": 30,
+          "step": 1,
+          "unit": "px",
+          "default": 12
+        },
+        {
+          "type": "color",
+          "id": "logo_bg_color",
+          "label": "Background color"
+        },
+        {
+          "type": "color",
+          "id": "font_colour",
+          "label": "Text color"
         }
       ]
     }
