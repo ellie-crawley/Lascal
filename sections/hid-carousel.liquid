@@ -4,6 +4,7 @@
   #section-id-{{ section.id }} {
     margin: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px 0;
     --cols-per-row-desk: {{ section.settings.per_row_desk }};
+    --cols-per-row-tab: {{ section.settings.per_row_tab }};
     --cols-per-row-mob: {{ section.settings.per_row_mobile }};
   }
 
@@ -12,30 +13,73 @@
     text-align: center;
   }
 
-  /* ── Grid ── */
+  /* ── Grid (always carousel) ── */
   #section-id-{{ section.id }} .product-grid {
     display: grid;
     gap: 24px;
     grid-template-columns: repeat(var(--cols-per-row-desk), 1fr);
   }
 
-  #section-id-{{ section.id }} .product-grid--carousel .slider__item {
+  #section-id-{{ section.id }} .product-grid .slider__item {
     display: none;
   }
 
-  {% assign cols = section.settings.per_row_desk %}
-  {% assign item_count = section.blocks.size %}
-  {% assign last_slide = item_count | minus: cols | plus: 1 %}
-  {% if last_slide < 1 %}{% assign last_slide = 1 %}{% endif %}
+  {%- assign cols_desk  = section.settings.per_row_desk -%}
+  {%- assign cols_tab   = section.settings.per_row_tab -%}
+  {%- assign cols_mob   = section.settings.per_row_mobile -%}
+  {%- assign item_count = section.blocks.size -%}
 
-  {% for i in (1..last_slide) %}
-    {% for j in (0..cols) %}
-      {% if j < cols %}
+  {%- assign last_slide_desk = item_count | minus: cols_desk | plus: 1 -%}
+  {%- if last_slide_desk < 1 -%}{%- assign last_slide_desk = 1 -%}{%- endif -%}
+
+  {%- assign last_slide_tab = item_count | minus: cols_tab | plus: 1 -%}
+  {%- if last_slide_tab < 1 -%}{%- assign last_slide_tab = 1 -%}{%- endif -%}
+
+  {%- assign last_slide_mob = item_count | minus: cols_mob | plus: 1 -%}
+  {%- if last_slide_mob < 1 -%}{%- assign last_slide_mob = 1 -%}{%- endif -%}
+
+  /* Desktop: show cols_desk items per slide */
+  {% for i in (1..last_slide_desk) %}
+    {% for j in (0..cols_desk) %}
+      {% if j < cols_desk %}
         {% assign item_index = i | plus: j %}
-        #slide-{{ section.id }}-{{ i }}:checked ~ * .slider__item--{{ item_index }} { display: block; }
+        @media (min-width: 1024px) {
+          #slide-desk-{{ section.id }}-{{ i }}:checked ~ * .slider__item--{{ item_index }} { display: block; }
+        }
       {% endif %}
     {% endfor %}
   {% endfor %}
+
+  /* Tablet: show cols_tab items per slide */
+  {% for i in (1..last_slide_tab) %}
+    {% for j in (0..cols_tab) %}
+      {% if j < cols_tab %}
+        {% assign item_index = i | plus: j %}
+        @media (min-width: 768px) and (max-width: 1023px) {
+          #slide-tab-{{ section.id }}-{{ i }}:checked ~ * .slider__item--{{ item_index }} { display: block; }
+        }
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+
+  /* Mobile: show cols_mob items per slide */
+  {% for i in (1..last_slide_mob) %}
+    {% for j in (0..cols_mob) %}
+      {% if j < cols_mob %}
+        {% assign item_index = i | plus: j %}
+        @media (max-width: 767px) {
+          #slide-mob-{{ section.id }}-{{ i }}:checked ~ * .slider__item--{{ item_index }} { display: block; }
+        }
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+
+  @media (max-width: 1023px) {
+    #section-id-{{ section.id }} .product-grid {
+      grid-template-columns: repeat(var(--cols-per-row-tab), 1fr);
+      gap: 20px;
+    }
+  }
 
   @media (max-width: 767px) {
     #section-id-{{ section.id }} .product-grid {
@@ -71,18 +115,18 @@
     margin-top: auto;
   }
 
-   #section-id-{{ section.id }}  .review-body{
+  #section-id-{{ section.id }} .review-body {
     display: flex;
     flex-direction: column;
     padding: 10px;
     gap: 40px;
   }
+
   #section-id-{{ section.id }} .review-card__stars {
     display: flex;
     gap: 2px;
-    justify-content: center;
-    font-size: 18px;
     justify-content: flex-start;
+    font-size: 18px;
   }
 
   /* ── Per-block overrides ── */
@@ -111,7 +155,7 @@
       max-width: 100%;
       height: 100%;
     }
-    #section-id-{{ section.id }} .review-block--{{ forloop.index }} .review-body{
+    #section-id-{{ section.id }} .review-block--{{ forloop.index }} .review-body {
       width: calc(100% - {{ block.settings.image_width }}%);
     }
   {%- endfor -%}
@@ -143,32 +187,58 @@
 {%- endstyle -%}
 
 {%- liquid
-  assign cols_per_row_desk  = section.settings.per_row_desk
-  assign cols_per_row_mob   = section.settings.per_row_mobile
-  assign item_count         = section.blocks.size
-  assign last_slide         = item_count | minus: cols_per_row_desk | plus: 1
-  if last_slide < 1
-    assign last_slide = 1
+  assign cols_desk      = section.settings.per_row_desk
+  assign cols_tab       = section.settings.per_row_tab
+  assign cols_mob       = section.settings.per_row_mobile
+  assign item_count     = section.blocks.size
+
+  assign last_slide_desk = item_count | minus: cols_desk | plus: 1
+  if last_slide_desk < 1
+    assign last_slide_desk = 1
   endif
-  assign show_carousel = false
-  if item_count > cols_per_row_desk
-    assign show_carousel = true
+
+  assign last_slide_tab = item_count | minus: cols_tab | plus: 1
+  if last_slide_tab < 1
+    assign last_slide_tab = 1
+  endif
+
+  assign last_slide_mob = item_count | minus: cols_mob | plus: 1
+  if last_slide_mob < 1
+    assign last_slide_mob = 1
   endif
 -%}
 
 <div id="section-id-{{ section.id }}" class="section-id-{{ section.id }} collection-slider-row">
 
-  {%- if show_carousel -%}
-    {%- for i in (1..last_slide) -%}
-      <input
-        type="radio"
-        name="slider-{{ section.id }}"
-        id="slide-{{ section.id }}-{{ forloop.index }}"
-        class="slider-radio"
-        style="display:none"
-        {% if forloop.first %}checked{% endif %}>
-    {%- endfor -%}
-  {%- endif -%}
+  {%- for i in (1..last_slide_desk) -%}
+    <input
+      type="radio"
+      name="slider-desk-{{ section.id }}"
+      id="slide-desk-{{ section.id }}-{{ forloop.index }}"
+      class="slider-radio"
+      style="display:none"
+      {% if forloop.first %}checked{% endif %}>
+  {%- endfor -%}
+
+  {%- for i in (1..last_slide_tab) -%}
+    <input
+      type="radio"
+      name="slider-tab-{{ section.id }}"
+      id="slide-tab-{{ section.id }}-{{ forloop.index }}"
+      class="slider-radio"
+      style="display:none"
+      {% if forloop.first %}checked{% endif %}>
+  {%- endfor -%}
+
+  {%- for i in (1..last_slide_mob) -%}
+    <input
+      type="radio"
+      name="slider-mob-{{ section.id }}"
+      id="slide-mob-{{ section.id }}-{{ forloop.index }}"
+      class="slider-radio"
+      style="display:none"
+      {% if forloop.first %}checked{% endif %}>
+  {%- endfor -%}
 
   <div class="container{% if section.settings.full_width %} container--no-max{% endif %}">
 
@@ -178,14 +248,14 @@
       </div>
     {%- endif -%}
 
-    <div class="product-grid{% if show_carousel %} product-grid--carousel{% endif %}">
+    <div class="product-grid product-grid--carousel">
       {%- for block in section.blocks -%}
         {%- liquid
           assign filled_stars = block.settings.star_rating
           assign empty_stars  = 5 | minus: filled_stars
         -%}
         <div
-          class="review-block--{{ forloop.index }}{% if show_carousel %} slider__item slider__item--{{ forloop.index }}{% endif %}"
+          class="review-block--{{ forloop.index }} slider__item slider__item--{{ forloop.index }}"
           {{ block.shopify_attributes }}
         >
           {%- if block.settings.link != blank -%}
@@ -197,8 +267,8 @@
             {%- if block.settings.image != blank -%}
               <div class="review-card__image">
                 {%- liquid
-                  assign image_w = block.settings.image_width
-                  assign image_sizes = image_w | append: 'px'
+                  assign image_w     = block.settings.image_width
+                  assign image_sizes  = image_w | append: 'px'
                   assign image_widths = image_w | times: 2 | prepend: ', ' | prepend: image_w
                   render 'image' with block.settings.image, sizes: image_sizes, widths: image_widths
                 -%}
@@ -234,51 +304,73 @@
       {%- endfor -%}
     </div>
 
-    {%- if show_carousel -%}
-      <div class="slider-nav">
-        <button
-          class="slider-nav__btn slider-nav__btn--prev"
-          data-slider="{{ section.id }}"
-          aria-label="Previous"
-          disabled
-        >&#8249;</button>
+    <div class="slider-nav">
+      <button
+        class="slider-nav__btn slider-nav__btn--prev"
+        data-slider="{{ section.id }}"
+        aria-label="Previous"
+        disabled
+      >&#8249;</button>
 
-        <button
-          class="slider-nav__btn slider-nav__btn--next"
-          data-slider="{{ section.id }}"
-          aria-label="Next"
-        >&#8250;</button>
-      </div>
-    {%- endif -%}
+      <button
+        class="slider-nav__btn slider-nav__btn--next"
+        data-slider="{{ section.id }}"
+        aria-label="Next"
+      >&#8250;</button>
+    </div>
 
   </div>
 </div>
 
-{%- if show_carousel -%}
 <script>
 (function () {
-  var sectionId = {{ section.id | json }};
-  var lastSlide = {{ last_slide }};
-  var current   = 1;
+  var sectionId     = {{ section.id | json }};
+  var lastSlideDesk = {{ last_slide_desk }};
+  var lastSlideTab  = {{ last_slide_tab }};
+  var lastSlideMob  = {{ last_slide_mob }};
+  var current       = 1;
 
   var root    = document.getElementById('section-id-' + sectionId);
   var prevBtn = root.querySelector('.slider-nav__btn--prev');
   var nextBtn = root.querySelector('.slider-nav__btn--next');
 
+  function getBreakpoint() {
+    var w = window.innerWidth;
+    if (w >= 1024) return 'desk';
+    if (w >= 768)  return 'tab';
+    return 'mob';
+  }
+
+  function getLastSlide() {
+    var bp = getBreakpoint();
+    if (bp === 'desk') return lastSlideDesk;
+    if (bp === 'tab')  return lastSlideTab;
+    return lastSlideMob;
+  }
+
   function goTo(index) {
+    var lastSlide = getLastSlide();
     if (index < 1 || index > lastSlide) return;
-    var radio = document.getElementById('slide-' + sectionId + '-' + index);
+    var bp    = getBreakpoint();
+    var radio = document.getElementById('slide-' + bp + '-' + sectionId + '-' + index);
     if (radio) radio.checked = true;
     current = index;
     prevBtn.disabled = current === 1;
     nextBtn.disabled = current === lastSlide;
   }
 
+  var resizeTimer;
+  window.addEventListener('resize', function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function () { goTo(1); }, 150);
+  });
+
   prevBtn.addEventListener('click', function () { goTo(current - 1); });
   nextBtn.addEventListener('click', function () { goTo(current + 1); });
+
+  goTo(1);
 })();
 </script>
-{%- endif -%}
 
 {% schema %}
 {
@@ -311,6 +403,15 @@
       "max": 6,
       "step": 1,
       "default": 3
+    },
+    {
+      "type": "range",
+      "id": "per_row_tab",
+      "label": "Items per row (tablet)",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 2
     },
     {
       "type": "range",
