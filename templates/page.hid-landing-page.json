@@ -311,7 +311,8 @@
         "title": "",
         "show_title": true,
         "font_size": 12,
-        "card_bg_color": "",
+        "bg_color": "#F4EADD",
+        "card_bg_color": "#FFFFFF",
         "font_colour": "",
         "padding_top": 0,
         "padding_bottom": 20
