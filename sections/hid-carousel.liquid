@@ -55,7 +55,7 @@
     {% for j in (0..cols_tab) %}
       {% if j < cols_tab %}
         {% assign item_index = i | plus: j %}
-        @media (min-width: 768px) and (max-width: 1023px) {
+        @media (min-width: 425px) and (max-width: 1023px) {
           #slide-tab-{{ section.id }}-{{ i }}:checked ~ * .slider__item--{{ item_index }} { display: block; }
         }
       {% endif %}
