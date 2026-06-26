@@ -7,6 +7,16 @@
   {% assign text_alignment = 'right' %}
 {% endif %}
 
+{% if section.settings.bg_colour != blank %}
+<style>
+  #shopify-section-{{ section.id }}.rich-text {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background: {{ section.settings.bg_colour }};
+  }
+  </style>
+{% endif %}
+
 {% style %}
   #section-id-{{ section.id }}.rich-text{
     display: flex;
@@ -16,11 +26,6 @@
     text-align: {{ text_alignment }};
     margin-top: {{ section.settings.padding_top }}px;
     margin-bottom: {{ section.settings.padding_bottom }}px;
-    {% if section.settings.bg_colour != blank  %}
-      padding-top: 40px;
-      padding-bottom: 40px;
-      background: {{ section.settings.bg_colour }}
-    {% endif %}
   }
 
   #section-id-{{ section.id }}{
