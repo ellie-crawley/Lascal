@@ -97,6 +97,158 @@
   }
 {%- endstyle -%}
 
+
+{%- liquid
+  if section.settings.enable_carousel
+    assign product_limit = section.settings.product_limit
+  else
+    assign product_limit = section.settings.grid | times: section.settings.rows
+  endif
+  assign collection = collections[section.settings.collection]
+  assign per_row_desk = section.settings.grid
+  assign per_row_mob = section.settings.mobile_grid
+  assign product_count = collection.products.size | at_most: product_limit
+  assign cols = per_row_desk
+  assign last_slide = product_count | minus: cols | plus: 1
+  assign show_carousel = section.settings.enable_carousel
+  if product_count <= cols
+    assign show_carousel = false
+  endif
+  if last_slide < 1
+    assign last_slide = 1
+  endif
+-%}
+
+{% style %}
+.hid-product__card{
+  border: 1px solid #ece6df;
+  border-radius: 14px;
+  padding: 15px;
+  text-align: center;
+}
+
+/* ── Shared grid ── */
+.section-id-{{ section.id }} .product-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat({{ product_count }}, 1fr);
+}
+
+.section-id-{{ section.id }} .product-grid--carousel {
+  grid-template-columns: repeat(var(--per-row-desk), 1fr);
+}
+
+@media (max-width: 767px) {
+  .section-id-{{ section.id }} .product-grid {
+    grid-template-columns: repeat(var(--per-row-mob), 1fr);
+    gap: 16px;
+  }
+}
+
+/* ── Carousel ── */
+.section-id-{{ section.id }} .collection-listing--carousel {
+  overflow: hidden;
+}
+
+.section-id-{{ section.id }} .product-grid--carousel .slider__item {
+  display: none;
+}
+
+{% assign cols = per_row_desk %}
+{% for i in (1..last_slide) %}
+  {% for j in (0..cols) %}
+    {% if j < cols %}
+      {% assign item_index = i | plus: j %}
+      #slide-{{ section.id }}-{{ i }}:checked ~ * .slider__item--{{ item_index }} { display: block; }
+    {% endif %}
+  {% endfor %}
+{% endfor %}
+
+/* ── Nav ── */
+.section-id-{{ section.id }} .slider-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.section-id-{{ section.id }} .slider-nav__btn {
+  cursor: pointer;
+  font-size: 32px;
+  line-height: 1;
+  padding: 0 12px;
+  background: none;
+  border: none;
+  color: inherit;
+  user-select: none;
+}
+
+.section-id-{{ section.id }} .slider-nav__btn:disabled {
+  opacity: 0.2;
+  cursor: default;
+}
+
+.section-id-{{ section.id }} {
+  --per-row-desk: {{ per_row_desk }};
+  --per-row-mob: {{ per_row_mob }};
+  margin: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px 0;
+}
+{% endstyle %}
+
+<div class="section-id-{{ section.id }} collection-slider-row">
+
+  {%- if show_carousel -%}
+    {% for i in (1..last_slide) %}
+      <input
+        type="radio"
+        name="slider-{{ section.id }}"
+        id="slide-{{ section.id }}-{{ forloop.index }}"
+        class="slider-radio"
+        style="display:none"
+        {% if forloop.first %}checked{% endif %}
+      >
+    {% endfor %}
+  {%- endif -%}
+
+  <div class="container{% if section.settings.full_width %} container--no-max{% endif %}">
+
+    <div>
+      {% if show_carousel %}
+        <button
+          class="slider-nav__btn slider-nav__btn--prev"
+          data-slider="{{ section.id }}"
+          data-direction="prev"
+          aria-label="Previous"
+          disabled
+        >&#8249;</button>
+
+        <button
+          class="slider-nav__btn slider-nav__btn--next"
+          data-slider="{{ section.id }}"
+          data-direction="next"
+          aria-label="Next"
+        >&#8250;</button>
+      {% endif %}
+    </div>
+
+    <div class="collection-listing{% if show_carousel %} collection-listing--carousel{% endif %}">
+      <div class="product-grid product-grid--desk-{{ per_row_desk }} product-grid--mob-{{ per_row_mob }}{% if show_carousel %} product-grid--carousel{% endif %}">
+        {%- for product in collection.products limit: product_limit -%}
+          <div class="product-grid__item{% if show_carousel %} slider__item slider__item--{{ forloop.index }}{% endif %}">
+            {%- render 'hid-product-card', product: product -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+    {% if section.settings.collection_type == 'auto' and section.settings.collection != blank and section.settings.show_view_all -%}
+      <div class="view-all align-center">
+        <a class="small-feature-link" href="{{ collection.url }}">View all</a>
+      </div>
+    {%- endif -%}
+
+  </div>
+</div>
+
 <div id="section-id-{{ section.id }}" class="hid-container logo-container">
 
   {%- capture logos_html -%}
@@ -145,6 +297,28 @@
   </div>
 </div>
 
+<script>
+(function () {
+  var sectionId = {{ section.id | json }};
+  var lastSlide = {{ last_slide }};
+  var current = 1;
+
+  var prevBtn = document.querySelector('.section-id-' + sectionId + ' .slider-nav__btn--prev');
+  var nextBtn = document.querySelector('.section-id-' + sectionId + ' .slider-nav__btn--next');
+
+  function goTo(index) {
+    if (index < 1 || index > lastSlide) return;
+    var radio = document.getElementById('slide-' + sectionId + '-' + index);
+    if (radio) radio.checked = true;
+    current = index;
+    prevBtn.disabled = current === 1;
+    nextBtn.disabled = current === lastSlide;
+  }
+
+  prevBtn.addEventListener('click', function () { goTo(current - 1); });
+  nextBtn.addEventListener('click', function () { goTo(current + 1); });
+})();
+</script>
 
 {% schema %}
 {
@@ -163,22 +337,6 @@
       "label": "Show heading",
       "info": "If not visible, heading is still used for accessibility & SEO",
       "default": true
-    },
-    {
-      "type": "radio",
-      "id": "layout",
-      "label": "Layout",
-      "default": "grid",
-      "options": [
-        {
-          "value": "grid",
-          "label": "Grid"
-        },
-        {
-          "value": "row",
-          "label": "Row"
-        }
-      ]
     },
     {
       "type": "radio",
