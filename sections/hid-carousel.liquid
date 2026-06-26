@@ -43,9 +43,11 @@
     {% for j in (0..cols_desk) %}
       {% if j < cols_desk %}
         {% assign item_index = i | plus: j %}
-        @media (min-width: 1024px) {
-          #slide-desk-{{ section.id }}-{{ i }}:checked ~ * .slider__item--{{ item_index }} { display: block; }
-        }
+        {% if item_index <= item_count %}
+          @media (min-width: 1024px) {
+            #slide-desk-{{ section.id }}-{{ i }}:checked ~ * .slider__item--{{ item_index }} { display: block; }
+          }
+        {% endif %}
       {% endif %}
     {% endfor %}
   {% endfor %}
@@ -55,9 +57,11 @@
     {% for j in (0..cols_tab) %}
       {% if j < cols_tab %}
         {% assign item_index = i | plus: j %}
-        @media (min-width: 768px) and (max-width: 1023px) {
-          #slide-tab-{{ section.id }}-{{ i }}:checked ~ * .slider__item--{{ item_index }} { display: block; }
-        }
+        {% if item_index <= item_count %}
+          @media (min-width: 768px) and (max-width: 1023px) {
+            #slide-tab-{{ section.id }}-{{ i }}:checked ~ * .slider__item--{{ item_index }} { display: block; }
+          }
+        {% endif %}
       {% endif %}
     {% endfor %}
   {% endfor %}
@@ -67,9 +71,11 @@
     {% for j in (0..cols_mob) %}
       {% if j < cols_mob %}
         {% assign item_index = i | plus: j %}
-        @media (max-width: 767px) {
-          #slide-mob-{{ section.id }}-{{ i }}:checked ~ * .slider__item--{{ item_index }} { display: block; }
-        }
+        {% if item_index <= item_count %}
+          @media (max-width: 767px) {
+            #slide-mob-{{ section.id }}-{{ i }}:checked ~ * .slider__item--{{ item_index }} { display: block; }
+          }
+        {% endif %}
       {% endif %}
     {% endfor %}
   {% endfor %}
@@ -170,6 +176,23 @@
     margin-top: 20px;
   }
 
+  /* Hide nav entirely when there is only one slide at a given breakpoint */
+  {% if last_slide_desk <= 1 %}
+    @media (min-width: 1024px) {
+      #section-id-{{ section.id }} .slider-nav { display: none; }
+    }
+  {% endif %}
+  {% if last_slide_tab <= 1 %}
+    @media (min-width: 768px) and (max-width: 1023px) {
+      #section-id-{{ section.id }} .slider-nav { display: none; }
+    }
+  {% endif %}
+  {% if last_slide_mob <= 1 %}
+    @media (max-width: 767px) {
+      #section-id-{{ section.id }} .slider-nav { display: none; }
+    }
+  {% endif %}
+
   #section-id-{{ section.id }} .slider-nav__btn {
     cursor: pointer;
     font-size: 32px;
@@ -188,10 +211,10 @@
 {%- endstyle -%}
 
 {%- liquid
-  assign cols_desk      = section.settings.per_row_desk
-  assign cols_tab       = section.settings.per_row_tab
-  assign cols_mob       = section.settings.per_row_mobile
-  assign item_count     = section.blocks.size
+  assign cols_desk  = section.settings.per_row_desk
+  assign cols_tab   = section.settings.per_row_tab
+  assign cols_mob   = section.settings.per_row_mobile
+  assign item_count = section.blocks.size
 
   assign last_slide_desk = item_count | minus: cols_desk | plus: 1
   if last_slide_desk < 1
@@ -268,7 +291,7 @@
             {%- if block.settings.image != blank -%}
               <div class="review-card__image">
                 {%- liquid
-                  assign image_w     = block.settings.image_width
+                  assign image_w      = block.settings.image_width
                   assign image_sizes  = image_w | append: 'px'
                   assign image_widths = image_w | times: 2 | prepend: ', ' | prepend: image_w
                   render 'image' with block.settings.image, sizes: image_sizes, widths: image_widths
@@ -312,7 +335,7 @@
         aria-label="Previous"
         disabled
       >&#8249;</button>
-        <p>swipe for more reviews</p>
+      <p>swipe for more reviews</p>
       <button
         class="slider-nav__btn slider-nav__btn--next"
         data-slider="{{ section.id }}"
