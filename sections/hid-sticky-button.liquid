@@ -8,10 +8,12 @@
     left: 50%;
     transform: translateX(-50%);
     bottom: {{ section.settings.bottom_spacing }}px;
-    width: calc(100% - 32px);
-    max-width: {{ section.settings.max_width }}px;
     z-index: 9999;
     pointer-events: none;
+    display: flex;
+    background: white;
+    width: 100%;
+    padding: 20px;
   }
 
   #sticky-button-{{ section_id }} a {
