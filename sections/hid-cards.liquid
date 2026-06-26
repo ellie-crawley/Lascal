@@ -153,11 +153,36 @@
       "label": "Heading"
     },
     {
+      "type": "richtext",
+      "id": "subtitle",
+      "label": "Subheading"
+    },
+    {
       "type": "checkbox",
       "id": "show_title",
       "label": "Show heading",
       "info": "If not visible, heading is still used for accessibility & SEO",
       "default": true
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "default": "center",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "flex-end",
+          "label": "Right"
+        }
+      ]
     },
     {
       "type": "range",
