@@ -236,7 +236,8 @@
         "card_T7x99X": {
           "type": "card",
           "settings": {
-            "img_type": "emoji",
+            "img_type": "image",
+            "image": "shopify://shop_images/The-Original-BB-Icon.png",
             "image_width": 20,
             "emoji": "😊",
             "emoji_size": 21,
