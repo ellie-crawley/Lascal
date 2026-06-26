@@ -111,58 +111,54 @@
   {%- endif -%}
 
   <div>
+    {% if show_carousel %}
+      <button
+        class="slider-nav__btn slider-nav__btn--prev"
+        data-slider="{{ section.id }}"
+        data-direction="prev"
+        aria-label="Previous"
+        disabled
+      >&#8249;</button>
 
-    <div>
-      {% if show_carousel %}
-        <button
-          class="slider-nav__btn slider-nav__btn--prev"
-          data-slider="{{ section.id }}"
-          data-direction="prev"
-          aria-label="Previous"
-          disabled
-        >&#8249;</button>
+      <button
+        class="slider-nav__btn slider-nav__btn--next"
+        data-slider="{{ section.id }}"
+        data-direction="next"
+        aria-label="Next"
+      >&#8250;</button>
+    {% endif %}
+  </div>
 
-        <button
-          class="slider-nav__btn slider-nav__btn--next"
-          data-slider="{{ section.id }}"
-          data-direction="next"
-          aria-label="Next"
-        >&#8250;</button>
+  <div class="collection-listing{% if show_carousel %} collection-listing--carousel{% endif %}">
+    <div class="product-grid{% if show_carousel %} product-grid--carousel{% endif %}">
+      {% if section.settings.collection_type == 'auto' %}
+        {%- if section.settings.collection != blank -%}
+          {%- for product in collection.products limit: product_limit -%}
+            <div{% if show_carousel %} class="slider__item slider__item--{{ forloop.index }}"{% endif %}>
+              {%- render 'hid-product-card', product: product -%}
+            </div>
+          {%- endfor -%}
+        {%- endif -%}
+      {% else %}
+        {%- if section.blocks.size > 0 -%}
+          {%- for block in section.blocks limit: product_limit -%}
+            <div{% if show_carousel %} class="slider__item slider__item--{{ forloop.index }}"{% endif %}>
+              {%- render 'hid-product-card',
+                product: block.settings.product,
+                configured_image_primary: block.settings.configured_image_primary,
+                configured_image_secondary: block.settings.configured_image_secondary -%}
+            </div>
+          {%- endfor -%}
+        {%- endif -%}
       {% endif %}
     </div>
-
-    <div class="collection-listing{% if show_carousel %} collection-listing--carousel{% endif %}">
-      <div class="product-grid{% if show_carousel %} product-grid--carousel{% endif %}">
-        {% if section.settings.collection_type == 'auto' %}
-          {%- if section.settings.collection != blank -%}
-            {%- for product in collection.products limit: product_limit -%}
-              <div{% if show_carousel %} class="slider__item slider__item--{{ forloop.index }}"{% endif %}>
-                {%- render 'hid-product-card', product: product -%}
-              </div>
-            {%- endfor -%}
-          {%- endif -%}
-        {% else %}
-          {%- if section.blocks.size > 0 -%}
-            {%- for block in section.blocks limit: product_limit -%}
-              <div{% if show_carousel %} class="slider__item slider__item--{{ forloop.index }}"{% endif %}>
-                {%- render 'hid-product-card',
-                  product: block.settings.product,
-                  configured_image_primary: block.settings.configured_image_primary,
-                  configured_image_secondary: block.settings.configured_image_secondary -%}
-              </div>
-            {%- endfor -%}
-          {%- endif -%}
-        {% endif %}
-      </div>
-    </div>
-
-    {% if section.settings.collection_type == 'auto' and section.settings.collection != blank and section.settings.show_view_all -%}
-      <div class="view-all align-center">
-        <a class="small-feature-link" href="{{ collection.url }}">View all</a>
-      </div>
-    {%- endif -%}
-
   </div>
+
+  {% if section.settings.collection_type == 'auto' and section.settings.collection != blank and section.settings.show_view_all -%}
+    <div class="view-all align-center">
+      <a class="small-feature-link" href="{{ collection.url }}">View all</a>
+    </div>
+  {%- endif -%}
 </div>
 
 <script>
