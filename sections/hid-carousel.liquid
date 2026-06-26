@@ -195,6 +195,36 @@
 }
 {% endstyle %}
 
+{%- capture logos_html -%}
+  {%- for block in section.blocks -%}
+    {%- if block.settings.link != blank -%}
+      <a class="logo-list__link logo-list__logo logo-list__logo-{{ forloop.index }} text_icon_alignment-{{ section.settings.text_icon_alignment }}" href="{{ block.settings.link }}" {{ block.shopify_attributes }}>
+    {%- else -%}
+      <div class="logo-list-wrapper logo-list__logo logo-list__logo-{{ forloop.index }} text_icon_alignment-{{ section.settings.text_icon_alignment }}" {{ block.shopify_attributes }}>
+    {%- endif -%}
+
+    {%- if block.settings.image != blank -%}
+      <div class="logo-list__logo-image">
+        {%- liquid
+          assign image_sizes = block.settings.image_width | append: 'px'
+          assign image_widths = block.settings.image_width | times: 2 | prepend: ', ' | prepend: block.settings.image_width
+          render 'image' with block.settings.image, sizes: image_sizes, widths: image_widths
+        -%}
+      </div>
+    {%- endif -%}
+
+    {%- if block.settings.text != blank -%}
+      <div class="logo-list__logo-text">{{ block.settings.text }}</div>
+    {%- endif -%}
+
+    {%- unless block.settings.link != blank -%}
+      </div>
+    {%- else -%}
+      </a>
+    {%- endunless -%}
+  {%- endfor -%}
+{%- endcapture -%}
+
 <div class="section-id-{{ section.id }} collection-slider-row">
 
   {%- if show_carousel -%}
@@ -205,12 +235,28 @@
         id="slide-{{ section.id }}-{{ forloop.index }}"
         class="slider-radio"
         style="display:none"
-        {% if forloop.first %}checked{% endif %}
-      >
+        {% if forloop.first %}checked{% endif %}>
     {% endfor %}
   {%- endif -%}
 
   <div class="container{% if section.settings.full_width %} container--no-max{% endif %}">
+    {% if section.settings.title != blank %}
+      <div class="hometitle align-center{% if section.settings.show_title == false %} visually-hidden{% endif %}">
+        <h2>
+          {{- section.settings.title | escape -}}
+        </h2>
+      </div>
+    {% endif %}
+
+    <div class="collection-listing{% if show_carousel %} collection-listing--carousel{% endif %}">
+      <div class="product-grid product-grid--desk-{{ per_row_desk }} product-grid--mob-{{ per_row_mob }}{% if show_carousel %} product-grid--carousel{% endif %}">
+        {%- for block in section.blocks limit: product_limit -%}
+          <div class="product-grid__item{% if show_carousel %} slider__item slider__item--{{ forloop.index }}{% endif %}">
+            {%- render 'hid-product-card', product: product -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
 
     <div>
       {% if show_carousel %}
@@ -230,65 +276,15 @@
         >&#8250;</button>
       {% endif %}
     </div>
-
-    <div class="collection-listing{% if show_carousel %} collection-listing--carousel{% endif %}">
-      <div class="product-grid product-grid--desk-{{ per_row_desk }} product-grid--mob-{{ per_row_mob }}{% if show_carousel %} product-grid--carousel{% endif %}">
-        {%- for product in collection.products limit: product_limit -%}
-          <div class="product-grid__item{% if show_carousel %} slider__item slider__item--{{ forloop.index }}{% endif %}">
-            {%- render 'hid-product-card', product: product -%}
-          </div>
-        {%- endfor -%}
-      </div>
-    </div>
-    {% if section.settings.collection_type == 'auto' and section.settings.collection != blank and section.settings.show_view_all -%}
-      <div class="view-all align-center">
-        <a class="small-feature-link" href="{{ collection.url }}">View all</a>
-      </div>
-    {%- endif -%}
-
   </div>
 </div>
 
 <div id="section-id-{{ section.id }}" class="hid-container logo-container">
 
-  {%- capture logos_html -%}
-    {%- for block in section.blocks -%}
-      {%- if block.settings.link != blank -%}
-        <a class="logo-list__link logo-list__logo logo-list__logo-{{ forloop.index }} text_icon_alignment-{{ section.settings.text_icon_alignment }}" href="{{ block.settings.link }}" {{ block.shopify_attributes }}>
-      {%- else -%}
-        <div class="logo-list-wrapper logo-list__logo logo-list__logo-{{ forloop.index }} text_icon_alignment-{{ section.settings.text_icon_alignment }}" {{ block.shopify_attributes }}>
-      {%- endif -%}
 
-      {%- if block.settings.image != blank -%}
-        <div class="logo-list__logo-image">
-          {%- liquid
-            assign image_sizes = block.settings.image_width | append: 'px'
-            assign image_widths = block.settings.image_width | times: 2 | prepend: ', ' | prepend: block.settings.image_width
-            render 'image' with block.settings.image, sizes: image_sizes, widths: image_widths
-          -%}
-        </div>
-      {%- endif -%}
-
-      {%- if block.settings.text != blank -%}
-        <div class="logo-list__logo-text">{{ block.settings.text }}</div>
-      {%- endif -%}
-
-      {%- unless block.settings.link != blank -%}
-        </div>
-      {%- else -%}
-        </a>
-      {%- endunless -%}
-    {%- endfor -%}
-  {%- endcapture -%}
 
   <div class="{% if section.settings.full_width == false %}container{% endif %}">
-    {% if section.settings.title != blank %}
-      <div class="hometitle align-center{% if section.settings.show_title == false %} visually-hidden{% endif %}">
-        <h2>
-          {{- section.settings.title | escape -}}
-        </h2>
-      </div>
-    {% endif %}
+
     <div class="logo-list-container">
       <div class="logo-list logo-list--count-{{ section.blocks.size }} layout--{{ section.settings.layout }}">
         {{- logos_html -}}
