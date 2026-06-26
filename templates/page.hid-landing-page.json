@@ -712,7 +712,7 @@
         "button_text": "Shop BuggyBoard",
         "button_link": "shopify://collections/buggyboard",
         "background": "#E98739",
-        "text_color": "#FFFFFF",
+        "text_color": "#ffffff",
         "font_size": 16,
         "border_radius": 8,
         "max_width": 600,
