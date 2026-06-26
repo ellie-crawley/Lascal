@@ -1,0 +1,129 @@
+{% liquid
+  assign section_id = section.id
+%}
+
+<style>
+  #sticky-button-{{ section_id }} {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: {{ section.settings.bottom_spacing }}px;
+    width: calc(100% - 32px);
+    max-width: {{ section.settings.max_width }}px;
+    z-index: 9999;
+    pointer-events: none;
+  }
+
+  #sticky-button-{{ section_id }} a {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 16px 24px;
+    background: {{ section.settings.background }};
+    color: {{ section.settings.text_color }};
+    text-decoration: none;
+    border-radius: {{ section.settings.border_radius }}px;
+    font-size: {{ section.settings.font_size }}px;
+    font-weight: 600;
+    line-height: 1.2;
+    transition: opacity .2s ease;
+    pointer-events: auto;
+    box-sizing: border-box;
+  }
+
+  #sticky-button-{{ section_id }} a:hover {
+    opacity: .9;
+  }
+
+  @media screen and (min-width: 750px) {
+    #sticky-button-{{ section_id }} {
+      width: auto;
+      min-width: 280px;
+    }
+  }
+</style>
+
+{% if section.settings.button_text != blank and section.settings.button_link != blank %}
+  <div id="sticky-button-{{ section_id }}">
+    <a href="{{ section.settings.button_link }}">
+      {{ section.settings.button_text }}
+    </a>
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Sticky Bottom Button",
+  "settings": [
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background colour",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text colour",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "min": 12,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Border radius",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "min": 240,
+      "max": 1200,
+      "step": 20,
+      "unit": "px",
+      "label": "Maximum width",
+      "default": 600
+    },
+    {
+      "type": "range",
+      "id": "bottom_spacing",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom spacing",
+      "default": 16
+    }
+  ],
+  "presets": [
+    {
+      "name": "HID Sticky Button",
+      "category": "HID Landing Page",
+    }
+  ]
+}
+{% endschema %}
