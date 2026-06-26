@@ -107,17 +107,12 @@
           <span style="font-size: {{ block.settings.emoji_size }}px">{{ block.settings.emoji }}</span>
         {% endif %}
       {% endif %}
-      {%- if block.settings.title != blank or block.settings.subtitle != blank or block.settings.text != blank-%}
+      {%- if block.settings.title != blank or block.settings.text != blank-%}
         <div class="card-text">
           {%- if block.settings.title != blank -%}
-            <h2 class="card-list__card-title">
+            <h4 class="card-list__card-title">
               {{ block.settings.title | escape }}
-            </h2>
-          {%- endif -%}
-          {%- if block.settings.subtitle != blank -%}
-            <p class="card-list__card-subtitle">
-              {{ block.settings.subtitle | escape }}
-            </p>
+            </h4>
           {%- endif -%}
 
           {%- if block.settings.text != blank -%}
