@@ -355,8 +355,8 @@
   ],
   "blocks": [
     {
-      "type": "image_with_text",
-      "name": "Image with Text",
+      "type": "review",
+      "name": "Review",
       "settings": [
         {
           "type": "image_picker",
@@ -383,6 +383,20 @@
           "type": "richtext",
           "id": "text",
           "label": "Text",
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author"
+        },
+        {
+          "type": "range",
+          "id": "star_rating",
+          "label": "Star Rating",
+          "min": 0,
+          "max": 5,
+          "step": 1,
+          "default": 5
         },
         {
           "type": "radio",
