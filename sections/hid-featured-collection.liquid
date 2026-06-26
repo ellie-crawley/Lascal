@@ -128,7 +128,9 @@
       >&#8250;</button>
     {% endif %}
   </div>
-
+Button: {{ section.settings.button_colour }}<br>
+Text: {{ section.settings.button_text_colour }}<br>
+Star: {{ section.settings.button_star_colour }}<br>
   <div class="collection-listing{% if show_carousel %} collection-listing--carousel{% endif %}">
     <div class="product-grid{% if show_carousel %} product-grid--carousel{% endif %}">
       {% if section.settings.collection_type == 'auto' %}
