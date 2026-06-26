@@ -83,9 +83,9 @@ document.addEventListener('DOMContentLoaded', function () {
     {% endfor %}
   {% endif %}
   {% if min_collection_price %}
-    <span class="sticky-button__from-text">
+    <p class="sticky-button__from-text">
       From {{ min_collection_price | money }}
-    </span>
+    </p>
   {% endif %}
   <a href="{{ section.settings.button_link }}" class="sticky_button">
     {{ section.settings.button_text }}
