@@ -1,11 +1,13 @@
 {{ 'hid.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
+  #section-id-{{ section.id }}{
+    background: {{ section.settings.bg_color }};
+  }
   #section-id-{{ section.id }}.card-container {
     padding-top: 10px;
     padding-bottom: 10px;
     margin: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px 0;
-    background: {{ section.settings.bg_color }}
   }
   #section-id-{{ section.id }}{
     .card-list {
@@ -80,7 +82,7 @@
   }
 {%- endstyle -%}
 
-<div id="section-id-{{ section.id }}" class="card-container">
+<div id="section-id-{{ section.id }}" class="card-container hid-container">
 
   {%- capture cards_html -%}
     {%- for block in section.blocks -%}
@@ -143,7 +145,7 @@
 {% schema %}
 {
   "name": "HID card list",
-  "class": "section-card-list hid-container",
+  "class": "section-card-list",
   "settings": [
     {
       "type": "text",
