@@ -1,233 +1,158 @@
 {{ 'hid.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
-  #section-id-{{ section.id }}.logo-container {
-    padding-top: 10px;
-    padding-bottom: 10px;
+  #section-id-{{ section.id }} {
     margin: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px 0;
+    --cols-per-row-desk: {{ section.settings.per_row_desk }};
+    --cols-per-row-mob: {{ section.settings.per_row_mobile }};
   }
-  #section-id-{{ section.id }}{
-    .carousel-item {
-      --gap: 10px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--gap);
-      justify-content: center;
-      text-align: center;
+
+  #section-id-{{ section.id }} .hometitle {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  /* ── Grid ── */
+  #section-id-{{ section.id }} .product-grid {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: repeat(var(--cols-per-row-desk), 1fr);
+  }
+
+  #section-id-{{ section.id }} .product-grid--carousel .slider__item {
+    display: none;
+  }
+
+  {% assign cols = section.settings.per_row_desk %}
+  {% assign item_count = section.blocks.size %}
+  {% assign last_slide = item_count | minus: cols | plus: 1 %}
+  {% if last_slide < 1 %}{% assign last_slide = 1 %}{% endif %}
+
+  {% for i in (1..last_slide) %}
+    {% for j in (0..cols) %}
+      {% if j < cols %}
+        {% assign item_index = i | plus: j %}
+        #slide-{{ section.id }}-{{ i }}:checked ~ * .slider__item--{{ item_index }} { display: block; }
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+
+  @media (max-width: 767px) {
+    #section-id-{{ section.id }} .product-grid {
+      grid-template-columns: repeat(var(--cols-per-row-mob), 1fr);
+      gap: 16px;
     }
-    .carousel-item__link:hover .carousel-item__logo-image {
-      opacity: {{ section.settings.image_opacity | times: 1.2 | at_most: 100 }}%;
-    }
-    .hometitle{
-      margin-bottom: 20px;
-    }
-    .carousel-item__logo-image {
-      display: flex;
-      align-items: center;
-      width: var(--logo-max-width, none);
-      max-width: var(--logo-max-width, none);
-      transition: opacity 100ms;
-      opacity: {{ section.settings.image_opacity }}%;
-    }
-    .layout-row .carousel-item__logo-image {
-      margin: 0;
-    }
-    .layout-column .carousel-item__logo-image {
-      margin: 0 auto;
-    }
-    .carousel-item__logo-image img{
-      width: var(--logo-max-width, none);
-      max-width: var(--logo-max-width, none);
-    }
-    .carousel-item-wrapper{
-      display: flex;
-      flex-direction: {{ section.settings.text_icon_alignment }};
-      align-items: center;
-      gap: 5px;
-      flex: 1;
-      {% if section.settings.logo_bg_color != blank %}
-        border-radius: 9px;
-        padding: 11px;
-        background: {{section.settings.logo_bg_color}};
+  }
+
+  /* ── Cards ── */
+  #section-id-{{ section.id }} .review-card {
+    border: 1px solid #ece6df;
+    border-radius: 14px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    box-sizing: border-box;
+  }
+
+  #section-id-{{ section.id }} .review-card__image {
+    margin-bottom: 10px;
+  }
+
+  #section-id-{{ section.id }} .review-card__image img {
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  #section-id-{{ section.id }} .review-card__stars {
+    display: flex;
+    gap: 2px;
+    justify-content: center;
+    margin-bottom: 8px;
+    color: #f5a623;
+    font-size: 18px;
+  }
+
+  #section-id-{{ section.id }} .review-card__text {
+    flex: 1;
+    margin-bottom: 10px;
+  }
+
+  #section-id-{{ section.id }} .review-card__author {
+    font-weight: 600;
+    margin-top: auto;
+  }
+
+  /* ── Per-block overrides ── */
+  {%- for block in section.blocks -%}
+    #section-id-{{ section.id }} .review-block--{{ forloop.index }} .review-card {
+      {% if block.settings.logo_bg_color != blank %}
+        background: {{ block.settings.logo_bg_color }};
+      {% endif %}
+      {% if block.settings.font_colour != blank %}
+        color: {{ block.settings.font_colour }};
+      {% endif %}
+      flex-direction: {{ block.settings.text_icon_alignment }};
+      {% if block.settings.text_icon_alignment == 'row' %}
+        align-items: flex-start;
+        text-align: left;
       {% endif %}
     }
-    .layout--row{
-      flex-wrap: nowrap;
+    #section-id-{{ section.id }} .review-block--{{ forloop.index }} .review-card__text p {
+      font-size: {{ block.settings.font_size }}px;
     }
-    .layout--grid{
-      flex-wrap: wrap;
+    #section-id-{{ section.id }} .review-block--{{ forloop.index }} .review-card__image img {
+      width: {{ block.settings.image_width }}px;
+      max-width: 100%;
     }
-    .layout--grid .carousel-item{
-      justify-content: flex-start;
-    }
-    .layout--grid .carousel-item-wrapper {
-      flex: 0 1 calc(50% - (var(--gap) / 2));
-    }
-    .carousel-item__logo-text p{
-      font-size: {{section.settings.font_size}}px;
-      color: {{section.settings.font_colour}}
-    }
+  {%- endfor -%}
 
-    {%- for block in section.blocks -%}
-      .carousel-item__logo-{{ forloop.index }} {
-        --logo-max-width: {{ block.settings.image_width }}px;
-      }
-      .text_icon_alignment-row.carousel-item__logo-{{ forloop.index }} {
-        justify-content: {{  block.settings.justify-content }}
-      }
-    {%- endfor -%}
+  /* ── Nav buttons ── */
+  #section-id-{{ section.id }} .slider-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 20px;
+  }
 
-    @media (min-width: 769px) {
-      .layout--grid .carousel-item-wrapper {
-        flex: 0 1 calc(33% - (2 * var(--gap)) / 2);
-      }
-    }
+  #section-id-{{ section.id }} .slider-nav__btn {
+    cursor: pointer;
+    font-size: 32px;
+    line-height: 1;
+    padding: 0 12px;
+    background: none;
+    border: none;
+    color: inherit;
+    user-select: none;
+  }
 
-    @media (min-width: 1000px) {
-      .carousel-item {
-        --gap: 20px;
-      }
-      .layout--grid .carousel-item-wrapper {
-        flex: 0 1 calc(25% - (3 * var(--gap)) / 4);
-      }
-      .carousel-item__logo-text p{
-        font-size: calc({{section.settings.font_size}} + 2)px;
-      }
-    }
+  #section-id-{{ section.id }} .slider-nav__btn:disabled {
+    opacity: 0.2;
+    cursor: default;
   }
 {%- endstyle -%}
 
-
 {%- liquid
-  assign cols_per_row_desk = section.settings.per_row_desk
-  assign cols_per_row_mob = section.settings.per_row_mobile
-  assign item_count = section.blocks.size
-  assign last_slide = item_count | minus: cols_per_row_desk | plus: 1
-  assign show_carousel = true
-  if item_count <= cols_per_row_desk
-    assign show_carousel = false
-  endif
+  assign cols_per_row_desk  = section.settings.per_row_desk
+  assign cols_per_row_mob   = section.settings.per_row_mobile
+  assign item_count         = section.blocks.size
+  assign last_slide         = item_count | minus: cols_per_row_desk | plus: 1
   if last_slide < 1
     assign last_slide = 1
   endif
+  assign show_carousel = false
+  if item_count > cols_per_row_desk
+    assign show_carousel = true
+  endif
 -%}
 
-{% style %}
-.hid-product__card{
-  border: 1px solid #ece6df;
-  border-radius: 14px;
-  padding: 15px;
-  text-align: center;
-}
-
-/* ── Shared grid ── */
-.section-id-{{ section.id }} .product-grid {
-  display: grid;
-  gap: 24px;
-  grid-template-columns: repeat({{ item_count }}, 1fr);
-}
-
-.section-id-{{ section.id }} .product-grid--carousel {
-  grid-template-columns: repeat(var(--cols-per-row-desk), 1fr);
-}
-
-@media (max-width: 767px) {
-  .section-id-{{ section.id }} .product-grid {
-    grid-template-columns: repeat(var(--cols_per_row_mob), 1fr);
-    gap: 16px;
-  }
-}
-
-/* ── Carousel ── */
-.section-id-{{ section.id }} .collection-listing--carousel {
-  overflow: hidden;
-}
-
-.section-id-{{ section.id }} .product-grid--carousel .slider__item {
-  display: none;
-}
-
-{% assign cols = cols_per_row_desk %}
-{% for i in (1..last_slide) %}
-  {% for j in (0..cols) %}
-    {% if j < cols %}
-      {% assign item_index = i | plus: j %}
-      #slide-{{ section.id }}-{{ i }}:checked ~ * .slider__item--{{ item_index }} { display: block; }
-    {% endif %}
-  {% endfor %}
-{% endfor %}
-
-/* ── Nav ── */
-.section-id-{{ section.id }} .slider-nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-}
-
-.section-id-{{ section.id }} .slider-nav__btn {
-  cursor: pointer;
-  font-size: 32px;
-  line-height: 1;
-  padding: 0 12px;
-  background: none;
-  border: none;
-  color: inherit;
-  user-select: none;
-}
-
-.section-id-{{ section.id }} .slider-nav__btn:disabled {
-  opacity: 0.2;
-  cursor: default;
-}
-
-.section-id-{{ section.id }} {
-  --per-row-desk: {{ cols_per_row_desk }};
-  --per-row-mob: {{ cols_per_row_mob }};
-  margin: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px 0;
-}
-{% endstyle %}
-
-{%- capture block_html -%}
-  {%- for block in section.blocks -%}
-    {%- if block.settings.link != blank -%}
-      <a class="carousel-item__link carousel-item--{{ forloop.index }} text_image_alignment-{{ section.settings.text_icon_alignment }}" href="{{ block.settings.link }}" {{ block.shopify_attributes }}>
-    {%- else -%}
-      <div class="carousel-item-wrapper carousel-item--{{ forloop.index }} text_image_alignment-{{ section.settings.text_icon_alignment }}" {{ block.shopify_attributes }}>
-    {%- endif -%}
-
-    {%- if block.settings.image != blank -%}
-      <div class="carousel-item-image">
-        {%- liquid
-          assign image_sizes = block.settings.image_width | append: 'px'
-          assign image_widths = block.settings.image_width | times: 2 | prepend: ', ' | prepend: block.settings.image_width
-          render 'image' with block.settings.image, sizes: image_sizes, widths: image_widths
-        -%}
-      </div>
-    {%- endif -%}
-
-    {%- if block.settings.text != blank -%}
-      <div class="carousel-item-text">{{ block.settings.text }}</div>
-    {%- endif -%}
-    {%- if block.settings.author != blank -%}
-      <div class="carousel-item-author">{{ block.settings.author }}</div>
-    {%- endif -%}
-    {%- if block.settings.star_rating != blank -%}
-      <div class="carousel-item-star-rating"></div>
-    {%- endif -%}
-
-    {%- unless block.settings.link != blank -%}
-      </div>
-    {%- else -%}
-      </a>
-    {%- endunless -%}
-  {%- endfor -%}
-{%- endcapture -%}
-
-<div class="section-id-{{ section.id }} collection-slider-row">
+<div id="section-id-{{ section.id }}" class="section-id-{{ section.id }} collection-slider-row">
 
   {%- if show_carousel -%}
-    {% for i in (1..last_slide) %}
+    {%- for i in (1..last_slide) -%}
       <input
         type="radio"
         name="slider-{{ section.id }}"
@@ -235,34 +160,75 @@
         class="slider-radio"
         style="display:none"
         {% if forloop.first %}checked{% endif %}>
-    {% endfor %}
+    {%- endfor -%}
   {%- endif -%}
 
   <div class="container{% if section.settings.full_width %} container--no-max{% endif %}">
-    {% if section.settings.title != blank %}
-      <div class="hometitle align-center{% if section.settings.show_title == false %} visually-hidden{% endif %}">
-        <h2>
-          {{- section.settings.title | escape -}}
-        </h2>
-      </div>
-    {% endif %}
 
-    <div class="{% if show_carousel %} block-item--carousel{% endif %}">
-      <div class="product-grid product-grid--desk-{{ cols_per_row_desk }} product-grid--mob-{{ cols_per_row_mobile }}{% if show_carousel %} product-grid--carousel{% endif %}">
-        {%- for block in section.blocks -%}
-          <div class="product-grid__item{% if show_carousel %} slider__item slider__item--{{ forloop.index }}{% endif %}">
-            {{- block_html -}}
-          </div>
-        {%- endfor -%}
+    {%- if section.settings.title != blank -%}
+      <div class="hometitle{% unless section.settings.show_title %} visually-hidden{% endunless %}">
+        <h2>{{ section.settings.title | escape }}</h2>
       </div>
+    {%- endif -%}
+
+    <div class="product-grid{% if show_carousel %} product-grid--carousel{% endif %}">
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign filled_stars = block.settings.star_rating
+          assign empty_stars  = 5 | minus: filled_stars
+        -%}
+        <div
+          class="review-block--{{ forloop.index }}{% if show_carousel %} slider__item slider__item--{{ forloop.index }}{% endif %}"
+          {{ block.shopify_attributes }}
+        >
+          {%- if block.settings.link != blank -%}
+            <a class="review-card" href="{{ block.settings.link }}" style="text-decoration:none;">
+          {%- else -%}
+            <div class="review-card">
+          {%- endif -%}
+
+            {%- if block.settings.image != blank -%}
+              <div class="review-card__image">
+                {%- liquid
+                  assign image_w = block.settings.image_width
+                  assign image_sizes = image_w | append: 'px'
+                  assign image_widths = image_w | times: 2 | prepend: ', ' | prepend: image_w
+                  render 'image' with block.settings.image, sizes: image_sizes, widths: image_widths
+                -%}
+              </div>
+            {%- endif -%}
+
+            {%- if block.settings.star_rating > 0 -%}
+              <div class="review-card__stars" aria-label="{{ block.settings.star_rating }} out of 5 stars">
+                {%- for i in (1..filled_stars) -%}★{%- endfor -%}
+                {%- if empty_stars > 0 -%}
+                  {%- for i in (1..empty_stars) -%}☆{%- endfor -%}
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+
+            {%- if block.settings.text != blank -%}
+              <div class="review-card__text">{{ block.settings.text }}</div>
+            {%- endif -%}
+
+            {%- if block.settings.author != blank -%}
+              <div class="review-card__author">{{ block.settings.author }}</div>
+            {%- endif -%}
+
+          {%- if block.settings.link != blank -%}
+            </a>
+          {%- else -%}
+            </div>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
     </div>
 
-    <div>
-      {% if show_carousel %}
+    {%- if show_carousel -%}
+      <div class="slider-nav">
         <button
           class="slider-nav__btn slider-nav__btn--prev"
           data-slider="{{ section.id }}"
-          data-direction="prev"
           aria-label="Previous"
           disabled
         >&#8249;</button>
@@ -270,22 +236,24 @@
         <button
           class="slider-nav__btn slider-nav__btn--next"
           data-slider="{{ section.id }}"
-          data-direction="next"
           aria-label="Next"
         >&#8250;</button>
-      {% endif %}
-    </div>
+      </div>
+    {%- endif -%}
+
   </div>
 </div>
 
+{%- if show_carousel -%}
 <script>
 (function () {
   var sectionId = {{ section.id | json }};
   var lastSlide = {{ last_slide }};
-  var current = 1;
+  var current   = 1;
 
-  var prevBtn = document.querySelector('.section-id-' + sectionId + ' .slider-nav__btn--prev');
-  var nextBtn = document.querySelector('.section-id-' + sectionId + ' .slider-nav__btn--next');
+  var root    = document.getElementById('section-id-' + sectionId);
+  var prevBtn = root.querySelector('.slider-nav__btn--prev');
+  var nextBtn = root.querySelector('.slider-nav__btn--next');
 
   function goTo(index) {
     if (index < 1 || index > lastSlide) return;
@@ -300,6 +268,7 @@
   nextBtn.addEventListener('click', function () { goTo(current + 1); });
 })();
 </script>
+{%- endif -%}
 
 {% schema %}
 {
@@ -319,9 +288,33 @@
       "default": true
     },
     {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full width",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "per_row_desk",
+      "label": "Items per row (desktop)",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "per_row_mobile",
+      "label": "Items per row (mobile)",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "default": 1
+    },
+    {
       "type": "range",
       "id": "padding_top",
-      "label": "Padding Top",
+      "label": "Padding top",
       "min": 0,
       "max": 100,
       "step": 1,
@@ -331,32 +324,12 @@
     {
       "type": "range",
       "id": "padding_bottom",
-      "label": "Padding Bottom",
+      "label": "Padding bottom",
       "min": 0,
       "max": 100,
       "step": 1,
       "unit": "px",
       "default": 20
-    },
-    {
-      "type": "radio",
-      "id": "justify-content",
-      "label": "Text and Icon alignment",
-      "default": "center",
-      "options": [
-        {
-          "value": "flex-start",
-          "label": "Left"
-        },
-        {
-          "value": "center",
-          "label": "Centre"
-        },
-        {
-          "value": "flex-end",
-          "label": "Right"
-        }
-      ]
     }
   ],
   "blocks": [
@@ -367,38 +340,37 @@
         {
           "type": "image_picker",
           "id": "image",
-          "label": "Image"
+          "label": "Reviewer image"
         },
         {
           "type": "range",
           "id": "image_width",
-          "label": "Logo width",
-          "min": 10,
-          "max": 100,
-          "step": 1,
-          "unit": "%",
-          "default": 50,
-          "info": "Image column width when image and text are inline"
+          "label": "Image width",
+          "min": 30,
+          "max": 200,
+          "step": 5,
+          "unit": "px",
+          "default": 60
         },
         {
           "type": "url",
           "id": "link",
-          "label": "Link"
+          "label": "Link (optional)"
         },
         {
           "type": "richtext",
           "id": "text",
-          "label": "Text",
+          "label": "Review text"
         },
         {
           "type": "text",
           "id": "author",
-          "label": "Author"
+          "label": "Author name"
         },
         {
           "type": "range",
           "id": "star_rating",
-          "label": "Star Rating",
+          "label": "Star rating",
           "min": 0,
           "max": 5,
           "step": 1,
@@ -407,17 +379,11 @@
         {
           "type": "radio",
           "id": "text_icon_alignment",
-          "label": "Text and Icon alignment",
+          "label": "Layout",
           "default": "column",
           "options": [
-            {
-              "value": "column",
-              "label": "Stacked"
-            },
-            {
-              "value": "row",
-              "label": "Inline"
-            }
+            { "value": "column", "label": "Stacked" },
+            { "value": "row",    "label": "Inline"  }
           ]
         },
         {
@@ -428,12 +394,12 @@
           "max": 30,
           "step": 1,
           "unit": "px",
-          "default": 12
+          "default": 14
         },
         {
           "type": "color",
           "id": "logo_bg_color",
-          "label": "Background color"
+          "label": "Card background color"
         },
         {
           "type": "color",
@@ -446,9 +412,7 @@
   "presets": [
     {
       "name": "HID Carousel",
-      "category": "HID Landing Page",
-      "settings": {
-      }
+      "category": "HID Landing Page"
     }
   ]
 }
