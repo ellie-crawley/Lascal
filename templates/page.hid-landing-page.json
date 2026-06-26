@@ -121,7 +121,9 @@
         "padding_top": 10,
         "padding_bottom": 0,
         "gap_mobile": 10,
-        "gap_desktop": 20
+        "gap_desktop": 20,
+        "enable_max_width": false,
+        "max_width": 250
       }
     },
     "hid_rich_text_fWJNdg": {
@@ -189,7 +191,9 @@
         "padding_top": 10,
         "padding_bottom": 10,
         "gap_mobile": 10,
-        "gap_desktop": 20
+        "gap_desktop": 20,
+        "enable_max_width": true,
+        "max_width": 250
       }
     },
     "hid_rich_text_aeq7Bp": {
@@ -553,7 +557,9 @@
         "padding_top": 20,
         "padding_bottom": 20,
         "gap_mobile": 10,
-        "gap_desktop": 20
+        "gap_desktop": 20,
+        "enable_max_width": false,
+        "max_width": 250
       }
     },
     "hid_rich_text_aAGeP4": {
@@ -663,7 +669,9 @@
         "padding_top": 20,
         "padding_bottom": 20,
         "gap_mobile": 5,
-        "gap_desktop": 20
+        "gap_desktop": 20,
+        "enable_max_width": false,
+        "max_width": 250
       }
     },
     "hid_rich_text_pj9xNK": {
