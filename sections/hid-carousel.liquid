@@ -95,7 +95,7 @@
         text-align: left;
       {% endif %}
     }
-    #section-id-{{ section.id }} .review-card__stars {
+    #section-id-{{ section.id }} review-block--{{ forloop.index }} .review-card__stars {
       display: flex;
       gap: 2px;
       justify-content: center;
