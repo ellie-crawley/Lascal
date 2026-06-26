@@ -14,6 +14,12 @@
     background: white;
     width: 100%;
     padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+  }
+  #sticky-button-{{ section.id }}.is-visible {
+    opacity: 1;
+    visibility: visible;
   }
 
   #sticky-button-{{ section_id }} a {
@@ -44,6 +50,27 @@
     }
   }
 </style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const button = document.getElementById('sticky-button-{{ section.id }}');
+
+  if (!button) return;
+
+  function toggleButton() {
+    if (window.scrollY >= window.innerHeight) {
+      button.classList.add('is-visible');
+    } else {
+      button.classList.remove('is-visible');
+    }
+  }
+
+  toggleButton();
+
+  window.addEventListener('scroll', toggleButton, { passive: true });
+  window.addEventListener('resize', toggleButton);
+});
+</script>
 
 {% if section.settings.button_text != blank and section.settings.button_link != blank %}
   <div id="sticky-button-{{ section_id }}">
