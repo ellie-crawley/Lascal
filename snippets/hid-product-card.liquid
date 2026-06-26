@@ -1,4 +1,4 @@
-{%  style %}
+{% style %}
 .hid-product__card {
   border: 1px solid #d5d5d5;
   transition: 0.3s ease;
@@ -11,38 +11,12 @@
   border-radius: 14px;
 }
 
-.hid-product__card-color {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  margin-right: 6px;
-  position: relative;
-  cursor: pointer;
-}
-@media screen and (max-width: 990px) {
-  .hid-product__card-color {
-    width: 15px;
-    height: 15px;
-  }
-}
-.hid-product__card-color.active::before {
-  content: "";
-  border: 3px solid #d5d5d5;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.hid-product__card-image-container {
-  position: relative;
-}
-
+/* IMAGE */
 .hid-product__card-image {
   display: block;
+  position: relative;
 }
+
 .hid-product__card-image.image::before {
   padding-top: 100%;
 }
@@ -54,50 +28,54 @@
   visibility: visible;
 }
 
-/* Hide all images except the first by default */
+/* Hide all images except first */
 .hid-product__card-image img:not(:first-child) {
   display: none;
 }
 
-/* Hover: fade out first, show second */
+/* Hover swap */
 .hid-product__card:hover .hid-product__card-image img:first-child {
   opacity: 0;
   visibility: hidden;
 }
+
 .hid-product__card:hover .hid-product__card-image img:nth-child(2) {
   display: block;
   opacity: 1;
   visibility: visible;
 }
 
-/* JS-controlled classes for if JS adds them */
+/* JS states (kept for safety) */
 .hid-product__card-image img.active.first_show {
   display: block;
   opacity: 1;
   visibility: visible;
 }
+
 .hid-product__card-image img.active.hover_show {
   display: none;
 }
+
 .hid-product__card:hover .hid-product__card-image img.active.first_show {
   opacity: 0;
   visibility: hidden;
 }
+
 .hid-product__card:hover .hid-product__card-image img.active.hover_show {
   display: block;
   opacity: 1;
   visibility: visible;
 }
 
+/* TITLE + PRICES */
 .hid-product__card-price-title {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   font-family: "Museo Sans Rounded";
   font-size: 18px;
   font-weight: 400;
   line-height: 22px;
-  letter-spacing: 0em;
-  color: #000000;
+  color: #000;
 }
 
 .hid-product__card-title {
@@ -106,178 +84,47 @@
   font-weight: bold;
 }
 
-.hid-product__card-short {
-  margin-top: 22px;
-  color: var(--Main-Colors-Black, #000);
-  font-family: "Open Sans";
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 160%;
-}
-@media screen and (max-width: 990px) {
-  .hid-product__card-short {
-    font-size: 14px;
-    margin-top: 16px;
-  }
+.hid-product__card-prices {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-direction: row;
 }
 
 .hid-product__card-price,
 .hid-product__card-compare {
-  white-space: nowrap;
   font-size: 18px;
   font-weight: 800;
-}
-
-.hid-product__card-prices {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-direction: row;
-}
-@media (max-width: 767px) {
-  .hid-product__card-prices {
-    font-size: 14px;
-  }
+  white-space: nowrap;
 }
 
 .hid-product__card-compare {
   text-decoration: line-through;
   opacity: 0.6;
-  white-space: nowrap;
 }
 
+/* REVIEW */
 .hid-product__card-rating {
-
+  display: flex;
+  justify-content: center;
 }
+
 .hid-product__card-rating .stamped-product-reviews-badge {
   padding: 3px 5px;
-}
-.hid-product__card-rating .disabled {
-  display: none !important;
 }
 
 .hid-product__card .stamped-badge-caption {
   display: none;
 }
 
-.hid-product__card-add-cart {
-  position: relative;
-  margin-top: 20px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  align-items: center;
-}
-.hid-product__card-add-cart.disabled::after {
-  content: "";
-  display: block;
-  position: absolute;
-  top: 50%;
-  left: 41%;
-  width: 1px;
-  height: 33px;
-  border-left: 1px solid #000;
-  transform: translate(-50%, -50%) rotate(45deg);
-}
-.hid-product__card-add-cart.disabled::before {
-  content: "";
-  display: block;
-  position: absolute;
-  top: 50%;
-  left: 41%;
-  width: 1px;
-  height: 33px;
-  border-left: 1px solid #000;
-  transform: translate(-50%, -50%) rotate(-45deg);
-}
-
-.hid-product__card-add-cart__container {
-  border: 1px solid transparent;
-}
-.hid-product__card-add-cart__container .find-retailer,
-.hid-product__card-add-cart__container .hid-product__card-add-cart {
-  transition: 0.3s all ease;
-}
-.hid-product__card-add-cart__container svg path {
-  transition: 0.3s all ease;
-}
-
-.hid-product__card:hover .hid-product__card-add-cart__container .find-retailer,
-.hid-product__card:hover .hid-product__card-add-cart__container .hid-product__card-add-cart:not(.icon) {
-  background: #ff8300;
-  color: #fff;
-  border-color: #ff8300;
-}
-.hid-product__card:hover .hid-product__card-add-cart__container .find-retailer svg path,
-.hid-product__card:hover .hid-product__card-add-cart__container .hid-product__card-add-cart:not(.icon) svg path {
-  stroke: #fff;
-}
-
-.hid-product__card-add-cart.loading {
-  pointer-events: none;
-}
-
-.hid-product__card-add-cart .loading-state {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  opacity: 0;
-  visibility: hidden;
-  transition: 0.2s ease;
-  z-index: 2;
-}
-
-.hid-product__card-add-cart.loading .loading-state {
-  opacity: 1;
-  visibility: visible;
-}
-
-.hid-product__card-add-cart__container .find-retailer {
-  display: block;
-  margin-top: 20px;
-  text-align: center;
-}
-
-.hid-product__card-variants {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: -6px;
-}
-
-.hid-product__card-variants-item {
-  border-radius: 50%;
-  border: 1px solid #C7C7CC;
-  max-width: 35px;
-  max-height: 35px;
-}
-.hid-product__card-variants-item img {
-  border-radius: 50%;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.hid-product__card-rating,
-.hid-product__card-prices,
-.hid-product__card-price-title{
-  display: flex;
-  justify-content: center;
-}
-
-.stamped-fa-star{
+/* STAR COLOR */
+.stamped-fa-star {
   color: {{btn_star_colour}};
-}
-.stamped-fa-star:before,
-.stamped-fa-star{
-  font-size: 11px
+  font-size: 11px;
 }
 
+/* BUTTON */
 .form__button {
   margin-top: 10px;
   background: {{btn_colour}};
@@ -289,6 +136,8 @@
   font-weight: 700;
   font-size: 13px;
 }
+
+/* LAYOUT */
 .hid-product__card-content {
   display: flex;
   flex-direction: column;
@@ -297,7 +146,7 @@
 }
 {% endstyle %}
 
-<div class="hid-product__card" data-product-url="{{ product.url |  split: "?" | first }}">
+<div class="hid-product__card" data-product-url="{{ product.url | split: "?" | first }}">
   <a href="{{ product.url }}" class="hid-product__card-image image">
     {% if configured_image_primary != blank or configured_image_secondary != blank %}
       {% if configured_image_primary != blank %}
@@ -319,26 +168,29 @@
     <a href="{{ product.url }}" class="hid-product__card-price-title">
       <div class="hid-product__card-title">{{ product.title }}</div>
     </a>
+
     <div class="hid-product__card-prices">
       <div class="hid-product__card-price">{{ product.price | money }}</div>
       {% if product.price < product.compare_at_price %}
         <div class="hid-product__card-compare">{{ product.compare_at_price | money }}</div>
       {% endif %}
     </div>
+
     <a href="{{ product.url }}#reviews" class="hid-product__card-rating">
       <span
         class="stamped-product-reviews-badge product__reviews-badge"
         data-id="{{ product.id }}"
         data-product-sku="{{ product.handle }}"
-        data-product-type="{{product.type}}"
-        data-product-title="{{product.title}}"
+        data-product-type="{{ product.type }}"
+        data-product-title="{{ product.title }}"
         style="display:flex;"
-      >
-      </span>
+      ></span>
     </a>
+
     {% form 'product', product, class: 'main-form', data-cart-submit: 'data-cart-submit' %}
       <input type="hidden" name="form_type" value="product">
       <input type="hidden" name="utf8" value="✓">
+
       <select name="id" class="product__select" style="display: none;">
         {% for variant in product.variants %}
           <option
@@ -347,22 +199,22 @@
             {% if variant.compare_at_price > variant.price %}
               data-compare-price="{{ variant.compare_at_price | money }}"
             {% endif %}
-            {% unless variant.available %}
-              disabled
-            {% endunless %}
-            data-title="{{variant.title}}"
-            value="{{variant.id}}"
+            {% unless variant.available %}disabled{% endunless %}
+            data-title="{{ variant.title }}"
+            value="{{ variant.id }}"
           >
             {{ variant.title }}
           </option>
         {% endfor %}
       </select>
-      <button class="form__button" type="submit" name="add" {% if product.selected_or_first_available_variant.available == false %}disabled{% endif %}>
-        {%- if product.selected_or_first_available_variant.available -%}
-        {{ 'products.product.add_to_cart' | t }}
-        {%- else -%}
-        {{ 'products.product.sold_out' | t }}
-        {%- endif -%}
+
+      <button class="form__button" type="submit" name="add"
+        {% if product.selected_or_first_available_variant.available == false %}disabled{% endif %}>
+        {% if product.selected_or_first_available_variant.available %}
+          {{ 'products.product.add_to_cart' | t }}
+        {% else %}
+          {{ 'products.product.sold_out' | t }}
+        {% endif %}
       </button>
     {% endform %}
   </div>
