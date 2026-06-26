@@ -470,7 +470,10 @@
         "grid": 4,
         "rows": 1,
         "mobile_grid": 1,
-        "show_view_all": false
+        "show_view_all": false,
+        "btn_colour": "#E98739",
+        "btn_text_colour": "#FFFFFF",
+        "btn_star_colour": "#E98739"
       }
     },
     "hid_logo_list_wbJHRm": {
