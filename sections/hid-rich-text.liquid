@@ -86,7 +86,7 @@
 
 {% endstyle %}
 
-<div id="section-id-{{ section.id }}" class="rich-text">
+<div id="section-id-{{ section.id }}" class="rich-text hid-container">
   {% for block in section.blocks %}
     {% case block.type %}
       {% when 'heading' %}
@@ -127,7 +127,7 @@
 {% schema %}
 {
   "name": "HID rich text",
-  "class": "section-hid-rich-text hid-container",
+  "class": "section-hid-rich-text",
   "settings": [
     {
       "type": "select",
