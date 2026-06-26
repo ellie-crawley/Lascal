@@ -155,9 +155,9 @@
           "type": "logo",
           "settings": {
             "image": "shopify://shop_images/The-Original-BB-Icon.png",
-            "image_width": 40,
+            "image_width": 30,
             "link": "",
-            "text": "<p>Free UK Delivery</p>",
+            "text": "<p>Free UK Delivery Over £50</p>",
             "justify-content": "center"
           }
         },
@@ -165,9 +165,9 @@
           "type": "logo",
           "settings": {
             "image": "shopify://shop_images/The-Original-BB-Icon.png",
-            "image_width": 40,
+            "image_width": 30,
             "link": "",
-            "text": "<p>30-Day Money Back</p>",
+            "text": "<p>30-Day Money Back Guarantee</p>",
             "justify-content": "center"
           }
         }
