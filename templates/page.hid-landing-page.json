@@ -196,40 +196,6 @@
         "max_width": 250
       }
     },
-    "hid_rich_text_aeq7Bp": {
-      "type": "hid-rich-text",
-      "blocks": {
-        "text_tcRnpJ": {
-          "type": "text",
-          "settings": {
-            "text": "<h2><strong>Make every outing easier</strong></h2>",
-            "text_colour": "",
-            "after_text": "",
-            "after_text_colour": ""
-          }
-        },
-        "text_3qyKQX": {
-          "type": "text",
-          "settings": {
-            "text": "<p>More outings. More fun for them.</p>",
-            "text_colour": "",
-            "after_text": "",
-            "after_text_colour": ""
-          }
-        }
-      },
-      "block_order": [
-        "text_tcRnpJ",
-        "text_3qyKQX"
-      ],
-      "name": "HID rich text",
-      "settings": {
-        "text_alignment": "center",
-        "padding_top": 25,
-        "padding_bottom": 10,
-        "gap": 5
-      }
-    },
     "hid_cards_q3wL4E": {
       "type": "hid-cards",
       "blocks": {
@@ -309,7 +275,9 @@
       "name": "HID image with text cards",
       "settings": {
         "title": "Make every outing easier",
+        "subtitle": "<p>More outings. More fun for them.</p>",
         "show_title": true,
+        "text_alignment": "center",
         "font_size": 12,
         "bg_color": "#f4eadd",
         "card_bg_color": "#ffffff",
@@ -767,7 +735,6 @@
     "hid_logo_list_6Chcj9",
     "hid_rich_text_fWJNdg",
     "hid_logo_list_6UWrEf",
-    "hid_rich_text_aeq7Bp",
     "hid_cards_q3wL4E",
     "hid_rich_text_FRzqp8",
     "hid_carousel_RVNEMX",
