@@ -78,7 +78,7 @@
   }
 {%- endstyle -%}
 
-<div id="section-id-{{ section.id }}" class="hid-container card-container">
+<div id="section-id-{{ section.id }}" class="card-container">
 
   {%- capture cards_html -%}
     {%- for block in section.blocks -%}
@@ -88,7 +88,7 @@
         <div class="card-list-wrapper card-list__card card-list__card-{{ forloop.index }}" {{ block.shopify_attributes }}>
       {%- endif -%}
 
-      {% if block.settings.img_type == 'img' %}
+      {% if block.settings.img_type == 'image' %}
         {%- if block.settings.image != blank -%}
           <div class="card-list__card-image">
             {%- liquid
@@ -145,7 +145,7 @@
 {% schema %}
 {
   "name": "HID card list",
-  "class": "section-card-list",
+  "class": "section-card-list hid-container",
   "settings": [
     {
       "type": "text",
