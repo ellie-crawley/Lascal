@@ -12,7 +12,7 @@
   }
 {% endstyle %}
 
-<section class="hid-image-banner-{{section.id}} hid-image-banner container">
+<section class="hid-image-banner-{{section.id}} hid-image-banner">
   {% if section.settings.image != blank  %}
     <img
       src="{{ section.settings.image | image_url }}"
