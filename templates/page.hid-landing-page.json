@@ -238,7 +238,7 @@
           "settings": {
             "img_type": "image",
             "image": "shopify://shop_images/The-Original-BB-Icon.png",
-            "image_width": 20,
+            "image_width": 40,
             "emoji": "😊",
             "emoji_size": 21,
             "link": "",
@@ -249,8 +249,9 @@
         "card_wWnq8K": {
           "type": "card",
           "settings": {
-            "img_type": "emoji",
-            "image_width": 180,
+            "img_type": "image",
+            "image": "shopify://shop_images/The-Original-BB-Icon.png",
+            "image_width": 40,
             "emoji": "⏱",
             "emoji_size": 21,
             "link": "",
@@ -261,8 +262,9 @@
         "card_LBQLhA": {
           "type": "card",
           "settings": {
-            "img_type": "emoji",
-            "image_width": 180,
+            "img_type": "image",
+            "image": "shopify://shop_images/The-Original-BB-Icon.png",
+            "image_width": 40,
             "emoji": "🤝",
             "emoji_size": 21,
             "link": "",
@@ -273,8 +275,9 @@
         "card_38qJd7": {
           "type": "card",
           "settings": {
-            "img_type": "emoji",
-            "image_width": 180,
+            "img_type": "image",
+            "image": "shopify://shop_images/The-Original-BB-Icon.png",
+            "image_width": 40,
             "emoji": "🛡",
             "emoji_size": 21,
             "link": "",
@@ -285,8 +288,9 @@
         "card_PUGVcr": {
           "type": "card",
           "settings": {
-            "img_type": "emoji",
-            "image_width": 180,
+            "img_type": "image",
+            "image": "shopify://shop_images/The-Original-BB-Icon.png",
+            "image_width": 40,
             "emoji": "🧰",
             "emoji_size": 21,
             "link": "",
