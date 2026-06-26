@@ -110,6 +110,7 @@
     #section-id-{{ section.id }} .review-block--{{ forloop.index }} .review-card__image img {
       width: {{ block.settings.image_width }}%;
       max-width: 100%;
+      margin: 0;
     }
   {%- endfor -%}
 
@@ -352,11 +353,11 @@
           "type": "range",
           "id": "image_width",
           "label": "Image width",
-          "min": 30,
-          "max": 200,
-          "step": 5,
-          "unit": "px",
-          "default": 60
+          "min": 10,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 50
         },
         {
           "type": "url",
