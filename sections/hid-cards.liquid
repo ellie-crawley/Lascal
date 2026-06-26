@@ -134,7 +134,9 @@
     <div class="hometitle align-center{% if section.settings.show_title == false %} visually-hidden{% endif %}">
       {% if section.settings.title != blank %}
         <h2>
+          <strong>
           {{- section.settings.title | escape -}}
+          </strong>
         </h2>
       {% endif %}
       {% if section.settings.subtitle != blank %}
