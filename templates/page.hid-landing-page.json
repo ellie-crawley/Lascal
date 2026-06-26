@@ -308,13 +308,13 @@
       ],
       "name": "HID image with text cards",
       "settings": {
-        "title": "",
+        "title": "Make every outing easier",
         "show_title": true,
         "font_size": 12,
         "bg_color": "#f4eadd",
         "card_bg_color": "#ffffff",
         "font_colour": "",
-        "padding_top": 20,
+        "padding_top": 0,
         "padding_bottom": 20
       }
     },
