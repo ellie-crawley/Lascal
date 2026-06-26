@@ -99,19 +99,12 @@
 
 
 {%- liquid
-  if section.settings.enable_carousel
-    assign product_limit = section.settings.product_limit
-  else
-    assign product_limit = section.settings.grid | times: section.settings.rows
-  endif
-  assign collection = collections[section.settings.collection]
-  assign per_row_desk = section.settings.grid
-  assign per_row_mob = section.settings.mobile_grid
-  assign product_count = collection.products.size | at_most: product_limit
-  assign cols = per_row_desk
-  assign last_slide = product_count | minus: cols | plus: 1
-  assign show_carousel = section.settings.enable_carousel
-  if product_count <= cols
+  assign cols_per_row_desk = section.settings.per_row_desk
+  assign cols_per_row_mob = section.settings.per_row_mobile
+  assign item_count = section.blocks.size
+  assign last_slide = item_count | minus: cols_per_row_desk | plus: 1
+  assign show_carousel = true
+  if item_count <= cols
     assign show_carousel = false
   endif
   if last_slide < 1
