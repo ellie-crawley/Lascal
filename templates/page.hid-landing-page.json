@@ -403,10 +403,10 @@
           "type": "promotion",
           "settings": {
             "promo_text": "Use code",
-            "promo_text_color": "#f6f2ec",
+            "promo_text_color": "#FFFFFF",
             "promo_code": "ADVENTURE10",
-            "promo_code_color": "",
-            "promo_code_bg_color": "#ff8300"
+            "promo_code_color": "#000000",
+            "promo_code_bg_color": "#FFFFFF"
           }
         }
       },
