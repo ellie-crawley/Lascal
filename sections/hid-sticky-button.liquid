@@ -45,7 +45,21 @@
 
 {% if section.settings.button_text != blank and section.settings.button_link != blank %}
   <div id="sticky-button-{{ section_id }}">
-    <a href="{{ section.settings.button_link }}">
+    {% if section.settings.button_link.type == 'collection_link' %}
+      {% assign lowest_price = nil %}
+    
+      {% for product in section.settings.button_link.object.products %}
+        {% if lowest_price == nil or product.price < lowest_price %}
+          {% assign lowest_price = product.price %}
+        {% endif %}
+      {% endfor %}
+    
+      {% if lowest_price %}
+        {% assign from_text = 'From ' | append: lowest_price | money %}
+      {% endif %}
+    {% endif %}
+    {{ from_text }}
+    <a href="{{ section.settings.button_link }}" class="sticky_button">
       {{ section.settings.button_text }}
     </a>
   </div>
