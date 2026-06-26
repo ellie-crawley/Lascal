@@ -139,7 +139,8 @@
                 'hid-product-card',
                 product: product,
                 btn_colour: {{ section.settings.button_colour }},
-                btn_text_colour: {{ section.settings.button_text_colour }}
+                btn_text_colour: {{ section.settings.button_text_colour }},
+                btn_star_colour: {{ section.settings.button_star_colour }}
               -%}
             </div>
           {%- endfor -%}
@@ -151,7 +152,8 @@
               {%- render 'hid-product-card',
                 product: block.settings.product,
                 btn_colour: {{ section.settings.button_colour }},
-                btn_text_colour: {{ section.settings.button_text_colour }}
+                btn_text_colour: {{ section.settings.button_text_colour }},
+                btn_star_colour: {{ section.settings.button_star_colour }},
                 configured_image_primary: block.settings.configured_image_primary,
                 configured_image_secondary: block.settings.configured_image_secondary -%}
             </div>
@@ -302,6 +304,11 @@
     {
       "type": "color",
       "id": "btn_text_colour",
+      "label": "Button text colour"
+    },
+    {
+      "type": "color",
+      "id": "btn_star_colour",
       "label": "Button text colour"
     }
   ],
