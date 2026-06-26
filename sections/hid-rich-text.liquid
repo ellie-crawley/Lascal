@@ -16,7 +16,11 @@
     text-align: {{ text_alignment }};
     margin-top: {{ section.settings.padding_top }}px;
     margin-bottom: {{ section.settings.padding_bottom }}px;
-    background: {{ section.settings.bg_colour }}
+    {% if section.settings.bg_colour != blank  %}
+      padding-top: 40px;
+      padding-bottom: 40px;
+      background: {{ section.settings.bg_colour }}
+    {% endif %}
   }
 
   #section-id-{{ section.id }}{
