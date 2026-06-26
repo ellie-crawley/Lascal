@@ -209,6 +209,12 @@
     {%- if block.settings.text != blank -%}
       <div class="carousel-item-text">{{ block.settings.text }}</div>
     {%- endif -%}
+    {%- if block.settings.author != blank -%}
+      <div class="carousel-item-author">{{ block.settings.author }}</div>
+    {%- endif -%}
+    {%- if block.settings.star_rating != blank -%}
+      <div class="carousel-item-star-rating"></div>
+    {%- endif -%}
 
     {%- unless block.settings.link != blank -%}
       </div>
