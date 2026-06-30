@@ -688,7 +688,7 @@
         "button_CriNTN": {
           "type": "button",
           "settings": {
-            "button_label": "SHOP NOW RISK-FREE >",
+            "button_label": "SHOP NOW RISK-FREE →",
             "button_link": "",
             "button_text_colour": "#ffffff",
             "button_bg_colour": "#e36231"
