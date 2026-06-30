@@ -60,7 +60,7 @@
     .layout--grid .logo-list{
       justify-content: flex-start;
     }
-    .layout--grid .logo-list-wrapper {
+    .layout--grid .logo-list-outer {
       flex: 0 1 calc(50% - (var(--gap) / 2));
     }
     .logo-list__logo-text p{
@@ -100,7 +100,7 @@
 
   {%- capture logos_html -%}
     {%- for block in section.blocks -%}
-      <div>
+      <div class="logo-list-outer">
         {%- if block.settings.link != blank -%}
           <a class="logo-list-wrapper logo-list__logo logo-list__logo-{{ forloop.index }} text_icon_alignment-{{ section.settings.text_icon_alignment }}" href="{{ block.settings.link }}" {{ block.shopify_attributes }}>
         {%- else -%}
