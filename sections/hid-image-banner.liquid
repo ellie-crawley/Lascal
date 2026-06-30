@@ -20,7 +20,7 @@
       width="1000"
       height="1000"
       alt="{{ section.settings.image.alt }}"
-      class="hidden-mobile">
+      class="{% if section.settings.mobile_image != blank %} hidden-mobile {% endif %}">
   {% endif %}
   {% if section.settings.mobile_image != blank  %}
     <img
