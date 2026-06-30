@@ -653,7 +653,7 @@
         "gap_mobile": 5,
         "gap_desktop": 20,
         "enable_max_width": true,
-        "max_width": 125
+        "max_width": 80
       }
     },
     "hid_rich_text_tEYqhk": {
