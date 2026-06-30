@@ -74,9 +74,9 @@
         {% if block.settings.promo_text != blank or block.settings.promo_code != blank %}
           <div id="promotion-{{ block.id }}" {{ block.shopify_attributes }}>
             {% if block.settings.promo_text != blank %}
-              <p>
+              <strong>
                 {{ block.settings.promo_text }}
-              </p>
+              </strong>
             {% endif %}
             {% if block.settings.promo_code != blank %}
               <div class="button-container">
