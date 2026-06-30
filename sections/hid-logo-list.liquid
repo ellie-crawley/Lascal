@@ -100,31 +100,33 @@
 
   {%- capture logos_html -%}
     {%- for block in section.blocks -%}
-      {%- if block.settings.link != blank -%}
-        <a class="logo-list__link logo-list__logo logo-list__logo-{{ forloop.index }} text_icon_alignment-{{ section.settings.text_icon_alignment }}" href="{{ block.settings.link }}" {{ block.shopify_attributes }}>
-      {%- else -%}
-        <div class="logo-list-wrapper logo-list__logo logo-list__logo-{{ forloop.index }} text_icon_alignment-{{ section.settings.text_icon_alignment }}" {{ block.shopify_attributes }}>
-      {%- endif -%}
+      <div>
+        {%- if block.settings.link != blank -%}
+          <a class="logo-list__link logo-list__logo logo-list__logo-{{ forloop.index }} text_icon_alignment-{{ section.settings.text_icon_alignment }}" href="{{ block.settings.link }}" {{ block.shopify_attributes }}>
+        {%- else -%}
+          <div class="logo-list-wrapper logo-list__logo logo-list__logo-{{ forloop.index }} text_icon_alignment-{{ section.settings.text_icon_alignment }}" {{ block.shopify_attributes }}>
+        {%- endif -%}
 
-      {%- if block.settings.image != blank -%}
-        <div class="logo-list__logo-image">
-          {%- liquid
-            assign image_sizes = block.settings.image_width | append: 'px'
-            assign image_widths = block.settings.image_width | times: 2 | prepend: ', ' | prepend: block.settings.image_width
-            render 'image' with block.settings.image, sizes: image_sizes, widths: image_widths
-          -%}
-        </div>
-      {%- endif -%}
+        {%- if block.settings.image != blank -%}
+          <div class="logo-list__logo-image">
+            {%- liquid
+              assign image_sizes = block.settings.image_width | append: 'px'
+              assign image_widths = block.settings.image_width | times: 2 | prepend: ', ' | prepend: block.settings.image_width
+              render 'image' with block.settings.image, sizes: image_sizes, widths: image_widths
+            -%}
+          </div>
+        {%- endif -%}
 
-      {%- if block.settings.text != blank -%}
-        <div class="logo-list__logo-text">{{ block.settings.text }}</div>
-      {%- endif -%}
+        {%- if block.settings.text != blank -%}
+          <div class="logo-list__logo-text">{{ block.settings.text }}</div>
+        {%- endif -%}
 
-      {%- unless block.settings.link != blank -%}
-        </div>
-      {%- else -%}
-        </a>
-      {%- endunless -%}
+        {%- unless block.settings.link != blank -%}
+          </div>
+        {%- else -%}
+          </a>
+        {%- endunless -%}
+      </div>
     {%- endfor -%}
   {%- endcapture -%}
 
