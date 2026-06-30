@@ -30,7 +30,7 @@
   display: none;
 }
 
-{% if configured_image_secondary != blank %}
+{% if configured_image_secondary != blank or product.images.size > 1 %}
   /* Hover swap */
   .hid-product__card:hover .hid-product__card-image img:first-child {
     opacity: 0;
