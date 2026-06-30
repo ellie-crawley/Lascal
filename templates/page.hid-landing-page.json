@@ -15,8 +15,8 @@
         "slide_KY3cez": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/Screenshot_2026-01-23_114445.png",
-            "mobile_image": "shopify://shop_images/Cheeky_Rascals_Blog_Images_2_8.jpg",
+            "image": "shopify://shop_images/2048x1024px-Header-Mobile.jpg",
+            "mobile_image": "shopify://shop_images/1024x1024px-Header-Mobile.jpg",
             "title": "",
             "text": "",
             "btn_url": "",
@@ -471,9 +471,9 @@
         "rows": 1,
         "mobile_grid": 1,
         "show_view_all": false,
-        "btn_colour": "#E98739",
-        "btn_text_colour": "#FFFFFF",
-        "btn_star_colour": "#E98739"
+        "btn_colour": "#e98739",
+        "btn_text_colour": "#ffffff",
+        "btn_star_colour": "#e98739"
       }
     },
     "hid_logo_list_wbJHRm": {
