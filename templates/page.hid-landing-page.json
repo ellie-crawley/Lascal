@@ -484,7 +484,7 @@
           "settings": {
             "image": "shopify://shop_images/Free-Delivery.png",
             "image_width": 25,
-            "link": "shopify://blogs/news/double-buggy-vs-buggyboard®-which-works-best-for-you",
+            "link": "",
             "text": "<p>Free UK Delivery Over £50</p>",
             "justify-content": "center"
           }
@@ -594,7 +594,7 @@
         "logo_QwGXp7": {
           "type": "logo",
           "settings": {
-            "image": "shopify://shop_images/The-Original-BB-Icon.png",
+            "image": "shopify://shop_images/Award-Winning.png",
             "image_width": 40,
             "link": "",
             "text": "<p>Award-Winning Design</p>",
@@ -604,7 +604,7 @@
         "logo_whYYKD": {
           "type": "logo",
           "settings": {
-            "image": "shopify://shop_images/The-Original-BB-Icon.png",
+            "image": "shopify://shop_images/Universal-Worldwide.png",
             "image_width": 40,
             "link": "",
             "text": "<p>Universal Worldwide</p>",
@@ -614,7 +614,7 @@
         "logo_BiXWXU": {
           "type": "logo",
           "settings": {
-            "image": "shopify://shop_images/The-Original-BB-Icon.png",
+            "image": "shopify://shop_images/Lascal-Quality-Seal_ec013362-d0c1-4fa5-947d-9f4a81deb10e.png",
             "image_width": 40,
             "link": "",
             "text": "<p>Built to Last</p>",
@@ -624,7 +624,7 @@
         "logo_PqmcyY": {
           "type": "logo",
           "settings": {
-            "image": "shopify://shop_images/The-Original-BB-Icon.png",
+            "image": "shopify://shop_images/Safety-Tested-_-Approved.png",
             "image_width": 40,
             "link": "",
             "text": "<p>Safety Tested & Approved</p>",
@@ -645,10 +645,10 @@
         "layout": "row",
         "text_icon_alignment": "column",
         "image_opacity": 100,
-        "font_size": 12,
+        "font_size": 10,
         "logo_bg_color": "",
         "font_colour": "",
-        "padding_top": 20,
+        "padding_top": 0,
         "padding_bottom": 20,
         "gap_mobile": 5,
         "gap_desktop": 20,
