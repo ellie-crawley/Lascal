@@ -136,7 +136,7 @@
             "button_label": "GET YOURS NOW →",
             "button_link": "",
             "button_text_colour": "#ffffff",
-            "button_bg_colour": "#E36231"
+            "button_bg_colour": "#e36231"
           }
         }
       },
@@ -169,7 +169,7 @@
           "type": "logo",
           "settings": {
             "image": "shopify://shop_images/30-Day-Money-Back-Guarantee.png",
-            "image_width": 20,
+            "image_width": 15,
             "link": "",
             "text": "<p>30-Day Money Back Guarantee</p>",
             "justify-content": "center"
