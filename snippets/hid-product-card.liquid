@@ -188,7 +188,11 @@
         data-product-type="{{ product.type }}"
         data-product-title="{{ product.title }}"
         style="display:flex;"
-      ></span>
+      >
+        {% if product.metafields.reviews.rating.value != blank -%}
+          ({{ product.metafields.reviews.rating.value }})
+        {%- endif %}
+      </span>
     </a>
 
     {% form 'product', product, class: 'main-form', data-cart-submit: 'data-cart-submit' %}
