@@ -449,7 +449,7 @@
           "type": "product",
           "settings": {
             "product": "lascal-buggyboard®-maxi-plus-red-with-red-saddle",
-            "product_custom_title": "BuggyBoard<sup>®</sup> Maxi Plus",
+            "product_custom_title": "BuggyBoard® Maxi Plus",
             "configured_image_primary": "shopify://shop_images/1024px-Wide-BuggyBoard-MaxiPlus.jpg"
           }
         }
@@ -484,7 +484,7 @@
           "settings": {
             "image": "shopify://shop_images/Free-Delivery.png",
             "image_width": 25,
-            "link": "",
+            "link": "shopify://blogs/news/double-buggy-vs-buggyboard®-which-works-best-for-you",
             "text": "<p>Free UK Delivery Over £50</p>",
             "justify-content": "center"
           }
@@ -583,8 +583,7 @@
       "type": "hid-image-banner",
       "name": "HID Image Banner",
       "settings": {
-        "image": "shopify://shop_images/1200x628px-Prime-Day-Lascal.jpg",
-        "mobile_image": "shopify://shop_images/1080x1080px-Prime-Day-Lascal.jpg",
+        "image": "shopify://shop_images/1024px-Wide-Image.jpg",
         "padding_top": 20,
         "padding_bottom": 20
       }
