@@ -433,7 +433,7 @@
           "type": "product",
           "settings": {
             "product": "lascal-buggyboard®-3d-mini-blue",
-            "product_custom_title": "BuggyBoard® Mini",
+            "product_custom_title": "BuggyBoard<sup>®</sup> Mini",
             "configured_image_primary": "shopify://shop_images/1024px-Wide-BuggyBoard-Mini.jpg"
           }
         },
@@ -441,7 +441,7 @@
           "type": "product",
           "settings": {
             "product": "lascal-maxi-buggyboard",
-            "product_custom_title": "BuggyBoard® Maxi",
+            "product_custom_title": "BuggyBoard<sup>®</sup> Maxi",
             "configured_image_primary": "shopify://shop_images/1024px-Wide-BuggyBoard-Maxi.jpg"
           }
         },
@@ -449,7 +449,7 @@
           "type": "product",
           "settings": {
             "product": "lascal-buggyboard®-maxi-plus-red-with-red-saddle",
-            "product_custom_title": "BuggyBoard® Maxi Plus",
+            "product_custom_title": "BuggyBoard<sup>®</sup> Maxi Plus",
             "configured_image_primary": "shopify://shop_images/1024px-Wide-BuggyBoard-MaxiPlus.jpg"
           }
         }
