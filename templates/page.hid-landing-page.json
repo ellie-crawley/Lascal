@@ -512,10 +512,10 @@
         "logo_8HGmBn": {
           "type": "logo",
           "settings": {
-            "image": "shopify://shop_images/The-Original-BB-Icon.png",
-            "image_width": 40,
+            "image": "shopify://shop_images/Secure-Checkout.png",
+            "image_width": 30,
             "link": "",
-            "text": "<p>Free Delivery Over £60</p>",
+            "text": "<p>Secure Checkout</p>",
             "justify-content": "center"
           }
         }
