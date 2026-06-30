@@ -29,8 +29,8 @@
 .hid-product__card-image img:not(:first-child) {
   display: none;
 }
-
-{% if configured_image_secondary != blank or product.images.size > 1 %}
+{% assign use_product_images = product.images.size > 1 and configured_image_primary == blank %}
+{% if configured_image_secondary != blank or use_product_images %}
   /* Hover swap */
   .hid-product__card:hover .hid-product__card-image img:first-child {
     opacity: 0;
