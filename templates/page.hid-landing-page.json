@@ -133,10 +133,10 @@
         "button_9MUec3": {
           "type": "button",
           "settings": {
-            "button_label": "GET YOURS NOW ›",
+            "button_label": "GET YOURS NOW →",
             "button_link": "",
             "button_text_colour": "#ffffff",
-            "button_bg_colour": "#ff8300"
+            "button_bg_colour": "#E36231"
           }
         }
       },
@@ -158,7 +158,7 @@
         "logo_iFCCUM": {
           "type": "logo",
           "settings": {
-            "image": "shopify://shop_images/The-Original-BB-Icon.png",
+            "image": "shopify://shop_images/Free-Delivery.png",
             "image_width": 30,
             "link": "",
             "text": "<p>Free UK Delivery Over £50</p>",
@@ -168,7 +168,7 @@
         "logo_feyUQi": {
           "type": "logo",
           "settings": {
-            "image": "shopify://shop_images/The-Original-BB-Icon.png",
+            "image": "shopify://shop_images/30-Day-Money-Back-Guarantee.png",
             "image_width": 30,
             "link": "",
             "text": "<p>30-Day Money Back Guarantee</p>",
@@ -195,7 +195,7 @@
         "gap_mobile": 10,
         "gap_desktop": 20,
         "enable_max_width": true,
-        "max_width": 250
+        "max_width": 220
       }
     },
     "hid_cards_q3wL4E": {
