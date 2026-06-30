@@ -4,6 +4,11 @@
   #section-id-{{ section.id }}{
     background: {{ section.settings.bg_color }};
   }
+  @media (min-width: 1000px) {
+    #section-id-{{ section.id }}{
+      border-radius: 14px;
+    }
+  }
   #section-id-{{ section.id }}.card-container {
     padding-top: 40px;
     padding-bottom: 40px;
@@ -78,9 +83,6 @@
       }
       .card-list__card-text p{
         font-size: calc({{section.settings.font_size}} + 2)px;
-      }
-      .card-container{
-        border-radius: 14px;
       }
     }
   }
