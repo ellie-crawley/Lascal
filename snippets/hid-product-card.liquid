@@ -29,7 +29,11 @@
 .hid-product__card-image img:not(:first-child) {
   display: none;
 }
-{% assign use_product_images = product.images.size > 1 and configured_image_primary == blank %}
+{% assign use_product_images = false %}
+{% if product.images.size > 1 and configured_image_primary == blank %}
+  {% assign use_product_images = true %}
+{% endif %}
+
 {% if configured_image_secondary != blank or use_product_images %}
   /* Hover swap */
   .hid-product__card:hover .hid-product__card-image img:first-child {
