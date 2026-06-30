@@ -170,7 +170,13 @@
 
   <div class="hid-product__card-content">
     <a href="{{ product.url }}" class="hid-product__card-price-title">
-      <div class="hid-product__card-title">{{ product.title }}</div>
+      <div class="hid-product__card-title">
+        {% if product_custom_title != blank %}
+          {{ product_custom_title }}
+        {% else %}
+          {{ product.title }}
+        {% endif %}
+      </div>
     </a>
 
     <div class="hid-product__card-prices">
