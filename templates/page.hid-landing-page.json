@@ -41,16 +41,16 @@
         "text_KUXzAY": {
           "type": "text",
           "settings": {
-            "text": "<h1>Every outing,<br/><strong>SO MUCH EASIER</strong></h1>",
+            "text": "<h1>Every outing,<br/>so much easier!</h1>",
             "text_colour": "",
-            "after_text": "❤",
+            "after_text": "",
             "after_text_colour": "#ff8300"
           }
         },
         "text_JN9LnE": {
           "type": "text",
           "settings": {
-            "text": "<p>The BuggyBoard® gives your child a lift - so you can enjoy every adventure together.</p>",
+            "text": "<p>BuggyBoard® gives your child a lift - so you can enjoy every adventure together.</p>",
             "text_colour": "#6b6259",
             "after_text": "",
             "after_text_colour": ""
@@ -63,10 +63,10 @@
       ],
       "name": "HID rich text",
       "settings": {
-        "text_alignment": "flex-start",
+        "text_alignment": "center",
         "padding_top": 20,
         "padding_bottom": 0,
-        "gap": 20,
+        "gap": 10,
         "bg_colour": ""
       }
     },
@@ -76,7 +76,7 @@
         "logo_VNx8Lf": {
           "type": "logo",
           "settings": {
-            "image": "shopify://shop_images/The-Original-BB-Icon.png",
+            "image": "shopify://shop_images/Universal-Fit.png",
             "image_width": 40,
             "link": "",
             "text": "<p>Universal Fit<br/>Fits 95% of pushchairs</p>",
@@ -86,8 +86,8 @@
         "logo_JWYPjG": {
           "type": "logo",
           "settings": {
-            "image": "shopify://shop_images/The-Original-BB-Icon.png",
-            "image_width": 40,
+            "image": "shopify://shop_images/Easy-To-Attach.png",
+            "image_width": 60,
             "link": "",
             "text": "<p>Easy to Attach<br/>On in minutes</p>",
             "justify-content": "center"
@@ -96,7 +96,7 @@
         "logo_qpb9HY": {
           "type": "logo",
           "settings": {
-            "image": "shopify://shop_images/The-Original-BB-Icon.png",
+            "image": "shopify://shop_images/24KG.png",
             "image_width": 40,
             "link": "",
             "text": "<p>Supports 20kg<br/>/ 44lbs</p>",
@@ -119,12 +119,12 @@
         "font_size": 10,
         "logo_bg_color": "",
         "font_colour": "#4a443d",
-        "padding_top": 10,
+        "padding_top": 0,
         "padding_bottom": 0,
         "gap_mobile": 10,
         "gap_desktop": 20,
         "enable_max_width": true,
-        "max_width": 125
+        "max_width": 130
       }
     },
     "hid_rich_text_fWJNdg": {
