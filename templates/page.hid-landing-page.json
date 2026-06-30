@@ -294,7 +294,7 @@
         "text_Pph44R": {
           "type": "text",
           "settings": {
-            "text": "<h2><strong>Loved by parents.</strong></h2>",
+            "text": "<h2><strong>Loved by Parents.</strong></h2>",
             "text_colour": "",
             "after_text": "",
             "after_text_colour": ""
@@ -329,7 +329,7 @@
         "review_EyJrmW": {
           "type": "review",
           "settings": {
-            "image": "shopify://shop_images/Cheeky_Rascals_Blog_Images_2_8.jpg",
+            "image": "shopify://shop_images/300px-Review-Image-01.jpg",
             "image_width": 40,
             "link": "",
             "text": "<p>“I like riding along next to Daddy and I can tell him about all the things we see on the way.”</p>",
@@ -337,7 +337,7 @@
             "star_rating": 5,
             "star_colour": "#e98739",
             "text_icon_alignment": "row",
-            "font_size": 14,
+            "font_size": 13,
             "logo_bg_color": "#f4eadd",
             "font_colour": ""
           }
@@ -345,7 +345,7 @@
         "review_kcFg6w": {
           "type": "review",
           "settings": {
-            "image": "shopify://shop_images/Cheeky_Rascals_Blog_Images_2_8.jpg",
+            "image": "shopify://shop_images/300px-Review-Image-02.jpg",
             "image_width": 40,
             "link": "",
             "text": "<p>“BuggyBoard is so fun to ride on and it keeps me really safe along the road. The best thing is I can decide whether I want to stand up or sit down.”</p>",
@@ -353,7 +353,7 @@
             "star_rating": 5,
             "star_colour": "#e98739",
             "text_icon_alignment": "row",
-            "font_size": 14,
+            "font_size": 13,
             "logo_bg_color": "#f4eadd",
             "font_colour": ""
           }
