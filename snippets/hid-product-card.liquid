@@ -30,17 +30,19 @@
   display: none;
 }
 
-/* Hover swap */
-.hid-product__card:hover .hid-product__card-image img:first-child {
-  opacity: 0;
-  visibility: hidden;
-}
+{% if configured_image_secondary != blank %}
+  /* Hover swap */
+  .hid-product__card:hover .hid-product__card-image img:first-child {
+    opacity: 0;
+    visibility: hidden;
+  }
 
-.hid-product__card:hover .hid-product__card-image img:nth-child(2) {
-  display: block;
-  opacity: 1;
-  visibility: visible;
-}
+  .hid-product__card:hover .hid-product__card-image img:nth-child(2) {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+  }
+{% endif %}
 
 /* JS states (kept for safety) */
 .hid-product__card-image img.active.first_show {
