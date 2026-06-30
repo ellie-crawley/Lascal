@@ -282,7 +282,7 @@
         "text_alignment": "center",
         "font_size": 12,
         "bg_color": "#f4eadd",
-        "card_bg_color": "#ffffff",
+        "card_bg_color": "#FAF6EE",
         "font_colour": "",
         "padding_top": 0,
         "padding_bottom": 20
@@ -338,7 +338,7 @@
             "star_colour": "#e98739",
             "text_icon_alignment": "row",
             "font_size": 13,
-            "logo_bg_color": "#f4eadd",
+            "logo_bg_color": "#F8F3E9",
             "font_colour": ""
           }
         },
@@ -354,7 +354,7 @@
             "star_colour": "#e98739",
             "text_icon_alignment": "row",
             "font_size": 13,
-            "logo_bg_color": "#f4eadd",
+            "logo_bg_color": "#F8F3E9",
             "font_colour": ""
           }
         }
@@ -389,7 +389,7 @@
           "type": "countdown",
           "settings": {
             "text_color": "",
-            "countdown_bg_color": "#e2a778",
+            "countdown_bg_color": "#F0A386",
             "countdown_number_color": "#ffffff",
             "countdown_unit_color": "#ffffff",
             "end_date": "2026-06-28",
@@ -405,7 +405,7 @@
         "promotion_Wr93fU": {
           "type": "promotion",
           "settings": {
-            "promo_text": "Use code",
+            "promo_text": "Use Code:",
             "promo_text_color": "#ffffff",
             "promo_code": "ADVENTURE10",
             "promo_code_color": "#000000",
@@ -421,7 +421,7 @@
       "name": "HID Countdown timer",
       "settings": {
         "text_alignment": "center",
-        "bg_color": "#e98739",
+        "bg_color": "#E36231",
         "padding_top": 40,
         "padding_bottom": 40
       }
