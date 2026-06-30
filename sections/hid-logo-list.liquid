@@ -102,7 +102,7 @@
     {%- for block in section.blocks -%}
       <div>
         {%- if block.settings.link != blank -%}
-          <a class="logo-list__link logo-list__logo logo-list__logo-{{ forloop.index }} text_icon_alignment-{{ section.settings.text_icon_alignment }}" href="{{ block.settings.link }}" {{ block.shopify_attributes }}>
+          <a class="logo-list-wrapper logo-list__logo logo-list__logo-{{ forloop.index }} text_icon_alignment-{{ section.settings.text_icon_alignment }}" href="{{ block.settings.link }}" {{ block.shopify_attributes }}>
         {%- else -%}
           <div class="logo-list-wrapper logo-list__logo logo-list__logo-{{ forloop.index }} text_icon_alignment-{{ section.settings.text_icon_alignment }}" {{ block.shopify_attributes }}>
         {%- endif -%}
