@@ -187,7 +187,7 @@
         "layout": "row",
         "text_icon_alignment": "row",
         "image_opacity": 100,
-        "font_size": 11,
+        "font_size": 10,
         "logo_bg_color": "#f4eadd",
         "font_colour": "#4a443d",
         "padding_top": 10,
@@ -690,7 +690,7 @@
             "button_label": "SHOP NOW RISK-FREE >",
             "button_link": "",
             "button_text_colour": "#ffffff",
-            "button_bg_colour": "#E36231"
+            "button_bg_colour": "#e36231"
           }
         }
       },
@@ -715,7 +715,7 @@
       "settings": {
         "button_text": "Shop BuggyBoard",
         "button_link": "shopify://collections/buggyboard",
-        "background": "#E36231",
+        "background": "#e36231",
         "text_color": "#ffffff",
         "font_size": 16,
         "border_radius": 8,
